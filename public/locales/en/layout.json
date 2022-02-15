@@ -1,0 +1,9 @@
+{
+	"nav": {
+		"home": "Home",
+		"dashboard": "Dashboard",
+		"commands": "Commands",
+		"modules": "Modules",
+		"contact": "Contact"
+	}
+}

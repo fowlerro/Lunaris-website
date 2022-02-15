@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
+    margin: 0;
     font-family: 'Sora', sans-serif;
     color: ${({ theme }) => theme.colors.white};
     background: ${({ theme }) => theme.colors.background.primary};

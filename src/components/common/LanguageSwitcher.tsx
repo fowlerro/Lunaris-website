@@ -1,13 +1,15 @@
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import styled from 'styled-components';
 
 import usePersistLocaleCookie from '@hooks/usePersistLocaleCookie';
-import styled from 'styled-components';
 
 const StyledLink = styled.a`
 	color: ${({ theme }) => theme.colors.white};
+	font-weight: 600;
 	text-decoration: none;
+	line-height: 1.8em;
 `;
 
 export default function LanguageSwitcher() {
@@ -18,7 +20,9 @@ export default function LanguageSwitcher() {
 
 	return (
 		<Link passHref href={router.asPath} locale={router.locales?.find(locale => router.locale !== locale)}>
-			<StyledLink>{t('common:languageName')}</StyledLink>
+			<StyledLink role='switch' aria-label='Language switcher' aria-details={router.locale}>
+				{t('common:languageName')}
+			</StyledLink>
 		</Link>
 	);
 }
