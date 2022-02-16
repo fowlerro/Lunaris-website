@@ -1,67 +1,29 @@
+import { useTranslation } from 'next-i18next';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
+import tw from 'twin.macro';
+
 import Button from '@components/Button/Button';
 import { Media } from '@styles/Media';
-import { useTranslation } from 'next-i18next';
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
 import Illustration from './Illustration';
 
 const Header = styled.header`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 0 1em;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		margin-left: 15%;
-		margin-right: 10%;
-		align-items: flex-start;
-		flex-direction: row-reverse;
-	}
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-		margin: 0;
-		margin-right: 10%;
-		margin-left: auto;
-		justify-content: space-between;
-		max-width: 1500px;
-	}
+	${tw`flex flex-col items-center my-0 mx-4
+    md:ml-[15%] md:mr-[10%] md:items-start md:flex-row-reverse
+    xl:m-0 xl:mr-[10%] xl:ml-auto xl:justify-between xl:max-w-screen-2xl`}
 `;
 
 const Typography = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		align-items: flex-start;
-		margin-top: 250px;
-	}
+	${tw`flex flex-col items-center md:items-start md:mt-80`}
 `;
 
 const H1 = styled.h1`
-	color: ${({ theme }) => theme.colors.white};
-	font-size: 3rem;
-	font-weight: 700;
-	margin-bottom: 0;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		font-size: 4rem;
-	}
+	${tw`text-white text-5xl mb-2 font-bold md:text-6xl`}
 `;
 
 const Paragraph = styled.p`
-	color: ${({ theme }) => theme.colors.text.secondary};
-	font-weight: 300;
-	font-size: 1rem;
-	line-height: 40px;
-	letter-spacing: 0.05em;
-	text-align: center;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		font-size: 1.2rem;
-		text-align: left;
-		max-width: 450px;
-	}
+	${tw`text-text-secondary font-light text-base leading-loose tracking-wider text-center mb-8
+    md:text-lg md:text-left md:max-w-md`}
 `;
 
 const ButtonPrimarySlide = keyframes`
@@ -74,10 +36,8 @@ const ButtonSecondarySlide = keyframes`
 `;
 
 const StyledPrimaryButton = styled(Button)`
-	margin-top: 3em;
-	margin-bottom: 2em;
-
-	animation: ${ButtonPrimarySlide} 350ms ease-out 300ms;
+	${tw`mt-12 mb-8`}
+	animation: ${ButtonPrimarySlide} 350ms 300ms;
 	animation-fill-mode: forwards;
 `;
 
@@ -87,8 +47,7 @@ const StyledSecondaryButton = styled(Button)`
 `;
 
 const StyledMedia = styled(Media)`
-	display: flex;
-	flex-direction: column;
+	${tw`flex flex-col`}
 `;
 
 export default function Hero(): JSX.Element {

@@ -1,11 +1,12 @@
-import React from 'react';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import LanguageSwitcher from '@components/LanguageSwitcher';
-import styled from 'styled-components';
 
 interface IProps {
 	expanded: boolean;
@@ -13,29 +14,19 @@ interface IProps {
 }
 
 const RightItems = styled.ul`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	list-style: none;
-	position: relative;
+	${tw`flex flex-wrap items-center list-none relative`}
 
 	li {
-		margin-right: 1.5em;
+		${tw`mr-6`}
 	}
 `;
 
 const Icon = styled(FontAwesomeIcon)`
-	font-size: 1.5em;
+	${tw`text-2xl`}
 `;
 
 const Hamburger = styled.button`
-	margin-left: 1em;
-	margin-right: 1.5em;
-	min-width: 2.2em;
-	background: none;
-	border: 0;
-	color: ${({ theme }) => theme.colors.white};
-	cursor: pointer;
+	${tw`ml-4 mr-6 min-w-[2.2rem] bg-none border-0 text-white cursor-pointer`}
 `;
 
 export default function TopbarRightItems({ expanded, setExpanded }: IProps): JSX.Element {

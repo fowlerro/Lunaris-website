@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 interface IProps {
 	href: string;
@@ -7,20 +8,10 @@ interface IProps {
 	active: boolean;
 }
 
-const Item = styled.li<Pick<IProps, 'active'>>`
-	text-align: center;
-	margin-top: 2em;
-	margin-bottom: 2em;
-	font-size: 1rem;
-	font-weight: 600;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		font-weight: ${({ active }) => (active ? 600 : 400)};
-	}
-	@media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-		font-size: 1.2rem;
-	}
-`;
+const Item = styled.li<Pick<IProps, 'active'>>(({ active }) => [
+	tw`text-center my-8 text-base font-semibold lg:text-xl`,
+	active ? tw`md:font-semibold` : tw`md:font-normal`,
+]);
 
 export default function MenuItem({ href, label, active }: IProps): JSX.Element {
 	return (

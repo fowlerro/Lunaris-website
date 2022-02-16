@@ -1,21 +1,15 @@
-import styled from 'styled-components';
 import React, { useRef } from 'react';
-import Menu from './Menu';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import useLockedBody from '@hooks/useLockedBody';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import TopbarRightItems from './TopbarRightItems';
+import Menu from './Menu';
 import Logo from '../Logo';
 
 const Navbar = styled.nav`
-	width: 100%;
-	padding: 0.2em;
-	display: flex;
-	position: relative;
-	align-items: center;
-	justify-content: space-between;
-	background: ${({ theme }) => theme.colors.background.lighter};
-	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
-	z-index: 99;
+	${tw`w-full p-1 flex relative items-center justify-between bg-background-lighter shadow-xl z-[99]`}
 `;
 
 export default function TopbarMobile(): JSX.Element {

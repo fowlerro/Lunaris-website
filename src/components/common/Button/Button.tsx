@@ -1,5 +1,6 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant?: 'primary' | 'secondary';
@@ -7,16 +8,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
 
-const StyledButton = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
-	background: ${({ variant, theme }) => (variant === 'primary' ? theme.colors.primary : 'none')};
-	border: ${({ variant, theme }) => (variant === 'secondary' ? `2px solid ${theme.colors.primary}` : 'none')};
-	border-radius: ${({ size }) => (size === 'sm' ? '8px' : '10px')};
-	color: ${({ theme }) => theme.colors.white};
-	padding: ${({ size }) => (size === 'sm' ? '10px 24px' : '12px 36px')};
-	font-weight: 600;
-	font-size: ${({ size }) => (size === 'sm' ? '.5rem' : '1rem')};
-	box-shadow: -2px 4px 6px 2px rgba(0, 0, 0, 0.25);
-`;
+const StyledButton = styled.button<Pick<ButtonProps, 'variant' | 'size'>>(({ variant, size }) => [
+	variant === 'primary' ? tw`bg-primary` : tw`bg-transparent`,
+	variant === 'secondary' ? tw`border-2 border-primary` : tw`border-none`,
+	size === 'sm' ? tw`rounded-lg px-6 py-2.5 text-xs` : tw`rounded-xl px-9 py-3 text-base`,
+	tw`text-white font-semibold shadow-lg hover:bg-primary-600`,
+]);
 
 export default function Button({
 	variant = 'primary',

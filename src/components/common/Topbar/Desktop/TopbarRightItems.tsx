@@ -1,23 +1,21 @@
-import React from 'react';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 
 import LanguageSwitcher from '@components/LanguageSwitcher';
-import styled from 'styled-components';
 import LoginButton from '../LoginButton';
 
 const RightItems = styled.ul`
-	display: flex;
-	align-items: center;
-	list-style: none;
+	${tw`flex items-center list-none`}
 
 	li {
-		margin-right: 1.5em;
+		${tw`mr-6`}
 	}
 `;
-
 const Icon = styled(FontAwesomeIcon)`
-	font-size: 1.5rem;
+	${tw`text-2xl`}
 `;
 
 export default function TopbarRightItems(): JSX.Element {

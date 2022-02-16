@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import MenuItems from '../MenuItems';
 
 interface IProps {
@@ -7,24 +8,13 @@ interface IProps {
 }
 
 const Navmenu = styled.ul<IProps>`
-	position: absolute;
-	list-style: none;
-	background: ${({ theme }) => theme.colors.background.lighter};
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	left: 0;
-	top: 100%;
-	box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.25);
-	transform-origin: top;
-	transform: ${({ expanded }) => (expanded ? 'scale(1, 1)' : 'scale(1, 0)')};
-	transition: transform 0.2s ease-in-out;
+	${tw`absolute list-none bg-background-lighter w-full m-0 p-0 left-0 top-full shadow-xl
+    origin-top transition-transform duration-200 ease-in-out`}
+	${({ expanded }) => (expanded ? tw`scale-100` : tw`scale-x-100 scale-y-0`)}
 
-	a {
-		color: ${({ theme }) => theme.colors.white};
-		text-decoration: none;
-		transition: ${({ expanded }) => (expanded ? 'opacity 150ms ease-in-out 100ms' : 'opacity 100ms ease-in-out')};
-		opacity: ${({ expanded }) => (expanded ? 1 : 0)};
+  a {
+		${tw`text-white no-underline transition-opacity ease-in-out`}
+		${({ expanded }) => (expanded ? tw`opacity-100 duration-200 delay-150` : tw`opacity-0 duration-100`)}
 	}
 `;
 

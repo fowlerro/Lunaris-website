@@ -1,20 +1,11 @@
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import logo from '@assets/logo192.png';
 
 const StyledDiv = styled.div`
-	width: 48px;
-	height: 48px;
-	margin-left: 1em;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		width: 64px;
-		height: 64px;
-	}
-	@media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-		width: 84px;
-		height: 84px;
-	}
+	${tw`w-12 h-12 ml-4 md:w-16 md:h-16 lg:w-20 lg:h-20`}
 `;
 
 export default function Logo(): JSX.Element {

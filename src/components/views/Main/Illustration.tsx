@@ -1,14 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 const Svg = styled.svg`
-	max-width: 300px;
-	width: 80%;
-	margin-top: 20px;
-
-	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-		max-width: 500px;
-	}
+	${tw`max-w-xs w-10/12 mt-5 md:mt-28 md:max-w-md`}
 `;
 
 export default function Illustration(): JSX.Element {

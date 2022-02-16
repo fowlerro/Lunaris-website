@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import styled from 'styled-components';
+
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
 import usePersistLocaleCookie from '@hooks/usePersistLocaleCookie';
 
 const StyledLink = styled.a`
-	color: ${({ theme }) => theme.colors.white};
-	font-weight: 600;
-	text-decoration: none;
-	line-height: 1.8em;
+	${tw`font-semibold no-underline leading-7 text-white`}
 `;
 
 export default function LanguageSwitcher() {

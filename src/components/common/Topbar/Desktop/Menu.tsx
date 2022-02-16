@@ -1,17 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import tw from 'twin.macro';
+
 import MenuItems from '../MenuItems';
 
 const Navmenu = styled.ul`
-	display: flex;
-	max-width: 800px;
-	flex-grow: 1;
-	list-style: none;
-	justify-content: space-evenly;
+	${tw`flex max-w-3xl flex-grow list-none justify-evenly`}
 
 	a {
-		color: ${({ theme }) => theme.colors.white};
-		text-decoration: none;
+		${tw`text-white no-underline`}
 	}
 `;
 
