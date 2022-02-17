@@ -1,0 +1,26 @@
+{
+	"embeds": {
+		"title": "Embed Messages",
+		"shortDesc": "Create your own fully customizable embed messages!"
+	},
+	"reactionRoles": {
+		"title": "Reaction Roles",
+		"shortDesc": "Give your users option to manage their roles!"
+	},
+	"levels": {
+		"title": "Levels",
+		"shortDesc": "Build your profile and gain levels from your activity!"
+	},
+	"autoRoles": {
+		"title": "Auto Roles",
+		"shortDesc": "Automatically give roles to new users!"
+	},
+	"welcomeMessages": {
+		"title": "Welcome Messages",
+		"shortDesc": "Set up the way you welcome new users!"
+	},
+	"serverLogs": {
+		"title": "Server Logs",
+		"shortDesc": "Manage yourserver with highly customizable logs!"
+	}
+}

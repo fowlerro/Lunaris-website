@@ -8,8 +8,8 @@ import { Media } from '@styles/Media';
 import Illustration from './Illustration';
 
 const Header = styled.header`
-	${tw`flex flex-col items-center my-0 mx-4
-    md:ml-[15%] md:mr-[10%] md:items-start md:flex-row-reverse
+	${tw`flex flex-col items-center my-0 mx-4 pb-[35%]
+    md:ml-[15%] md:mr-[10%] md:items-start md:flex-row-reverse md:h-[90vh] md:pb-0
     xl:m-0 xl:mr-[10%] xl:ml-auto xl:justify-between xl:max-w-screen-2xl`}
 `;
 

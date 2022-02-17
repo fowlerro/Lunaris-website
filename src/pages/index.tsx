@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Hero from '@views/Main/Hero';
+import Modules from '@views/Main/Modules/Modules';
 
 const Home: NextPage = () => {
 	return (
@@ -12,6 +13,9 @@ const Home: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Hero />
+			<main>
+				<Modules />
+			</main>
 		</>
 	);
 };
