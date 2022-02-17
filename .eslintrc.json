@@ -14,13 +14,21 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["react", "@typescript-eslint", "prettier"],
+	"plugins": ["react", "testing-library", "jest-dom", "@typescript-eslint", "prettier"],
 	"rules": {
 		"indent": ["error", "tab"],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"prefer-const": "error",
+
+		"testing-library/no-render-in-setup": "error",
+		"testing-library/no-wait-for-empty-callback": "error",
+		"testing-library/prefer-explicit-assert": "error",
+		"testing-library/prefer-presence-queries": "error",
+		"testing-library/prefer-screen-queries": "error",
+		"testing-library/prefer-wait-for": "error",
+
 		"@typescript-eslint/no-unused-vars": "error",
 		"@typescript-eslint/no-explicit-any": "error",
 		"react/react-in-jsx-scope": "off"

@@ -1,19 +1,21 @@
 import { render } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 
 describe('LanguageSwitcher Component', () => {
 	it('should renders', () => {
-		const res = render(<LanguageSwitcher />);
-		expect(res).toBeTruthy();
+		render(<LanguageSwitcher />);
+		const link = screen.getByRole('switch');
+		expect(link).toBeInTheDocument();
 	});
 	it('should renders link', () => {
-		const res = render(<LanguageSwitcher />);
-		const switchLink = res.getByRole('switch');
-		expect(switchLink).toBeTruthy();
+		render(<LanguageSwitcher />);
+		const switchLink = screen.getByRole('switch');
+		expect(switchLink).toBeInTheDocument();
 	});
 	it('should change language', () => {
-		const res = render(<LanguageSwitcher />);
-		const switchLink = res.getByRole('switch');
+		render(<LanguageSwitcher />);
+		const switchLink = screen.getByRole('switch');
 		expect(switchLink).toHaveAttribute('href', '/');
 	});
 });
