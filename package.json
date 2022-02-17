@@ -7,8 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test": "jest --watch --verbose --testPathPattern=src/tests --maxWorkers=1",
+    "test:coverage": "jest --coverage --verbose --testPathPattern=src/tests --maxWorkers=1",
+    "ci": "jest --ci --bail --verbose --testPathPattern='src/tests'"
   },
   "dependencies": {
     "@artsy/fresnel": "^3.3.0",

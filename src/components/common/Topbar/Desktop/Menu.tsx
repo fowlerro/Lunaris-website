@@ -7,7 +7,15 @@ const Navmenu = styled.ul`
 	${tw`flex max-w-3xl flex-grow list-none justify-evenly`}
 
 	a {
-		${tw`text-white no-underline`}
+		${tw`text-white no-underline relative`}
+	}
+
+	a::after {
+		${tw`content absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-primary origin-bottom transition-transform duration-200 ease-out`}
+	}
+
+	a:hover::after {
+		${tw`scale-x-100`}
 	}
 `;
 

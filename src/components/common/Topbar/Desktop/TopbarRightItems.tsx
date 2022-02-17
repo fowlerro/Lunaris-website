@@ -14,6 +14,7 @@ const RightItems = styled.ul`
 		${tw`mr-6`}
 	}
 `;
+
 const Icon = styled(FontAwesomeIcon)`
 	${tw`text-2xl`}
 `;

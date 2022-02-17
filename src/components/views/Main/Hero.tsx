@@ -50,6 +50,9 @@ const StyledMedia = styled(Media)`
 	${tw`flex flex-col`}
 `;
 
+const inviteLink =
+	'https://discord.com/api/oauth2/authorize?client_id=739412828737372181&permissions=0&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Finvite%2Fredirect&response_type=code&scope=identify%20bot%20applications.commands';
+
 export default function Hero(): JSX.Element {
 	const { t } = useTranslation();
 
@@ -60,12 +63,16 @@ export default function Hero(): JSX.Element {
 				<H1>Lunaris</H1>
 				<Paragraph>{t('mainPage:heroParagraph')}</Paragraph>
 				<StyledMedia greaterThan='sm'>
-					<Button>{t('common:inviteBot')}</Button>
+					<a href={inviteLink}>
+						<Button>{t('common:inviteBot')}</Button>
+					</a>
 				</StyledMedia>
 			</Typography>
 			<StyledMedia at='sm'>
 				<StyledPrimaryButton>{t('common:login')}</StyledPrimaryButton>
-				<StyledSecondaryButton variant='secondary'>{t('common:inviteBot')}</StyledSecondaryButton>
+				<a href={inviteLink}>
+					<StyledSecondaryButton variant='secondary'>{t('common:inviteBot')}</StyledSecondaryButton>
+				</a>
 			</StyledMedia>
 		</Header>
 	);
