@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Hero from '@views/Main/Hero';
 import Modules from '@views/Main/Modules/Modules';
+import Commands from '@views/Main/Commands';
 
 const Home: NextPage = () => {
 	return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
 			<Hero />
 			<main>
 				<Modules />
+				<Commands />
 			</main>
 		</>
 	);

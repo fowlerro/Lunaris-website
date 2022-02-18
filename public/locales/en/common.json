@@ -2,5 +2,6 @@
 	"languageName": "EN",
 	"login": "Log in",
 	"inviteBot": "Invite Bot",
-	"modules": "Modules"
+	"modules": "Modules",
+	"commands": "Commands"
 }

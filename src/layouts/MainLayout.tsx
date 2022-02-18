@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import TopbarMobile from '@components/Topbar/Mobile/TopbarMobile';
 import TopbarDesktop from '@components/Topbar/Desktop/TopbarDesktop';
 import { Media } from '@styles/Media';
+import Footer from '@components/Footer/Footer';
 interface IProps {
 	children: ReactNode;
 }
@@ -17,6 +18,7 @@ export default function MainLayout({ children }: IProps): JSX.Element {
 				<TopbarDesktop />
 			</Media>
 			{children}
+			<Footer />
 		</>
 	);
 }

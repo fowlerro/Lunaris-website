@@ -5,7 +5,7 @@ import { Media } from '@styles/Media';
 import ModulesDesktop from './ModulesDesktop';
 
 const Section = styled.section`
-	${tw`bg-background-secondary text-center py-32`}
+	${tw`bg-background-secondary text-center py-16`}
 `;
 
 const modules = ['embeds', 'reactionRoles', 'levels', 'autoRoles', 'welcomeMessages', 'serverLogs'];

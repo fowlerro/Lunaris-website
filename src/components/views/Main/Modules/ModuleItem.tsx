@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Card = styled.div`
-	${tw`text-left max-w-sm mb-32 ml-[15%] even:ml-[60%]`}
+	${tw`text-left max-w-sm mb-32 ml-[15%] even-of-type:ml-[60%]`}
 `;
 
 const H3 = styled.h3`
@@ -17,7 +17,7 @@ const H3 = styled.h3`
 `;
 
 const Paragraph = styled.p`
-	${tw`text-lg font-light`}
+	${tw`text-lg`}
 `;
 
 const StyledButton = styled(Button)`

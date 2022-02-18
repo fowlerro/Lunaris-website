@@ -50,7 +50,7 @@ export default function ModulesCarousel({ modules }: IProps): JSX.Element {
 
 	const handleSlide = (item: string, index: number) => {
 		setCurrent(item);
-		itemRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+		itemRefs[index].current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 	};
 
 	useEffect(() => {

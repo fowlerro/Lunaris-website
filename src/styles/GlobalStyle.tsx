@@ -33,9 +33,16 @@ const globalCss = css`
 		font-size: 1.5rem;
 	}
 
+	h5 {
+		font-weight: 600;
+		color: ${theme.colors.white};
+		font-size: 1.125rem;
+	}
+
 	p {
-		font-weight: 400;
+		font-weight: 300;
 		color: ${theme.colors.text.secondary};
+		letter-spacing: 0.05em;
 	}
 `;
 
