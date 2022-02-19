@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useTranslation } from 'next-i18next';
 import tw from 'twin.macro';
 
 const StyledFooter = styled.footer`
@@ -16,7 +17,7 @@ const Header = styled.h5`
 `;
 
 const Link = styled.a`
-	${tw`text-sm leading-loose hover:underline max-w-max`}
+	${tw`text-sm my-1 hover:underline max-w-max`}
 `;
 
 const Copyright = styled.p`
@@ -28,22 +29,23 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 export default function Footer(): JSX.Element {
+	const { t } = useTranslation('layout', { keyPrefix: 'footer' });
 	return (
 		<StyledFooter>
 			<Section>
-				<Header>Useful links</Header>
-				<Link href='/commands'>Commands</Link>
-				<Link href='/modules'>Modules</Link>
-				<Link href='/dashboard'>Dashboard</Link>
+				<Header>{t('usefulLinks')}</Header>
+				<Link href='/commands'>{t('commands')}</Link>
+				<Link href='/modules'>{t('modules')}</Link>
+				<Link href='/dashboard'>{t('dashboard')}</Link>
 			</Section>
 			<Section>
-				<Header>Privacy</Header>
-				<Link href='/terms-of-use'>Terms of use</Link>
-				<Link href='/privacy'>Privacy Policy</Link>
+				<Header>{t('privacy')}</Header>
+				<Link href='/terms-of-use'>{t('terms')}</Link>
+				<Link href='/privacy'>{t('privacyPolicy')}</Link>
 			</Section>
 			<Section>
-				<Header>Contact</Header>
-				<Link href='/contact'>Contact Page</Link>
+				<Header>{t('contact')}</Header>
+				<Link href='/contact'>{t('contactForm')}</Link>
 				<Link href='https://discordapp.com/users/313346190995619841' target='_blank'>
 					<Icon icon={faDiscord} />
 					Kamil#2107

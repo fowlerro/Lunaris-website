@@ -17,10 +17,6 @@ const Typography = styled.div`
 	${tw`flex flex-col items-center md:items-start md:mt-80`}
 `;
 
-const H1 = styled.h1`
-	${tw`text-white text-5xl mb-2 font-bold md:text-6xl`}
-`;
-
 const Paragraph = styled.p`
 	${tw`text-text-secondary font-light text-base leading-loose tracking-wider text-center mb-8
     md:text-lg md:text-left md:max-w-md`}
@@ -60,7 +56,7 @@ export default function Hero(): JSX.Element {
 		<Header>
 			<Illustration />
 			<Typography>
-				<H1>Lunaris</H1>
+				<h1>Lunaris</h1>
 				<Paragraph>{t('mainPage:heroParagraph')}</Paragraph>
 				<StyledMedia greaterThan='sm'>
 					<a href={inviteLink}>

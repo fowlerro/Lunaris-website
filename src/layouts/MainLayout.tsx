@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import TopbarMobile from '@components/Topbar/Mobile/TopbarMobile';
 import TopbarDesktop from '@components/Topbar/Desktop/TopbarDesktop';
 import { Media } from '@styles/Media';
-import Footer from '@components/Footer/Footer';
+import Footer from '@components/Footer';
 interface IProps {
 	children: ReactNode;
 }

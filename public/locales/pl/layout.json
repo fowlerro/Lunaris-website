@@ -5,5 +5,19 @@
 		"commands": "Komendy",
 		"modules": "Moduły",
 		"contact": "Kontakt"
+	},
+	"footer": {
+		"usefulLinks": "Przydatne linki",
+		"privacy": "Prywatność",
+		"contact": "Kontakt",
+
+		"commands": "Komendy",
+		"modules": "Moduły",
+		"dashboard": "Panel",
+
+		"terms": "Warunki korzystania",
+		"privacyPolicy": "Polityka prywatności",
+
+		"contactForm": "Formularz kontaktowy"
 	}
 }

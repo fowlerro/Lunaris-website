@@ -21,6 +21,13 @@ const globalCss = css`
 		box-sizing: inherit;
 	}
 
+	h1 {
+		color: ${theme.colors.white};
+		font-size: 2.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 700;
+	}
+
 	h2 {
 		font-weight: 600;
 		color: ${theme.colors.white};
@@ -43,6 +50,12 @@ const globalCss = css`
 		font-weight: 300;
 		color: ${theme.colors.text.secondary};
 		letter-spacing: 0.05em;
+	}
+
+	@media (min-width: ${theme.breakpoints.md}) {
+		h1 {
+			font-size: 3.75rem;
+		}
 	}
 `;
 
