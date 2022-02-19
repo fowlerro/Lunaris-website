@@ -3,5 +3,6 @@
 	"login": "Log in",
 	"inviteBot": "Invite Bot",
 	"modules": "Modules",
-	"commands": "Commands"
+	"commands": "Commands",
+	"gotoDashboard": "Go to Dashboard"
 }

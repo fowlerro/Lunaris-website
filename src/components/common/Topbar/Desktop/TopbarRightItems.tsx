@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 
 import LanguageSwitcher from '@components/LanguageSwitcher';
-import LoginButton from '../LoginButton';
+import { DesktopLoginButton } from '@components/LoginButton';
 
 const RightItems = styled.ul`
 	${tw`flex items-center list-none`}
@@ -29,7 +29,7 @@ export default function TopbarRightItems(): JSX.Element {
 				<Icon icon={faBell} />
 			</li>
 			<li aria-label='login' role='button'>
-				<LoginButton />
+				<DesktopLoginButton />
 			</li>
 		</RightItems>
 	);

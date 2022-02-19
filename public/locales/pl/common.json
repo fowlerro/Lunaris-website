@@ -3,5 +3,6 @@
 	"login": "Zaloguj się",
 	"inviteBot": "Zaproś bota",
 	"modules": "Moduły",
-	"commands": "Komendy"
+	"commands": "Komendy",
+	"gotoDashboard": "Przejdź do Panelu"
 }

@@ -13,7 +13,7 @@ export default function TopbarDesktop(): JSX.Element {
 	return (
 		<Navbar>
 			<Logo />
-			<Menu id='navMenu' role='navigation' aria-labelledby='hamburgerButton' />
+			<Menu id='navMenu' role='navigation' />
 			<TopbarRightItems />
 		</Navbar>
 	);

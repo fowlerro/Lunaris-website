@@ -6,6 +6,7 @@ import tw from 'twin.macro';
 import Button from '@components/Button/Button';
 import { Media } from '@styles/Media';
 import Illustration from './Illustration';
+import { MobileLoginButton } from '@components/LoginButton';
 
 const Header = styled.header`
 	${tw`flex flex-col items-center my-0 mx-4 pb-[35%]
@@ -22,19 +23,9 @@ const Paragraph = styled.p`
     md:text-lg md:text-left md:max-w-md`}
 `;
 
-const ButtonPrimarySlide = keyframes`
-  from { transform: translateX(0)}
-  to { transform: translateX(-30%)}
-`;
 const ButtonSecondarySlide = keyframes`
   from { transform: translateX(0)}
-  to { transform: translateX(30%)}
-`;
-
-const StyledPrimaryButton = styled(Button)`
-	${tw`mt-12 mb-8`}
-	animation: ${ButtonPrimarySlide} 350ms 300ms;
-	animation-fill-mode: forwards;
+  to { transform: translateX(25%)}
 `;
 
 const StyledSecondaryButton = styled(Button)`
@@ -65,10 +56,10 @@ export default function Hero(): JSX.Element {
 				</StyledMedia>
 			</Typography>
 			<StyledMedia at='sm'>
-				<StyledPrimaryButton>{t('common:login')}</StyledPrimaryButton>
-				<a href={inviteLink}>
-					<StyledSecondaryButton variant='secondary'>{t('common:inviteBot')}</StyledSecondaryButton>
-				</a>
+				<MobileLoginButton />
+				<StyledSecondaryButton href={inviteLink} variant='secondary'>
+					{t('common:inviteBot')}
+				</StyledSecondaryButton>
 			</StyledMedia>
 		</Header>
 	);
