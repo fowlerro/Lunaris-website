@@ -21,14 +21,14 @@ const Icon = styled(FontAwesomeIcon)`
 
 export default function TopbarRightItems(): JSX.Element {
 	return (
-		<RightItems role='navigation'>
+		<RightItems role='navigation' aria-label='Action buttons'>
 			<li aria-label='language switcher'>
 				<LanguageSwitcher />
 			</li>
-			<li aria-label='notifications'>
+			<li aria-label='Notifications'>
 				<Icon icon={faBell} />
 			</li>
-			<li aria-label='login' role='button'>
+			<li>
 				<DesktopLoginButton />
 			</li>
 		</RightItems>

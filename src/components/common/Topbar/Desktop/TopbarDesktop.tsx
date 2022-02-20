@@ -11,7 +11,7 @@ const Navbar = styled.nav`
 
 export default function TopbarDesktop(): JSX.Element {
 	return (
-		<Navbar>
+		<Navbar aria-label='Topbar'>
 			<Logo />
 			<Menu id='navMenu' role='navigation' />
 			<TopbarRightItems />

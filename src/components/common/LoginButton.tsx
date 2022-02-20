@@ -3,6 +3,7 @@ import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import useUser from '@hooks/useUser';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import Link from 'next/link';
 import tw from 'twin.macro';
 
@@ -44,9 +45,23 @@ export function MobileLoginButton(): JSX.Element {
 export function DesktopLoginButton(): JSX.Element {
 	const user = useUser({});
 	const { t } = useTranslation();
+	if (user)
+		return (
+			<Link href={'/dashboard'} passHref>
+				<DesktopButton>
+					<Image
+						src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`}
+						alt='Avatar'
+						layout='fill'
+					/>
+					<h6>{user.discordTag}</h6>
+				</DesktopButton>
+			</Link>
+		);
+
 	return (
-		<Link href={user ? '/dashboard' : loginURL} passHref>
-			<DesktopButton>{user ? t('common:gotoDashboard') : t('common:login')}</DesktopButton>
+		<Link href={loginURL} passHref>
+			<DesktopButton>{t('common:login')}</DesktopButton>
 		</Link>
 	);
 }

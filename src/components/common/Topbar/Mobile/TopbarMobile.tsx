@@ -25,7 +25,7 @@ export default function TopbarMobile(): JSX.Element {
 	useOnClickOutside(ref, handleClickOutside);
 
 	return (
-		<Navbar ref={ref}>
+		<Navbar ref={ref} aria-label='Topbar'>
 			<Logo />
 			<TopbarRightItems expanded={expanded} setExpanded={setExpanded} />
 			<Menu id='navMenu' role='navigation' aria-labelledby='hamburgerButton' expanded={expanded} />

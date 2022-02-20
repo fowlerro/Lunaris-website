@@ -31,11 +31,11 @@ const Hamburger = styled.button`
 
 export default function TopbarRightItems({ expanded, setExpanded }: IProps): JSX.Element {
 	return (
-		<RightItems role='navigation'>
+		<RightItems role='navigation' aria-label='Action buttons'>
 			<li aria-label='language switcher'>
 				<LanguageSwitcher />
 			</li>
-			<li aria-label='notifications'>
+			<li aria-label='Notifications'>
 				<Icon icon={faBell} />
 			</li>
 			<Hamburger
