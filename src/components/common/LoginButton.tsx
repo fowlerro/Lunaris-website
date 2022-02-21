@@ -19,7 +19,7 @@ const MobileButton = styled(Button)`
 `;
 
 const DesktopButton = styled.button`
-	${tw`bg-none border-none text-text-muted text-base font-normal lg:text-xl relative hover:text-white`}
+	${tw`flex items-center pb-1 gap-x-2 bg-none border-none text-text-muted text-base font-normal lg:text-xl relative hover:text-white`}
 
 	&::after {
 		${tw`content absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-primary transition-transform duration-200 ease-out`}
@@ -28,6 +28,10 @@ const DesktopButton = styled.button`
 	&:hover::after {
 		${tw`scale-x-100`}
 	}
+`;
+
+const Avatar = styled(Image)`
+	${tw`rounded-full`}
 `;
 
 const loginURL = `${process.env.apiDomain}/api/auth/discord`;
@@ -49,10 +53,11 @@ export function DesktopLoginButton(): JSX.Element {
 		return (
 			<Link href={'/dashboard'} passHref>
 				<DesktopButton>
-					<Image
+					<Avatar
 						src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`}
 						alt='Avatar'
-						layout='fill'
+						width={48}
+						height={48}
 					/>
 					<h6>{user.discordTag}</h6>
 				</DesktopButton>

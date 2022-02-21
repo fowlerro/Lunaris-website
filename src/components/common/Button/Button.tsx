@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import tw from 'twin.macro';
 import Link from 'next/link';
@@ -17,16 +17,13 @@ const StyledButton = styled.button<Pick<ButtonProps, 'variant' | 'size'>>(({ var
 	tw`text-white font-semibold shadow-lg hover:bg-primary-600`,
 ]);
 
-export default function Button({
-	variant = 'primary',
-	size = 'md',
-	href,
-	children,
-	...buttonProps
-}: ButtonProps): JSX.Element {
+function Button(
+	{ variant = 'primary', size = 'md', href, children, ...buttonProps }: ButtonProps,
+	ref: ForwardedRef<HTMLButtonElement>
+): JSX.Element {
 	return href ? (
 		<Link href={href} passHref>
-			<StyledButton variant={variant} size={size} {...buttonProps}>
+			<StyledButton ref={ref} variant={variant} size={size} {...buttonProps}>
 				{children}
 			</StyledButton>
 		</Link>
@@ -36,3 +33,5 @@ export default function Button({
 		</StyledButton>
 	);
 }
+
+export default forwardRef(Button);
