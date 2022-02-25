@@ -4,5 +4,5 @@
 	"inviteBot": "Invite Bot",
 	"modules": "Modules",
 	"commands": "Commands",
-	"gotoDashboard": "Go to Dashboard"
+	"dashboard": "Dashboard"
 }

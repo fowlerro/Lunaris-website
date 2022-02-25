@@ -1,66 +1,79 @@
 import { useTranslation } from 'next-i18next';
-import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import tw from 'twin.macro';
+import { Box } from '@mui/system';
+import { Button, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
 
-import Button from '@components/Button/Button';
-import { Media } from '@styles/Media';
 import Illustration from './Illustration';
-import { MobileLoginButton } from '@components/LoginButton';
+import { MobileLoginButton } from './MobileLoginButton';
 
-const Header = styled.header`
-	${tw`flex flex-col items-center my-0 mx-4 pb-[35%]
-    md:ml-[15%] md:mr-[10%] md:items-start md:flex-row-reverse md:h-[90vh] md:pb-0
-    xl:m-0 xl:mr-[10%] xl:ml-auto xl:justify-between xl:max-w-screen-2xl`}
+const ButtonSlide = keyframes`
+  from { transform: translateX(0) }
+  to { transform: translateX(25%) }
 `;
 
-const Typography = styled.div`
-	${tw`flex flex-col items-center md:items-start md:mt-80`}
-`;
+const Section = styled('section')(({ theme }) => ({
+	display: 'flex',
+	flexDirection: 'column',
+	textAlign: 'center',
+	width: 'min(90%, 1366px)',
+	marginInline: 'auto',
+	marginTop: '6rem',
 
-const Paragraph = styled.p`
-	${tw`text-text-secondary font-light text-base leading-loose tracking-wider text-center mb-8
-    md:text-lg md:text-left md:max-w-md`}
-`;
+	[theme.breakpoints.up('md')]: {
+		flexDirection: 'row-reverse',
+		alignItems: 'flex-end',
+		justifyContent: 'space-between',
+	},
+}));
 
-const ButtonSecondarySlide = keyframes`
-  from { transform: translateX(0)}
-  to { transform: translateX(25%)}
-`;
+const TextWrapper = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
 
-const StyledSecondaryButton = styled(Button)`
-	animation: ${ButtonSecondarySlide} 350ms ease-out 300ms;
-	animation-fill-mode: forwards;
-`;
+	[theme.breakpoints.up('md')]: {
+		alignItems: 'flex-start',
+		textAlign: 'left',
+		maxWidth: '22em',
+	},
+}));
 
-const StyledMedia = styled(Media)`
-	${tw`flex flex-col`}
-`;
+const StyledButton = styled(Button)(({ theme }) => ({
+	animation: `${ButtonSlide} 350ms ease-out 300ms`,
+	animationFillMode: 'forwards',
+
+	[theme.breakpoints.up('md')]: {
+		animation: 'none',
+		marginTop: '1rem',
+	},
+}));
 
 const inviteLink =
 	'https://discord.com/api/oauth2/authorize?client_id=739412828737372181&permissions=0&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Finvite%2Fredirect&response_type=code&scope=identify%20bot%20applications.commands';
 
 export default function Hero(): JSX.Element {
 	const { t } = useTranslation();
+	const theme = useTheme();
+	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
 	return (
-		<Header>
+		<Section>
 			<Illustration />
-			<Typography>
-				<h1>Lunaris</h1>
-				<Paragraph>{t('mainPage:heroParagraph')}</Paragraph>
-				<StyledMedia greaterThan='sm'>
-					<a href={inviteLink}>
-						<Button>{t('common:inviteBot')}</Button>
-					</a>
-				</StyledMedia>
-			</Typography>
-			<StyledMedia at='sm'>
-				<MobileLoginButton />
-				<StyledSecondaryButton href={inviteLink} variant='secondary'>
+			<TextWrapper>
+				<Typography variant='h1'>Lunaris</Typography>
+				<Typography
+					variant='subtitle1'
+					component='p'
+					role='paragraph'
+					sx={{ color: theme.colors.text.secondary, marginTop: '.5rem' }}
+				>
+					{t('mainPage:heroParagraph')}
+				</Typography>
+				{!isDesktop && <MobileLoginButton />}
+				<StyledButton variant={isDesktop ? 'contained' : 'outlined'} href={inviteLink}>
 					{t('common:inviteBot')}
-				</StyledSecondaryButton>
-			</StyledMedia>
-		</Header>
+				</StyledButton>
+			</TextWrapper>
+		</Section>
 	);
 }

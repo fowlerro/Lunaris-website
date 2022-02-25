@@ -1,10 +1,16 @@
 {
 	"nav": {
+		"skipNavigation": "Skip navigation",
 		"home": "Home",
 		"dashboard": "Dashboard",
 		"commands": "Commands",
 		"modules": "Modules",
 		"contact": "Contact"
+	},
+	"profileMenu": {
+		"profile": "Profile",
+		"servers": "Servers",
+		"logout": "Logout"
 	},
 	"footer": {
 		"usefulLinks": "Useful Links",

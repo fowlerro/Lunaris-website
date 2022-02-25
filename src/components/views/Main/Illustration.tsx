@@ -1,9 +1,19 @@
-import styled from '@emotion/styled';
-import tw from 'twin.macro';
+// const Svg = styled.svg`
+// 	${tw`max-w-xs w-10/12 mt-5 md:mt-28 md:max-w-md`}
+// `;
 
-const Svg = styled.svg`
-	${tw`max-w-xs w-10/12 mt-5 md:mt-28 md:max-w-md`}
-`;
+import { styled } from '@mui/material';
+
+const Svg = styled('svg')(({ theme }) => ({
+	width: '10/12',
+	maxWidth: '20rem',
+	marginTop: '1.25rem',
+
+	[theme.breakpoints.up('md')]: {
+		maxWidth: '28rem',
+		marginTop: '7rem',
+	},
+}));
 
 export default function Illustration(): JSX.Element {
 	return (

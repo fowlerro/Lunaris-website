@@ -1,10 +1,91 @@
-const theme = {
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+
+declare module '@mui/material/styles' {
+	interface BreakpointOverrides {
+		xxl: true;
+	}
+	interface Theme {
+		colors: {
+			primary: {
+				main: string;
+				'50': string;
+				'100': string;
+				'200': string;
+				'300': string;
+				'400': string;
+				'500': string;
+				'600': string;
+				'700': string;
+				'800': string;
+				'900': string;
+			};
+			text: {
+				primary: string;
+				secondary: string;
+				muted: string;
+			};
+			background: {
+				primary: string;
+				secondary: string;
+				lighter: string;
+				darker: string;
+				input: string;
+			};
+		};
+	}
+	interface ThemeOptions {
+		colors: {
+			primary: {
+				main: string;
+				'50': string;
+				'100': string;
+				'200': string;
+				'300': string;
+				'400': string;
+				'500': string;
+				'600': string;
+				'700': string;
+				'800': string;
+				'900': string;
+			};
+			text: {
+				primary: string;
+				secondary: string;
+				muted: string;
+			};
+			background: {
+				primary: string;
+				secondary: string;
+				lighter: string;
+				darker: string;
+				input: string;
+			};
+		};
+	}
+}
+
+let darkTheme = createTheme({
+	palette: {
+		primary: {
+			main: '#1956BD',
+		},
+	},
 	colors: {
-		primary: '#1956BD',
-		success: '#22942D',
-		error: '#A10000',
-		white: '#E5E5E5',
+		primary: {
+			main: '#1956BD',
+			'50': '#87AEEF',
+			'100': '#78A3ED',
+			'200': '#588EE9',
+			'300': '#3979E5',
+			'400': '#1D64DD',
+			'500': '#1956BD',
+			'600': '#144494',
+			'700': '#0E316C',
+			'800': '#091F43',
+			'900': '#040C1B',
+		},
 		text: {
+			primary: '#E5E5E5',
 			secondary: '#BDBDBD',
 			muted: '#727272',
 		},
@@ -16,19 +97,42 @@ const theme = {
 			input: '#333',
 		},
 	},
-	fonts: ['Sora', 'sans-serif'],
-	fontSizes: {
-		small: '1em',
-		medium: '2em',
-		large: '3em',
+	typography: {
+		fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+		h1: {
+			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+			fontWeight: 700,
+			fontSize: '4rem',
+		},
+		subtitle1: {
+			fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+			fontWeight: 300,
+			fontSize: '1rem',
+			lineHeight: 2,
+			letterSpacing: '0.05rem',
+		},
 	},
 	breakpoints: {
-		sm: '0px',
-		md: '768px',
-		lg: '1024px',
-		xl: '1280px',
-		xxl: '1536px',
+		values: {
+			xs: 0,
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			xl: 1280,
+			xxl: 1536,
+		},
 	},
-};
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: 8,
+				},
+			},
+		},
+	},
+});
 
-export default theme;
+darkTheme = responsiveFontSizes(darkTheme);
+
+export default darkTheme;

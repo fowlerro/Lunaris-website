@@ -1,4 +1,5 @@
-import { Global, css } from '@emotion/react';
+import { css } from '@emotion/react';
+import { GlobalStyles } from '@mui/material';
 import theme from './theme';
 
 const globalCss = css`
@@ -11,7 +12,7 @@ const globalCss = css`
 	body {
 		margin: 0;
 		font-family: 'Sora', sans-serif;
-		color: ${theme.colors.white};
+		color: ${theme.colors.text.primary};
 		background: ${theme.colors.background.primary};
 	}
 
@@ -21,29 +22,36 @@ const globalCss = css`
 		box-sizing: inherit;
 	}
 
-	h1 {
-		color: ${theme.colors.white};
-		font-size: 2.5rem;
-		margin-bottom: 0.5rem;
-		font-weight: 700;
+	a {
+		color: ${theme.colors.text.primary};
+	}
+
+	.active {
+		opacity: 1;
 	}
 
 	h2 {
 		font-weight: 600;
-		color: ${theme.colors.white};
+		color: ${theme.colors.text.primary};
 		font-size: 2.25rem;
 	}
 
 	h3 {
 		font-weight: 600;
-		color: ${theme.colors.white};
+		color: ${theme.colors.text.primary};
 		font-size: 1.5rem;
 	}
 
 	h5 {
 		font-weight: 600;
-		color: ${theme.colors.white};
+		color: ${theme.colors.text.primary};
 		font-size: 1.125rem;
+	}
+
+	h6 {
+		font-weight: 600;
+		color: ${theme.colors.text.primary};
+		font-size: 1rem;
 	}
 
 	p {
@@ -52,12 +60,12 @@ const globalCss = css`
 		letter-spacing: 0.05em;
 	}
 
-	@media (min-width: ${theme.breakpoints.md}) {
+	@media (min-width: ${theme.breakpoints.up('md')}) {
 		h1 {
 			font-size: 3.75rem;
 		}
 	}
 `;
 
-const GlobalStyle = () => <Global styles={globalCss} />;
+const GlobalStyle = () => <GlobalStyles styles={globalCss} />;
 export default GlobalStyle;

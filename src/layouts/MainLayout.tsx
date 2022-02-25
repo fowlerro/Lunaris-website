@@ -1,9 +1,6 @@
 import React, { ReactNode } from 'react';
-
-import TopbarMobile from '@components/Topbar/Mobile/TopbarMobile';
-import TopbarDesktop from '@components/Topbar/Desktop/TopbarDesktop';
-import { Media } from '@styles/Media';
-import Footer from '@components/Footer';
+import Topbar from '@components/layout/Topbar/Topbar';
+import Footer from '@components/layout/Footer';
 interface IProps {
 	children: ReactNode;
 }
@@ -11,13 +8,8 @@ interface IProps {
 export default function MainLayout({ children }: IProps): JSX.Element {
 	return (
 		<>
-			<Media at='sm'>
-				<TopbarMobile />
-			</Media>
-			<Media greaterThan='sm'>
-				<TopbarDesktop />
-			</Media>
-			{children}
+			<Topbar />
+			<main id='main'>{children}</main>
 			<Footer />
 		</>
 	);

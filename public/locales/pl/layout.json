@@ -1,10 +1,16 @@
 {
 	"nav": {
+		"skipNavigation": "Pomiń nawigację",
 		"home": "Strona Główna",
 		"dashboard": "Panel",
 		"commands": "Komendy",
 		"modules": "Moduły",
 		"contact": "Kontakt"
+	},
+	"profileMenu": {
+		"profile": "Profil",
+		"servers": "Serwery",
+		"logout": "Wyloguj się"
 	},
 	"footer": {
 		"usefulLinks": "Przydatne linki",

@@ -18,6 +18,7 @@
 		"paths": {
 			"@assets/*": ["./src/assets/*"],
 			"@components/*": ["./src/components/common/*"],
+			"@components/layout/*": ["./src/components/layout/*"],
 			"@views/*": ["./src/components/views/*"],
 			"@context/*": ["./src/context/*"],
 			"@layouts/*": ["./src/layouts/*"],
