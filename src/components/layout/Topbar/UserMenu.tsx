@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { Box, Button, Menu, styled, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Menu, styled } from '@mui/material';
 
 import Link from '@components/Link';
 import Avatar from '@components/Avatar';
@@ -8,6 +8,7 @@ import UserMenuItems from './UserMenuItems';
 // import { LinkItem } from './Links';
 import useUser from '@hooks/useUser';
 import { User } from 'types';
+import useIsDesktop from '@hooks/useIsDesktop';
 
 export const loginURL = `${process.env.apiDomain}/api/auth/discord`;
 
@@ -104,8 +105,7 @@ export default function UserMenu(): JSX.Element {
 function Profile({ user }: { user: User }) {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 	const open = Boolean(anchorEl);
-	const theme = useTheme();
-	const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+	const isDesktop = useIsDesktop();
 	const horizontalOrigin = isDesktop ? 'center' : 'right';
 
 	const handleOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

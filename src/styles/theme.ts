@@ -104,6 +104,22 @@ let darkTheme = createTheme({
 			fontWeight: 700,
 			fontSize: '4rem',
 		},
+		h2: {
+			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+			fontWeight: 600,
+			fontSize: '3rem',
+			letterSpacing: '0.05rem',
+		},
+		h3: {
+			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+			fontWeight: 600,
+			fontSize: '2rem',
+			letterSpacing: '0.05rem',
+		},
+		body1: {
+			fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+			fontWeight: 300,
+		},
 		subtitle1: {
 			fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 300,

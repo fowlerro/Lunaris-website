@@ -29,7 +29,7 @@ const Navigation = styled('nav')(({ theme }) => ({
 
 export default function Topbar(): JSX.Element {
 	return (
-		<Header>
+		<Header position='relative'>
 			<SkipNavigationLink />
 			<Navigation>
 				<Logo />

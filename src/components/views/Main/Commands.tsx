@@ -1,19 +1,30 @@
 import { useTranslation } from 'next-i18next';
+import { styled, Typography } from '@mui/material';
 
-// const Section = styled.section`
-// 	${tw`bg-background-primary text-center py-16 px-4 md:bg-background-secondary md:text-left md:pl-[15%]`}
-// `;
+const Paragraph = styled(Typography)({
+	whitespace: 'pre-line',
+	marginTop: '1rem',
+	maxWidth: '30rem',
+});
 
-// const Paragraph = styled.p`
-// 	${tw`whitespace-pre-line mt-4 md:text-lg md:max-w-md`}
-// `;
+const Section = styled('section')(({ theme }) => ({
+	backgroundColor: theme.colors.background.primary,
+	textAlign: 'center',
+	padding: '4rem 1rem',
+
+	[theme.breakpoints.up('md')]: {
+		backgroundColor: theme.colors.background.secondary,
+		textAlign: 'left',
+		paddingLeft: '15%',
+	},
+}));
 
 export default function Commands(): JSX.Element {
 	const { t } = useTranslation();
 	return (
-		<section>
-			<h2>{t('common:commands')}</h2>
-			<p>{t('mainPage:commandParagraph')}</p>
-		</section>
+		<Section>
+			<Typography variant='h2'>{t('common:commands')}</Typography>
+			<Paragraph variant='subtitle1'>{t('mainPage:commandParagraph')}</Paragraph>
+		</Section>
 	);
 }

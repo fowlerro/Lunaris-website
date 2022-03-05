@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { Box, Button, Divider, Drawer, List, ListItem, styled, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Divider, Drawer, List, ListItem, styled } from '@mui/material';
 import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 
 import LanguageSwitcher from '@components/LanguageSwitcher';
@@ -10,6 +10,7 @@ import Hamburger from './Hamburger';
 import UserMenu, { loginURL } from './UserMenu';
 import UserMenuItemsMobile from './UserMenuItemsMobile';
 import useUser from '@hooks/useUser';
+import useIsDesktop from '@hooks/useIsDesktop';
 
 const ActionList = styled(List)({
 	display: 'flex',
@@ -31,8 +32,7 @@ const ProfileSection = styled(Box)({
 });
 
 export default function TopbarLinks(): JSX.Element {
-	const theme = useTheme();
-	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+	const isDesktop = useIsDesktop();
 
 	return (
 		<>

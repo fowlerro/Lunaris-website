@@ -1,3 +1,4 @@
+import { styled, Typography } from '@mui/material';
 import React, { ForwardedRef, forwardRef } from 'react';
 
 interface IProps {
@@ -6,28 +7,27 @@ interface IProps {
 	id: string;
 }
 
-// const Card = styled.li`
-// 	${tw`bg-background-lighter rounded-xl p-4 pb-12 flex-shrink-0 w-[80%] mx-[10%]`}
-// 	scroll-snap-align: center;
-// 	-ms-scroll-snap-align: center;
-// 	scroll-snap-stop: always;
-// 	-ms-scroll-snap-stop: always;
-// `;
+const Card = styled('li')(({ theme }) => ({
+	backgroundColor: theme.colors.background.lighter,
+	borderRadius: '8px',
+	padding: '1rem',
+	paddingBottom: '3rem',
+	flexShrink: 0,
+	width: '80%',
+	marginInline: '10%',
 
-// const H3 = styled.h3`
-// 	${tw`mt-5 mb-4`}
-// `;
+	scrollSnapAlign: 'center',
+	scrollSnapStop: 'always',
+}));
 
 function ModuleCard({ title, description, id }: IProps, ref: ForwardedRef<HTMLLIElement>): JSX.Element {
 	return (
-		<li ref={ref} id={id} aria-label={title}>
-			<h3>{title}</h3>
-			<p>{description}</p>
-		</li>
-		// <Card ref={ref} id={id} role='slider' aria-label={title}>
-		// 	<H3>{title}</H3>
-		// 	<p>{description}</p>
-		// </Card>
+		<Card ref={ref} id={id} aria-label={title}>
+			<Typography variant='h3' sx={{ marginTop: '1.25rem', marginBottom: '1rem' }}>
+				{title}
+			</Typography>
+			<Typography variant='subtitle1'>{description}</Typography>
+		</Card>
 	);
 }
 

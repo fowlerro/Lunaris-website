@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { keyframes } from '@emotion/react';
 import { Box } from '@mui/system';
-import { Button, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Button, styled, Typography, useTheme } from '@mui/material';
 
 import Illustration from './Illustration';
 import { MobileLoginButton } from './MobileLoginButton';
+import useIsDesktop from '@hooks/useIsDesktop';
 
 const ButtonSlide = keyframes`
   from { transform: translateX(0) }
@@ -17,7 +18,7 @@ const Section = styled('section')(({ theme }) => ({
 	textAlign: 'center',
 	width: 'min(90%, 1366px)',
 	marginInline: 'auto',
-	marginTop: '6rem',
+	marginBottom: '6rem',
 
 	[theme.breakpoints.up('md')]: {
 		flexDirection: 'row-reverse',
@@ -54,7 +55,7 @@ const inviteLink =
 export default function Hero(): JSX.Element {
 	const { t } = useTranslation();
 	const theme = useTheme();
-	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+	const isDesktop = useIsDesktop();
 
 	return (
 		<Section>
