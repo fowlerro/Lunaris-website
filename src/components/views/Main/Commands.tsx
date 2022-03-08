@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { styled, Typography } from '@mui/material';
 
 const Paragraph = styled(Typography)({
-	whitespace: 'pre-line',
+	whiteSpace: 'pre-line',
 	marginTop: '1rem',
 	maxWidth: '30rem',
 });

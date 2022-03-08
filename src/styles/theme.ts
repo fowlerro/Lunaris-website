@@ -64,39 +64,42 @@ declare module '@mui/material/styles' {
 	}
 }
 
+const colors = {
+	primary: {
+		main: '#1956BD',
+		'50': '#87AEEF',
+		'100': '#78A3ED',
+		'200': '#588EE9',
+		'300': '#3979E5',
+		'400': '#1D64DD',
+		'500': '#1956BD',
+		'600': '#144494',
+		'700': '#0E316C',
+		'800': '#091F43',
+		'900': '#040C1B',
+	},
+	text: {
+		primary: '#E5E5E5',
+		secondary: '#BDBDBD',
+		muted: '#727272',
+	},
+	background: {
+		primary: '#1C1C1C',
+		secondary: '#222',
+		lighter: '#282828',
+		darker: '#151515',
+		input: '#333',
+	},
+};
+
 let darkTheme = createTheme({
 	palette: {
+		mode: 'dark',
 		primary: {
 			main: '#1956BD',
 		},
 	},
-	colors: {
-		primary: {
-			main: '#1956BD',
-			'50': '#87AEEF',
-			'100': '#78A3ED',
-			'200': '#588EE9',
-			'300': '#3979E5',
-			'400': '#1D64DD',
-			'500': '#1956BD',
-			'600': '#144494',
-			'700': '#0E316C',
-			'800': '#091F43',
-			'900': '#040C1B',
-		},
-		text: {
-			primary: '#E5E5E5',
-			secondary: '#BDBDBD',
-			muted: '#727272',
-		},
-		background: {
-			primary: '#1C1C1C',
-			secondary: '#222',
-			lighter: '#282828',
-			darker: '#151515',
-			input: '#333',
-		},
-	},
+	colors,
 	typography: {
 		fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
 		h1: {
@@ -143,6 +146,27 @@ let darkTheme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: 8,
+				},
+			},
+		},
+		MuiTextField: {
+			styleOverrides: {
+				root: {
+					'& label': {
+						color: colors.text.muted,
+					},
+					'& .MuiOutlinedInput-root': {
+						color: colors.text.primary,
+						borderRadius: '8px',
+						backgroundColor: colors.background.darker,
+					},
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				select: {
+					textAlign: 'left',
 				},
 			},
 		},

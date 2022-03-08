@@ -11,7 +11,10 @@ interface IProps {
 }
 
 export default function useUser({ redirectTo, redirectIfFound }: IProps): User | null {
-	const { data, error } = useSWR(`${process.env.apiDomain}/api/auth`, fetcher);
+	const { data, error } = useSWR(`${process.env.apiDomain}/api/auth`, fetcher, {
+		errorRetryCount: 3,
+		revalidateOnFocus: false,
+	});
 	const user = data?.data;
 	const finished = Boolean(data || error);
 	const hasUser = Boolean(user);

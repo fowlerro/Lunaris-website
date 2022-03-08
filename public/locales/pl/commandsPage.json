@@ -1,4 +1,12 @@
 {
-	"headerParagraph": "Lunaris uses Slash Commands to interact with users.\nHere you can find details about any command that is available",
-	"search": "Wyszukaj komendę..."
+	"headerParagraph": "Lunaris uses Slash Commands to interact with users.",
+	"headerSecondParagraph": "Here you can find details about any command that is available",
+	"searchLabel": "Wyszukaj komendę",
+	"selectLabel": "Wybierz kategorię",
+
+	"form": {
+		"header": "Nie znalazłeś/aś komendy?",
+		"paragraph": "Daj mi znać, jeśli masz jakiś pomysł!",
+		"caption": "Dane, które wyślesz są kompletnie anonimowe!"
+	}
 }

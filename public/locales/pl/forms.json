@@ -1,0 +1,29 @@
+{
+	"errors": {
+		"required": "Wymagane!",
+		"maxLength": "Tekst nie może przekroczyć {{count}} znaków!"
+	},
+
+	"command": {
+		"commandName": "Komenda",
+		"reason": "Dlaczego ta komenda powinna zostać dodana?",
+		"description": "W jaki sposób ta komenda powinna działać?"
+	},
+
+	"module": {
+		"moduleName": "Moduł",
+		"reason": "Dlaczego ten moduł powinien zostać dodany?",
+		"description": "W jaki sposób ten moduł powinien działać?"
+	},
+
+	"bug": {
+		"title": "Tytuł",
+		"description": "Opis błąd najdokładniej jak możesz. Napisz kiedy błąd występuje, w jaki sposób powinno to działać"
+	},
+
+	"other": {
+		"email": "Email",
+		"subject": "Temat",
+		"message": "Treść"
+	}
+}

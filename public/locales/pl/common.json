@@ -2,7 +2,11 @@
 	"languageName": "PL",
 	"login": "Zaloguj się",
 	"inviteBot": "Zaproś bota",
+	"contactMe": "Skontaktuj się",
 	"modules": "Moduły",
 	"commands": "Komendy",
-	"dashboard": "Panel"
+	"dashboard": "Panel",
+	"submit": "Zatwierdź",
+	"send": "Wyślij",
+	"comingSoon": "Już niedługo!"
 }

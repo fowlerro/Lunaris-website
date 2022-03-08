@@ -2,7 +2,11 @@
 	"languageName": "EN",
 	"login": "Log in",
 	"inviteBot": "Invite Bot",
+	"contactMe": "Contact Me",
 	"modules": "Modules",
 	"commands": "Commands",
-	"dashboard": "Dashboard"
+	"dashboard": "Dashboard",
+	"submit": "Submit",
+	"send": "Send",
+	"comingSoon": "Coming Soon!"
 }

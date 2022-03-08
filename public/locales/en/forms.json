@@ -1,0 +1,29 @@
+{
+	"errors": {
+		"required": "Required",
+		"maxLength": "Text cannot exceed {{count}} characters!"
+	},
+
+	"command": {
+		"commandName": "Command",
+		"reason": "Why this command should be added?",
+		"description": "Describe how this command should work"
+	},
+
+	"module": {
+		"moduleName": "Module name",
+		"reason": "Why this module should be added?",
+		"description": "Describe how this module should work"
+	},
+
+	"bug": {
+		"title": "Title",
+		"description": "Describe the bug, as precisely as possible. When bug occurs and how should it work."
+	},
+
+	"other": {
+		"email": "Your Email",
+		"subject": "Subject",
+		"message": "Message"
+	}
+}

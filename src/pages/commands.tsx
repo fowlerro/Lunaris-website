@@ -1,19 +1,32 @@
+import { useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-
-// import Header from '@views/Commands/Header';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-// import CommandSection from '@views/Commands/CommandSection';
+
+import Header from '@views/Commands/Header';
+import CommandSection from '@views/Commands/CommandSection';
+import FormSection from '@views/Commands/FormSection';
+
+const categories = ['moderation', 'misc', 'settings'];
 
 const Home: NextPage = () => {
+	const [searchInput, setSearchInput] = useState('');
+	const [category, setCategory] = useState('');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Discord Bot</title>
+				<title>Lunaris - Commands</title>
 				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
 			</Head>
-			{/* <Header /> */}
-			<main>{/* <CommandSection /> */}</main>
+			<Header
+				categories={categories}
+				searchInput={searchInput}
+				setSearchInput={setSearchInput}
+				category={category}
+				setCategory={setCategory}
+			/>
+			<CommandSection searchInput={searchInput} category={category} />
+			<FormSection />
 		</>
 	);
 };

@@ -1,0 +1,12 @@
+{
+	"headerParagraph": "Have any questions or suggestions? Feel free to let me know!",
+	"formParagraph": "Select topic and fill the form.",
+	"selectTopic": "Select Topic",
+
+	"topics": {
+		"command": "Command suggestion",
+		"module": "Module suggestion",
+		"bug": "Bug report",
+		"other": "Other"
+	}
+}
