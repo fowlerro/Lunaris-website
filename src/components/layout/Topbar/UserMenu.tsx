@@ -10,7 +10,7 @@ import useUser from '@hooks/useUser';
 import { User } from 'types';
 import useIsDesktop from '@hooks/useIsDesktop';
 
-export const loginURL = `${process.env.apiDomain}/api/auth/discord`;
+export const loginURL = `${process.env.API_URL}/auth/discord`;
 
 const StyledButton = styled(Button)(({ theme }) => ({
 	display: 'flex',

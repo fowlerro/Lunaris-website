@@ -6,7 +6,7 @@ const nextConfig = {
 		defaultLocale: 'en',
 	},
 	env: {
-		apiDomain: 'http://localhost:3001',
+		API_URL: 'http://localhost:3001/api',
 	},
 	images: {
 		domains: ['cdn.discordapp.com'],

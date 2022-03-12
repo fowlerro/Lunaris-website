@@ -79,10 +79,7 @@ describe('TopbarLinks Mobile component', () => {
 		renderWithTheme(<TopbarLinks />);
 		userEvent.click(screen.getByRole('button'));
 		expect(screen.getByRole('link', { name: 'Login' })).toBeInTheDocument();
-		expect(screen.getByRole('link', { name: 'Login' })).toHaveAttribute(
-			'href',
-			`${process.env.apiDomain}/api/auth/discord`
-		);
+		expect(screen.getByRole('link', { name: 'Login' })).toHaveAttribute('href', `${process.env.API_URL}/auth/discord`);
 	});
 
 	it('should contain UserMenu if logged in', () => {
