@@ -5,19 +5,21 @@ import axios from 'axios';
 
 import { validateCookies } from '@utils/utils';
 import type { MutualGuilds } from 'types';
+import ServersSection from '@views/Servers/ServersSection';
 
 interface IProps {
 	guilds: MutualGuilds;
 }
 
-const Home: NextPage<IProps> = ({ guilds }: IProps) => {
-	console.log(guilds);
+const Servers: NextPage<IProps> = ({ guilds }: IProps) => {
 	return (
 		<>
 			<Head>
 				<title>Lunaris - Servers</title>
 				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
 			</Head>
+			<ServersSection guilds={guilds.included} />
+			<ServersSection guilds={guilds.excluded} excluded />
 		</>
 	);
 };
@@ -35,4 +37,4 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 	}
 };
 
-export default Home;
+export default Servers;

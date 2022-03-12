@@ -1,14 +1,4 @@
-import {
-	Box,
-	LinearProgress,
-	linearProgressClasses,
-	styled,
-	Tooltip,
-	tooltipClasses,
-	TooltipProps,
-	Typography,
-	Zoom,
-} from '@mui/material';
+import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import { ProfileStatistics } from 'types';
 
@@ -44,19 +34,6 @@ const ProgressBar = styled(LinearProgress)(({ theme }) => ({
 	},
 }));
 
-const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
-	<Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-	[`& .${tooltipClasses.tooltip}`]: {
-		backgroundColor: theme.colors.background.input,
-		boxShadow: theme.shadows[3],
-	},
-
-	[`& .${tooltipClasses.arrow}::before`]: {
-		backgroundColor: theme.colors.background.input,
-	},
-}));
-
 export default function ProfileStats({
 	type,
 	statistics: { level, xp, dailyXp, totalXp },
@@ -79,15 +56,9 @@ export default function ProfileStats({
 				</Typography>
 			</Section>
 			<Section>
-				<StyledTooltip
-					title={`${xpPercentage.toFixed()}%`}
-					placement={'top'}
-					arrow
-					describeChild
-					TransitionComponent={Zoom}
-				>
+				<Tooltip title={`${xpPercentage.toFixed()}%`} placement={'top'} arrow describeChild TransitionComponent={Zoom}>
 					<ProgressBar variant='determinate' value={xpPercentage} tabIndex={0} />
-				</StyledTooltip>
+				</Tooltip>
 			</Section>
 			<Section sx={{ marginInline: '.2rem' }}>
 				<Typography

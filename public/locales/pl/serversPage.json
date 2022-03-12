@@ -1,0 +1,9 @@
+{
+	"manageServer": "Zarządzaj serwerem",
+	"inviteToServer": "Zaproś na serwer",
+	"permissions": {
+		"owner": "Właściciel",
+		"manager": "Zarządca",
+		"member": "Użytkownik"
+	}
+}

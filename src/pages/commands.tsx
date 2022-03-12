@@ -9,7 +9,7 @@ import FormSection from '@views/Commands/FormSection';
 
 const categories = ['moderation', 'misc', 'settings'];
 
-const Home: NextPage = () => {
+const Commands: NextPage = () => {
 	const [searchInput, setSearchInput] = useState('');
 	const [category, setCategory] = useState('');
 	return (
@@ -39,4 +39,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 	};
 };
 
-export default Home;
+export default Commands;

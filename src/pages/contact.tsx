@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Header from '@views/Contact/Header';
 
-const Home: NextPage = () => {
+const Contact: NextPage = () => {
 	return (
 		<>
 			<Head>
@@ -24,4 +24,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 	};
 };
 
-export default Home;
+export default Contact;

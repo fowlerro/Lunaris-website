@@ -7,6 +7,8 @@ const nextConfig = {
 	},
 	env: {
 		API_URL: 'http://localhost:3001/api',
+		INVITE_URL:
+			'https://discord.com/api/oauth2/authorize?client_id=739412828737372181&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Finvite%2Fredirect&response_type=code&scope=identify%20bot%20applications.commands',
 	},
 	images: {
 		domains: ['cdn.discordapp.com'],

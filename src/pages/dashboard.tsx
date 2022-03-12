@@ -12,7 +12,7 @@ interface IProps {
 	profile: ProfileWithRank;
 }
 
-const Home: NextPage<IProps> = ({ profile }: IProps) => {
+const Dashboard: NextPage<IProps> = ({ profile }: IProps) => {
 	return (
 		<>
 			<Head>
@@ -38,4 +38,4 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 	}
 };
 
-export default Home;
+export default Dashboard;

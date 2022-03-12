@@ -6,7 +6,7 @@ import Header from '@views/Modules/Header';
 import ModuleSection from '@views/Modules/ModuleSection';
 import FormSection from '@views/Modules/FormSection';
 
-const Home: NextPage = () => {
+const Modules: NextPage = () => {
 	return (
 		<>
 			<Head>
@@ -28,4 +28,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 	};
 };
 
-export default Home;
+export default Modules;

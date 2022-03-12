@@ -101,7 +101,7 @@ let darkTheme = createTheme({
 	},
 	colors,
 	typography: {
-		fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+		fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 		h1: {
 			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 700,
@@ -120,11 +120,11 @@ let darkTheme = createTheme({
 			letterSpacing: '0.05rem',
 		},
 		body1: {
-			fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 300,
 		},
 		subtitle1: {
-			fontFamily: 'Sora, Roboto, Helvetica, Arial, sans-serif',
+			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 300,
 			fontSize: '1rem',
 			lineHeight: 2,
@@ -146,6 +146,12 @@ let darkTheme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: 8,
+					borderWidth: 2,
+					paddingInline: '1.5em',
+					color: colors.text.primary,
+					'&:hover': {
+						borderWidth: 2,
+					},
 				},
 			},
 		},
@@ -167,6 +173,24 @@ let darkTheme = createTheme({
 			styleOverrides: {
 				select: {
 					textAlign: 'left',
+				},
+			},
+		},
+		MuiTooltip: {
+			defaultProps: {
+				arrow: true,
+				placement: 'top',
+			},
+			styleOverrides: {
+				tooltip: {
+					backgroundColor: colors.background.input,
+					boxShadow:
+						'0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)',
+				},
+				arrow: {
+					'::before': {
+						backgroundColor: colors.background.input,
+					},
 				},
 			},
 		},

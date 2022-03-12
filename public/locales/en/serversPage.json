@@ -1,0 +1,9 @@
+{
+	"manageServer": "Manage server",
+	"inviteToServer": "Invite to server",
+	"permissions": {
+		"owner": "owner",
+		"manager": "manager",
+		"member": "member"
+	}
+}
