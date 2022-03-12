@@ -71,7 +71,7 @@ export default function UserMenuItemsMobile({ user }: IProps): JSX.Element {
 			</Item>
 			<Item>
 				<Tooltip title={t('profileMenu.logout') || 'Logout'}>
-					<IconButton component={Link} href={`${process.env.apiDomain}/api/auth/logout`}>
+					<IconButton component={Link} href={`${process.env.API_URL}/auth/logout`}>
 						<Icon icon={faRightFromBracket} sx={{ color: theme => theme.palette.error.main }} />
 					</IconButton>
 				</Tooltip>

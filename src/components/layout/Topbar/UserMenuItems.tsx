@@ -72,7 +72,7 @@ export default function UserMenuItems({ user }: IProps): JSX.Element {
 			</StyledItem>
 			<Divider />
 			<StyledItem>
-				<StyledLink href={`${process.env.apiDomain}/api/auth/logout`} noLinkStyle>
+				<StyledLink href={`${process.env.API_URL}/auth/logout`} noLinkStyle>
 					<ListItemIcon>
 						<Icon icon={faRightFromBracket} sx={{ color: theme => theme.palette.error.main }} />
 					</ListItemIcon>

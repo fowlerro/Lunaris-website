@@ -14,7 +14,7 @@ describe('Hero MobileLoginButton component', () => {
 	it('should have login href if not logged in', () => {
 		mockedUseUser.mockReturnValueOnce(null);
 		renderWithTheme(<MobileLoginButton />);
-		expect(screen.getByRole('link')).toHaveAttribute('href', `${process.env.apiDomain}/api/auth/discord`);
+		expect(screen.getByRole('link')).toHaveAttribute('href', `${process.env.API_URL}/auth/discord`);
 	});
 
 	it('should have dashboard href if not logged in', () => {

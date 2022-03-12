@@ -33,7 +33,7 @@ describe('Topbar UserMenuItemsMobile component', () => {
 		expect(screen.getByRole('link', { name: 'profileMenu.logout' })).toBeInTheDocument();
 		expect(screen.getByRole('link', { name: 'profileMenu.logout' })).toHaveProperty(
 			'href',
-			`http://localhost/${process.env.apiDomain}/api/auth/logout`
+			`http://localhost/${process.env.API_URL}/auth/logout`
 		);
 	});
 });
