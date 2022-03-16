@@ -119,6 +119,9 @@ let darkTheme = createTheme({
 			fontSize: '2rem',
 			letterSpacing: '0.05rem',
 		},
+		h6: {
+			fontSize: '.9rem',
+		},
 		body1: {
 			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 300,
@@ -191,6 +194,14 @@ let darkTheme = createTheme({
 					'::before': {
 						backgroundColor: colors.background.input,
 					},
+				},
+			},
+		},
+		MuiTable: {
+			styleOverrides: {
+				root: {
+					backgroundColor: colors.background.lighter,
+					borderRadius: '12px',
 				},
 			},
 		},

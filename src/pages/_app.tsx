@@ -4,6 +4,8 @@ import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 
+import 'moment/locale/pl';
+
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;

@@ -1,6 +1,8 @@
 import { Button, Paper, styled, Tooltip, Typography } from '@mui/material';
-import Avatar from '@components/Avatar';
 import { useTranslation } from 'next-i18next';
+
+import Avatar from '@components/Avatar';
+import ServerAcronymIcon from '@components/ServerAcronymIcon';
 
 interface IProps {
 	id: string;
@@ -44,13 +46,6 @@ const AvatarWrapper = styled('div')(({ theme }) => ({
 	borderRadius: '50%',
 }));
 
-const DefaultAvatar = styled('div')({
-	textAlign: 'center',
-	lineHeight: '4rem',
-	fontSize: '1.5rem',
-	overflow: 'hidden',
-});
-
 const StyledButton = styled(Button)({
 	fontSize: '.8rem',
 });
@@ -71,7 +66,7 @@ export default function ServerCard({ id, name, icon, permissions, excluded }: IP
 				{icon ? (
 					<Avatar src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp`} layout='fill' />
 				) : (
-					<DefaultAvatar>{acronym}</DefaultAvatar>
+					<ServerAcronymIcon>{acronym}</ServerAcronymIcon>
 				)}
 			</AvatarWrapper>
 			<Tooltip title={name} placement='top' arrow>

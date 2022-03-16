@@ -5,5 +5,24 @@
 	"rank": "rank",
 	"today": "today",
 	"total": "total",
-	"serverList": "Go to server list"
+	"serverList": "Go to server list",
+	"expandReason": "Expand reason",
+	"hideReason": "Hide reason",
+
+	"menu": {
+		"overview": "Overview",
+		"autoRoles": "Auto Roles",
+		"levels": "Levels",
+		"welcomeMessages": "Welcome Messages",
+		"serverLogs": "Server Logs",
+		"reactionRoles": "Reaction Roles",
+		"embedMessages": "Embed Messages"
+	},
+
+	"stats": {
+		"members": "Members",
+		"bots": "Bots",
+		"channels": "Channels",
+		"voiceChannels": "Voice channels"
+	}
 }

@@ -4,12 +4,15 @@ import { useTranslation } from 'next-i18next';
 import Link from './Link';
 import usePersistLocaleCookie from '@hooks/usePersistLocaleCookie';
 import { IconButton } from '@mui/material';
+import moment from 'moment';
 
 export default function LanguageSwitcher() {
 	const router = useRouter();
 	const { t } = useTranslation('common');
 
 	usePersistLocaleCookie();
+
+	moment.locale(router.locale);
 
 	return (
 		<IconButton

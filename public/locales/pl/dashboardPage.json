@@ -5,5 +5,24 @@
 	"rank": "rank",
 	"today": "dziś",
 	"total": "w sumie",
-	"serverList": "Przejdź do listy serwerów"
+	"serverList": "Przejdź do listy serwerów",
+	"expandReason": "Rozwiń powód",
+	"hideReason": "Zwiń powód",
+
+	"menu": {
+		"overview": "Przegląd",
+		"autoRoles": "Auto Role",
+		"levels": "Poziomy",
+		"welcomeMessages": "Wiadomości Powitalne",
+		"serverLogs": "Logi Serwerowe",
+		"reactionRoles": "Reaction Role",
+		"embedMessages": "Wiadomości Embed"
+	},
+
+	"stats": {
+		"members": "Użytkownicy",
+		"bots": "Boty",
+		"channels": "Kanały",
+		"voiceChannels": "Kanały głosowe"
+	}
 }

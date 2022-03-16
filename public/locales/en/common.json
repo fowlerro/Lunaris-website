@@ -10,5 +10,10 @@
 	"send": "Send",
 	"comingSoon": "Coming Soon!",
 	"invite": "Invite",
-	"manage": "Manage"
+	"manage": "Manage",
+	"user": "User",
+	"moderator": "Moderator",
+	"until": "Until",
+	"reason": "Reason",
+	"unknown": "Unknown"
 }

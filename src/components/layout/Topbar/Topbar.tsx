@@ -31,7 +31,7 @@ export default function Topbar(): JSX.Element {
 	return (
 		<Header position='relative'>
 			<SkipNavigationLink />
-			<Navigation>
+			<Navigation aria-label='primary'>
 				<Logo />
 				<TopbarLinks />
 			</Navigation>
