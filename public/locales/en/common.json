@@ -8,6 +8,7 @@
 	"dashboard": "Dashboard",
 	"submit": "Submit",
 	"send": "Send",
+	"save": "Save",
 	"comingSoon": "Coming Soon!",
 	"invite": "Invite",
 	"manage": "Manage",
@@ -15,5 +16,15 @@
 	"moderator": "Moderator",
 	"until": "Until",
 	"reason": "Reason",
-	"unknown": "Unknown"
+	"unknown": "Unknown",
+	"toggleModule": "Toggle module",
+	"duration": "Duration",
+	"role": "Role",
+	"delete": "Delete",
+	"durationUnits": {
+		"days": "days",
+		"hours": "hours",
+		"minutes": "minutes",
+		"seconds": "seconds"
+	}
 }

@@ -24,13 +24,9 @@ const Content = styled('section')(({ theme }) => ({
 	margin: '1rem',
 
 	[theme.breakpoints.up('md')]: {
-		flexFlow: 'row wrap',
 		margin: 0,
 		marginRight: '1rem',
-
-		'& > *': {
-			width: 'max-content',
-		},
+		width: '100%',
 	},
 }));
 

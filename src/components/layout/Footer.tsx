@@ -6,14 +6,16 @@ import Link from '@components/Link';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
 	position: 'relative',
+	textAlign: 'center',
 	display: 'grid',
-	gridTemplateColumns: '1fr 1fr',
+	gridTemplateColumns: '1fr',
 	rowGap: '2rem',
 	backgroundColor: theme.colors.background.darker,
 	paddingInline: '1rem',
 	paddingBlock: '5rem',
 
 	[theme.breakpoints.up('md')]: {
+		textAlign: 'left',
 		paddingBlock: '8rem',
 		gridTemplateColumns: '1fr 1fr 1fr',
 		justifyItems: 'center',

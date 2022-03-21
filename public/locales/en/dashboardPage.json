@@ -24,5 +24,15 @@
 		"bots": "Bots",
 		"channels": "Channels",
 		"voiceChannels": "Voice channels"
+	},
+
+	"autoRoles": {
+		"addAutoRoleHeader": "Add Auto Role",
+		"autoRoleListHeader": "Auto Roles",
+		"addAutoRoleButton": "Add Auto Role",
+
+		"selectRole": "Select role",
+		"durationTooltip": "Specify duration in which role will be taken from user.",
+		"unsavedData": "You have unsaved data!"
 	}
 }

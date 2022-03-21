@@ -8,8 +8,12 @@ interface IProps {
 export default function MainLayout({ children }: IProps): JSX.Element {
 	return (
 		<>
-			<Topbar />
-			<main id='main'>{children}</main>
+			<div style={{ minHeight: '100vh' }}>
+				<Topbar />
+				<main id='main' style={{ minHeight: '100%' }}>
+					{children}
+				</main>
+			</div>
 			<Footer />
 		</>
 	);

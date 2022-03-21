@@ -11,6 +11,7 @@ const globalCss = css`
 	html,
 	body {
 		margin: 0;
+		min-height: 100vh;
 		font-family: 'Sora', sans-serif;
 		color: ${theme.colors.text.primary};
 		background: ${theme.colors.background.primary};
@@ -22,48 +23,16 @@ const globalCss = css`
 		box-sizing: inherit;
 	}
 
+	#__next {
+		min-height: 100vh;
+	}
+
 	a {
 		color: ${theme.colors.text.primary};
 	}
 
 	.active {
 		opacity: 1;
-	}
-
-	h2 {
-		font-weight: 600;
-		color: ${theme.colors.text.primary};
-		font-size: 2.25rem;
-	}
-
-	h3 {
-		font-weight: 600;
-		color: ${theme.colors.text.primary};
-		font-size: 1.5rem;
-	}
-
-	h5 {
-		font-weight: 600;
-		color: ${theme.colors.text.primary};
-		font-size: 1.125rem;
-	}
-
-	h6 {
-		font-weight: 600;
-		color: ${theme.colors.text.primary};
-		font-size: 1rem;
-	}
-
-	p {
-		font-weight: 300;
-		color: ${theme.colors.text.secondary};
-		letter-spacing: 0.05em;
-	}
-
-	@media (min-width: ${theme.breakpoints.up('md')}) {
-		h1 {
-			font-size: 3.75rem;
-		}
 	}
 `;
 

@@ -8,6 +8,7 @@
 	"dashboard": "Panel",
 	"submit": "Zatwierdź",
 	"send": "Wyślij",
+	"save": "Zapisz",
 	"comingSoon": "Już niedługo!",
 	"invite": "Zaproś",
 	"manage": "Zarządzaj",
@@ -15,5 +16,15 @@
 	"moderator": "Moderator",
 	"until": "Dopóki",
 	"reason": "Powód",
-	"unknown": "Nieznany"
+	"unknown": "Nieznany",
+	"toggleModule": "Przełącz moduł",
+	"duration": "Czas",
+	"role": "Rola",
+	"delete": "Usuń",
+	"durationUnits": {
+		"days": "dni",
+		"hours": "godziny",
+		"minutes": "minuty",
+		"seconds": "sekundy"
+	}
 }

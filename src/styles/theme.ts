@@ -101,16 +101,16 @@ let darkTheme = createTheme({
 	},
 	colors,
 	typography: {
-		fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+		// fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 		h1: {
 			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 			fontWeight: 700,
-			fontSize: '4rem',
+			fontSize: '5rem',
 		},
 		h2: {
 			fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-			fontWeight: 600,
-			fontSize: '3rem',
+			fontWeight: 500,
+			fontSize: '3.5rem',
 			letterSpacing: '0.05rem',
 		},
 		h3: {
@@ -167,7 +167,7 @@ let darkTheme = createTheme({
 					'& .MuiOutlinedInput-root': {
 						color: colors.text.primary,
 						borderRadius: '8px',
-						backgroundColor: colors.background.darker,
+						backgroundColor: colors.background.primary,
 					},
 				},
 			},
@@ -176,6 +176,36 @@ let darkTheme = createTheme({
 			styleOverrides: {
 				select: {
 					textAlign: 'left',
+				},
+			},
+		},
+		MuiFormControl: {
+			styleOverrides: {
+				root: {
+					'& label': {
+						color: colors.text.muted,
+					},
+					'& .MuiOutlinedInput-root': {
+						borderRadius: '8px',
+						backgroundColor: colors.background.primary,
+					},
+				},
+			},
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					'& .MuiPaper-root': {
+						borderRadius: '8px',
+					},
+				},
+			},
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					borderRadius: '8px',
+					marginInline: '1rem',
 				},
 			},
 		},
