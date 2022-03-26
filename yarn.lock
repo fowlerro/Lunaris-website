@@ -1201,9 +1201,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "17.0.22"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.22.tgz#38b6c4b9b2f3ed9f2e376cce42a298fb2375251e"
-  integrity sha512-8FwbVoG4fy+ykY86XCAclKZDORttqE5/s7dyWZKLXTdv3vRy5HozBEinG5IqhvPXXzIZEcTVbuHlQEI6iuwcmw==
+  version "17.0.23"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.23.tgz#3b41a6e643589ac6442bdbd7a4a3ded62f33f7da"
+  integrity sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==
 
 "@types/node@17.0.17":
   version "17.0.17"
@@ -5559,7 +5559,7 @@ typedarray-to-buffer@^3.1.5:
 
 "types@github:fowlerro/Lunaris-types.git":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/fowlerro/Lunaris-types.git#a4542850933ed26816dbaa1c52e6351dcf471f5f"
+  resolved "git+ssh://git@github.com/fowlerro/Lunaris-types.git#44d529d6c5c8f4195f0c6c80a7a88f3ab6b67976"
   dependencies:
     discord-api-types "^0.26.1"
     discord.js "^13.5.1"

@@ -6,8 +6,10 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 interface IProps {
 	header: string;
 	initialExpand?: boolean;
+	disableIcon?: boolean;
 	action?: ReactNode;
 	children: ReactNode;
+	className?: string;
 }
 
 const ArrowIcon = styled(Icon)<{ open: boolean }>(({ theme, open }) => ({
@@ -29,23 +31,32 @@ const Header = styled(Box)({
 	justifyContent: 'space-between',
 });
 
-export default function DashboardCard({ header, initialExpand, action, children }: IProps): JSX.Element {
-	const [open, setOpen] = useState<boolean>(initialExpand || false);
+export default function DashboardCard({
+	header,
+	initialExpand = false,
+	disableIcon = false,
+	action,
+	children,
+	className,
+}: IProps): JSX.Element {
+	const [open, setOpen] = useState<boolean>(initialExpand);
 
 	return (
-		<Container elevation={0}>
+		<Container elevation={0} className={className}>
 			<Header>
 				<Typography variant='h5' component='h2'>
 					{header}
 				</Typography>
 				<div>
 					{action}
-					<IconButton onClick={() => setOpen(!open)}>
-						<ArrowIcon icon={faChevronDown} open={open} />
-					</IconButton>
+					{disableIcon ? undefined : (
+						<IconButton onClick={() => setOpen(!open)}>
+							<ArrowIcon icon={faChevronDown} open={open} />
+						</IconButton>
+					)}
 				</div>
 			</Header>
-			<Collapse in={open}>{children}</Collapse>
+			{disableIcon ? children : <Collapse in={open}>{children}</Collapse>}
 		</Container>
 	);
 }
