@@ -20,7 +20,10 @@
 	"toggleModule": "Toggle module",
 	"duration": "Duration",
 	"role": "Role",
+	"channel": "Channel",
 	"delete": "Delete",
+	"multiplier": "Multiplier",
+	"level": "Level",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",

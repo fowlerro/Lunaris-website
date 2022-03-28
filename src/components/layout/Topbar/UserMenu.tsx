@@ -146,13 +146,15 @@ function Profile({ user }: { user: User }) {
 }
 
 function ProfileAvatar({ user }: { user: User }) {
+	const avatarURL = user.avatar
+		? `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`
+		: `https://cdn.discordapp.com/embed/avatars/${
+				parseInt(user.discordTag.substring(user.discordTag.length - 4)) % 5
+		  }.png`;
+
 	return (
 		<AvatarBox>
-			<Avatar
-				src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`}
-				alt='Avatar'
-				layout='fill'
-			/>
+			<Avatar src={avatarURL} alt='Avatar' layout='fill' />
 		</AvatarBox>
 	);
 }

@@ -1,7 +1,12 @@
 {
 	"errors": {
 		"required": "Wymagane!",
-		"maxLength": "Tekst nie może przekroczyć {{count}} znaków!"
+		"minLength": "Tekst musi mieć przynajmniej {{count}} znaków!",
+		"maxLength": "Tekst nie może przekroczyć {{count}} znaków!",
+		"min": "Wartość musi być większa lub równa {{count}}!",
+		"max": "Wartość musi być mniejsza lub równa {{count}}!",
+		"invalidOption": "Wybierz jedną z opcji!",
+		"invalidValue": "Wartość jest nieprawidłowa!"
 	},
 
 	"command": {

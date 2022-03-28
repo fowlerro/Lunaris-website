@@ -20,7 +20,10 @@
 	"toggleModule": "Przełącz moduł",
 	"duration": "Czas",
 	"role": "Rola",
+	"channel": "Kanał",
 	"delete": "Usuń",
+	"multiplier": "Mnożnik",
+	"level": "Poziom",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

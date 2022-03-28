@@ -1,7 +1,12 @@
 {
 	"errors": {
 		"required": "Required",
-		"maxLength": "Text cannot exceed {{count}} characters!"
+		"minLength": "Field must be at least {{count}} characters!",
+		"maxLength": "Field cannot exceed {{count}} characters!",
+		"min": "Field must be at least {{count}}!",
+		"max": "Field cannot exceed {{count}}!",
+		"invalidOption": "Invalid option!",
+		"invalidValue": "Invalid value!"
 	},
 
 	"command": {
