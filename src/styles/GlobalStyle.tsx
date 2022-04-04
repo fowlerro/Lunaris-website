@@ -12,7 +12,6 @@ const globalCss = css`
 	body {
 		margin: 0;
 		min-height: 100vh;
-		font-family: 'Sora', sans-serif;
 		color: ${theme.colors.text.primary};
 		background: ${theme.colors.background.primary};
 	}
@@ -21,10 +20,6 @@ const globalCss = css`
 	*::before,
 	*::after {
 		box-sizing: inherit;
-	}
-
-	#__next {
-		min-height: 100vh;
 	}
 
 	a {

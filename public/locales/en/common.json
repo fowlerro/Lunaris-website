@@ -9,6 +9,8 @@
 	"submit": "Submit",
 	"send": "Send",
 	"save": "Save",
+	"cancel": "Cancel",
+	"confirm": "Confirm",
 	"comingSoon": "Coming Soon!",
 	"invite": "Invite",
 	"manage": "Manage",
@@ -24,6 +26,8 @@
 	"delete": "Delete",
 	"multiplier": "Multiplier",
 	"level": "Level",
+	"colorPicker": "Color Picker",
+	"hexColor": "HEX Color",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",

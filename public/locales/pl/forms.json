@@ -6,7 +6,8 @@
 		"min": "Wartość musi być większa lub równa {{count}}!",
 		"max": "Wartość musi być mniejsza lub równa {{count}}!",
 		"invalidOption": "Wybierz jedną z opcji!",
-		"invalidValue": "Wartość jest nieprawidłowa!"
+		"invalidValue": "Wartość jest nieprawidłowa!",
+		"invalidURL": "Nieprawidłowy adres URL!"
 	},
 
 	"command": {

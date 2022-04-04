@@ -10,6 +10,7 @@
 	"hideReason": "Hide reason",
 
 	"menu": {
+		"modules": "Modules",
 		"overview": "Overview",
 		"autoRoles": "Auto Roles",
 		"levels": "Levels",
@@ -64,6 +65,55 @@
 					"label": "Off",
 					"description": "Level Up Message will be disabled"
 				}
+			}
+		}
+	},
+
+	"embeds": {
+		"confirmEmbedDeletion": "Are you sure you want to delete this embed?",
+		"confirmFieldDeletion": "Are you sure you want to delete this field?",
+		"confirmLeaveWithChanges": "You have unsaved changes! Are you sure you want to leave?",
+		"listHeader": "Your Embed Messages",
+		"creatorHeader": "Embed Creator",
+		"editHeader": "Edit Embed",
+		"formHeader": "Embed Form",
+		"previewHeader": "Embed Preview",
+
+		"notSent": "Not sent",
+		"noEmbeds": "You don't have any embeds saved yet! Create your first Embed Message!",
+
+		"defaultName": "New Embed",
+		"form": {
+			"labels": {
+				"embedName": "Embed Name",
+				"messageContent": "Message",
+				"description": "Description",
+				"author": "Author",
+				"authorName": "Name",
+				"title": "Title",
+				"thumbnail": "Thumbnail URL",
+				"image": "Image URL",
+				"fields": "Fields",
+				"field": "Field",
+				"fieldName": "Name",
+				"fieldValue": "Value",
+				"fieldInline": "Inline",
+				"removeField": "Remove Field",
+				"footer": "Footer",
+				"footerText": "Text",
+				"timestamp": "Timestamp",
+
+				"url": "URL",
+				"iconURL": "Icon URL"
+			},
+
+			"buttons": {
+				"createEmbed": "Create Embed",
+				"addField": "Add Field",
+				"send": "Send",
+				"edit": "Edit",
+				"save": "Save (without sending)",
+				"delete": "Delete"
 			}
 		}
 	}

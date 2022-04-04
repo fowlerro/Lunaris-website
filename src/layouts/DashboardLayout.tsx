@@ -2,38 +2,38 @@ import React, { ReactNode } from 'react';
 
 import { styled } from '@mui/material';
 
-import DashboardMenu from '@components/layout/Dashboard/DashboardMenu';
+import Topbar from '@components/layout/Dashboard/Topbar';
+import Sidebar from '@components/layout/Dashboard/Sidebar';
 
 interface IProps {
 	children: ReactNode;
 }
 
 const Section = styled('section')(({ theme }) => ({
-	display: 'flex',
-	flexDirection: 'column',
+	display: 'grid',
+	height: '100vh',
+	gridTemplateColumns: '300px auto',
+	gridTemplateRows: '64px auto',
+	gridTemplateAreas: `'topbar topbar'
+    'content content'`,
 
 	[theme.breakpoints.up('md')]: {
-		flexDirection: 'row',
+		gridTemplateAreas: `'topbar topbar'
+    'sidebar content'`,
 	},
 }));
 
-const Content = styled('section')(({ theme }) => ({
-	display: 'flex',
-	flexFlow: 'column',
-	gap: '1rem',
-	margin: '1rem',
-
-	[theme.breakpoints.up('md')]: {
-		margin: 0,
-		marginRight: '1rem',
-		width: '100%',
-	},
-}));
+const Content = styled('section')({
+	gridArea: 'content',
+	padding: '1rem',
+	overflowY: 'auto',
+});
 
 export default function DashboardLayout({ children }: IProps): JSX.Element {
 	return (
 		<Section>
-			<DashboardMenu />
+			<Topbar />
+			<Sidebar />
 			<Content id='main'>{children}</Content>
 		</Section>
 	);

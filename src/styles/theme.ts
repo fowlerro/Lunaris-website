@@ -64,7 +64,11 @@ declare module '@mui/material/styles' {
 	}
 }
 
-const colors = {
+const values = {
+	borderRadius: '8px',
+};
+
+export const colors = {
 	primary: {
 		main: '#1956BD',
 		'50': '#87AEEF',
@@ -134,6 +138,9 @@ let darkTheme = createTheme({
 			letterSpacing: '0.05rem',
 		},
 	},
+	shape: {
+		borderRadius: values.borderRadius,
+	},
 	breakpoints: {
 		values: {
 			xs: 0,
@@ -154,6 +161,10 @@ let darkTheme = createTheme({
 					color: colors.text.primary,
 					'&:hover': {
 						borderWidth: 2,
+					},
+					'&.Mui-disabled': {
+						cursor: 'not-allowed',
+						pointerEvents: 'unset',
 					},
 				},
 			},
@@ -232,6 +243,25 @@ let darkTheme = createTheme({
 				root: {
 					backgroundColor: colors.background.lighter,
 					borderRadius: '12px',
+				},
+			},
+		},
+		MuiListItem: {
+			styleOverrides: {
+				root: {
+					borderRadius: values.borderRadius,
+					margin: '0 .5rem',
+				},
+			},
+		},
+		MuiListItemButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: values.borderRadius,
+					margin: '0 .5rem',
+					'&.Mui-selected': {
+						fontWeight: 600,
+					},
 				},
 			},
 		},

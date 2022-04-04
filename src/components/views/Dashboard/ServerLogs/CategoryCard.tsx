@@ -13,7 +13,7 @@ interface IProps {
 		[log: string]: boolean;
 	};
 	register: UseFormRegister<GuildLogsPageData>;
-	control: Control<GuildLogsPageData, never>;
+	control: Control<GuildLogsPageData>;
 }
 
 const StyledCard = styled(DashboardCard)({

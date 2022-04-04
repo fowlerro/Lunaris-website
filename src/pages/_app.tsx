@@ -21,6 +21,8 @@ import GlobalStyle from '@styles/GlobalStyle';
 
 import * as moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import { LocalizationProvider } from '@mui/lab';
+import AdapterMoment from '@mui/lab/AdapterMoment';
 momentDurationFormatSetup(moment);
 
 moment.updateLocale('pl', {
@@ -75,7 +77,7 @@ interface AppProps<P = Record<string, never>> extends NextAppProps<P> {
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: AppProps) {
-	const Layout = Component.Layout || EmptyLayout;
+	const Layout = Component.Layout || MainLayout;
 
 	return (
 		<>
@@ -83,20 +85,18 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 			</Head>
 			<CacheProvider value={emotionCache}>
-				<ThemeProvider theme={darkTheme}>
-					<CssBaseline />
-					<GlobalStyle />
-					<MainLayout>
+				<LocalizationProvider dateAdapter={AdapterMoment}>
+					<ThemeProvider theme={darkTheme}>
+						<CssBaseline />
+						<GlobalStyle />
 						<Layout>
 							<Component {...pageProps} />
 						</Layout>
-					</MainLayout>
-				</ThemeProvider>
+					</ThemeProvider>
+				</LocalizationProvider>
 			</CacheProvider>
 		</>
 	);
 }
-
-const EmptyLayout = ({ children }: { children: ReactNode }) => <>{children}</>;
 
 export default appWithTranslation(MyApp);

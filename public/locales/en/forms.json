@@ -6,7 +6,8 @@
 		"min": "Field must be at least {{count}}!",
 		"max": "Field cannot exceed {{count}}!",
 		"invalidOption": "Invalid option!",
-		"invalidValue": "Invalid value!"
+		"invalidValue": "Invalid value!",
+		"invalidURL": "Invalid URL!"
 	},
 
 	"command": {

@@ -9,6 +9,8 @@
 	"submit": "Zatwierdź",
 	"send": "Wyślij",
 	"save": "Zapisz",
+	"cancel": "Anuluj",
+	"confirm": "Potwierdź",
 	"comingSoon": "Już niedługo!",
 	"invite": "Zaproś",
 	"manage": "Zarządzaj",
@@ -24,6 +26,8 @@
 	"delete": "Usuń",
 	"multiplier": "Mnożnik",
 	"level": "Poziom",
+	"colorPicker": "Wybierz kolor",
+	"hexColor": "Kolor HEX",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

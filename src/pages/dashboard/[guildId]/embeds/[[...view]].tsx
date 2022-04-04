@@ -3,32 +3,33 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
-import Levels from '@views/Dashboard/Levels';
+import Embeds from '@views/Dashboard/Embeds';
 import DashboardLayout from '@layouts/DashboardLayout';
 import { validateCookies } from '@utils/utils';
 
 import type { NextPageWithLayout } from 'src/pages/_app';
-import type { GuildChannels, Role, LevelConfigPageData } from 'types';
+import type { GuildChannels, EmbedMessage } from 'types';
+import { useTranslation } from 'next-i18next';
 
 interface IProps {
 	channels: GuildChannels;
-	roles: Role[];
-	levelConfig: LevelConfigPageData;
+	embeds: EmbedMessage[];
 }
 
-const DashboardLevels: NextPageWithLayout<IProps> = ({ channels, roles, levelConfig }: IProps) => {
+const DashboardEmbeds: NextPageWithLayout<IProps> = ({ channels, embeds }: IProps) => {
+	const { t } = useTranslation('pages');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Levels</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('embeds.title')}</title>
+				<meta name='description' content={t('embeds.description')} />
 			</Head>
-			<Levels channels={channels} roles={roles} levelConfig={levelConfig} />
+			<Embeds channels={channels} embeds={embeds} />
 		</>
 	);
 };
 
-DashboardLevels.Layout = DashboardLayout;
+DashboardEmbeds.Layout = DashboardLayout;
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
 	const guildId = ctx.params?.guildId;
@@ -38,19 +39,15 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 		const { data: channels } = await axios.get<GuildChannels>(`${process.env.API_URL}/guilds/${guildId}/channels`, {
 			headers,
 		});
-		const { data: roles } = await axios.get<Role[]>(`${process.env.API_URL}/guilds/${guildId}/roles`, {
+		const { data: embeds } = await axios.get<EmbedMessage[]>(`${process.env.API_URL}/guilds/${guildId}/embeds`, {
 			headers,
 		});
-		const { data: levelConfig } = await axios.get<LevelConfigPageData>(
-			`${process.env.API_URL}/guilds/${guildId}/levels`,
-			{ headers }
-		);
 
-		return { props: { channels, roles, levelConfig, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { channels, embeds, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };
 	}
 };
 
-export default DashboardLevels;
+export default DashboardEmbeds;
