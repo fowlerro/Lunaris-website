@@ -20,6 +20,7 @@ import useIsDesktop from '@hooks/useIsDesktop';
 
 import SidebarItem from './SidebarItem';
 import SidebarGroup from './SidebarGroup';
+import ServerHeader from './ServerHeader';
 
 const tags = ['premium', 'new', 'wip'] as const;
 
@@ -96,7 +97,14 @@ export default function Sidebar(): JSX.Element {
 					</linearGradient>
 				</defs>
 			</svg>
-			{isDesktop ? <StyledSidebar>{items}</StyledSidebar> : <MobileSidebar items={items} />}
+			{isDesktop ? (
+				<StyledSidebar>
+					<ServerHeader />
+					{items}
+				</StyledSidebar>
+			) : (
+				<MobileSidebar items={items} />
+			)}
 		</>
 	);
 }
@@ -119,7 +127,10 @@ function MobileSidebar({ items }: { items: JSX.Element[] }) {
 				},
 			}}
 		>
-			<StyledSidebar>{items}</StyledSidebar>
+			<StyledSidebar>
+				<ServerHeader />
+				{items}
+			</StyledSidebar>
 		</SwipeableDrawer>
 	);
 }

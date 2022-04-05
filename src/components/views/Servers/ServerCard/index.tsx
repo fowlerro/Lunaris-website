@@ -1,8 +1,7 @@
 import { Button, Paper, styled, Tooltip, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 
-import Avatar from '@components/Avatar';
-import ServerAcronymIcon from '@components/ServerAcronymIcon';
+import ServerIcon from '@components/ServerIcon';
 
 interface IProps {
 	id: string;
@@ -52,7 +51,6 @@ const StyledButton = styled(Button)({
 
 export default function ServerCard({ id, name, icon, permissions, excluded }: IProps): JSX.Element {
 	const { t } = useTranslation();
-	const acronym = name.split(' ').map(word => word[0]);
 	const buttonLink =
 		permissions === 'member'
 			? ''
@@ -63,11 +61,7 @@ export default function ServerCard({ id, name, icon, permissions, excluded }: IP
 	return (
 		<Card elevation={0}>
 			<AvatarWrapper>
-				{icon ? (
-					<Avatar src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp`} layout='fill' />
-				) : (
-					<ServerAcronymIcon>{acronym}</ServerAcronymIcon>
-				)}
+				<ServerIcon id={id} name={name} icon={icon} />
 			</AvatarWrapper>
 			<Tooltip title={name} placement='top' arrow>
 				<Typography variant='h3' component='h2' sx={{ overflow: 'hidden', width: '100%' }}>

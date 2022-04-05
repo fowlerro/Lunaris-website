@@ -7,10 +7,11 @@ import LanguageSwitcher from '@components/LanguageSwitcher';
 import Icon from '@components/Icon';
 import Links, { LinkItem } from './Links';
 import Hamburger from './Hamburger';
-import UserMenu, { loginURL } from './UserMenu';
+import Profile from './Profile';
 import UserMenuItemsMobile from './UserMenuItemsMobile';
 import useUser from '@hooks/useUser';
 import useIsDesktop from '@hooks/useIsDesktop';
+import { loginURL } from './Profile/LoginButton';
 
 const ActionList = styled(List)({
 	display: 'flex',
@@ -51,7 +52,7 @@ export default function TopbarLinks(): JSX.Element {
 				</ActionItem>
 				{isDesktop ? (
 					<LinkItem>
-						<UserMenu />
+						<Profile />
 					</LinkItem>
 				) : (
 					<Mobile />

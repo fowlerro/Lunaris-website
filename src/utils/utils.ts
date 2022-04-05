@@ -13,6 +13,14 @@ export const getRoleColor = (color: number) => {
 	return roleColor;
 };
 
+export const getUserAvatar = (userId: string, avatarHash: string | null) => {
+	const avatarURL = avatarHash
+		? `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.webp`
+		: `https://cdn.discordapp.com/embed/avatars/${parseInt(userId.substring(userId.length - 4)) % 5}.png`;
+
+	return avatarURL;
+};
+
 export const EMBED_LIMITS = {
 	messageContent: 2000,
 	author: 256,

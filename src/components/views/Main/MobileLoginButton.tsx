@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next';
-import { keyframes } from '@emotion/react';
-import { Button, styled } from '@mui/material';
 
-import { loginURL } from '@components/layout/Topbar/UserMenu';
+import { Button, styled } from '@mui/material';
+import { keyframes } from '@emotion/react';
+
+import { loginURL } from '@components/layout/Topbar/Profile/LoginButton';
 import useUser from '@hooks/useUser';
 
 const ButtonSlide = keyframes`
