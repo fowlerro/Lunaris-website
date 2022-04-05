@@ -9,6 +9,7 @@ import { validateCookies } from '@utils/utils';
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { AutoRolePageData, Role } from 'types';
 import AutoRoles from '@views/Dashboard/AutoRoles';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	roles: Role[];
@@ -16,6 +17,7 @@ interface IProps {
 }
 
 const DashboardAutoRoles: NextPageWithLayout<IProps> = ({ roles, autoRoles }: IProps) => {
+	useVisitedFeatures('set', 'autoRoles');
 	return (
 		<>
 			<Head>

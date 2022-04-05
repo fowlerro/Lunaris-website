@@ -20,6 +20,12 @@
 		"embedMessages": "Wiadomości Embed"
 	},
 
+	"featureTags": {
+		"wip": "Wkrótce",
+		"premium": "Elementy dla użytkowników Premium",
+		"new": "Nowe"
+	},
+
 	"stats": {
 		"members": "Użytkownicy",
 		"bots": "Boty",

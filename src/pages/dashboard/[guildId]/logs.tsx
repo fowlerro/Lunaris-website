@@ -9,6 +9,7 @@ import { validateCookies } from '@utils/utils';
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { GuildLogsPageData, GuildChannels } from 'types';
 import ServerLogs from '@views/Dashboard/ServerLogs';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	channels: GuildChannels;
@@ -16,6 +17,7 @@ interface IProps {
 }
 
 const DashboardServerLogs: NextPageWithLayout<IProps> = ({ channels, guildLogs }: IProps) => {
+	useVisitedFeatures('set', 'serverLogs');
 	return (
 		<>
 			<Head>

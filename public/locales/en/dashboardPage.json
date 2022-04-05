@@ -20,6 +20,12 @@
 		"embedMessages": "Embed Messages"
 	},
 
+	"featureTags": {
+		"wip": "Coming Soon",
+		"premium": "Elements for Premium Users",
+		"new": "New"
+	},
+
 	"stats": {
 		"members": "Members",
 		"bots": "Bots",

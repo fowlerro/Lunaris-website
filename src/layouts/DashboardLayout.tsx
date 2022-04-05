@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { styled } from '@mui/material';
 
 import Topbar from '@components/layout/Dashboard/Topbar';
-import Sidebar from '@components/layout/Dashboard/Sidebar';
+import Sidebar from '@components/layout/Dashboard/Sidebar/Sidebar';
 
 interface IProps {
 	children: ReactNode;

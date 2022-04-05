@@ -10,6 +10,7 @@ import { validateCookies } from '@utils/utils';
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { GuildChannels, EmbedMessage } from 'types';
 import { useTranslation } from 'next-i18next';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	channels: GuildChannels;
@@ -18,6 +19,8 @@ interface IProps {
 
 const DashboardEmbeds: NextPageWithLayout<IProps> = ({ channels, embeds }: IProps) => {
 	const { t } = useTranslation('pages');
+	useVisitedFeatures('set', 'embedMessages');
+
 	return (
 		<>
 			<Head>

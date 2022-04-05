@@ -9,6 +9,7 @@ import { validateCookies } from '@utils/utils';
 
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { GuildChannels, Role, LevelConfigPageData } from 'types';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	channels: GuildChannels;
@@ -17,6 +18,7 @@ interface IProps {
 }
 
 const DashboardLevels: NextPageWithLayout<IProps> = ({ channels, roles, levelConfig }: IProps) => {
+	useVisitedFeatures('set', 'levels');
 	return (
 		<>
 			<Head>
