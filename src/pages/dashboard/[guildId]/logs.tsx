@@ -1,15 +1,16 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
 import DashboardLayout from '@layouts/DashboardLayout';
+import ServerLogs from '@views/Dashboard/ServerLogs';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 import { validateCookies } from '@utils/utils';
 
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { GuildLogsPageData, GuildChannels } from 'types';
-import ServerLogs from '@views/Dashboard/ServerLogs';
-import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	channels: GuildChannels;
@@ -17,12 +18,13 @@ interface IProps {
 }
 
 const DashboardServerLogs: NextPageWithLayout<IProps> = ({ channels, guildLogs }: IProps) => {
+	const { t } = useTranslation('pages');
 	useVisitedFeatures('set', 'serverLogs');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Server Logs</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('serverLogs.title')}</title>
+				<meta name='description' content={t('serverLogs.description')} />
 			</Head>
 			<ServerLogs channels={channels} guildLogs={guildLogs} />
 		</>

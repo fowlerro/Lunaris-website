@@ -2,5 +2,9 @@
 	"embeds": {
 		"title": "Lunaris - Wiadomości Embed",
 		"description": "Zarządzaj wiadomościami Embed na swoim serwerze"
+	},
+	"serverLogs": {
+		"title": "Lunaris - Logi Serwerowe",
+		"description": "Zarządzaj logami serwerowymi"
 	}
 }

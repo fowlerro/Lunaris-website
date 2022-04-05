@@ -59,16 +59,18 @@ const menuItems: ISidebarItem[] = [
 const createItems = (items: ISidebarItem[]) => {
 	return items.map(item => {
 		if (item.group && item.items) {
-			const { pathname, query } = useRouter();
+			const { query, pathname } = useRouter();
 			const guildId = query.guildId as string;
 			const currentPath = pathname.split('/')[3] || '';
 			const selected = item.items.length ? item.items.some(i => i.href === currentPath) : item.href === currentPath;
+
 			return typeof item.href === 'string' ? (
 				<Link
+					key={item.name}
 					href={`/dashboard/${guildId}/${item.href}`}
 					sx={{ textDecoration: 'none', color: theme => theme.colors.text.primary }}
 				>
-					<SidebarGroup key={item.name} item={item} selected={selected}>
+					<SidebarGroup item={item} selected={selected}>
 						{createItems(item.items)}
 					</SidebarGroup>
 				</Link>

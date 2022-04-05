@@ -10,6 +10,8 @@
 		"invalidURL": "Nieprawidłowy adres URL!"
 	},
 
+	"channelNotFound": "Nie znaleziono kanału!",
+
 	"command": {
 		"commandName": "Komenda",
 		"reason": "Dlaczego ta komenda powinna zostać dodana?",

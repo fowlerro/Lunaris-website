@@ -11,7 +11,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { faFloppyDisk, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
-import TextField from '@components/TextField';
+import TextField from '@components/Inputs/TextField';
 
 import type { EmbedMessage, GuildChannels } from 'types';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';

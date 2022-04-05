@@ -3,7 +3,7 @@ import { MouseEvent, useState } from 'react';
 import { Box, ClickAwayListener, IconButton, Paper, Popper, PopperProps, styled, Tooltip } from '@mui/material';
 import { HexColorPicker } from 'react-colorful';
 
-import TextField from '@components/TextField';
+import TextField from '@components/Inputs/TextField';
 import { useTranslation } from 'next-i18next';
 
 interface IProps {

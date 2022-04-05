@@ -10,6 +10,8 @@
 		"invalidURL": "Invalid URL!"
 	},
 
+	"channelNotFound": "Channel not found!",
+
 	"command": {
 		"commandName": "Command",
 		"reason": "Why this command should be added?",

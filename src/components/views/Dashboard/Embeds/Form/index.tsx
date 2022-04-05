@@ -20,7 +20,7 @@ import { DateTimePicker } from '@mui/lab';
 
 import { faCirclePlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-import TextField from '@components/TextField';
+import TextField from '@components/Inputs/TextField';
 import ColorPicker from '@components/ColorPicker';
 import Icon from '@components/Icon';
 

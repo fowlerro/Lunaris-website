@@ -28,6 +28,7 @@
 	"level": "Poziom",
 	"colorPicker": "Wybierz kolor",
 	"hexColor": "Kolor HEX",
+	"noCategory": "Brak kategorii",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

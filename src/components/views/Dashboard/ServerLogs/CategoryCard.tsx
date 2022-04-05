@@ -1,8 +1,10 @@
 import { Control, Controller, UseFormRegister } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
-import { Autocomplete, Checkbox, FormControlLabel, FormGroup, styled, TextField } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, styled } from '@mui/material';
 
 import DashboardCard from '@components/DashboardCard';
+import ChannelSelect from '@components/Inputs/ChannelSelect';
 
 import type { GuildChannels, GuildLogsPageData, GuildLogTypes } from 'types';
 
@@ -22,31 +24,19 @@ const StyledCard = styled(DashboardCard)({
 });
 
 export default function CategoryCard({ category, channels, logs, register, control }: IProps): JSX.Element {
+	const { t } = useTranslation('dashboardPage');
 	return (
-		<StyledCard header={category} disableIcon>
+		<StyledCard header={t(`serverLogs.${category}.header`)} disableIcon>
 			<Controller
 				name={`serverLogs.${category as keyof GuildLogTypes}.channelId`}
 				control={control}
-				render={props => (
-					<Autocomplete
-						disablePortal
-						options={channels.text.map(channel => ({ label: channel.name, id: channel.id }))}
-						isOptionEqualToValue={(option, value) => option.id === value.id}
-						sx={{ textTransform: 'none', marginBlock: '1.5rem' }}
-						ListboxProps={{
-							style: { textTransform: 'none' },
-						}}
-						renderInput={params => <TextField {...params} label={'Select channel'} />}
-						// eslint-disable-next-line react/prop-types
-						onChange={(_, data) => props.field.onChange(data?.id || undefined)}
-					/>
-				)}
+				render={({ field }) => <ChannelSelect channels={channels} onChange={field.onChange} />}
 			/>
 			<FormGroup sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
 				{Object.entries(logs).map(([log, value]) => (
 					<FormControlLabel
 						key={log}
-						label={log}
+						label={t(`serverLogs.${category}.${log}`).toString()}
 						control={<Checkbox defaultChecked={value} {...register(`serverLogs.${category}.logs.${log}` as never)} />}
 					/>
 				))}

@@ -5,9 +5,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
+
 import CategoryCard from './CategoryCard';
 
 import type { GuildChannels, GuildLogsPageData } from 'types';
+import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
 
 interface IProps {
 	channels: GuildChannels;
@@ -36,12 +38,13 @@ export default function ServerLogs({ channels, guildLogs }: IProps): JSX.Element
 	});
 
 	const onSubmit: SubmitHandler<GuildLogsPageData> = async guildLogsData => {
-		console.log(guildLogsData);
 		await axios.put(`${process.env.API_URL}/guilds/${guildId}/server-logs`, guildLogsData, {
 			withCredentials: true,
 		});
 		reset(guildLogsData);
 	};
+
+	useLeaveWithChanges(!!Object.keys(dirtyFields).length);
 
 	return (
 		<Section>
