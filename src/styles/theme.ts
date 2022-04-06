@@ -65,7 +65,7 @@ declare module '@mui/material/styles' {
 }
 
 const values = {
-	borderRadius: '8px',
+	borderRadius: 8,
 };
 
 export const colors = {

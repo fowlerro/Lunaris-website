@@ -1,4 +1,4 @@
-import { Autocomplete, MenuItem, UseAutocompleteProps } from '@mui/material';
+import { Autocomplete, MenuItem, TextFieldProps } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 
 import TextField from '../TextField';
@@ -15,11 +15,20 @@ type ChannelOption = {
 interface IProps {
 	channels: GuildChannels;
 	label?: string;
+	value?: string | null;
 	disabledClearable?: boolean;
-	onChange: UseAutocompleteProps<ChannelOption, undefined, boolean, undefined>['onChange'];
+	size?: TextFieldProps['size'];
+	onChange: (value: string) => void;
 }
 
-export default function ChannelSelect({ channels, label, disabledClearable = false, onChange }: IProps): JSX.Element {
+export default function ChannelSelect({
+	channels,
+	label,
+	value,
+	disabledClearable = false,
+	size = 'medium',
+	onChange,
+}: IProps): JSX.Element {
 	const { t } = useTranslation();
 
 	const options: ChannelOption[] = channels.text.map(channel => ({
@@ -34,9 +43,10 @@ export default function ChannelSelect({ channels, label, disabledClearable = fal
 			disablePortal
 			disableClearable={disabledClearable}
 			options={options.sort((a, b) => a.position - b.position)}
-			isOptionEqualToValue={(option, value) => option.id === value.id}
+			isOptionEqualToValue={(option, value) => option.id === value?.id}
 			groupBy={option => option.parentId || t('common:noCategory')}
 			noOptionsText={t('forms:channelNotFound')}
+			value={value ? options.find(option => option.id === value) : null}
 			renderGroup={params => {
 				return (
 					<div style={{ marginBottom: '1rem' }} key={params.key}>
@@ -48,8 +58,8 @@ export default function ChannelSelect({ channels, label, disabledClearable = fal
 				);
 			}}
 			renderOption={(props, channel) => <MenuItem {...props}>{channel.label}</MenuItem>}
-			renderInput={params => <TextField {...params} label={label ?? t('common:channel')} />}
-			onChange={onChange}
+			renderInput={params => <TextField {...params} size={size} label={label ?? t('common:channel')} />}
+			onChange={(_, value) => onChange(value?.id ?? '')}
 			sx={{ textTransform: 'none', marginBlock: '1.5rem' }}
 			ListboxProps={{
 				style: { textTransform: 'none' },

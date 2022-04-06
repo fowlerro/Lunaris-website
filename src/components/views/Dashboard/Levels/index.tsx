@@ -98,7 +98,7 @@ export default function Levels({ channels, roles, levelConfig }: IProps): JSX.El
 				getValues={getValues}
 			/>
 			<LevelRewardsCard roles={roles} control={control} />
-			<DataSaveToaster isDataChanged={isDirty} onSave={handleSubmit(onSubmit)} />
+			<DataSaveToaster isDataChanged={isDirty} onSave={handleSubmit(onSubmit)} onReset={() => reset()} />
 		</Section>
 	);
 }

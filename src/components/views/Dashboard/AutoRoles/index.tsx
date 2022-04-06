@@ -1,19 +1,13 @@
 import { useReducer, useState } from 'react';
 import { useRouter } from 'next/router';
-// import { useTranslation } from 'next-i18next';
-import axios from 'axios';
 
-// import { Alert, Slide, SlideProps, Snackbar } from '@mui/material';
-// import LoadingButton from '@mui/lab/LoadingButton';
+import DataSaveToaster from '@components/DataSaveToaster';
 
-// import { faSave } from '@fortawesome/free-solid-svg-icons';
-
-// import Icon from '@components/Icon';
 import AddAutoRole from './AddAutoRole';
 import AutoRoleList from './AutoRoleList';
 
 import type { AutoRole, AutoRolePageData, Role } from 'types';
-import DataSaveToaster from '@components/DataSaveToaster';
+import axios from 'axios';
 
 interface IProps {
 	autoRolesData: AutoRolePageData;
@@ -30,10 +24,6 @@ interface ReducerAction {
 	type: Actions;
 	payload: AutoRole;
 }
-
-// function SlideTransition(props: SlideProps) {
-// 	return <Slide {...props} direction='up' />;
-// }
 
 function autoRolesReducer(state: AutoRolePageData, action: ReducerAction): AutoRolePageData {
 	const { type, payload } = action;
@@ -63,10 +53,8 @@ function autoRolesReducer(state: AutoRolePageData, action: ReducerAction): AutoR
 }
 
 export default function AutoRoles({ autoRolesData, roles }: IProps): JSX.Element {
-	// const { t } = useTranslation();
 	const router = useRouter();
 	const guildId = router.query.guildId;
-	// const [isSaving, setIsSaving] = useState(false);
 	const [savedData, setSavedData] = useState(autoRolesData);
 	const [autoRoles, dispatch] = useReducer(autoRolesReducer, autoRolesData);
 	const isDataChanged =
@@ -110,14 +98,12 @@ export default function AutoRoles({ autoRolesData, roles }: IProps): JSX.Element
 			autoRole => tempDuplicates.size === tempDuplicates.add(autoRole.roleId).size
 		);
 		if (hasDuplicates) return;
-		// setIsSaving(true);
 		const data = await axios.put(`${process.env.API_URL}/guilds/${guildId}/auto-roles`, autoRoles, {
 			withCredentials: true,
 		});
 		if (data.status === 200) {
 			setSavedData(autoRoles);
 		}
-		// setIsSaving(false);
 	};
 
 	return (
@@ -130,31 +116,13 @@ export default function AutoRoles({ autoRolesData, roles }: IProps): JSX.Element
 				onDelete={handleDeleteAutoRole}
 				onToggle={handleToggleAutoRoles}
 			/>
-			{/* <Snackbar
-				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-				open={isDataChanged}
-				TransitionComponent={SlideTransition}
-			>
-				<Alert
-					severity='error'
-					variant='filled'
-					action={
-						<LoadingButton
-							size='small'
-							loading={isSaving}
-							color='inherit'
-							loadingPosition='start'
-							startIcon={<Icon icon={faSave} />}
-							onClick={handleSaveData}
-						>
-							{t('common:save')}
-						</LoadingButton>
-					}
-				>
-					{t('dashboardPage:autoRoles.unsavedData')}
-				</Alert>
-			</Snackbar> */}
-			<DataSaveToaster isDataChanged={isDataChanged} onSave={handleSaveData} />
+			<DataSaveToaster
+				isDataChanged={isDataChanged}
+				onSave={handleSaveData}
+				onReset={() => {
+					console.log('TODO');
+				}}
+			/>
 		</>
 	);
 }

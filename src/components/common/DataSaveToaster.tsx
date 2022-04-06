@@ -11,13 +11,14 @@ import Icon from './Icon';
 interface IProps {
 	isDataChanged: boolean;
 	onSave: () => void;
+	onReset: () => void;
 }
 
 function SlideTransition(props: SlideProps) {
 	return <Slide {...props} direction='up' />;
 }
 
-export default function DataSaveToaster({ isDataChanged, onSave }: IProps): JSX.Element {
+export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IProps): JSX.Element {
 	const { t } = useTranslation();
 
 	const [isSaving, setIsSaving] = useState(false);
@@ -36,18 +37,39 @@ export default function DataSaveToaster({ isDataChanged, onSave }: IProps): JSX.
 		>
 			<Alert
 				severity='error'
+				sx={{
+					backgroundColor: theme => theme.colors.background.primary,
+					boxShadow: theme => theme.shadows[6],
+
+					'.MuiAlert-action': {
+						display: 'flex',
+						flexDirection: ['column', 'row'],
+					},
+				}}
 				variant='filled'
 				action={
-					<LoadingButton
-						size='small'
-						loading={isSaving}
-						color='inherit'
-						loadingPosition='start'
-						startIcon={<Icon icon={faSave} />}
-						onClick={handleSave}
-					>
-						{t('common:save')}
-					</LoadingButton>
+					<>
+						<LoadingButton
+							size='small'
+							loading={isSaving}
+							color='inherit'
+							onClick={() => onReset()}
+							sx={{ marginRight: '1rem' }}
+						>
+							{t('common:reset')}
+						</LoadingButton>
+						<LoadingButton
+							size='small'
+							loading={isSaving}
+							color='success'
+							variant='contained'
+							loadingPosition='start'
+							startIcon={<Icon icon={faSave} />}
+							onClick={handleSave}
+						>
+							{t('common:save')}
+						</LoadingButton>
+					</>
 				}
 			>
 				{t('dashboardPage:autoRoles.unsavedData')}

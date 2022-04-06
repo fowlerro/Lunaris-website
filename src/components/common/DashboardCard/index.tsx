@@ -23,9 +23,9 @@ const ArrowIcon = styled(Icon)<{ open: boolean }>(({ theme, open }) => ({
 }));
 
 const Container = styled(Paper)(({ theme }) => ({
-	borderRadius: '8px',
+	borderRadius: theme.shape.borderRadius,
 	background: theme.colors.background.lighter,
-	boxShadow: theme.shadows[3],
+	boxShadow: theme.shadows[4],
 	padding: '1rem',
 }));
 

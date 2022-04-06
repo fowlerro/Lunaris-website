@@ -12,6 +12,7 @@ interface IProps {
 const Section = styled('section')(({ theme }) => ({
 	display: 'grid',
 	height: '100vh',
+	overflowY: 'hidden',
 	gridTemplateColumns: '300px auto',
 	gridTemplateRows: '84px auto',
 	gridTemplateAreas: `'topbar topbar'
