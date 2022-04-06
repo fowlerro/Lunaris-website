@@ -27,8 +27,6 @@ export default function LanguageSwitcher() {
 			sx={{
 				fontSize: '1rem',
 				padding: '1rem',
-				borderRadius: '50%',
-				'&:hover': { backgroundColor: theme => theme.colors.background.lighter },
 			}}
 		>
 			{t('common:languageName')}

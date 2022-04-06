@@ -6,5 +6,9 @@
 	"serverLogs": {
 		"title": "Lunaris - Logi Serwerowe",
 		"description": "Zarządzaj logami serwerowymi"
+	},
+	"levels": {
+		"title": "Lunaris - Poziomy",
+		"description": "Zarządzaj systemem XP oraz nagrodami za poziomy"
 	}
 }

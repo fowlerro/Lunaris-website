@@ -7,7 +7,7 @@ type IProps = {
 
 const TextField = forwardRef<HTMLInputElement | HTMLDivElement, IProps>(function TextField(
 	// eslint-disable-next-line react/prop-types
-	{ characterLimit, helperText, FormHelperTextProps, onChange, margin, ...props }: IProps,
+	{ characterLimit, helperText, FormHelperTextProps, onChange, margin, error, ...props }: IProps,
 	ref: Ref<HTMLInputElement | HTMLDivElement>
 ) {
 	const [count, setCount] = useState(0);
@@ -24,6 +24,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLDivElement, IProps>(function
 		return (
 			<MuiTextField
 				{...props}
+				error={error}
 				ref={ref}
 				onChange={onChange}
 				helperText={helperText}
@@ -34,9 +35,16 @@ const TextField = forwardRef<HTMLInputElement | HTMLDivElement, IProps>(function
 
 	return (
 		<div style={{ marginTop, marginBottom }}>
-			<MuiTextField {...props} onChange={handleChange} ref={ref} />
+			<MuiTextField {...props} error={error} onChange={handleChange} ref={ref} />
 			<div style={{ display: 'flex', paddingInline: '.5rem' }}>
-				{helperText && <FormHelperText {...FormHelperTextProps}>{helperText}</FormHelperText>}
+				{helperText && (
+					<FormHelperText
+						{...FormHelperTextProps}
+						sx={{ color: theme => (error ? theme.palette.error.main : 'inherit') }}
+					>
+						{helperText}
+					</FormHelperText>
+				)}
 				<FormHelperText
 					sx={{
 						marginLeft: 'auto',

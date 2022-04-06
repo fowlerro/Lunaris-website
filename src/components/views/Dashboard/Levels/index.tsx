@@ -1,4 +1,6 @@
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import axios from 'axios';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -7,12 +9,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
+import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
+
 import LevelSettingsCard from './LevelSettingsCard';
 import LevelRewardsCard from './LevelRewardsCard';
 
 import type { GuildChannels, LevelConfigPageData, Role } from 'types';
-import axios from 'axios';
-import { useRouter } from 'next/router';
 
 interface IProps {
 	channels: GuildChannels;
@@ -54,12 +56,12 @@ export default function Levels({ channels, roles, levelConfig }: IProps): JSX.El
 			}),
 		}),
 	});
+
 	const {
 		register,
 		handleSubmit,
 		control,
 		formState: { isDirty, errors },
-		getValues,
 		reset,
 	} = useForm<LevelConfigPageData>({
 		defaultValues: {
@@ -78,8 +80,9 @@ export default function Levels({ channels, roles, levelConfig }: IProps): JSX.El
 			},
 		},
 		resolver: yupResolver(validationSchema),
-		mode: 'all',
 	});
+
+	useLeaveWithChanges(isDirty);
 
 	const onSubmit: SubmitHandler<LevelConfigPageData> = async levelData => {
 		const { data } = await axios.put(`${process.env.API_URL}/guilds/${guildId}/levels`, levelData, {
@@ -95,7 +98,6 @@ export default function Levels({ channels, roles, levelConfig }: IProps): JSX.El
 				control={control}
 				errors={errors}
 				register={register}
-				getValues={getValues}
 			/>
 			<LevelRewardsCard roles={roles} control={control} />
 			<DataSaveToaster isDataChanged={isDirty} onSave={handleSubmit(onSubmit)} onReset={() => reset()} />

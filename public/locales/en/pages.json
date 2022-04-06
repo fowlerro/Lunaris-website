@@ -6,5 +6,9 @@
 	"serverLogs": {
 		"title": "Lunaris - Server Logs",
 		"description": "View server logs"
+	},
+	"levels": {
+		"title": "Lunaris - Levels",
+		"description": "Manage XP system and level rewards for your server"
 	}
 }

@@ -1,7 +1,6 @@
+import TextField from '@components/Inputs/TextField';
 import { useTranslation } from 'next-i18next';
 import type { FieldError, UseFormRegister } from 'react-hook-form';
-
-import { TextField } from '@mui/material';
 
 import type { LevelConfigPageData } from 'types';
 
@@ -15,9 +14,10 @@ export default function LevelUpMessageFormat({ defaultValue, error, register }: 
 	const { t } = useTranslation();
 	return (
 		<TextField
+			characterLimit={256}
 			multiline
 			rows={4}
-			label={t('dashboardPage:levels.levelUpMessage.messageFormat')}
+			label={t('levelsPage:levelUpMessage.messageFormat')}
 			fullWidth
 			{...register('levelConfig.levelUpMessage.messageFormat')}
 			defaultValue={defaultValue}

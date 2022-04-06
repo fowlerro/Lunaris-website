@@ -18,8 +18,9 @@ import {
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
-import AddLevelRewardModal from './AddLevelRewardModal';
 import { getRoleColor } from '@utils/utils';
+
+import AddLevelRewardModal from './AddLevelRewardModal';
 
 import type { LevelConfigPageData, LevelReward, Role } from 'types';
 
@@ -38,6 +39,8 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 		name: `levelConfig.rewards.${voice ? 'voice' : 'text'}`,
 	});
 
+	const indexes = new Map(fields.map(({ id }, index) => [id, index]));
+
 	const handleAddReward = (reward: LevelReward): void => {
 		append(reward);
 	};
@@ -45,7 +48,7 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 	return (
 		<div>
 			<Button variant='contained' size='small' onClick={() => setOpen(true)}>
-				{t('dashboardPage:levels.addReward')}
+				{t('levelsPage:addReward')}
 			</Button>
 			<TableContainer>
 				<Table>
@@ -53,14 +56,14 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 						<TableRow>
 							<TableCell align='right'>{t('common:level')}</TableCell>
 							<TableCell>{t('common:role')}</TableCell>
-							<TableCell align='right'>{t('dashboardPage:levels.removePreviousReward')}</TableCell>
+							<TableCell align='right'>{t('levelsPage:takePreviousReward')}</TableCell>
 							<TableCell align='right'>{t('common:delete')}</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{fields
+						{Array.from(fields)
 							.sort((a, b) => a.level - b.level)
-							.map((levelReward, index) => {
+							.map(levelReward => {
 								const role = roles.find(role => role.id === levelReward.roleId);
 
 								return (
@@ -71,7 +74,7 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 											<Checkbox checked={levelReward.takePreviousRole} />
 										</TableCell>
 										<TableCell align='right'>
-											<IconButton onClick={() => remove(index)} color='error'>
+											<IconButton onClick={() => remove(indexes.get(levelReward.id))} color='error'>
 												<Icon icon={faTrash} />
 											</IconButton>
 										</TableCell>

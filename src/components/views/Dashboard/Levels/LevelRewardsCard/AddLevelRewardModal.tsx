@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
-	Autocomplete,
 	Button,
 	Checkbox,
 	Dialog,
@@ -17,7 +16,7 @@ import {
 	TextField,
 } from '@mui/material';
 
-import { getRoleColor } from '@utils/utils';
+import RoleSelect from '@components/Inputs/RoleSelect';
 
 import type { LevelReward, Role } from 'types';
 
@@ -42,6 +41,7 @@ export default function AddLevelRewardModal({ open, setOpen, roles, addRole }: I
 			.integer(t('forms:errors.required'))
 			.required(t('forms:errors.required'))
 			.min(1, t('forms:errors.min', { count: 1 }))
+			.max(200, t('forms:errors.max', { count: 200 }))
 			.typeError(t('forms:errors.invalidValue')),
 		roleId: Yup.string()
 			.required(t('forms:errors.required'))
@@ -56,9 +56,8 @@ export default function AddLevelRewardModal({ open, setOpen, roles, addRole }: I
 		register,
 		control,
 		handleSubmit,
-		getValues,
 		reset,
-		formState: { errors: addErrors },
+		formState: { errors },
 	} = useForm<IAddReward>({
 		defaultValues: {
 			level: 0,
@@ -85,60 +84,41 @@ export default function AddLevelRewardModal({ open, setOpen, roles, addRole }: I
 				},
 			}}
 		>
-			<DialogTitle>Add reward</DialogTitle>
+			<DialogTitle>{t('levelsPage:addReward')}</DialogTitle>
 			<DialogContent>
 				<TextField
 					margin='dense'
-					label='Level'
+					label={t('common:level')}
 					type='number'
 					{...register('level')}
-					error={!!addErrors.level}
-					helperText={addErrors.level?.message}
+					error={!!errors.level}
+					helperText={errors.level?.message}
 				/>
 				<Controller
 					control={control}
 					name='roleId'
-					render={({ field }) => (
-						<Autocomplete
-							options={roles.map(role => ({ label: role.name, id: role.id }))}
-							isOptionEqualToValue={(option, value) => option.id === value.id}
-							sx={{
-								textTransform: 'none',
-								['& .MuiAutocomplete-inputRoot']: {
-									color: getRoleColor(roles.find(role => role.id === getValues().roleId)?.color || 0),
-								},
-							}}
-							ListboxProps={{
-								style: { textTransform: 'none' },
-							}}
+					render={({ field, fieldState }) => (
+						<RoleSelect
+							roles={roles}
+							value={field.value}
+							onChange={roleId => field.onChange(roleId)}
+							error={fieldState.invalid}
+							helperText={fieldState.error?.message}
 							disableClearable
-							renderOption={(props, { label, id }) => (
-								<li style={{ color: getRoleColor(roles.find(role => role.id === id)?.color || 0) }} {...props} key={id}>
-									{label}
-								</li>
-							)}
-							renderInput={params => (
-								<TextField
-									{...params}
-									margin='dense'
-									label={t('common:role')}
-									error={!!addErrors?.roleId}
-									helperText={addErrors?.roleId?.message}
-								/>
-							)}
-							// eslint-disable-next-line react/prop-types
-							onChange={(_, data) => field.onChange(data?.id || '')}
 						/>
 					)}
 				/>
-				<FormControlLabel control={<Checkbox {...register('takePreviousRole')} />} label='Take previous reward?' />
+				<FormControlLabel
+					control={<Checkbox {...register('takePreviousRole')} />}
+					label={t('levelsPage:takePreviousReward').toString()}
+				/>
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={() => setOpen(false)} variant='outlined'>
-					Cancel
+					{t('common:cancel')}
 				</Button>
 				<Button onClick={handleSubmit(handleAdd)} variant='contained'>
-					Add
+					{t('common:add')}
 				</Button>
 			</DialogActions>
 		</Dialog>

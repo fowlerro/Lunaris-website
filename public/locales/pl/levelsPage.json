@@ -1,0 +1,31 @@
+{
+	"settingsHeader": "Ustawienia Poziomów",
+	"multiplier": "Mnożnik XP",
+
+	"levelRewardsHeader": "Nagrody",
+	"textRewardsHeader": "Tekstowe",
+	"voiceRewardsHeader": "Głosowe",
+	"addReward": "Dodaj nagrodę",
+	"takePreviousReward": "Usuń poprzednią nagrodę",
+
+	"levelUpMessage": {
+		"header": "Wiadomość zdobycia poziomu",
+		"messageBehavior": "Działanie wiadomości",
+		"messageFormat": "Własna Wiadomość",
+
+		"mode": {
+			"currentChannel": {
+				"label": "Aktualny kanał",
+				"description": "Wiadomość zostanie wysłana na kanale w którym użytkownik zdobył poziom"
+			},
+			"specificChannel": {
+				"label": "Wybrany kanał",
+				"description": "Wiadomość zostanie wysłana na wybranym kanale"
+			},
+			"off": {
+				"label": "Wyłączone",
+				"description": "Wiadomość zdobycia poziomu zostanie wyłączona"
+			}
+		}
+	}
+}

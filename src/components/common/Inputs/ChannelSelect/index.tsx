@@ -18,6 +18,8 @@ interface IProps {
 	value?: string | null;
 	disabledClearable?: boolean;
 	size?: TextFieldProps['size'];
+	error?: boolean;
+	helperText?: string;
 	onChange: (value: string) => void;
 }
 
@@ -27,6 +29,8 @@ export default function ChannelSelect({
 	value,
 	disabledClearable = false,
 	size = 'medium',
+	error = false,
+	helperText,
 	onChange,
 }: IProps): JSX.Element {
 	const { t } = useTranslation();
@@ -58,7 +62,9 @@ export default function ChannelSelect({
 				);
 			}}
 			renderOption={(props, channel) => <MenuItem {...props}>{channel.label}</MenuItem>}
-			renderInput={params => <TextField {...params} size={size} label={label ?? t('common:channel')} />}
+			renderInput={params => (
+				<TextField {...params} size={size} label={label ?? t('common:channel')} error={error} helperText={helperText} />
+			)}
 			onChange={(_, value) => onChange(value?.id ?? '')}
 			sx={{ textTransform: 'none', marginBlock: '1.5rem' }}
 			ListboxProps={{

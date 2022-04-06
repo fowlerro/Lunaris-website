@@ -1,0 +1,31 @@
+{
+	"settingsHeader": "Level Settings",
+	"multiplier": "XP Multiplier",
+
+	"levelRewardsHeader": "Level Rewards",
+	"textRewardsHeader": "Text Rewards",
+	"voiceRewardsHeader": "Voice Rewards",
+	"addReward": "Add Reward",
+	"takePreviousReward": "Take previous reward",
+
+	"levelUpMessage": {
+		"header": "Level Up Message",
+		"messageBehavior": "Message Behavior",
+		"messageFormat": "Custom Message",
+
+		"mode": {
+			"currentChannel": {
+				"label": "Current Channel",
+				"description": "Message will be sent in channel where user leveled up"
+			},
+			"specificChannel": {
+				"label": "Specific Channel",
+				"description": "Message will always be sent in specified channel"
+			},
+			"off": {
+				"label": "Off",
+				"description": "Level Up Message will be disabled"
+			}
+		}
+	}
+}

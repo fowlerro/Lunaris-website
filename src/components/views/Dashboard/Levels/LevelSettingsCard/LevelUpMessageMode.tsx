@@ -1,51 +1,49 @@
 import { useTranslation } from 'next-i18next';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 
-import { MenuItem, TextField, Typography } from '@mui/material';
+import Select from '@components/Inputs/Select';
 
 import type { LevelConfigPageData } from 'types';
 
 interface IProps {
-	defaultValue: string;
-	error?: FieldError;
-	register: UseFormRegister<LevelConfigPageData>;
+	control: Control<LevelConfigPageData>;
 }
 
-const levelUpChannelOptions = ['currentChannel', 'specificChannel', 'off'];
-
-export default function LevelUpMessageMode({ defaultValue, error, register }: IProps): JSX.Element {
+export default function LevelUpMessageMode({ control }: IProps): JSX.Element {
 	const { t } = useTranslation();
+	const levelUpChannelOptions = [
+		{
+			value: 'currentChannel',
+			label: t('levelsPage:levelUpMessage.mode.currentChannel.label'),
+			description: t('levelsPage:levelUpMessage.mode.currentChannel.description'),
+		},
+		{
+			value: 'specificChannel',
+			label: t('levelsPage:levelUpMessage.mode.specificChannel.label'),
+			description: t('levelsPage:levelUpMessage.mode.specificChannel.description'),
+		},
+		{
+			value: 'off',
+			label: t('levelsPage:levelUpMessage.mode.off.label'),
+			description: t('levelsPage:levelUpMessage.mode.off.description'),
+		},
+	];
 	return (
-		<TextField
-			label={t('dashboardPage:levels.levelUpMessage.messageBehavior')}
-			fullWidth
-			select
-			SelectProps={{
-				renderValue: val =>
-					t(
-						`dashboardPage:levels.levelUpMessage.mode.${
-							levelUpChannelOptions.find(option => option === val) || 'off'
-						}.label`
-					),
-			}}
-			defaultValue={defaultValue}
-			margin='normal'
-			error={!!error}
-			helperText={error?.message}
-			{...register('levelConfig.levelUpMessage.mode')}
-		>
-			{levelUpChannelOptions.map(option => (
-				<MenuItem
-					key={option}
-					value={option}
-					sx={{ flexDirection: 'column', placeItems: 'flex-start', textAlign: 'left' }}
-				>
-					<Typography>{t(`dashboardPage:levels.levelUpMessage.mode.${option}.label`)}</Typography>
-					<Typography variant='caption' sx={{ color: theme => theme.colors.text.secondary }}>
-						{t(`dashboardPage:levels.levelUpMessage.mode.${option}.description`)}
-					</Typography>
-				</MenuItem>
-			))}
-		</TextField>
+		<Controller
+			name={'levelConfig.levelUpMessage.mode'}
+			control={control}
+			render={({ field, fieldState }) => (
+				<Select
+					label={t('levelsPage:levelUpMessage.messageBehavior')}
+					fullWidth
+					select
+					items={levelUpChannelOptions}
+					value={field.value}
+					onChange={e => field.onChange(e.target.value)}
+					error={fieldState.invalid}
+					helperText={fieldState.error?.message}
+				/>
+			)}
+		/>
 	);
 }

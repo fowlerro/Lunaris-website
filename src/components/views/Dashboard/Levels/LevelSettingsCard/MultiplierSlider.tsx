@@ -17,10 +17,10 @@ export default function MultiplierSlider({ control }: IProps): JSX.Element {
 			name={'levelConfig.multiplier'}
 			render={({ field }) => (
 				<>
-					<Typography marginTop={1}>{t('dashboardPage:levels.multiplier')}</Typography>
+					<Typography marginTop={1}>{t('levelsPage:multiplier')}</Typography>
 					<Slider
 						size='small'
-						aria-label={t('dashboardPage:levels.multiplier')}
+						aria-label={t('levelsPage:multiplier')}
 						value={field.value}
 						onChange={(e, value) => field.onChange(value)}
 						min={0}

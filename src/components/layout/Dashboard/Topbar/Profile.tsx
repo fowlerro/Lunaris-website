@@ -15,7 +15,7 @@ export default function Profile(): JSX.Element {
 				color: theme => theme.colors.text.primary,
 				display: 'flex',
 				alignItems: 'center',
-				borderRadius: theme => theme.shape.borderRadius,
+				borderRadius: 1,
 				padding: '.25rem .5rem',
 
 				'&:hover, &:focus': {
