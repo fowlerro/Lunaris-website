@@ -14,5 +14,10 @@
 	"autoRoles": {
 		"title": "Lunaris - Auto Role",
 		"description": "Zarządzaj rolami nadawanymi nowym użytkownikom"
+	},
+
+	"overview": {
+		"title": "Lunaris - Przegląd",
+		"description": "Szybki dostęp do przeglądu serwera"
 	}
 }

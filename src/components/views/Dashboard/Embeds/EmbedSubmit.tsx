@@ -5,16 +5,17 @@ import axios from 'axios';
 
 import { Control, Controller, SubmitHandler, UseFormHandleSubmit, UseFormRegister, useWatch } from 'react-hook-form';
 
-import { Autocomplete, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import { faFloppyDisk, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
+import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
+import ChannelSelect from '@components/Inputs/ChannelSelect';
 import Icon from '@components/Icon';
 import TextField from '@components/Inputs/TextField';
 
 import type { EmbedMessage, GuildChannels } from 'types';
-import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
 interface IProps {
 	register: UseFormRegister<EmbedMessage>;
@@ -98,28 +99,23 @@ export default function EmbedSubmit({ register, handleSubmit, control, channels,
 			<Controller
 				name={'channelId'}
 				control={control}
-				render={({ field }) => (
-					<Autocomplete
-						disablePortal
-						options={channels.text.map(channel => ({ label: channel.name, id: channel.id }))}
-						// eslint-disable-next-line react/prop-types
-						defaultValue={
-							field.value
-								? { label: channels.text.find(channel => channel.id === field.value)?.name, id: field.value }
-								: undefined
-						}
-						isOptionEqualToValue={(option, value) => option.id === value.id}
-						sx={{ textTransform: 'none', marginBlock: '1.5rem' }}
-						ListboxProps={{
-							style: { textTransform: 'none' },
-						}}
-						renderInput={params => <TextField {...params} label={t('common:channel')} />}
-						// eslint-disable-next-line react/prop-types
-						onChange={(_, data) => field.onChange(data?.id || undefined)}
+				render={({ field, fieldState }) => (
+					<ChannelSelect
+						channels={channels}
+						value={field.value}
+						onChange={field.onChange}
+						error={fieldState.invalid}
+						helperText={fieldState.error?.message}
 					/>
 				)}
 			/>
-			<Box display='flex' gap='1rem' alignItems='center' justifyContent='flex-end'>
+			<Box
+				display='flex'
+				gap='1rem'
+				alignItems='center'
+				justifyContent='flex-end'
+				sx={{ flexDirection: ['column-reverse', 'row'] }}
+			>
 				{edit && (
 					<LoadingButton
 						variant='contained'

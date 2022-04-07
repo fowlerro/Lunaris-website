@@ -21,7 +21,16 @@ export default function Select({ items, displayDescription = false, ...props }: 
 		>
 			{items.map(item => (
 				<MenuItem key={item.value} value={item.value}>
-					<ListItemText primary={item.label} secondary={item.description} />
+					<ListItemText
+						primary={item.label}
+						secondary={item.description}
+						secondaryTypographyProps={{
+							whiteSpace: 'pre-wrap',
+							sx: {
+								fontSize: '0.75rem',
+							},
+						}}
+					/>
 				</MenuItem>
 			))}
 		</TextField>

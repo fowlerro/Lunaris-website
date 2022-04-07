@@ -1,10 +1,8 @@
 import { ReactNode, useState } from 'react';
 
-import { Paper, Box, Collapse, Typography, IconButton, styled, SxProps, Theme } from '@mui/material';
+import { Paper, Box, Collapse, Typography, styled, SxProps, Theme } from '@mui/material';
 
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-
-import Icon from '@components/Icon';
+import ExpandIcon from '@components/ExpandIcon';
 
 interface IProps {
 	header: string;
@@ -16,39 +14,24 @@ interface IProps {
 	sx?: SxProps<Theme>;
 }
 
-const ArrowIcon = styled(Icon)<{ open: boolean }>(({ theme, open }) => ({
-	transition: theme.transitions.create('transform'),
-
-	transform: open ? 'rotate(180deg)' : 'rotate(0)',
-}));
-
 const Container = styled(Paper)(({ theme }) => ({
 	borderRadius: theme.shape.borderRadius,
-	background: theme.colors.background.lighter,
+	backgroundColor: theme.colors.background.lighter,
 	boxShadow: theme.shadows[4],
 	padding: '1rem',
 }));
 
-const Header = styled(Box)(({ theme }) => ({
-	display: 'flex',
-	alignItems: 'flex-start',
-
-	[theme.breakpoints.up('lg')]: {
-		alignItems: 'center',
-	},
-}));
-
-const Items = styled(Box)(({ theme }) => ({
+const Header = styled(Box)({
 	display: 'flex',
 	alignItems: 'center',
-	flexDirection: 'column',
+});
+
+const Items = styled(Box)({
+	display: 'flex',
+	alignItems: 'center',
 	width: '100%',
 	gap: '.5rem',
-
-	[theme.breakpoints.up('lg')]: {
-		flexDirection: 'row',
-	},
-}));
+});
 
 const Action = styled(Box)({});
 
@@ -72,11 +55,7 @@ export default function DashboardCard({
 					</Typography>
 					{action && <Action>{action}</Action>}
 				</Items>
-				{disableIcon ? undefined : (
-					<IconButton onClick={() => setOpen(!open)}>
-						<ArrowIcon icon={faChevronDown} open={open} />
-					</IconButton>
-				)}
+				{disableIcon ? undefined : <ExpandIcon expanded={open} onClick={() => setOpen(!open)} />}
 			</Header>
 			{disableIcon ? children : <Collapse in={open}>{children}</Collapse>}
 		</Container>

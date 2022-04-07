@@ -69,10 +69,18 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 				header={t('dashboardPage:embeds.listHeader')}
 				initialExpand
 				action={
-					<Button variant='contained' sx={{ marginRight: '1rem' }} onClick={handleCreateEmbed}>
-						<Icon icon={faAdd} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
-						{t('dashboardPage:embeds.form.buttons.createEmbed')}
-					</Button>
+					isDesktop ? (
+						<Button variant='contained' sx={{ marginRight: '1rem' }} onClick={handleCreateEmbed}>
+							<Icon icon={faAdd} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
+							{t('dashboardPage:embeds.form.buttons.createEmbed')}
+						</Button>
+					) : (
+						<Tooltip title={t('dashboardPage:embeds.form.buttons.createEmbed').toString()}>
+							<IconButton onClick={handleCreateEmbed} sx={{ backgroundColor: theme => theme.colors.primary.main }}>
+								<Icon icon={faAdd} />
+							</IconButton>
+						</Tooltip>
+					)
 				}
 			>
 				<List>

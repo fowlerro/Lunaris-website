@@ -21,6 +21,7 @@ import useIsDesktop from '@hooks/useIsDesktop';
 import SidebarItem from './SidebarItem';
 import SidebarGroup from './SidebarGroup';
 import ServerHeader from './ServerHeader';
+import ServerListButton from './ServerListButton';
 
 const tags = ['premium', 'new', 'wip'] as const;
 
@@ -36,11 +37,17 @@ export type ISidebarItem = {
 const StyledSidebar = styled(List)(({ theme }) => ({
 	backgroundColor: theme.colors.background.lighter,
 	gridArea: 'sidebar',
+	display: 'flex',
+	flexDirection: 'column',
 	height: '100%',
 }));
 
+const BottomSection = styled('div')({
+	marginTop: 'auto',
+});
+
 const menuItems: ISidebarItem[] = [
-	{ name: 'overview', href: '', icon: faSliders, group: true, items: [] },
+	{ name: 'overview', href: '', icon: faSliders, group: true, items: [], tags: ['wip'] },
 	{
 		name: 'modules',
 		group: true,
@@ -102,7 +109,10 @@ export default function Sidebar(): JSX.Element {
 			{isDesktop ? (
 				<StyledSidebar>
 					<ServerHeader />
-					{items}
+					<List>{items}</List>
+					<BottomSection>
+						<ServerListButton />
+					</BottomSection>
 				</StyledSidebar>
 			) : (
 				<MobileSidebar items={items} />
@@ -113,13 +123,18 @@ export default function Sidebar(): JSX.Element {
 
 function MobileSidebar({ items }: { items: JSX.Element[] }) {
 	const [open, setOpen] = useState(false);
+	const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	return (
 		<SwipeableDrawer
+			swipeAreaWidth={50}
+			disableBackdropTransition={!iOS}
+			disableDiscovery={iOS}
 			anchor='left'
 			open={open}
 			onOpen={() => setOpen(true)}
 			onClose={() => setOpen(false)}
+			onClick={() => setOpen(false)}
 			ModalProps={{
 				keepMounted: true,
 			}}
@@ -131,7 +146,10 @@ function MobileSidebar({ items }: { items: JSX.Element[] }) {
 		>
 			<StyledSidebar>
 				<ServerHeader />
-				{items}
+				<List>{items}</List>
+				<BottomSection>
+					<ServerListButton />
+				</BottomSection>
 			</StyledSidebar>
 		</SwipeableDrawer>
 	);

@@ -25,5 +25,9 @@
 		"privacyPolicy": "Polityka prywatności",
 
 		"contactForm": "Formularz kontaktowy"
+	},
+
+	"dashboardSidebar": {
+		"backToServers": "Powrót do listy serwerów"
 	}
 }

@@ -25,5 +25,9 @@
 		"privacyPolicy": "Privacy Policy",
 
 		"contactForm": "Contact Form"
+	},
+
+	"dashboardSidebar": {
+		"backToServers": "Back to server list"
 	}
 }

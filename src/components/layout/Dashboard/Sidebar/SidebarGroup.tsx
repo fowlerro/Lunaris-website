@@ -1,12 +1,19 @@
 import { ReactNode, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 
-import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import {
+	Collapse,
+	Divider,
+	List,
+	ListItemButton,
+	ListItemIcon,
+	ListItemSecondaryAction,
+	ListItemText,
+} from '@mui/material';
 
 import Icon from '@components/Icon';
 import ExpandIcon from '@components/ExpandIcon';
+import FeatureBadge from '@components/Badges/FeatureBadge';
 
 import { ItemText } from './SidebarItem';
 import type { ISidebarItem } from './Sidebar';
@@ -61,7 +68,14 @@ export default function SidebarGroup({ children, item, selected }: IProps): JSX.
 				>
 					{selected ? <ItemText>{t(`menu.${item.name}`)}</ItemText> : t(`menu.${item.name}`)}
 				</ListItemText>
-				{item.items?.length ? <ExpandIcon expanded={open} icon={faChevronDown} sx={{ width: '1rem' }} /> : undefined}
+				{item.tags?.length ? (
+					<ListItemSecondaryAction>
+						{item.tags.map(tag => (
+							<FeatureBadge key={tag} variant={tag} feature={item.name} />
+						))}
+					</ListItemSecondaryAction>
+				) : undefined}
+				{item.items?.length ? <ExpandIcon expanded={open} sx={{ width: '1rem' }} /> : undefined}
 			</ListItemButton>
 			{item.items?.length ? (
 				<Collapse in={open} unmountOnExit timeout='auto'>

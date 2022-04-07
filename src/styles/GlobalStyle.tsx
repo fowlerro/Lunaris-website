@@ -3,6 +3,10 @@ import { GlobalStyles } from '@mui/material';
 import theme from './theme';
 
 const globalCss = css`
+	:root {
+		color-scheme: dark;
+	}
+
 	html {
 		box-sizing: border-box;
 		scroll-behavior: smooth;

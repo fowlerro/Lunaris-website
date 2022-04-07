@@ -13,8 +13,8 @@ const Section = styled('section')(({ theme }) => ({
 	display: 'grid',
 	height: '100vh',
 	overflowY: 'hidden',
-	gridTemplateColumns: '300px auto',
-	gridTemplateRows: '84px auto',
+	gridTemplateColumns: 'minmax(0, 300px) auto',
+	gridTemplateRows: '84px minmax(0, auto)',
 	gridTemplateAreas: `'topbar topbar'
     'content content'`,
 
@@ -24,11 +24,15 @@ const Section = styled('section')(({ theme }) => ({
 	},
 }));
 
-const Content = styled('section')({
+const Content = styled('section')(({ theme }) => ({
 	gridArea: 'content',
 	padding: '1rem',
 	overflowY: 'auto',
-});
+
+	[theme.breakpoints.down('md')]: {
+		paddingBottom: '6rem',
+	},
+}));
 
 export default function DashboardLayout({ children }: IProps): JSX.Element {
 	return (

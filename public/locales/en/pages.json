@@ -14,5 +14,10 @@
 	"autoRoles": {
 		"title": "Lunaris - Auto Roles",
 		"description": "Manage roles automatically assigned to new members"
+	},
+
+	"overview": {
+		"title": "Lunaris - Overview",
+		"description": "Quick overview of your server"
 	}
 }

@@ -1,10 +1,8 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
-
-import BanTable from '@views/Dashboard/Overview/Bans/BanTable';
-import WarnTable from '@views/Dashboard/Overview/Warns/WarnTable';
 
 import DashboardLayout from '@layouts/DashboardLayout';
 import { validateCookies } from '@utils/utils';
@@ -18,15 +16,14 @@ interface IProps {
 }
 
 const DashboardOverview: NextPageWithLayout<IProps> = ({ bans, warns }: IProps) => {
-	console.log(warns);
+	const { t } = useTranslation('pages');
+	console.log({ bans, warns });
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Overview</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('overview.title')}</title>
+				<meta name='description' content={t('overview.description')} />
 			</Head>
-			{bans && bans.length && <BanTable bans={bans} />}
-			{warns && warns.length && <WarnTable warnedUsers={warns} />}
 		</>
 	);
 };
