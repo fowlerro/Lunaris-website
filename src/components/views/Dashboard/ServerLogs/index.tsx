@@ -6,8 +6,6 @@ import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
 
-import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
-
 import CategoryCard from './CategoryCard';
 
 import type { GuildChannels, GuildLogsPageData } from 'types';
@@ -83,7 +81,6 @@ export default function ServerLogs({ channels, guildLogs }: IProps): JSX.Element
 		});
 		reset(guildLogsData);
 	};
-	useLeaveWithChanges(isDirty);
 
 	return (
 		<Section>

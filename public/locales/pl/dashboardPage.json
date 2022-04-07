@@ -8,6 +8,7 @@
 	"serverList": "Przejdź do listy serwerów",
 	"expandReason": "Rozwiń powód",
 	"hideReason": "Zwiń powód",
+	"unsavedData": "Masz niezapisane dane!",
 
 	"menu": {
 		"modules": "Moduły",
@@ -31,16 +32,6 @@
 		"bots": "Boty",
 		"channels": "Kanały",
 		"voiceChannels": "Kanały głosowe"
-	},
-
-	"autoRoles": {
-		"addAutoRoleHeader": "Dodaj Auto Rolę",
-		"autoRoleListHeader": "Auto Role",
-		"addAutoRoleButton": "Dodaj Auto Rolę",
-
-		"selectRole": "Wybierz rolę",
-		"durationTooltip": "Podaj czas, po którym rola powinna zostać zabrana",
-		"unsavedData": "Masz niezapisane dane!"
 	},
 
 	"serverLogs": {

@@ -1,10 +1,17 @@
 import { useTranslation } from 'next-i18next';
 
-import { Autocomplete, MenuItem, TextField } from '@mui/material';
+import { Autocomplete, MenuItem, TextField, TextFieldProps, UseAutocompleteProps } from '@mui/material';
 
 import { getRoleColor } from '@utils/utils';
 
 import type { Role } from 'types';
+
+type Option = {
+	id: string;
+	label: string;
+	position: number;
+	color: string;
+};
 
 interface IProps {
 	roles: Role[];
@@ -13,7 +20,9 @@ interface IProps {
 	error?: boolean;
 	helperText?: string;
 	disableClearable?: boolean;
+	size?: TextFieldProps['size'];
 	onChange: (roleId: string) => void;
+	filterOptions?: (options: Option[]) => Option[];
 }
 
 export default function RoleSelect({
@@ -23,7 +32,9 @@ export default function RoleSelect({
 	error = false,
 	helperText,
 	disableClearable = false,
+	size = 'medium',
 	onChange,
+	filterOptions,
 }: IProps): JSX.Element {
 	const { t } = useTranslation();
 
@@ -34,12 +45,21 @@ export default function RoleSelect({
 		color: getRoleColor(role.color),
 	}));
 
-	console.log({ options, selected: options.find(role => role.id === value) });
+	const filter: UseAutocompleteProps<Option, boolean, boolean, boolean>['filterOptions'] = (
+		options,
+		{ inputValue }
+	) => {
+		if (!inputValue) return filterOptions ? filterOptions(options) : options;
+		const filteredOptions = options.filter(option => option.label.toLowerCase().includes(inputValue.toLowerCase()));
+
+		return filterOptions ? filterOptions(filteredOptions) : filteredOptions;
+	};
 
 	return (
 		<Autocomplete
 			options={options.sort((a, b) => b.position - a.position)}
-			isOptionEqualToValue={(option, value) => option.id === value.id}
+			isOptionEqualToValue={(option, value) => option.id == value?.id}
+			filterOptions={filter}
 			sx={{
 				textTransform: 'none',
 				['& .MuiAutocomplete-inputRoot']: {
@@ -57,7 +77,14 @@ export default function RoleSelect({
 				</MenuItem>
 			)}
 			renderInput={params => (
-				<TextField {...params} margin='dense' label={label ?? t('common:role')} error={error} helperText={helperText} />
+				<TextField
+					{...params}
+					size={size}
+					margin='dense'
+					label={label ?? t('common:role')}
+					error={error}
+					helperText={helperText}
+				/>
 			)}
 			onChange={(_, role) => onChange(role?.id ?? '')}
 		/>

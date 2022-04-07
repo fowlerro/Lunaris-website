@@ -10,5 +10,9 @@
 	"levels": {
 		"title": "Lunaris - Levels",
 		"description": "Manage XP system and level rewards for your server"
+	},
+	"autoRoles": {
+		"title": "Lunaris - Auto Roles",
+		"description": "Manage roles automatically assigned to new members"
 	}
 }

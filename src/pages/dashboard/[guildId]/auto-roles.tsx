@@ -1,15 +1,16 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
 import DashboardLayout from '@layouts/DashboardLayout';
+import AutoRoles from '@views/Dashboard/AutoRoles';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 import { validateCookies } from '@utils/utils';
 
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { AutoRolePageData, Role } from 'types';
-import AutoRoles from '@views/Dashboard/AutoRoles';
-import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	roles: Role[];
@@ -17,12 +18,13 @@ interface IProps {
 }
 
 const DashboardAutoRoles: NextPageWithLayout<IProps> = ({ roles, autoRoles }: IProps) => {
+	const { t } = useTranslation('pages');
 	useVisitedFeatures('set', 'autoRoles');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Auto Roles</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('autoRoles.title')}</title>
+				<meta name='description' content={t('autoRoles.description')} />
 			</Head>
 			<AutoRoles roles={roles} autoRolesData={autoRoles} />
 		</>

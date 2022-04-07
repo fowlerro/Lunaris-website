@@ -1,0 +1,10 @@
+{
+	"addHeader": "Add Auto Role",
+	"listHeader": "Auto Roles",
+
+	"durationTooltip": "Specify duration in which role will be taken from user.",
+
+	"buttons": {
+		"add": "Add Auto Role"
+	}
+}

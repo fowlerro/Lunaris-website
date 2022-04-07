@@ -7,6 +7,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from './Icon';
+import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
 
 interface IProps {
 	isDataChanged: boolean;
@@ -28,6 +29,8 @@ export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IPro
 		await onSave();
 		setIsSaving(false);
 	};
+
+	useLeaveWithChanges(isDataChanged);
 
 	return (
 		<Snackbar
@@ -72,7 +75,7 @@ export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IPro
 					</>
 				}
 			>
-				{t('dashboardPage:autoRoles.unsavedData')}
+				{t('dashboardPage:unsavedData')}
 			</Alert>
 		</Snackbar>
 	);

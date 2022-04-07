@@ -10,5 +10,9 @@
 	"levels": {
 		"title": "Lunaris - Poziomy",
 		"description": "Zarządzaj systemem XP oraz nagrodami za poziomy"
+	},
+	"autoRoles": {
+		"title": "Lunaris - Auto Role",
+		"description": "Zarządzaj rolami nadawanymi nowym użytkownikom"
 	}
 }

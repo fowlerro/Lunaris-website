@@ -1,8 +1,9 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 
-import { Badge, Box, InputLabel, styled, TextField, Tooltip } from '@mui/material';
+import { Box, InputLabel, styled, TextField } from '@mui/material';
 
+import Explanation from '@components/Explanation';
 import useIsDesktop from '@hooks/useIsDesktop';
 
 interface IProps {
@@ -49,6 +50,7 @@ export default function DurationPicker({ values, setValues, onChange }: IProps):
 		const days = parseInt(values.days, 10) * 24 * 60 * 60 * 1000;
 
 		onChange?.(days + hours + minutes + seconds);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [values.days, values.hours, values.minutes, values.seconds]);
 
 	const [focused, setFocused] = useState(false);
@@ -65,14 +67,12 @@ export default function DurationPicker({ values, setValues, onChange }: IProps):
 		};
 
 	return (
-		<Box>
-			<Tooltip title={t('dashboardPage:autoRoles.durationTooltip').toString()} placement='right-end'>
-				<Badge badgeContent={'?'} sx={{ color: theme => theme.colors.primary.main }}>
-					<InputLabel sx={{ marginLeft: '.5rem', marginRight: '.25rem' }} focused={focused}>
-						{t('common:duration')}
-					</InputLabel>
-				</Badge>
-			</Tooltip>
+		<Box sx={{ marginTop: '.5rem' }}>
+			<Explanation label={t('autoRolesPage:durationTooltip')} overlap>
+				<InputLabel sx={{ marginLeft: '.5rem', marginRight: '.25rem' }} focused={focused}>
+					{t('common:duration')}
+				</InputLabel>
+			</Explanation>
 			<Inputs focused={focused}>
 				<TextField
 					type='number'

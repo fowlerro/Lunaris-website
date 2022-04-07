@@ -1,0 +1,10 @@
+{
+	"addHeader": "Dodaj Auto Rolę",
+	"listHeader": "Auto Role",
+
+	"durationTooltip": "Podaj czas, po którym rola powinna zostać zabrana",
+
+	"buttons": {
+		"add": "Dodaj Auto Rolę"
+	}
+}

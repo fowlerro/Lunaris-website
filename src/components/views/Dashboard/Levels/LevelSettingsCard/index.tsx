@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { Control, UseFormRegister, FieldErrors, useWatch } from 'react-hook-form';
 
-import { Switch, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import DashboardCard from '@components/DashboardCard';
 import Explanation from '@components/Explanation';
+import ControlledSwitch from '@components/Inputs/Controlled/ControlledSwitch';
 
 import MultiplierSlider from './MultiplierSlider';
 import LevelUpMessageMode from './LevelUpMessageMode';
@@ -34,7 +35,7 @@ export default function LevelSettingsCard({ defaultValues, channels, control, er
 			initialExpand
 			action={
 				<Explanation label={t('common:toggleModule')}>
-					<Switch {...register('status')} defaultChecked={defaultValues.status} />
+					<ControlledSwitch name='status' control={control} />
 				</Explanation>
 			}
 		>

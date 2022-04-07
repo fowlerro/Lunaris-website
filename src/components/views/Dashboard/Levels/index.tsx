@@ -9,7 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
-import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
 
 import LevelSettingsCard from './LevelSettingsCard';
 import LevelRewardsCard from './LevelRewardsCard';
@@ -81,8 +80,6 @@ export default function Levels({ channels, roles, levelConfig }: IProps): JSX.El
 		},
 		resolver: yupResolver(validationSchema),
 	});
-
-	useLeaveWithChanges(isDirty);
 
 	const onSubmit: SubmitHandler<LevelConfigPageData> = async levelData => {
 		const { data } = await axios.put(`${process.env.API_URL}/guilds/${guildId}/levels`, levelData, {

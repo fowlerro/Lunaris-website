@@ -8,6 +8,7 @@
 	"serverList": "Go to server list",
 	"expandReason": "Expand reason",
 	"hideReason": "Hide reason",
+	"unsavedData": "You have unsaved data!",
 
 	"menu": {
 		"modules": "Modules",
@@ -31,16 +32,6 @@
 		"bots": "Bots",
 		"channels": "Channels",
 		"voiceChannels": "Voice channels"
-	},
-
-	"autoRoles": {
-		"addAutoRoleHeader": "Add Auto Role",
-		"autoRoleListHeader": "Auto Roles",
-		"addAutoRoleButton": "Add Auto Role",
-
-		"selectRole": "Select role",
-		"durationTooltip": "Specify duration in which role will be taken from user.",
-		"unsavedData": "You have unsaved data!"
 	},
 
 	"serverLogs": {
