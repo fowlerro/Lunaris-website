@@ -23,8 +23,8 @@ const Section = styled('section')({
 
 const IconWrapper = styled('div')({
 	position: 'relative',
-	width: '2rem',
-	height: '2rem',
+	width: '1.5rem',
+	height: '1.5rem',
 });
 
 export default function ServerListSection(): JSX.Element {
