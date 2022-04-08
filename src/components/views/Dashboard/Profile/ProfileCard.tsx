@@ -1,8 +1,12 @@
 import { Paper, styled } from '@mui/material';
-import ProfileHeader from './ProfileHeader';
+
 import useUser from '@hooks/useUser';
-import type { ProfileWithRank } from 'types';
+import { loginURL } from '@utils/constants';
+
+import ProfileHeader from './ProfileHeader';
 import ProfileContent from './ProfileContent';
+
+import type { ProfileWithRank } from 'types';
 
 interface IProps {
 	profile: ProfileWithRank;
@@ -19,7 +23,7 @@ const StyledCard = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProfileCard({ profile }: IProps): JSX.Element {
-	const user = useUser({ redirectTo: '/' });
+	const user = useUser({ redirectTo: loginURL });
 
 	if (!user) return <></>;
 

@@ -1,23 +1,26 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
 import ProfileSection from '@views/Dashboard/Profile/ProfileSection';
-import { validateCookies } from '@utils/utils';
-import type { ProfileWithRank } from 'types';
 import ServerListSection from '@views/Dashboard/ServerListSection';
+import { validateCookies } from '@utils/utils';
+
+import type { ProfileWithRank } from 'types';
 
 interface IProps {
 	profile: ProfileWithRank;
 }
 
 const Dashboard: NextPage<IProps> = ({ profile }: IProps) => {
+	const { t } = useTranslation('pages');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Profile</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('profile.title')}</title>
+				<meta name='description' content={t('profile.description')} />
 			</Head>
 			<ProfileSection profile={profile} />
 			<ServerListSection />

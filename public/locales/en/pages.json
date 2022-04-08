@@ -19,5 +19,10 @@
 	"overview": {
 		"title": "Lunaris - Overview",
 		"description": "Quick overview of your server"
+	},
+
+	"profile": {
+		"title": "Lunaris - Profile",
+		"description": "View your profile"
 	}
 }

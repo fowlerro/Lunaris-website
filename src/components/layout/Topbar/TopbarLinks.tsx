@@ -11,7 +11,7 @@ import Profile from './Profile';
 import UserMenuItemsMobile from './UserMenuItemsMobile';
 import useUser from '@hooks/useUser';
 import useIsDesktop from '@hooks/useIsDesktop';
-import { loginURL } from './Profile/LoginButton';
+import { loginURL } from '@utils/constants';
 
 const ActionList = styled(List)({
 	display: 'flex',

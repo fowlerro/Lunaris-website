@@ -68,14 +68,12 @@ export default function SidebarGroup({ children, item, selected }: IProps): JSX.
 				>
 					{selected ? <ItemText>{t(`menu.${item.name}`)}</ItemText> : t(`menu.${item.name}`)}
 				</ListItemText>
-				{item.tags?.length ? (
-					<ListItemSecondaryAction>
-						{item.tags.map(tag => (
-							<FeatureBadge key={tag} variant={tag} feature={item.name} />
-						))}
-					</ListItemSecondaryAction>
-				) : undefined}
-				{item.items?.length ? <ExpandIcon expanded={open} sx={{ width: '1rem' }} /> : undefined}
+				<ListItemSecondaryAction>
+					{item.tags?.length
+						? item.tags.map(tag => <FeatureBadge key={tag} variant={tag} feature={item.name} />)
+						: undefined}
+					{item.items?.length ? <ExpandIcon expanded={open} sx={{ width: '1rem' }} /> : undefined}
+				</ListItemSecondaryAction>
 			</ListItemButton>
 			{item.items?.length ? (
 				<Collapse in={open} unmountOnExit timeout='auto'>

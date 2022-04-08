@@ -1,6 +1,8 @@
-import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-import { ProfileStatistics } from 'types';
+
+import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
+
+import type { ProfileStatistics } from 'types';
 
 interface IProps {
 	type: 'text' | 'voice';
@@ -29,7 +31,7 @@ const ProgressBar = styled(LinearProgress)(({ theme }) => ({
 		backgroundColor: theme.colors.background.lighter,
 	},
 	[`& .${linearProgressClasses.bar}`]: {
-		borderRadius: 5,
+		borderRadius: '1rem',
 		backgroundColor: theme.colors.primary.main,
 	},
 }));

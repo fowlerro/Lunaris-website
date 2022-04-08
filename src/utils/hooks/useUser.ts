@@ -10,7 +10,22 @@ interface IProps {
 	redirectIfFound?: boolean;
 }
 
-export default function useUser({ redirectTo, redirectIfFound }: IProps): User | null {
+export default function useUser(): User | null;
+export default function useUser({
+	redirectTo,
+	redirectIfFound,
+}: {
+	redirectTo: string;
+	redirectIfFound?: boolean;
+}): User;
+export default function useUser({
+	redirectTo,
+	redirectIfFound,
+}: {
+	redirectTo?: undefined;
+	redirectIfFound?: boolean;
+}): User | null;
+export default function useUser({ redirectTo, redirectIfFound }: IProps = {}): User | null {
 	const { data, error } = useSWR(`${process.env.API_URL}/auth`, fetcher, {
 		errorRetryCount: 3,
 		revalidateOnFocus: false,
@@ -24,5 +39,5 @@ export default function useUser({ redirectTo, redirectIfFound }: IProps): User |
 		if ((redirectTo && !redirectIfFound && !hasUser) || (redirectIfFound && hasUser)) Router.push(redirectTo);
 	}, [redirectTo, redirectIfFound, finished, hasUser]);
 
-	return error ? null : user;
+	return user;
 }

@@ -3,8 +3,8 @@ import { useTranslation } from 'next-i18next';
 import { Button, styled } from '@mui/material';
 import { keyframes } from '@emotion/react';
 
-import { loginURL } from '@components/layout/Topbar/Profile/LoginButton';
 import useUser from '@hooks/useUser';
+import { loginURL } from '@utils/constants';
 
 const ButtonSlide = keyframes`
   from { transform: translateX(0) }

@@ -1,5 +1,8 @@
 import { Box, Paper, styled, Typography } from '@mui/material';
+
 import Avatar from '@components/Avatar';
+
+import { getUserAvatar } from '@utils/utils';
 
 interface IProps {
 	discordId: string;
@@ -26,9 +29,7 @@ const AvatarWrapper = styled(Box)({
 });
 
 export default function ProfileHeader({ discordId, discordTag, avatar }: IProps): JSX.Element {
-	const avatarURL = avatar
-		? `https://cdn.discordapp.com/avatars/${discordId}/${avatar}.webp`
-		: `https://cdn.discordapp.com/embed/avatars/${parseInt(discordTag.substring(discordTag.length - 4)) % 5}.png`;
+	const avatarURL = getUserAvatar(discordId, avatar);
 
 	return (
 		<CardHeader elevation={0}>

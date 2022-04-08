@@ -1,5 +1,7 @@
 import { Paper, styled } from '@mui/material';
+
 import ProfileStats from './ProfileStats';
+
 import type { ProfileStatistics, ProfileWithRank } from 'types';
 
 interface IProps {

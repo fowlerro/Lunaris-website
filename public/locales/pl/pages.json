@@ -19,5 +19,10 @@
 	"overview": {
 		"title": "Lunaris - Przegląd",
 		"description": "Szybki dostęp do przeglądu serwera"
+	},
+
+	"profile": {
+		"title": "Lunaris - Profil",
+		"description": "Zarządzaj swoim profilem"
 	}
 }

@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 
 import Link from '@components/Link';
 
-export const loginURL = `${process.env.API_URL}/auth/discord`;
+import { loginURL } from '@utils/constants';
 
 export default function LoginButton(): JSX.Element {
 	const { t } = useTranslation('common');

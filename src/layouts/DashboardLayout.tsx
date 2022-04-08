@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
+import { useRouter } from 'next/router';
 
 import { styled } from '@mui/material';
 
 import Topbar from '@components/layout/Dashboard/Topbar';
 import Sidebar from '@components/layout/Dashboard/Sidebar/Sidebar';
+import useLastManagedServer from '@hooks/useLastManagedServer';
 
 interface IProps {
 	children: ReactNode;
@@ -35,6 +37,9 @@ const Content = styled('section')(({ theme }) => ({
 }));
 
 export default function DashboardLayout({ children }: IProps): JSX.Element {
+	const router = useRouter();
+	const guildId = router.query.guildId as string;
+	useLastManagedServer({ guildId });
 	return (
 		<Section>
 			<Topbar />
