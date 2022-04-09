@@ -6,7 +6,7 @@ import { loginURL } from '@utils/constants';
 import ProfileHeader from './ProfileHeader';
 import ProfileContent from './ProfileContent';
 
-import type { ProfileWithRank } from 'types';
+import type { ProfileWithRank } from '@types';
 
 interface IProps {
 	profile: ProfileWithRank;

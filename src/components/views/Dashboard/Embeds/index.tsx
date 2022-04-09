@@ -5,7 +5,7 @@ import EmbedList from './EmbedList';
 import EmbedCreator from './EmbedCreator';
 import EmbedEdit from './EmbedEdit';
 
-import type { EmbedMessage, GuildChannels } from 'types';
+import type { EmbedMessage, GuildChannels } from '@types';
 
 interface IProps {
 	channels: GuildChannels;

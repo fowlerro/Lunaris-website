@@ -2,11 +2,13 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { AxiosResponse } from 'axios';
 
+import { Box, Typography } from '@mui/material';
+
+import ServerIcon from '@components/ServerIcon';
+
 import { fetcher } from '@utils/utils';
 
-import type { GuildStats } from 'types';
-import { Box, Typography } from '@mui/material';
-import ServerIcon from '@components/ServerIcon';
+import type { GuildStats } from '@types';
 
 export default function ServerHeader(): JSX.Element {
 	const router = useRouter();

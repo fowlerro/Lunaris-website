@@ -11,7 +11,7 @@ import Link from '@components/Link';
 import useLastManagedServer from '@hooks/useLastManagedServer';
 import { fetcher } from '@utils/utils';
 
-import type { GuildInfo } from 'types';
+import type { GuildInfo } from '@types';
 
 const Section = styled('section')({
 	padding: '1rem',

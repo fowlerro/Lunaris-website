@@ -1,6 +1,8 @@
-import CommandForm from '@components/Forms/CommandForm';
-import { styled, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
+
+import { styled, Typography } from '@mui/material';
+
+import CommandForm from '@components/Forms/CommandForm';
 
 const Section = styled('section')(({ theme }) => ({
 	backgroundColor: theme.colors.background.primary,

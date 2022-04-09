@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import {
 	Button,
@@ -21,9 +22,9 @@ import Icon from '@components/Icon';
 import View from '@components/View';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
-import type { EmbedMessage, GuildChannels } from 'types';
-import { useTranslation } from 'next-i18next';
 import useIsDesktop from '@hooks/useIsDesktop';
+
+import type { EmbedMessage, GuildChannels } from '@types';
 
 interface IProps {
 	channels: GuildChannels;

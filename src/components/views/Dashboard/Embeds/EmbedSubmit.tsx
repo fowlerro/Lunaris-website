@@ -15,7 +15,7 @@ import ChannelSelect from '@components/Inputs/ChannelSelect';
 import Icon from '@components/Icon';
 import TextField from '@components/Inputs/TextField';
 
-import type { EmbedMessage, GuildChannels } from 'types';
+import type { EmbedMessage, GuildChannels } from '@types';
 
 interface IProps {
 	register: UseFormRegister<EmbedMessage>;

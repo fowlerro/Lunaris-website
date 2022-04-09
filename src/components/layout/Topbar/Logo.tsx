@@ -1,5 +1,7 @@
 import Image from 'next/image';
+
 import { styled } from '@mui/material';
+
 import logo from '@assets/logo192.png';
 
 const Wrapper = styled('div')(({ theme }) => ({

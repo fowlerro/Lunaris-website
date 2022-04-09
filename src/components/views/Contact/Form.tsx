@@ -2,10 +2,6 @@ import { Fragment, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { MenuItem, styled, TextField, Typography } from '@mui/material';
 
-// const BugReportForm = lazy(() => import('@components/Forms/BugReportForm'));
-// const CommandForm = lazy(() => import('@components/Forms/CommandForm'));
-// const ModuleForm = lazy(() => import('@components/Forms/ModuleForm'));
-// const OtherForm = lazy(() => import('@components/Forms/OtherForm'));
 import BugReportForm from '@components/Forms/BugReportForm';
 import CommandForm from '@components/Forms/CommandForm';
 import ModuleForm from '@components/Forms/ModuleForm';

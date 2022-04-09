@@ -12,7 +12,7 @@ import LevelUpMessageMode from './LevelUpMessageMode';
 import LevelUpChannel from './LevelUpChannel';
 import LevelUpMessageFormat from './LevelUpMessageFormat';
 
-import type { GuildChannels, LevelConfigPageData } from 'types';
+import type { GuildChannels, LevelConfigPageData } from '@types';
 
 interface IProps {
 	defaultValues: LevelConfigPageData;

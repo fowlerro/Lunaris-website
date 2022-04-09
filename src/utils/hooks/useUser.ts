@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
 
-import { User } from 'types';
 import { fetcher } from '@utils/utils';
+
+import type { User } from '@types';
 
 interface IProps {
 	redirectTo?: string;

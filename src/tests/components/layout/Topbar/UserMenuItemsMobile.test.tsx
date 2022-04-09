@@ -1,7 +1,7 @@
 import UserMenuItemsMobile from '@components/layout/Topbar/UserMenuItemsMobile';
 import { screen } from '@testing-library/dom';
 import renderWithTheme from '@utils/renderWithTheme';
-import type { User } from 'types';
+import type { User } from '@types';
 
 describe('Topbar UserMenuItemsMobile component', () => {
 	it('should render', () => {

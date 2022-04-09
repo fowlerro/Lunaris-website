@@ -1,7 +1,10 @@
 import { useTranslation } from 'next-i18next';
+
 import { styled, Typography } from '@mui/material';
+
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import Link from '@components/Link';
 
 const StyledFooter = styled('footer')(({ theme }) => ({

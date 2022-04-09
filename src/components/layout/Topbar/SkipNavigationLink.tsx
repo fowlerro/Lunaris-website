@@ -1,5 +1,6 @@
-import { styled } from '@mui/material';
 import { useTranslation } from 'next-i18next';
+
+import { styled } from '@mui/material';
 
 const SkipLink = styled('a')(({ theme }) => ({
 	position: 'absolute',

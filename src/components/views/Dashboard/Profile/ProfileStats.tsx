@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 
 import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
 
-import type { ProfileStatistics } from 'types';
+import type { ProfileStatistics } from '@types';
 
 interface IProps {
 	type: 'text' | 'voice';

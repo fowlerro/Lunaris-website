@@ -1,4 +1,6 @@
+import { useRouter } from 'next/router';
 import { Control, useWatch } from 'react-hook-form';
+
 import { formatRelative } from 'date-fns';
 import { pl } from 'date-fns/locale';
 
@@ -7,8 +9,7 @@ import { useMediaQuery, useTheme, styled } from '@mui/material';
 import Avatar from '@components/Avatar';
 import logo from '@assets/logo192.png';
 
-import type { EmbedMessage } from 'types';
-import { useRouter } from 'next/router';
+import type { EmbedMessage } from '@types';
 
 const Container = styled('div')(({ theme }) => ({
 	position: 'relative',

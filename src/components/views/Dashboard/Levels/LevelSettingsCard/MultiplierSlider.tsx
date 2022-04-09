@@ -3,7 +3,7 @@ import { Controller, Control } from 'react-hook-form';
 
 import { Slider, Typography } from '@mui/material';
 
-import type { LevelConfigPageData } from 'types';
+import type { LevelConfigPageData } from '@types';
 
 interface IProps {
 	control: Control<LevelConfigPageData>;

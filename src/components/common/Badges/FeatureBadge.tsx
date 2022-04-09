@@ -1,11 +1,12 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+
 import { Chip, ChipProps, styled, Tooltip } from '@mui/material';
 
 import { faMeteor, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
-import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 
 interface IProps {
 	variant: 'wip' | 'premium' | 'new';

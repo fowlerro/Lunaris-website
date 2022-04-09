@@ -1,5 +1,7 @@
 import { useTranslation } from 'next-i18next';
+
 import { styled, Typography } from '@mui/material';
+
 import Form from './Form';
 
 const Section = styled('section')(({ theme }) => ({

@@ -5,9 +5,9 @@ import { ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, st
 
 import Link from '@components/Link';
 import Icon from '@components/Icon';
+import FeatureBadge from '@components/Badges/FeatureBadge';
 
 import type { ISidebarItem } from './Sidebar';
-import FeatureBadge from '@components/Badges/FeatureBadge';
 
 interface IProps {
 	item: ISidebarItem;

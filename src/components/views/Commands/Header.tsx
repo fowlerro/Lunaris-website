@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'next-i18next';
+
 import { InputAdornment, MenuItem, styled, TextField, Typography } from '@mui/material';
+
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

@@ -1,9 +1,11 @@
 import { useTranslation } from 'next-i18next';
 
-import Link from '@components/Link';
 import { MenuItem } from '@mui/material';
-import Icon from '@components/Icon';
+
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
+import Link from '@components/Link';
+import Icon from '@components/Icon';
 
 export default function ServerListButton(): JSX.Element {
 	const { t } = useTranslation('layout');

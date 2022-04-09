@@ -1,7 +1,8 @@
+import { useTranslation } from 'next-i18next';
+
 import { Masonry } from '@mui/lab';
 import { styled, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
-import React from 'react';
+
 import CommandCard from './CommandCard';
 
 interface IProps {

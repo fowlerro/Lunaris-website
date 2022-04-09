@@ -6,7 +6,7 @@ import { Checkbox, FormControlLabel, FormGroup, styled } from '@mui/material';
 import DashboardCard from '@components/DashboardCard';
 import ChannelSelect from '@components/Inputs/ChannelSelect';
 
-import type { GuildChannels, GuildLogsPageData, GuildLogTypes } from 'types';
+import type { GuildChannels, GuildLogsPageData, GuildLogTypes } from '@types';
 
 interface IProps {
 	category: string;

@@ -7,7 +7,7 @@ import axios from 'axios';
 import ServersSection from '@views/Servers/ServersSection';
 import { validateCookies } from '@utils/utils';
 
-import type { MutualGuilds } from 'types';
+import type { MutualGuilds } from '@types';
 
 interface IProps {
 	guilds: MutualGuilds;

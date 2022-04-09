@@ -16,7 +16,7 @@ import ControlledSwitch from '@components/Inputs/Controlled/ControlledSwitch';
 
 import { getRoleColor } from '@utils/utils';
 
-import type { AutoRolePageData, Role } from 'types';
+import type { AutoRolePageData, Role } from '@types';
 
 interface IProps {
 	roles: Role[];
