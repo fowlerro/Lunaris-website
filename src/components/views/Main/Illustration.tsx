@@ -1,7 +1,3 @@
-// const Svg = styled.svg`
-// 	${tw`max-w-xs w-10/12 mt-5 md:mt-28 md:max-w-md`}
-// `;
-
 import { styled } from '@mui/material';
 
 const Svg = styled('svg')(({ theme }) => ({

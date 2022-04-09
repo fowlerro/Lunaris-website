@@ -15,7 +15,7 @@ const CardContent = styled(Paper)(({ theme }) => ({
 	flexDirection: 'column',
 	alignItems: 'center',
 	backgroundColor: theme.colors.background.secondary,
-	borderRadius: '12px',
+	borderRadius: theme.shape.borderRadius,
 	padding: '2rem 1rem',
 }));
 

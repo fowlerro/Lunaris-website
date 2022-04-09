@@ -17,7 +17,7 @@ const Wrapper = styled('div')(({ theme }) => ({
 export default function Logo(): JSX.Element {
 	return (
 		<Wrapper>
-			<Image src={logo} alt='Logo' layout='fill' />
+			<Image src={logo} alt='Logo' layout='fill' objectFit='contain' />
 		</Wrapper>
 	);
 }

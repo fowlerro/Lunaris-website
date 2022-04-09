@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+
 import { Box, Button, Divider, Drawer, List, ListItem, styled } from '@mui/material';
-import { faBell } from '@fortawesome/free-regular-svg-icons/faBell';
 
 import LanguageSwitcher from '@components/LanguageSwitcher';
-import Icon from '@components/Icon';
+
 import Links, { LinkItem } from './Links';
 import Hamburger from './Hamburger';
 import Profile from './Profile';
 import UserMenuItemsMobile from './UserMenuItemsMobile';
+
 import useUser from '@hooks/useUser';
 import useIsDesktop from '@hooks/useIsDesktop';
 import { loginURL } from '@utils/constants';
@@ -29,7 +30,7 @@ const DrawerContainer = styled(Box)(({ theme }) => ({
 const ProfileSection = styled(Box)({
 	display: 'flex',
 	justifyContent: 'center',
-	marginBottom: '2em',
+	marginBottom: '2rem',
 });
 
 export default function TopbarLinks(): JSX.Element {
@@ -46,9 +47,6 @@ export default function TopbarLinks(): JSX.Element {
 			<ActionList aria-label='Action Buttons'>
 				<ActionItem>
 					<LanguageSwitcher />
-				</ActionItem>
-				<ActionItem>
-					<Icon icon={faBell} />
 				</ActionItem>
 				{isDesktop ? (
 					<LinkItem>
@@ -69,7 +67,7 @@ function Mobile(): JSX.Element {
 
 	return (
 		<>
-			<ActionItem sx={{ marginInline: '1em' }}>
+			<ActionItem sx={{ marginInline: '1rem' }}>
 				<Hamburger expanded={expanded} setExpanded={setExpanded} />
 			</ActionItem>
 			<Drawer anchor='top' open={expanded} onClose={() => setExpanded(false)}>
@@ -86,7 +84,7 @@ function Mobile(): JSX.Element {
 						<ProfileSection>
 							<Button
 								variant='contained'
-								sx={{ paddingInline: '2em' }}
+								sx={{ paddingInline: '2rem' }}
 								disableFocusRipple
 								href={loginURL}
 								aria-label='Login'

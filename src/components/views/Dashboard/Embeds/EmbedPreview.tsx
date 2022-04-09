@@ -1,5 +1,6 @@
-import moment from 'moment';
 import { Control, useWatch } from 'react-hook-form';
+import { formatRelative } from 'date-fns';
+import { pl } from 'date-fns/locale';
 
 import { useMediaQuery, useTheme, styled } from '@mui/material';
 
@@ -7,6 +8,7 @@ import Avatar from '@components/Avatar';
 import logo from '@assets/logo192.png';
 
 import type { EmbedMessage } from 'types';
+import { useRouter } from 'next/router';
 
 const Container = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -244,6 +246,7 @@ interface IProps {
 }
 
 export default function EmbedPreview({ control }: IProps) {
+	const { locale } = useRouter();
 	const { messageContent, embed } = useWatch<EmbedMessage>({
 		control,
 	});
@@ -258,7 +261,7 @@ export default function EmbedPreview({ control }: IProps) {
 					<Username>Lunaris</Username>
 					<Badge>bot</Badge>
 					<Timestamp>
-						<time>{moment().calendar()}</time>
+						<time>{formatRelative(new Date(), new Date(), { locale: locale === 'pl' ? pl : undefined })}</time>
 					</Timestamp>
 				</UsernameWrapper>
 				<MessageContentWrapper value={messageContent} />
@@ -365,13 +368,14 @@ function FooterWrapper({
 	timestamp?: EmbedMessage['embed']['timestamp'];
 	thumbnailURL?: string;
 }) {
+	const { locale } = useRouter();
 	return footer?.text || timestamp ? (
 		<Footer style={{ gridColumn: thumbnailURL ? '1 / 3' : '1' }}>
 			{footer?.iconURL ? <FooterIcon src={footer.iconURL} alt='icon' /> : undefined}
 			{footer?.text ? <FooterChild>{footer?.text}</FooterChild> : undefined}
 			{timestamp ? (
 				<FooterChild>
-					<time>{moment(timestamp).calendar()}</time>
+					<time>{formatRelative(timestamp, new Date(), { locale: locale === 'pl' ? pl : undefined })}</time>
 				</FooterChild>
 			) : undefined}
 		</Footer>

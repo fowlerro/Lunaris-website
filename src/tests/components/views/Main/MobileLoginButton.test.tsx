@@ -18,7 +18,7 @@ describe('Hero MobileLoginButton component', () => {
 	});
 
 	it('should have dashboard href if not logged in', () => {
-		mockedUseUser.mockReturnValueOnce({ discordId: '123', discordTag: 'test#0000', avatar: '123' });
+		mockedUseUser.mockReturnValueOnce({ discordId: '123', discordTag: 'test#0000', avatar: '123', banner: null });
 		renderWithTheme(<MobileLoginButton />);
 		expect(screen.getByRole('link')).toHaveAttribute('href', '/dashboard');
 	});

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import moment from 'moment';
 
 import { useFieldArray, Control, Controller, UseFormRegister, UseFieldArrayRemove, FieldErrors } from 'react-hook-form';
 
@@ -326,7 +325,7 @@ function Timestamp({ control }: ITimestampProps): JSX.Element {
 				<DateTimePicker
 					mask='__.__.____ __:__'
 					label={t('dashboardPage:embeds.form.labels.timestamp')}
-					value={moment(field.value)}
+					value={field.value ? new Date(field.value) : null}
 					onChange={value => field.onChange(value?.valueOf())}
 					renderInput={params => (
 						<TextField

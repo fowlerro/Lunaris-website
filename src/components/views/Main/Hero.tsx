@@ -1,11 +1,14 @@
 import { useTranslation } from 'next-i18next';
-import { keyframes } from '@emotion/react';
+
 import { Box } from '@mui/system';
 import { Button, styled, Typography, useTheme } from '@mui/material';
+import { keyframes } from '@emotion/react';
 
 import Illustration from './Illustration';
 import { MobileLoginButton } from './MobileLoginButton';
+
 import useIsDesktop from '@hooks/useIsDesktop';
+import { inviteURL } from '@utils/constants';
 
 const ButtonSlide = keyframes`
   from { transform: translateX(0) }
@@ -49,9 +52,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 	},
 }));
 
-const inviteLink =
-	'https://discord.com/api/oauth2/authorize?client_id=739412828737372181&permissions=0&redirect_uri=http%3A%2F%2F192.168.0.103%3A3000%2Finvite%2Fredirect&response_type=code&scope=identify%20bot%20applications.commands';
-
 export default function Hero(): JSX.Element {
 	const { t } = useTranslation();
 	const theme = useTheme();
@@ -71,7 +71,7 @@ export default function Hero(): JSX.Element {
 					{t('mainPage:heroParagraph')}
 				</Typography>
 				{!isDesktop && <MobileLoginButton />}
-				<StyledButton variant={isDesktop ? 'contained' : 'outlined'} href={inviteLink}>
+				<StyledButton variant={isDesktop ? 'contained' : 'outlined'} href={inviteURL}>
 					{t('common:inviteBot')}
 				</StyledButton>
 			</TextWrapper>

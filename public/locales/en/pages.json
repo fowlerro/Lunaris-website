@@ -24,5 +24,10 @@
 	"profile": {
 		"title": "Lunaris - Profile",
 		"description": "View your profile"
+	},
+
+	"servers": {
+		"title": "Lunaris - Servers",
+		"description": "List of all servers you can manage or invite Lunaris to"
 	}
 }

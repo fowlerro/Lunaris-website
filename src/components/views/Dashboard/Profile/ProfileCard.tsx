@@ -18,18 +18,16 @@ const StyledCard = styled(Paper)(({ theme }) => ({
 	maxWidth: '20rem',
 	marginTop: '4rem',
 	marginInline: 'auto',
-	borderRadius: '12px',
+	borderRadius: theme.shape.borderRadius,
 	filter: 'drop-shadow(0 0 8px rgba(0,0,0,.5))',
 }));
 
 export default function ProfileCard({ profile }: IProps): JSX.Element {
 	const user = useUser({ redirectTo: loginURL });
-
 	if (!user) return <></>;
-
 	return (
 		<StyledCard elevation={0}>
-			<ProfileHeader discordId={user.discordId} discordTag={user.discordTag} avatar={user.avatar} />
+			<ProfileHeader user={user} />
 			<ProfileContent statistics={profile.statistics} xpNeeded={profile.xpNeeded} rank={profile.rank} />
 		</StyledCard>
 	);

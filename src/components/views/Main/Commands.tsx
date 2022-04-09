@@ -1,5 +1,7 @@
 import { useTranslation } from 'next-i18next';
+
 import { styled, Typography } from '@mui/material';
+import Link from '@components/Link';
 
 const Paragraph = styled(Typography)({
 	whiteSpace: 'pre-line',
@@ -24,7 +26,21 @@ export default function Commands(): JSX.Element {
 	return (
 		<Section>
 			<Typography variant='h2'>{t('common:commands')}</Typography>
-			<Paragraph variant='subtitle1'>{t('mainPage:commandParagraph')}</Paragraph>
+			<Paragraph variant='subtitle1' sx={{ lineHeight: 1 }}>
+				{t('mainPage:commandParagraph')}
+			</Paragraph>
+			<Link
+				href='/commands'
+				sx={{
+					color: theme => theme.colors.text.primary,
+					textDecoration: 'none',
+					'&:hover': { textDecoration: 'underline' },
+				}}
+			>
+				<Paragraph variant='subtitle1' sx={{ lineHeight: 1 }}>
+					{t('mainPage:commandParagraph2')}
+				</Paragraph>
+			</Link>
 		</Section>
 	);
 }

@@ -21,6 +21,13 @@ export const getUserAvatar = (userId: string, avatarHash: string | null) => {
 	return avatarURL;
 };
 
+export const getUserBanner = (userId: string, bannerHash: string | null) => {
+	const extension = bannerHash?.startsWith('a_') ? 'gif' : 'webp';
+	const bannerURL = bannerHash ? `https://cdn.discordapp.com/banners/${userId}/${bannerHash}.${extension}` : null;
+
+	return bannerURL;
+};
+
 export const EMBED_LIMITS = {
 	messageContent: 2000,
 	author: 256,

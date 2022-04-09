@@ -23,6 +23,7 @@ const StyledList = styled(List)(({ theme }) => ({
 
 export const LinkItem = styled(ListItem)(({ theme }) => ({
 	flexBasis: 'fit-content',
+	margin: 0,
 	'& a': {
 		cursor: 'pointer',
 		width: '100%',

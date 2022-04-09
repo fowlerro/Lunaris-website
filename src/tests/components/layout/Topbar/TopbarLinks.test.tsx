@@ -83,7 +83,7 @@ describe('TopbarLinks Mobile component', () => {
 	});
 
 	it('should contain UserMenu if logged in', () => {
-		mockedUseUser.mockReturnValue({ discordId: '123', discordTag: 'test#0000', avatar: '123' });
+		mockedUseUser.mockReturnValue({ discordId: '123', discordTag: 'test#0000', avatar: '123', banner: null });
 		renderWithTheme(<TopbarLinks />);
 		userEvent.click(screen.getByRole('button'));
 		expect(screen.getByRole('link', { name: 'profileMenu.profile' })).toBeInTheDocument();

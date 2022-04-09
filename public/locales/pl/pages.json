@@ -24,5 +24,10 @@
 	"profile": {
 		"title": "Lunaris - Profil",
 		"description": "Zarządzaj swoim profilem"
+	},
+
+	"servers": {
+		"title": "Lunaris - Serwery",
+		"description": "Lista serwerów którymi możesz zarządzać"
 	}
 }

@@ -1,10 +1,15 @@
+import { Fragment, useState } from 'react';
+import { useTranslation } from 'next-i18next';
+import { MenuItem, styled, TextField, Typography } from '@mui/material';
+
+// const BugReportForm = lazy(() => import('@components/Forms/BugReportForm'));
+// const CommandForm = lazy(() => import('@components/Forms/CommandForm'));
+// const ModuleForm = lazy(() => import('@components/Forms/ModuleForm'));
+// const OtherForm = lazy(() => import('@components/Forms/OtherForm'));
 import BugReportForm from '@components/Forms/BugReportForm';
 import CommandForm from '@components/Forms/CommandForm';
 import ModuleForm from '@components/Forms/ModuleForm';
 import OtherForm from '@components/Forms/OtherForm';
-import { MenuItem, styled, TextField, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
 
 const Section = styled('div')({
 	maxWidth: '25rem',
@@ -25,7 +30,7 @@ export default function Form(): JSX.Element {
 			? BugReportForm
 			: topic === 'other'
 			? OtherForm
-			: React.Fragment;
+			: Fragment;
 
 	const { t } = useTranslation();
 	return (

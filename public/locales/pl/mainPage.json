@@ -1,4 +1,7 @@
 {
+	"title": "Lunaris - Discord Bot",
+	"description": "Lunaris is a Discord bot that provides a variety of useful commands and features for Discord servers.",
 	"heroParagraph": "Another general purpose discord bot, but the most up-to-date one :)",
-	"commandParagraph": "Lunaris uses Slash Commands to interact with users\nFor full list of available commands, click here"
+	"commandParagraph": "Lunaris uses Slash Commands to interact with users",
+	"commandParagraph2": "For full list of available commands, click here"
 }

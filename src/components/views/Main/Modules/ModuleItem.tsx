@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next';
+
 import { Button, styled, Typography } from '@mui/material';
 
 interface IProps {
@@ -7,13 +9,9 @@ interface IProps {
 }
 
 const Card = styled('div')({
-	textAlign: 'left',
 	maxWidth: '20rem',
 	marginBottom: '5rem',
-	marginLeft: '15%',
-	':nth-of-type(even)': {
-		marginLeft: '60%',
-	},
+	marginInline: 'auto',
 });
 
 const StyledButton = styled(Button)({
@@ -21,6 +19,7 @@ const StyledButton = styled(Button)({
 });
 
 export default function ModuleItem({ title, description, id }: IProps): JSX.Element {
+	const { t } = useTranslation();
 	return (
 		<Card id={id}>
 			<Typography variant='h3' sx={{ marginBottom: '1rem' }}>
@@ -28,7 +27,7 @@ export default function ModuleItem({ title, description, id }: IProps): JSX.Elem
 			</Typography>
 			<Typography variant='body1'>{description}</Typography>
 			<StyledButton variant='outlined' size='small'>
-				Read more
+				{t('common:readMore')}
 			</StyledButton>
 		</Card>
 	);

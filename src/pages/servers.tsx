@@ -1,22 +1,25 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
-import { validateCookies } from '@utils/utils';
-import type { MutualGuilds } from 'types';
 import ServersSection from '@views/Servers/ServersSection';
+import { validateCookies } from '@utils/utils';
+
+import type { MutualGuilds } from 'types';
 
 interface IProps {
 	guilds: MutualGuilds;
 }
 
 const Servers: NextPage<IProps> = ({ guilds }: IProps) => {
+	const { t } = useTranslation('pages');
 	return (
 		<>
 			<Head>
-				<title>Lunaris - Servers</title>
-				<meta name='description' content='Website Dashboard for Discord bot - Lunaris' />
+				<title>{t('servers.title')}</title>
+				<meta name='description' content={t('servers.description')} />
 			</Head>
 			<ServersSection guilds={guilds.included} />
 			<ServersSection guilds={guilds.excluded} excluded />

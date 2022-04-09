@@ -1,12 +1,16 @@
 import { useTranslation } from 'next-i18next';
+
 import { Box } from '@mui/system';
 import { IconButton, List, ListItem, styled, Tooltip } from '@mui/material';
+
 import { faFolder, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Avatar from '@components/Avatar';
 import Link from '@components/Link';
-import { User } from 'types';
+import { getUserAvatar } from '@utils/utils';
+
+import type { User } from 'types';
 
 interface IProps {
 	user: User;
@@ -34,43 +38,27 @@ const ServerIcon = styled(Box)({
 
 export default function UserMenuItemsMobile({ user }: IProps): JSX.Element {
 	const { t } = useTranslation('layout');
+	const avatarURL = getUserAvatar(user.discordId, user.avatar);
 	return (
 		<StyledList>
 			<Item>
-				<Tooltip title={t('profileMenu.profile') || 'Profile'}>
+				<Tooltip title={t('profileMenu.profile').toString()}>
 					<IconButton component={Link} href='/dashboard'>
 						<ServerIcon>
-							<Avatar
-								src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`}
-								alt='Avatar'
-								layout='fill'
-							/>
+							<Avatar src={avatarURL} alt='Avatar' layout='fill' objectFit='contain' />
 						</ServerIcon>
 					</IconButton>
 				</Tooltip>
 			</Item>
 			<Item>
-				<Tooltip title={'Server Lunaris'}>
-					<IconButton component={Link} href='/server/Lunaris'>
-						<ServerIcon>
-							<Avatar
-								src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.webp`}
-								alt='Avatar'
-								layout='fill'
-							/>
-						</ServerIcon>
-					</IconButton>
-				</Tooltip>
-			</Item>
-			<Item>
-				<Tooltip title={t('profileMenu.servers') || 'Servers'}>
-					<IconButton component={Link} href='/server'>
+				<Tooltip title={t('profileMenu.servers').toString()}>
+					<IconButton component={Link} href='/servers'>
 						<Icon icon={faFolder} />
 					</IconButton>
 				</Tooltip>
 			</Item>
 			<Item>
-				<Tooltip title={t('profileMenu.logout') || 'Logout'}>
+				<Tooltip title={t('profileMenu.logout').toString()}>
 					<IconButton component={Link} href={`${process.env.API_URL}/auth/logout`}>
 						<Icon icon={faRightFromBracket} sx={{ color: theme => theme.palette.error.main }} />
 					</IconButton>
