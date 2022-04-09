@@ -13,7 +13,7 @@ import { ProfileUsername } from './ProfileUsername';
 import ProfileMenu from './Menu';
 import ProfileMenuItem from './Menu/Item';
 
-import type { User } from '@types';
+import type { User } from 'types';
 
 export default function Profile(): JSX.Element {
 	const user = useUser({});

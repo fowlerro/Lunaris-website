@@ -10,7 +10,7 @@ import RoleSelect from '@components/Inputs/RoleSelect';
 
 import useIsDesktop from '@hooks/useIsDesktop';
 
-import type { AutoRole, AutoRolePageData, Role } from '@types';
+import type { AutoRole, AutoRolePageData, Role } from 'types';
 
 interface IProps {
 	roles: Role[];

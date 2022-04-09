@@ -3,7 +3,7 @@ import { Control, Controller } from 'react-hook-form';
 
 import Select from '@components/Inputs/Select';
 
-import type { LevelConfigPageData } from '@types';
+import type { LevelConfigPageData } from 'types';
 
 interface IProps {
 	control: Control<LevelConfigPageData>;

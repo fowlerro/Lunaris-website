@@ -8,7 +8,7 @@ import DataSaveToaster from '@components/DataSaveToaster';
 
 import CategoryCard from './CategoryCard';
 
-import type { GuildChannels, GuildLogsPageData } from '@types';
+import type { GuildChannels, GuildLogsPageData } from 'types';
 
 interface IProps {
 	channels: GuildChannels;

@@ -4,7 +4,7 @@ import useSWR from 'swr';
 
 import { fetcher } from '@utils/utils';
 
-import type { User } from '@types';
+import type { User } from 'types';
 
 interface IProps {
 	redirectTo?: string;

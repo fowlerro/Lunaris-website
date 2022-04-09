@@ -4,7 +4,7 @@ import Avatar from '@components/Avatar';
 
 import { getUserAvatar, getUserBanner } from '@utils/utils';
 
-import type { User } from '@types';
+import type { User } from 'types';
 
 interface IProps {
 	user: User;

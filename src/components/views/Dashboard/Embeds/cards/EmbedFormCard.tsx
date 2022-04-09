@@ -5,7 +5,7 @@ import DashboardCard from '@components/DashboardCard';
 
 import EmbedForm from '../Form';
 
-import type { EmbedMessage } from '@types';
+import type { EmbedMessage } from 'types';
 
 interface IProps {
 	register: UseFormRegister<EmbedMessage>;

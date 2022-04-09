@@ -10,7 +10,7 @@ import Avatar from '@components/Avatar';
 import Link from '@components/Link';
 import { getUserAvatar } from '@utils/utils';
 
-import type { User } from '@types';
+import type { User } from 'types';
 
 interface IProps {
 	user: User;

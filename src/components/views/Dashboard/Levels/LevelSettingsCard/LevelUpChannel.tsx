@@ -2,7 +2,7 @@ import { Control, Controller } from 'react-hook-form';
 
 import ChannelSelect from '@components/Inputs/ChannelSelect';
 
-import type { GuildChannels, LevelConfigPageData } from '@types';
+import type { GuildChannels, LevelConfigPageData } from 'types';
 
 interface IProps {
 	channels: GuildChannels;

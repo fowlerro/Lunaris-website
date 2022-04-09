@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 
 import TextField from '../TextField';
 
-import type { GuildChannels } from '@types';
+import type { GuildChannels } from 'types';
 
 type ChannelOption = {
 	id: string;

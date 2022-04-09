@@ -24,7 +24,7 @@ import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
 import useIsDesktop from '@hooks/useIsDesktop';
 
-import type { EmbedMessage, GuildChannels } from '@types';
+import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	channels: GuildChannels;

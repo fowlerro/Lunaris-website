@@ -4,7 +4,7 @@ import { styled, Typography } from '@mui/material';
 
 import ServerCard from './ServerCard';
 
-import type { Guild } from '@types';
+import type { Guild } from 'types';
 
 interface IProps {
 	guilds: Guild[];

@@ -15,7 +15,7 @@ import useEmbedForm from './utils/useEmbedForm';
 import { colors } from '@styles/theme';
 import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
 
-import type { EmbedMessage, GuildChannels } from '@types';
+import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	channels: GuildChannels;

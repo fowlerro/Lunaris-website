@@ -4,7 +4,7 @@ import { Autocomplete, MenuItem, TextField, TextFieldProps, UseAutocompleteProps
 
 import { getRoleColor } from '@utils/utils';
 
-import type { Role } from '@types';
+import type { Role } from 'types';
 
 type Option = {
 	id: string;

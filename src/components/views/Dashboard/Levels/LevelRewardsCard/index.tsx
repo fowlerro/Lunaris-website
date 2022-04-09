@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 import DashboardCard from '@components/DashboardCard';
 import LevelRewardsTable from './LevelRewardsTable';
 
-import type { LevelConfigPageData, Role } from '@types';
+import type { LevelConfigPageData, Role } from 'types';
 
 interface IProps {
 	roles: Role[];

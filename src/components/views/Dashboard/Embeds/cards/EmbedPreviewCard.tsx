@@ -5,7 +5,7 @@ import DashboardCard from '@components/DashboardCard';
 
 import EmbedPreview from '../EmbedPreview';
 
-import type { EmbedMessage } from '@types';
+import type { EmbedMessage } from 'types';
 
 interface IProps {
 	control: Control<EmbedMessage>;

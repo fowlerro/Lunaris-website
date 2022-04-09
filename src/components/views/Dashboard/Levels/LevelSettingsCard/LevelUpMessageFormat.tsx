@@ -2,7 +2,7 @@ import TextField from '@components/Inputs/TextField';
 import { useTranslation } from 'next-i18next';
 import type { FieldError, UseFormRegister } from 'react-hook-form';
 
-import type { LevelConfigPageData } from '@types';
+import type { LevelConfigPageData } from 'types';
 
 interface IProps {
 	defaultValue: string;

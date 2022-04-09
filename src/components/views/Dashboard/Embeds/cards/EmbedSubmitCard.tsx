@@ -5,7 +5,7 @@ import DashboardCard from '@components/DashboardCard';
 
 import EmbedSubmit from '../EmbedSubmit';
 
-import type { EmbedMessage, GuildChannels } from '@types';
+import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	register: UseFormRegister<EmbedMessage>;

@@ -9,7 +9,7 @@ import { useMediaQuery, useTheme, styled } from '@mui/material';
 import Avatar from '@components/Avatar';
 import logo from '@assets/logo192.png';
 
-import type { EmbedMessage } from '@types';
+import type { EmbedMessage } from 'types';
 
 const Container = styled('div')(({ theme }) => ({
 	position: 'relative',

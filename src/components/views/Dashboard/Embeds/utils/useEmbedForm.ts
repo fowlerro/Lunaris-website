@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { EMBED_LIMITS } from '@utils/utils';
 
-import type { EmbedMessage, GuildChannels } from '@types';
+import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	defaultValues: EmbedMessage;

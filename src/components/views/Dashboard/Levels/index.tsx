@@ -13,7 +13,7 @@ import DataSaveToaster from '@components/DataSaveToaster';
 import LevelSettingsCard from './LevelSettingsCard';
 import LevelRewardsCard from './LevelRewardsCard';
 
-import type { GuildChannels, LevelConfigPageData, Role } from '@types';
+import type { GuildChannels, LevelConfigPageData, Role } from 'types';
 
 interface IProps {
 	channels: GuildChannels;

@@ -8,7 +8,7 @@ import ServerIcon from '@components/ServerIcon';
 
 import { fetcher } from '@utils/utils';
 
-import type { GuildStats } from '@types';
+import type { GuildStats } from 'types';
 
 export default function ServerHeader(): JSX.Element {
 	const router = useRouter();
