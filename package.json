@@ -67,6 +67,6 @@
     "pretty-quick": "^3.1.3",
     "ts-jest": "^27.1.3",
     "typescript": "4.5.5",
-    "types": "git+https://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:x-oauth-basic@github.com/fowlerro/Lunaris-types.git"
+    "types": "git+https://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:x-oauth-basic@github.com/fowlerro/Lunaris-types.git"
   }
 }
