@@ -5645,9 +5645,9 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-"types@github:fowlerro/Lunaris-types":
+"types@git+https://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:x-oauth-basic@github.com/fowlerro/Lunaris-types.git":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/fowlerro/Lunaris-types.git#7513778c92a802644cae76a41e0ed211b1b18474"
+  resolved "git+https://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:x-oauth-basic@github.com/fowlerro/Lunaris-types.git#7513778c92a802644cae76a41e0ed211b1b18474"
   dependencies:
     discord-api-types "^0.26.1"
     discord.js "^13.5.1"
