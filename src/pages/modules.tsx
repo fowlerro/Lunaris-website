@@ -23,7 +23,7 @@ const Modules: NextPage = () => {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
 	return {
 		props: {
-			...(await serverSideTranslations(locale ?? 'en')),
+			...(await serverSideTranslations(locale ?? 'en', ['common', 'layout', 'modulesPage', 'modules', 'forms'])),
 		},
 	};
 };

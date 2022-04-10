@@ -11,13 +11,14 @@ const Section = styled('section')(({ theme }) => ({
 	marginInline: '1rem',
 	marginTop: '6rem',
 	textAlign: 'center',
-	alignItems: 'flex-start',
+	alignItems: 'center',
 	marginBottom: '2rem',
 	maxWidth: theme.breakpoints.values.xxl,
 	minHeight: '30rem',
 
 	[theme.breakpoints.up('md')]: {
 		textAlign: 'left',
+		alignItems: 'flex-start',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},

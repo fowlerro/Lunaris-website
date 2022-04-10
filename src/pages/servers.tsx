@@ -33,7 +33,12 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const { data } = await axios.get<MutualGuilds>(`${process.env.API_URL}/guilds`, { headers });
 
-		return { props: { guilds: data, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return {
+			props: {
+				guilds: data,
+				...(await serverSideTranslations(ctx.locale ?? 'en', ['common', 'layout', 'pages', 'serversPage'])),
+			},
+		};
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };
