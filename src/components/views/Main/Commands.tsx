@@ -21,6 +21,14 @@ const Section = styled('section')(({ theme }) => ({
 	},
 }));
 
+const StyledLink = styled(Link)(({ theme }) => ({
+	color: theme.colors.text.primary,
+	textDecoration: 'none',
+	'&:hover': {
+		textDecoration: 'underline',
+	},
+}));
+
 export default function Commands(): JSX.Element {
 	const { t } = useTranslation();
 	return (
@@ -29,18 +37,11 @@ export default function Commands(): JSX.Element {
 			<Paragraph variant='subtitle1' sx={{ lineHeight: 1 }}>
 				{t('mainPage:commandParagraph')}
 			</Paragraph>
-			<Link
-				href='/commands'
-				sx={{
-					color: theme => theme.colors.text.primary,
-					textDecoration: 'none',
-					'&:hover': { textDecoration: 'underline' },
-				}}
-			>
+			<StyledLink href='/commands'>
 				<Paragraph variant='subtitle1' sx={{ lineHeight: 1 }}>
 					{t('mainPage:commandParagraph2')}
 				</Paragraph>
-			</Link>
+			</StyledLink>
 		</Section>
 	);
 }

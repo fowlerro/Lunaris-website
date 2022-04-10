@@ -36,22 +36,20 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
 	const Layout = Component.Layout || MainLayout;
 
 	return (
-		<>
+		<CacheProvider value={emotionCache}>
 			<Head>
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 			</Head>
-			<CacheProvider value={emotionCache}>
-				<LocalizationProvider dateAdapter={AdapterDateFns}>
-					<ThemeProvider theme={darkTheme}>
-						<CssBaseline />
-						<GlobalStyle />
-						<Layout>
-							<Component {...pageProps} />
-						</Layout>
-					</ThemeProvider>
-				</LocalizationProvider>
-			</CacheProvider>
-		</>
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<ThemeProvider theme={darkTheme}>
+					<CssBaseline />
+					<GlobalStyle />
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</ThemeProvider>
+			</LocalizationProvider>
+		</CacheProvider>
 	);
 }
 

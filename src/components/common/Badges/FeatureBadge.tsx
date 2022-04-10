@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-// import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { Chip, ChipProps, styled, Tooltip } from '@mui/material';
 
@@ -52,8 +52,7 @@ const PremiumBadge = styled((props: ChipProps) => (
 }));
 
 export default function FeatureBadge({ variant, feature }: IProps): JSX.Element {
-	// const { t } = useTranslation('dashboardPage');
-	const t = (key: string) => key;
+	const { t } = useTranslation('dashboardPage');
 	const [visited, setVisited] = useState(false);
 	const router = useRouter();
 
