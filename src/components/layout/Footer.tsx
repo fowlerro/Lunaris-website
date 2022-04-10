@@ -81,7 +81,7 @@ export default function Footer(): JSX.Element {
 					<Icon icon={faDiscord} />
 					Kamil#2107
 				</StyledLink>
-				<StyledLink href='mailto:email@example.com'>email@example.com</StyledLink>
+				<StyledLink href='mailto:support@lunaris.pro'>support@lunaris.pro</StyledLink>
 			</Section>
 			<Copyright variant='caption'>Copyright © 2022 Kamil Wenta. All rights reserved.</Copyright>
 		</StyledFooter>
