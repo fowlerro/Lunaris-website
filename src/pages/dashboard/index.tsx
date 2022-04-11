@@ -30,7 +30,10 @@ const Dashboard: NextPage<IProps> = ({ profile }: IProps) => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
 	const headers = validateCookies(ctx);
-	if (!headers) return { redirect: { destination: '/' }, props: {} };
+	if (!headers) {
+		console.log(ctx);
+		return { redirect: { destination: '/' }, props: {} };
+	}
 	try {
 		const { data } = await axios.get<ProfileWithRank>(`${process.env.API_URL}/profile`, { headers });
 
