@@ -1,6 +1,6 @@
 import ModuleForm from '@components/Forms/ModuleForm';
 import { styled, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 const Section = styled('section')(({ theme }) => ({
 	backgroundColor: theme.colors.background.primary,

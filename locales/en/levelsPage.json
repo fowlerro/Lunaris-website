@@ -1,4 +1,6 @@
 {
+	"title": "Lunaris - Levels",
+	"description": "Manage XP system and level rewards for your server",
 	"settingsHeader": "Level Settings",
 	"multiplier": "XP Multiplier",
 

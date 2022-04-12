@@ -28,7 +28,7 @@ import { colors } from '@styles/theme';
 
 import type { EmbedMessage } from 'types';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 interface IProps {
 	register: UseFormRegister<EmbedMessage>;
@@ -67,7 +67,7 @@ const Wrapper = styled((props: PaperProps) => {
 }));
 
 export default function EmbedForm({ register, control, errors }: IProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	return (
 		<form style={{ marginTop: '1rem' }}>
 			<TextField
@@ -77,7 +77,7 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 				minRows={4}
 				maxRows={8}
 				margin={'normal'}
-				label={t('dashboardPage:embeds.form.labels.messageContent')}
+				label={t('form.labels.messageContent')}
 				error={Boolean(errors.messageContent)}
 				helperText={errors.messageContent?.message}
 				{...register('messageContent')}
@@ -100,7 +100,7 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 				multiline
 				minRows={4}
 				maxRows={12}
-				label={t('dashboardPage:embeds.form.labels.description')}
+				label={t('form.labels.description')}
 				margin='normal'
 				error={Boolean(errors.embed?.description)}
 				helperText={errors.embed?.description?.message}
@@ -111,7 +111,7 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.thumbnail')}
+				label={t('form.labels.thumbnail')}
 				margin='normal'
 				{...register('embed.thumbnail.url')}
 				error={Boolean(errors.embed?.thumbnail?.url)}
@@ -119,7 +119,7 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 			/>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.image')}
+				label={t('form.labels.image')}
 				margin='normal'
 				{...register('embed.image.url')}
 				error={Boolean(errors.embed?.image?.url)}
@@ -132,13 +132,13 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 }
 
 function Author({ register, errors }: IInputGroupProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
-			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('dashboardPage:embeds.form.labels.author')}</InputLabel>
+			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.author')}</InputLabel>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.authorName')}
+				label={t('form.labels.authorName')}
 				margin='dense'
 				error={Boolean(errors.embed?.author?.name)}
 				characterLimit={EMBED_LIMITS.author}
@@ -147,7 +147,7 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 			/>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.url')}
+				label={t('form.labels.url')}
 				margin='dense'
 				size='small'
 				error={Boolean(errors.embed?.author?.url)}
@@ -156,7 +156,7 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 			/>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.iconURL')}
+				label={t('form.labels.iconURL')}
 				margin='dense'
 				size='small'
 				error={Boolean(errors.embed?.author?.iconURL)}
@@ -168,13 +168,13 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 }
 
 function Title({ register, errors }: IInputGroupProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
-			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('dashboardPage:embeds.form.labels.title')}</InputLabel>
+			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.title')}</InputLabel>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.title')}
+				label={t('form.labels.title')}
 				margin='dense'
 				error={Boolean(errors.embed?.title)}
 				helperText={errors.embed?.title?.message}
@@ -183,7 +183,7 @@ function Title({ register, errors }: IInputGroupProps): JSX.Element {
 			/>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.url')}
+				label={t('form.labels.url')}
 				margin='dense'
 				size='small'
 				error={Boolean(errors.embed?.url)}
@@ -195,7 +195,7 @@ function Title({ register, errors }: IInputGroupProps): JSX.Element {
 }
 
 function Fields({ control, register, errors }: IProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	const { fields, append, remove } = useFieldArray<EmbedMessage>({
 		control,
 		name: 'embed.fields',
@@ -203,7 +203,7 @@ function Fields({ control, register, errors }: IProps): JSX.Element {
 
 	return (
 		<Box sx={{ marginBlock: '1rem' }}>
-			<Divider variant='middle'>{t('dashboardPage:embeds.form.labels.fields')}</Divider>
+			<Divider variant='middle'>{t('form.labels.fields')}</Divider>
 			{fields.map((field, index) => (
 				<Field key={field.id} index={index} control={control} register={register} remove={remove} errors={errors} />
 			))}
@@ -214,7 +214,7 @@ function Fields({ control, register, errors }: IProps): JSX.Element {
 				onClick={() => append({ name: '', value: '', inline: false })}
 				sx={{ marginBottom: '1rem' }}
 			>
-				{t('dashboardPage:embeds.form.buttons.addField')}
+				{t('form.buttons.addField')}
 			</Button>
 			<Divider variant='middle' />
 		</Box>
@@ -222,7 +222,7 @@ function Fields({ control, register, errors }: IProps): JSX.Element {
 }
 
 function Field({ index, control, register, remove, errors }: IFieldProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	const [openConfirmation, setOpenConfirmation] = useState(false);
 
 	const handleOpen = () => setOpenConfirmation(true);
@@ -236,10 +236,10 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 	return (
 		<Wrapper>
 			<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-				<InputLabel sx={{ fontSize: '1.25rem', fontWeight: 400 }}>{`${t('dashboardPage:embeds.form.labels.field')} ${
+				<InputLabel sx={{ fontSize: '1.25rem', fontWeight: 400 }}>{`${t('form.labels.field')} ${
 					index + 1
 				}`}</InputLabel>
-				<Tooltip title={t('dashboardPage:embeds.form.labels.removeField').toString()}>
+				<Tooltip title={t('form.labels.removeField').toString()}>
 					<IconButton color='error' sx={{ width: '3rem', height: '3rem' }} onClick={handleOpen}>
 						<Icon icon={faCircleXmark} />
 					</IconButton>
@@ -247,7 +247,7 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 			</Box>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.fieldName')}
+				label={t('form.labels.fieldName')}
 				margin='dense'
 				error={Boolean(errors.embed?.fields?.[index]?.name)}
 				helperText={errors.embed?.fields?.[index]?.name?.message}
@@ -259,7 +259,7 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 				multiline
 				minRows={3}
 				maxRows={6}
-				label={t('dashboardPage:embeds.form.labels.fieldValue')}
+				label={t('form.labels.fieldValue')}
 				margin='dense'
 				error={Boolean(errors.embed?.fields?.[index]?.value)}
 				helperText={errors.embed?.fields?.[index]?.value?.message}
@@ -272,7 +272,7 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 				render={({ field }) => (
 					<FormControlLabel
 						control={<Checkbox checked={field.value} onChange={field.onChange} />}
-						label={t('dashboardPage:embeds.form.labels.fieldInline').toString()}
+						label={t('form.labels.fieldInline').toString()}
 					/>
 				)}
 			/>
@@ -281,20 +281,20 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 				open={openConfirmation}
 				onClose={handleClose}
 				onConfirm={handleDelete}
-				title={t('dashboardPage:embeds.confirmFieldDeletion')}
+				title={t('confirmFieldDeletion')}
 			/>
 		</Wrapper>
 	);
 }
 
 function Footer({ register, control, errors }: IFooterProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
-			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('dashboardPage:embeds.form.labels.footer')}</InputLabel>
+			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.footer')}</InputLabel>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.footerText')}
+				label={t('form.labels.footerText')}
 				margin='dense'
 				error={Boolean(errors.embed?.footer?.text)}
 				helperText={errors.embed?.footer?.text?.message}
@@ -303,7 +303,7 @@ function Footer({ register, control, errors }: IFooterProps): JSX.Element {
 			/>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.iconURL')}
+				label={t('form.labels.iconURL')}
 				margin='dense'
 				size='small'
 				error={Boolean(errors.embed?.footer?.iconURL)}
@@ -316,7 +316,7 @@ function Footer({ register, control, errors }: IFooterProps): JSX.Element {
 }
 
 function Timestamp({ control }: ITimestampProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	return (
 		<Controller
 			name='embed.timestamp'
@@ -324,7 +324,7 @@ function Timestamp({ control }: ITimestampProps): JSX.Element {
 			render={({ field, fieldState }) => (
 				<DateTimePicker
 					mask='__.__.____ __:__'
-					label={t('dashboardPage:embeds.form.labels.timestamp')}
+					label={t('form.labels.timestamp')}
 					value={field.value ? new Date(field.value) : null}
 					onChange={value => field.onChange(value?.valueOf())}
 					renderInput={params => (

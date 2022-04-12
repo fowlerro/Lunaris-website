@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Alert, Slide, SlideProps, Snackbar } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -20,7 +20,7 @@ function SlideTransition(props: SlideProps) {
 }
 
 export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('common');
 
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -59,7 +59,7 @@ export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IPro
 							onClick={() => onReset()}
 							sx={{ marginRight: '1rem' }}
 						>
-							{t('common:reset')}
+							{t('reset')}
 						</LoadingButton>
 						<LoadingButton
 							size='small'
@@ -70,12 +70,12 @@ export default function DataSaveToaster({ isDataChanged, onSave, onReset }: IPro
 							startIcon={<Icon icon={faSave} />}
 							onClick={handleSave}
 						>
-							{t('common:save')}
+							{t('save')}
 						</LoadingButton>
 					</>
 				}
 			>
-				{t('dashboardPage:unsavedData')}
+				{t('unsavedData')}
 			</Alert>
 		</Snackbar>
 	);

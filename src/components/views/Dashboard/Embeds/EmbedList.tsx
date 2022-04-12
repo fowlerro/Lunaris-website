@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import {
 	Button,
@@ -33,7 +33,7 @@ interface IProps {
 
 export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 	const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState<string | null>(null);
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
 	const isDesktop = useIsDesktop();
@@ -67,16 +67,16 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 	return (
 		<View>
 			<DashboardCard
-				header={t('dashboardPage:embeds.listHeader')}
+				header={t('listHeader')}
 				initialExpand
 				action={
 					isDesktop ? (
 						<Button variant='contained' sx={{ marginRight: '1rem' }} onClick={handleCreateEmbed}>
 							<Icon icon={faAdd} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
-							{t('dashboardPage:embeds.form.buttons.createEmbed')}
+							{t('form.buttons.createEmbed')}
 						</Button>
 					) : (
-						<Tooltip title={t('dashboardPage:embeds.form.buttons.createEmbed').toString()}>
+						<Tooltip title={t('form.buttons.createEmbed').toString()}>
 							<IconButton onClick={handleCreateEmbed} sx={{ backgroundColor: theme => theme.colors.primary.main }}>
 								<Icon icon={faAdd} />
 							</IconButton>
@@ -93,16 +93,16 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 									<ListItem>
 										<ListItemText
 											primary={embed.name}
-											secondary={channel && embed.messageId ? `#${channel?.name}` : t('dashboardPage:embeds.notSent')}
+											secondary={channel && embed.messageId ? `#${channel?.name}` : t('notSent')}
 										/>
 										<ListItemSecondaryAction>
 											{isDesktop ? (
 												<Button variant='outlined' onClick={() => (embed._id ? handleEditEmbed(embed._id) : undefined)}>
 													<Icon icon={faEdit} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
-													{t('dashboardPage:embeds.form.buttons.edit')}
+													{t('form.buttons.edit')}
 												</Button>
 											) : (
-												<Tooltip title={t('dashboardPage:embeds.form.buttons.edit').toString()}>
+												<Tooltip title={t('form.buttons.edit').toString()}>
 													<IconButton
 														size={isDesktop ? 'large' : 'small'}
 														onClick={() => (embed._id ? handleEditEmbed(embed._id) : undefined)}
@@ -111,7 +111,7 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 													</IconButton>
 												</Tooltip>
 											)}
-											<Tooltip title={t('dashboardPage:embeds.form.buttons.delete').toString()}>
+											<Tooltip title={t('form.buttons.delete').toString()}>
 												<IconButton
 													sx={{ marginLeft: '1rem' }}
 													color='error'
@@ -129,13 +129,13 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 						})
 					) : (
 						<Typography variant='subtitle1' sx={{ width: '100%', textAlign: 'center', marginTop: '3rem' }}>
-							{t('dashboardPage:embeds.noEmbeds')}
+							{t('noEmbeds')}
 						</Typography>
 					)}
 				</List>
 			</DashboardCard>
 			<ConfirmDialog
-				title={t('dashboardPage:embeds.confirmEmbedDeletion')}
+				title={t('confirmEmbedDeletion')}
 				open={Boolean(openDeleteConfirmation)}
 				onClose={handleCloseConfirmation}
 				onConfirm={handleDelete}

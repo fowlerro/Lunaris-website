@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 interface IProps {
 	open: boolean;

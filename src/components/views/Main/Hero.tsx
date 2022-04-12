@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box } from '@mui/system';
 import { Button, styled, Typography, useTheme } from '@mui/material';

@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { MenuItem, styled, TextField, Typography } from '@mui/material';
 
 import BugReportForm from '@components/Forms/BugReportForm';

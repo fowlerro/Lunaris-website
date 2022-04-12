@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Control, useFieldArray, useWatch } from 'react-hook-form';
 
 import { formatDuration, intervalToDuration } from 'date-fns';

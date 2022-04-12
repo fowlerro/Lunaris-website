@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Control } from 'react-hook-form';
 
 import { Typography } from '@mui/material';

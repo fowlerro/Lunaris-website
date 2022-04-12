@@ -1,8 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+import useTranslation from 'next-translate/useTranslation';
 
 import DashboardLayout from '@layouts/DashboardLayout';
 import AutoRoles from '@views/Dashboard/AutoRoles';
@@ -18,13 +17,13 @@ interface IProps {
 }
 
 const DashboardAutoRoles: NextPageWithLayout<IProps> = ({ roles, autoRoles }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('autoRolesPage');
 	useVisitedFeatures('set', 'autoRoles');
 	return (
 		<>
 			<Head>
-				<title>{t('autoRoles.title')}</title>
-				<meta name='description' content={t('autoRoles.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 			<AutoRoles roles={roles} autoRolesData={autoRoles} />
 		</>
@@ -44,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			{ headers }
 		);
 
-		return { props: { roles, autoRoles, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { roles, autoRoles } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };

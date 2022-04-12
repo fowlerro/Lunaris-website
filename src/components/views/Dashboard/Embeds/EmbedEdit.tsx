@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box, styled } from '@mui/material';
 
@@ -36,7 +36,7 @@ export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 	const [openLeaveWarning, setOpenLeaveWarning] = useState(false);
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 
 	const {
 		register,
@@ -93,7 +93,7 @@ export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 	};
 
 	return (
-		<View header={t('dashboardPage:embeds.editHeader')} nested onClickBack={handleOpenLeaveWarning}>
+		<View header={t('editHeader')} nested onClickBack={handleOpenLeaveWarning}>
 			<StyledBox>
 				<Box sx={{ flex: 1 }}>
 					<EmbedPreviewCard control={control} />
@@ -104,7 +104,7 @@ export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 				</Box>
 			</StyledBox>
 			<ConfirmDialog
-				title={t('dashboardPage:embeds.confirmLeaveWithChanges')}
+				title={t('confirmLeaveWithChanges')}
 				open={openLeaveWarning}
 				onClose={handleCloseLeaveWarning}
 				onConfirm={handleLeave}

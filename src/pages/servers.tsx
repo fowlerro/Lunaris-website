@@ -1,8 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+import useTranslation from 'next-translate/useTranslation';
 
 import ServersSection from '@views/Servers/ServersSection';
 import { validateCookies } from '@utils/utils';
@@ -14,12 +13,12 @@ interface IProps {
 }
 
 const Servers: NextPage<IProps> = ({ guilds }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('serversPage');
 	return (
 		<>
 			<Head>
-				<title>{t('servers.title')}</title>
-				<meta name='description' content={t('servers.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 			<ServersSection guilds={guilds.included} />
 			<ServersSection guilds={guilds.excluded} excluded />
@@ -36,7 +35,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 		return {
 			props: {
 				guilds: data,
-				...(await serverSideTranslations(ctx.locale ?? 'en', ['common', 'layout', 'pages', 'serversPage'])),
 			},
 		};
 	} catch (err) {

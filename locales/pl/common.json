@@ -7,8 +7,10 @@
 	"commands": "Komendy",
 	"dashboard": "Panel",
 	"submit": "Zatwierdź",
+	"add": "Dodaj",
 	"send": "Wyślij",
 	"save": "Zapisz",
+	"reset": "Resetuj",
 	"cancel": "Anuluj",
 	"confirm": "Potwierdź",
 	"comingSoon": "Już niedługo!",
@@ -30,10 +32,17 @@
 	"hexColor": "Kolor HEX",
 	"noCategory": "Brak kategorii",
 	"readMore": "Czytaj więcej",
+	"unsavedData": "Masz niezapisane dane!",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",
 		"minutes": "minuty",
 		"seconds": "sekundy"
+	},
+
+	"featureTags": {
+		"wip": "Wkrótce",
+		"premium": "Elementy dla użytkowników Premium",
+		"new": "Nowe"
 	}
 }

@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 import axios from 'axios';
 
 import ProfileSection from '@views/Dashboard/Profile/ProfileSection';
@@ -15,12 +14,12 @@ interface IProps {
 }
 
 const Dashboard: NextPage<IProps> = ({ profile }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('profilePage');
 	return (
 		<>
 			<Head>
-				<title>{t('profile.title')}</title>
-				<meta name='description' content={t('profile.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 			<ProfileSection profile={profile} />
 			<ServerListSection />
@@ -30,14 +29,11 @@ const Dashboard: NextPage<IProps> = ({ profile }: IProps) => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
 	const headers = validateCookies(ctx);
-	if (!headers) {
-		console.log(ctx);
-		return { redirect: { destination: '/' }, props: {} };
-	}
+	if (!headers) return { redirect: { destination: '/' }, props: {} };
 	try {
 		const { data } = await axios.get<ProfileWithRank>(`${process.env.API_URL}/profile`, { headers });
 
-		return { props: { profile: data, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { profile: data } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };

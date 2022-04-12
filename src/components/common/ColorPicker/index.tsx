@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box, ClickAwayListener, IconButton, Paper, Popper, PopperProps, styled, Tooltip } from '@mui/material';
 import { HexColorPicker } from 'react-colorful';

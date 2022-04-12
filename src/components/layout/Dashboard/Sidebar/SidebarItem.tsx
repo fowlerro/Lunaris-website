@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, styled } from '@mui/material';
 
@@ -13,6 +13,11 @@ interface IProps {
 	item: ISidebarItem;
 }
 
+const StyledLink = styled(Link)(({ theme }) => ({
+	textDecoration: 'none',
+	color: theme.colors.text.primary,
+}));
+
 export const ItemText = styled('span')(({ theme }) => ({
 	backgroundImage: `linear-gradient(to left, ${theme.colors.text.muted}, ${theme.colors.text.muted})`,
 	backgroundPosition: 'bottom center',
@@ -22,17 +27,14 @@ export const ItemText = styled('span')(({ theme }) => ({
 }));
 
 export default function SidebarItem({ item }: IProps): JSX.Element {
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('layout');
 	const { pathname, query } = useRouter();
 	const guildId = query.guildId as string;
 	const currentPath = pathname.split('/')[3] || '';
 	const selected = item.href === currentPath;
 
 	return (
-		<Link
-			href={`/dashboard/${guildId}/${item.href}`}
-			sx={{ textDecoration: 'none', color: theme => theme.colors.text.primary }}
-		>
+		<StyledLink href={`/dashboard/${guildId}/${item.href}`}>
 			<ListItemButton
 				component='li'
 				selected={selected}
@@ -74,7 +76,7 @@ export default function SidebarItem({ item }: IProps): JSX.Element {
 						},
 					]}
 				>
-					{selected ? <ItemText>{t(`menu.${item.name}`)}</ItemText> : t(`menu.${item.name}`)}
+					{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
 				</ListItemText>
 				{item.tags?.length ? (
 					<ListItemSecondaryAction>
@@ -84,6 +86,6 @@ export default function SidebarItem({ item }: IProps): JSX.Element {
 					</ListItemSecondaryAction>
 				) : undefined}
 			</ListItemButton>
-		</Link>
+		</StyledLink>
 	);
 }

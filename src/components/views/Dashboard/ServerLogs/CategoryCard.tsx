@@ -1,5 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Checkbox, FormControlLabel, FormGroup, styled } from '@mui/material';
 
@@ -23,9 +23,9 @@ const StyledCard = styled(DashboardCard)({
 });
 
 export default function CategoryCard({ category, channels, logs, control }: IProps): JSX.Element {
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('serverLogsPage');
 	return (
-		<StyledCard header={t(`serverLogs.${category}.header`)} disableIcon>
+		<StyledCard header={t(`${category}.header`)} disableIcon>
 			<Controller
 				name={`serverLogs.${category as keyof GuildLogTypes}.channelId`}
 				control={control}
@@ -37,7 +37,7 @@ export default function CategoryCard({ category, channels, logs, control }: IPro
 				{Object.keys(logs).map(log => (
 					<FormControlLabel
 						key={log}
-						label={t(`serverLogs.${category}.${log}`).toString()}
+						label={t(`${category}.${log}`).toString()}
 						componentsProps={{
 							typography: {
 								variant: 'body2',

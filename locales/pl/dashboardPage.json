@@ -1,0 +1,13 @@
+{
+	"title": "Lunaris - Przegląd",
+	"description": "Szybki dostęp do przeglądu serwera",
+	"expandReason": "Rozwiń powód",
+	"hideReason": "Zwiń powód",
+
+	"stats": {
+		"members": "Użytkownicy",
+		"bots": "Boty",
+		"channels": "Kanały",
+		"voiceChannels": "Kanały głosowe"
+	}
+}

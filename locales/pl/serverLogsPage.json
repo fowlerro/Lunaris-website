@@ -1,0 +1,61 @@
+{
+	"title": "Lunaris - Logi Serwerowe",
+	"description": "Zarządzaj logami serwerowymi",
+	"messages": {
+		"header": "Wiadomości",
+		"edit": "Edycja",
+		"delete": "Usunięcie",
+		"purge": "Czyszczenie",
+		"pin": "Przypięcie",
+		"unpin": "Odpięcie"
+	},
+	"emojis": {
+		"header": "Emotki",
+		"create": "Stworzenie",
+		"delete": "Usunięcie",
+		"edit": "Edycja"
+	},
+	"roles": {
+		"header": "Role",
+		"create": "Stworzenie",
+		"delete": "Usunięcie",
+		"edit": "Edycja",
+		"add": "Nadanie",
+		"remove": "Odebranie"
+	},
+	"channels": {
+		"header": "Kanały",
+		"create": "Stworzenie",
+		"delete": "Usunięcie",
+		"edit": "Edycja"
+	},
+	"threads": {
+		"header": "Wątki",
+		"create": "Stworzenie",
+		"delete": "Usunięcie",
+		"edit": "Edycja"
+	},
+	"invites": {
+		"header": "Zaproszenia",
+		"create": "Stworzenie",
+		"delete": "Usunięcie"
+	},
+	"members": {
+		"header": "Użytkownicy",
+		"join": "Dołączenie",
+		"leave": "Wyjście",
+		"nicknameChange": "Zmiana pseudonimu",
+		"warn": "Ostrzeżenie",
+		"unwarn": "Zdjęcie ostrzeżenia",
+		"unwarnAll": "Zdjęcie wszystkich ostrzeżeń",
+		"kick": "Wyrzucenie",
+		"ban": "Zbanowanie",
+		"unban": "Odbanowanie",
+		"timeout": "Zablokowanie",
+		"timeoutRemove": "Odblokowanie"
+	},
+	"server": {
+		"header": "Serwer",
+		"unwarnAll": "Zdjęcie wszystkich ostrzeżeń"
+	}
+}

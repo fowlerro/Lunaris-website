@@ -1,17 +1,22 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
-import { MenuItem } from '@mui/material';
+import { MenuItem, styled } from '@mui/material';
 
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Link from '@components/Link';
 import Icon from '@components/Icon';
 
+const StyledLink = styled(Link)(({ theme }) => ({
+	textDecoration: 'none',
+	color: theme.colors.text.primary,
+}));
+
 export default function ServerListButton(): JSX.Element {
 	const { t } = useTranslation('layout');
 
 	return (
-		<Link href='/servers' sx={{ textDecoration: 'none', color: theme => theme.colors.text.primary }}>
+		<StyledLink href='/servers' passHref>
 			<MenuItem
 				sx={{
 					borderColor: theme => theme.colors.primary.main,
@@ -25,6 +30,6 @@ export default function ServerListButton(): JSX.Element {
 				<Icon icon={faChevronLeft} sx={{ marginRight: '1rem' }} />
 				{t('dashboardSidebar.backToServers')}
 			</MenuItem>
-		</Link>
+		</StyledLink>
 	);
 }

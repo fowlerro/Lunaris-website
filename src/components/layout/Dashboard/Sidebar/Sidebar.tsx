@@ -46,6 +46,11 @@ const BottomSection = styled('div')({
 	marginTop: 'auto',
 });
 
+const StyledLink = styled(Link)(({ theme }) => ({
+	textDecoration: 'none',
+	color: theme.colors.text.primary,
+}));
+
 const menuItems: ISidebarItem[] = [
 	{ name: 'overview', href: '', icon: faSliders, group: true, items: [], tags: ['wip'] },
 	{
@@ -72,15 +77,11 @@ const createItems = (items: ISidebarItem[]) => {
 			const selected = item.items.length ? item.items.some(i => i.href === currentPath) : item.href === currentPath;
 
 			return typeof item.href === 'string' ? (
-				<Link
-					key={item.name}
-					href={`/dashboard/${guildId}/${item.href}`}
-					sx={{ textDecoration: 'none', color: theme => theme.colors.text.primary }}
-				>
+				<StyledLink key={item.name} href={`/dashboard/${guildId}/${item.href}`}>
 					<SidebarGroup item={item} selected={selected}>
 						{createItems(item.items)}
 					</SidebarGroup>
-				</Link>
+				</StyledLink>
 			) : (
 				<SidebarGroup key={item.name} item={item} selected={selected}>
 					{createItems(item.items)}

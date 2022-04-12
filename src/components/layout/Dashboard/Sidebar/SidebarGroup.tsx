@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import {
 	Collapse,
@@ -26,7 +26,7 @@ interface IProps {
 
 export default function SidebarGroup({ children, item, selected }: IProps): JSX.Element {
 	const [open, setOpen] = useState(true);
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('layout');
 
 	return (
 		<>
@@ -66,13 +66,13 @@ export default function SidebarGroup({ children, item, selected }: IProps): JSX.
 						color: theme => theme.colors.text[selected ? 'primary' : 'secondary'],
 					}}
 				>
-					{selected ? <ItemText>{t(`menu.${item.name}`)}</ItemText> : t(`menu.${item.name}`)}
+					{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
 				</ListItemText>
 				<ListItemSecondaryAction>
 					{item.tags?.length
 						? item.tags.map(tag => <FeatureBadge key={tag} variant={tag} feature={item.name} />)
 						: undefined}
-					{item.items?.length ? <ExpandIcon expanded={open} sx={{ width: '1rem' }} /> : undefined}
+					{item.items?.length ? <ExpandIcon expanded={open} /> : undefined}
 				</ListItemSecondaryAction>
 			</ListItemButton>
 			{item.items?.length ? (

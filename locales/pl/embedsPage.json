@@ -1,0 +1,49 @@
+{
+	"title": "Lunaris - Wiadomości Embed",
+	"description": "Zarządzaj wiadomościami Embed na swoim serwerze",
+	"confirmEmbedDeletion": "Czy na pewno chcesz usunąć tę wiadomość?",
+	"confirmFieldDeletion": "Czy na pewno chcesz usunąć to pole?",
+	"confirmLeaveWithChanges": "Masz niezapisane dane! Czy na pewno chcesz opuścić tę stronę?",
+	"listHeader": "Twoje Wiadomości Embed",
+	"creatorHeader": "Tworzenie Wiadomości Embed",
+	"editHeader": "Edycja Wiadomości Embed",
+	"formHeader": "Formularz",
+	"previewHeader": "Podgląd",
+
+	"notSent": "Nie wysłano",
+	"noEmbeds": "Nie masz jeszcze żadnych Wiadomości Embed. Utwórz swoją pierwszą!",
+
+	"defaultName": "Nowy Embed",
+	"form": {
+		"labels": {
+			"embedName": "Nazwa Wiadomości Embed",
+			"messageContent": "Wiadomość",
+			"description": "Opis",
+			"author": "Autor",
+			"authorName": "Nazwa",
+			"title": "Tytuł",
+			"thumbnail": "Adres URL miniaturki",
+			"image": "Adres URL obrazka",
+			"fields": "Pola",
+			"field": "Pole",
+			"fieldName": "Nazwa",
+			"fieldValue": "Wartość",
+			"fieldInline": "W linii",
+			"removeField": "Usuń pole",
+			"footer": "Stopka",
+			"footerText": "Tekst",
+			"timestamp": "Czas",
+
+			"url": "Adres URL",
+			"iconURL": "Adres URL Ikonki"
+		},
+		"buttons": {
+			"createEmbed": "Utwórz Wiadomość Embed",
+			"addField": "Dodaj pole",
+			"send": "Wyślij",
+			"edit": "Edytuj",
+			"save": "Zapisz (Bez wysyłania)",
+			"delete": "Usuń"
+		}
+	}
+}

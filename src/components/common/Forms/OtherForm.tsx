@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Button, styled, TextField } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 interface FormValues {
 	email: string;

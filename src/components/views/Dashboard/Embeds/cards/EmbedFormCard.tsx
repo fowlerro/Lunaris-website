@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Control, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import DashboardCard from '@components/DashboardCard';
@@ -14,10 +14,10 @@ interface IProps {
 }
 
 export default function EmbedFormCard({ register, control, errors }: IProps): JSX.Element {
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('embedsPage');
 
 	return (
-		<DashboardCard header={t('embeds.formHeader')} initialExpand>
+		<DashboardCard header={t('formHeader')} initialExpand>
 			<EmbedForm register={register} control={control} errors={errors} />
 		</DashboardCard>
 	);

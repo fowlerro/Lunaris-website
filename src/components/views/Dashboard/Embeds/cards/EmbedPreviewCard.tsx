@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Control } from 'react-hook-form';
 
 import DashboardCard from '@components/DashboardCard';
@@ -12,11 +12,11 @@ interface IProps {
 }
 
 export default function EmbedFormCard({ control }: IProps): JSX.Element {
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('embedsPage');
 
 	return (
 		<DashboardCard
-			header={t('embeds.previewHeader')}
+			header={t('previewHeader')}
 			initialExpand
 			sx={{
 				minWidth: '10rem',

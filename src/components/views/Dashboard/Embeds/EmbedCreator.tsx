@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box, styled } from '@mui/material';
 
@@ -32,13 +32,13 @@ const StyledBox = styled('div')(({ theme }) => ({
 }));
 
 export default function EmbedCreator({ channels }: IProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
 	const [openLeaveWarning, setOpenLeaveWarning] = useState(false);
 
 	const defaultValues: EmbedMessage = {
-		name: t('dashboardPage:embeds.defaultName', { defaultValue: 'New Embed' }),
+		name: t('defaultName', { default: 'New Embed' }),
 		guildId: '',
 		channelId: undefined,
 		messageId: '',
@@ -94,7 +94,7 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 	};
 
 	return (
-		<View header={t('dashboardPage:embeds.creatorHeader')} nested onClickBack={handleOpenLeaveWarning}>
+		<View header={t('creatorHeader')} nested onClickBack={handleOpenLeaveWarning}>
 			<StyledBox>
 				<Box sx={{ flex: 1 }}>
 					<EmbedPreviewCard control={control} />
@@ -105,7 +105,7 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 				</Box>
 			</StyledBox>
 			<ConfirmDialog
-				title={t('dashboardPage:embeds.confirmLeaveWithChanges')}
+				title={t('confirmLeaveWithChanges')}
 				open={openLeaveWarning}
 				onClose={handleCloseLeaveWarning}
 				onConfirm={handleLeave}

@@ -28,6 +28,14 @@
 	},
 
 	"dashboardSidebar": {
+		"modules": "Modules",
+		"overview": "Overview",
+		"autoRoles": "Auto Roles",
+		"levels": "Levels",
+		"welcomeMessages": "Welcome Messages",
+		"serverLogs": "Server Logs",
+		"reactionRoles": "Reaction Roles",
+		"embedMessages": "Embed Messages",
 		"backToServers": "Back to server list"
 	}
 }

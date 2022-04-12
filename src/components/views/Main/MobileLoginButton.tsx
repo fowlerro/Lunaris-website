@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Button, styled } from '@mui/material';
 import { keyframes } from '@emotion/react';

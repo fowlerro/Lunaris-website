@@ -1,7 +1,6 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 
 import Hero from '@views/Main/Hero';
 import Modules from '@views/Main/Modules/Modules';
@@ -21,14 +20,6 @@ const Home: NextPage = () => {
 			<Commands />
 		</>
 	);
-};
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	return {
-		props: {
-			...(await serverSideTranslations(locale ?? 'en', ['common', 'mainPage', 'modules', 'layout'])),
-		},
-	};
 };
 
 export default Home;

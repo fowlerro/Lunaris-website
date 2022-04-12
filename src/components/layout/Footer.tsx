@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { styled, Typography } from '@mui/material';
 
@@ -60,23 +60,23 @@ const Icon = styled(FontAwesomeIcon)({
 });
 
 export default function Footer(): JSX.Element {
-	const { t } = useTranslation('layout', { keyPrefix: 'footer' });
+	const { t } = useTranslation('layout');
 	return (
 		<StyledFooter>
 			<Section>
-				<Header variant='h5'>{t('usefulLinks')}</Header>
-				<StyledLink href='/commands'>{t('commands')}</StyledLink>
-				<StyledLink href='/modules'>{t('modules')}</StyledLink>
-				<StyledLink href='/dashboard'>{t('dashboard')}</StyledLink>
+				<Header variant='h5'>{t('footer.usefulLinks')}</Header>
+				<StyledLink href='/commands'>{t('footer.commands')}</StyledLink>
+				<StyledLink href='/modules'>{t('footer.modules')}</StyledLink>
+				<StyledLink href='/dashboard'>{t('footer.dashboard')}</StyledLink>
 			</Section>
 			<Section>
-				<Header variant='h5'>{t('privacy')}</Header>
-				<StyledLink href='/terms-of-use'>{t('terms')}</StyledLink>
-				<StyledLink href='/privacy'>{t('privacyPolicy')}</StyledLink>
+				<Header variant='h5'>{t('footer.privacy')}</Header>
+				<StyledLink href='/terms-of-use'>{t('footer.terms')}</StyledLink>
+				<StyledLink href='/privacy'>{t('footer.privacyPolicy')}</StyledLink>
 			</Section>
 			<Section>
-				<Header variant='h5'>{t('contact')}</Header>
-				<StyledLink href='/contact'>{t('contactForm')}</StyledLink>
+				<Header variant='h5'>{t('footer.contact')}</Header>
+				<StyledLink href='/contact'>{t('footer.contactForm')}</StyledLink>
 				<StyledLink href='https://discordapp.com/users/313346190995619841' target='_blank'>
 					<Icon icon={faDiscord} />
 					Kamil#2107

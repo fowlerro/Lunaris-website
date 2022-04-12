@@ -1,5 +1,5 @@
 import { Autocomplete, MenuItem, TextFieldProps } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import TextField from '../TextField';
 

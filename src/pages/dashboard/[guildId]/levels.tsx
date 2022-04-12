@@ -1,8 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+import useTranslation from 'next-translate/useTranslation';
 
 import DashboardLayout from '@layouts/DashboardLayout';
 import Levels from '@views/Dashboard/Levels';
@@ -19,13 +18,13 @@ interface IProps {
 }
 
 const DashboardLevels: NextPageWithLayout<IProps> = ({ channels, roles, levelConfig }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('levelsPage');
 	useVisitedFeatures('set', 'levels');
 	return (
 		<>
 			<Head>
-				<title>{t('levels.title')}</title>
-				<meta name='description' content={t('levels.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 			<Levels channels={channels} roles={roles} levelConfig={levelConfig} />
 		</>
@@ -50,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			{ headers }
 		);
 
-		return { props: { channels, roles, levelConfig, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { channels, roles, levelConfig } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };

@@ -1,6 +1,5 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Header from '@views/Contact/Header';
 
@@ -14,14 +13,6 @@ const Contact: NextPage = () => {
 			<Header />
 		</>
 	);
-};
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	return {
-		props: {
-			...(await serverSideTranslations(locale ?? 'en', ['common', 'layout', 'contactPage', 'forms'])),
-		},
-	};
 };
 
 export default Contact;

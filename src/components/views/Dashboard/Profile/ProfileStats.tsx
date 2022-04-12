@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
 
@@ -42,7 +42,7 @@ export default function ProfileStats({
 	xpNeeded,
 	rank,
 }: IProps): JSX.Element {
-	const { t } = useTranslation('dashboardPage');
+	const { t } = useTranslation('profilePage');
 	const xpPercentage = (xp / xpNeeded) * 100;
 	return (
 		<Container>

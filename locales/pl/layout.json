@@ -28,6 +28,14 @@
 	},
 
 	"dashboardSidebar": {
+		"overview": "Przegląd",
+		"modules": "Moduły",
+		"autoRoles": "Auto Role",
+		"levels": "Poziomy",
+		"welcomeMessages": "Wiadomości Powitalne",
+		"serverLogs": "Logi Serwerowe",
+		"reactionRoles": "Reaction Role",
+		"embedMessages": "Wiadomości Embed",
 		"backToServers": "Powrót do listy serwerów"
 	}
 }

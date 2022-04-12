@@ -1,4 +1,6 @@
 {
+	"title": "Lunaris - Auto Roles",
+	"description": "Manage roles automatically assigned to new members",
 	"addHeader": "Add Auto Role",
 	"listHeader": "Auto Roles",
 

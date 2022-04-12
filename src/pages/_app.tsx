@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
-import { appWithTranslation } from 'next-i18next';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { LocalizationProvider } from '@mui/lab';
@@ -53,4 +52,4 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
 	);
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;

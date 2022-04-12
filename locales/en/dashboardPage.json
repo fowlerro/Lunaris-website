@@ -1,0 +1,13 @@
+{
+	"title": "Lunaris - Overview",
+	"description": "Quick overview of your server",
+	"expandReason": "Expand reason",
+	"hideReason": "Hide reason",
+
+	"stats": {
+		"members": "Members",
+		"bots": "Bots",
+		"channels": "Channels",
+		"voiceChannels": "Voice channels"
+	}
+}

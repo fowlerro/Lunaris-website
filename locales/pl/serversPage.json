@@ -1,4 +1,6 @@
 {
+	"title": "Lunaris - Serwery",
+	"description": "Lista serwerów którymi możesz zarządzać",
 	"manageServer": "Zarządzaj serwerem",
 	"inviteToServer": "Zaproś na serwer",
 	"permissions": {

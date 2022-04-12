@@ -6,8 +6,6 @@ export const fetcher = (url: string) => axios(url, { withCredentials: true });
 export const validateCookies = (ctx: GetServerSidePropsContext) => {
 	const headers = ctx?.req?.headers?.cookie ? { Cookie: ctx.req.headers.cookie } : undefined;
 	return headers;
-	// const sessionId = ctx.req.cookies['connect.sid'];
-	// return sessionId ? { Cookie: `connect.sid=${sessionId}` } : false;
 };
 
 export const getRoleColor = (color: number) => {

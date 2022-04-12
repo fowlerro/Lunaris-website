@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { InputAdornment, MenuItem, styled, TextField, Typography } from '@mui/material';
 

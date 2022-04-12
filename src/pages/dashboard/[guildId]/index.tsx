@@ -1,8 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+import useTranslation from 'next-translate/useTranslation';
 
 import DashboardLayout from '@layouts/DashboardLayout';
 import { validateCookies } from '@utils/utils';
@@ -16,13 +15,13 @@ interface IProps {
 }
 
 const DashboardOverview: NextPageWithLayout<IProps> = ({ bans, warns }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('dashboardPage');
 	console.log({ bans, warns });
 	return (
 		<>
 			<Head>
-				<title>{t('overview.title')}</title>
-				<meta name='description' content={t('overview.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 		</>
 	);
@@ -40,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			headers,
 		});
 
-		return { props: { bans, warns, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { bans, warns } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };

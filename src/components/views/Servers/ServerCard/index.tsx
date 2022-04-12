@@ -1,6 +1,7 @@
 import { Button, Paper, styled, Tooltip, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
+import Link from '@components/Link';
 import ServerIcon from '@components/ServerIcon';
 
 interface IProps {
@@ -76,6 +77,7 @@ export default function ServerCard({ id, name, icon, permissions, excluded }: IP
 					variant={permissions === 'member' || excluded ? 'outlined' : 'contained'}
 					sx={{ alignSelf: 'flex-end' }}
 					href={buttonLink}
+					LinkComponent={Link}
 				>
 					{permissions === 'member' ? 'See Profile' : excluded ? t('common:invite') : t('common:manage')}
 				</StyledButton>

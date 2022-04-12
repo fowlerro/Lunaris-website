@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import axios from 'axios';
 
 import { useForm, SubmitHandler } from 'react-hook-form';

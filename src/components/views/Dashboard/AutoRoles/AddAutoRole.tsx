@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Control, Controller, SubmitHandler, useFieldArray, useForm, useWatch } from 'react-hook-form';
 
 import { Button } from '@mui/material';

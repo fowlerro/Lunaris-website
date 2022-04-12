@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';

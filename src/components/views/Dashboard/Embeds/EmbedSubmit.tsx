@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import axios from 'axios';
 
 import { Control, Controller, SubmitHandler, UseFormHandleSubmit, UseFormRegister, useWatch } from 'react-hook-form';
@@ -26,7 +26,7 @@ interface IProps {
 }
 
 export default function EmbedSubmit({ register, handleSubmit, control, channels, edit = false }: IProps): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('embedsPage');
 	const router = useRouter();
 	const [saving, setSaving] = useState(false);
 	const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -91,7 +91,7 @@ export default function EmbedSubmit({ register, handleSubmit, control, channels,
 		<>
 			<TextField
 				fullWidth
-				label={t('dashboardPage:embeds.form.labels.embedName')}
+				label={t('form.labels.embedName')}
 				characterLimit={32}
 				{...register('name')}
 				sx={{ marginTop: '1rem' }}
@@ -124,7 +124,7 @@ export default function EmbedSubmit({ register, handleSubmit, control, channels,
 						sx={{ marginRight: 'auto' }}
 						onClick={() => setOpenConfirmation(true)}
 					>
-						{t('dashboardPage:embeds.form.buttons.delete')}
+						{t('form.buttons.delete')}
 					</LoadingButton>
 				)}
 				<LoadingButton
@@ -133,7 +133,7 @@ export default function EmbedSubmit({ register, handleSubmit, control, channels,
 					onClick={handleSubmit(saveEmbed)}
 					endIcon={<Icon icon={faFloppyDisk} />}
 				>
-					{t('dashboardPage:embeds.form.buttons.save')}
+					{t('form.buttons.save')}
 				</LoadingButton>
 				<LoadingButton
 					variant='contained'
@@ -142,11 +142,11 @@ export default function EmbedSubmit({ register, handleSubmit, control, channels,
 					onClick={handleSubmit(sendEmbed)}
 					endIcon={<Icon icon={faPaperPlane} />}
 				>
-					{t(`dashboardPage:embeds.form.buttons.${edit && messageId ? 'edit' : 'send'}`)}
+					{t(`form.buttons.${edit && messageId ? 'edit' : 'send'}`)}
 				</LoadingButton>
 				{edit && (
 					<ConfirmDialog
-						title={t('dashboardPage:embeds.confirmEmbedDeletion')}
+						title={t('confirmEmbedDeletion')}
 						open={openConfirmation}
 						onClose={() => setOpenConfirmation(false)}
 						onConfirm={deleteEmbed}

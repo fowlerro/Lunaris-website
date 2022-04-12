@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Box } from '@mui/system';
 import { IconButton, List, ListItem, styled, Tooltip } from '@mui/material';

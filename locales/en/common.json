@@ -7,8 +7,10 @@
 	"commands": "Commands",
 	"dashboard": "Dashboard",
 	"submit": "Submit",
+	"add": "Add",
 	"send": "Send",
 	"save": "Save",
+	"reset": "Reset",
 	"cancel": "Cancel",
 	"confirm": "Confirm",
 	"comingSoon": "Coming Soon!",
@@ -30,10 +32,17 @@
 	"hexColor": "HEX Color",
 	"noCategory": "No Category",
 	"readMore": "Read more",
+	"unsavedData": "You have unsaved data!",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",
 		"minutes": "minutes",
 		"seconds": "seconds"
+	},
+
+	"featureTags": {
+		"wip": "Coming Soon",
+		"premium": "Elements for Premium Users",
+		"new": "New"
 	}
 }

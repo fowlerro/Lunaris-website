@@ -1,0 +1,61 @@
+{
+	"title": "Lunaris - Server Logs",
+	"description": "View server logs",
+	"messages": {
+		"header": "Messages",
+		"edit": "Edit",
+		"delete": "Delete",
+		"purge": "Purge",
+		"pin": "Pin",
+		"unpin": "Unpin"
+	},
+	"emojis": {
+		"header": "Emojis",
+		"create": "Create",
+		"delete": "Delete",
+		"edit": "Edit"
+	},
+	"roles": {
+		"header": "Roles",
+		"create": "Create",
+		"delete": "Delete",
+		"edit": "Edit",
+		"add": "Add",
+		"remove": "Remove"
+	},
+	"channels": {
+		"header": "Channels",
+		"create": "Create",
+		"delete": "Delete",
+		"edit": "Edit"
+	},
+	"threads": {
+		"header": "Wątki",
+		"create": "Create",
+		"delete": "Delete",
+		"edit": "Edit"
+	},
+	"invites": {
+		"header": "Invites",
+		"create": "Create",
+		"delete": "Delete"
+	},
+	"members": {
+		"header": "Members",
+		"join": "Join",
+		"leave": "Leave",
+		"nicknameChange": "Nickname change",
+		"warn": "Warn",
+		"unwarn": "Unwarn",
+		"unwarnAll": "Remove all warns",
+		"kick": "Kick",
+		"ban": "Ban",
+		"unban": "Unban",
+		"timeout": "Timeout",
+		"timeoutRemove": "Remove timeout"
+	},
+	"server": {
+		"header": "Server",
+		"unwarnAll": "Remove all warns"
+	}
+}

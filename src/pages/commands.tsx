@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Header from '@views/Commands/Header';
 import CommandSection from '@views/Commands/CommandSection';
@@ -29,14 +28,6 @@ const Commands: NextPage = () => {
 			<FormSection />
 		</>
 	);
-};
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	return {
-		props: {
-			...(await serverSideTranslations(locale ?? 'en', ['common', 'layout', 'commandsPage', 'forms', 'commands'])),
-		},
-	};
 };
 
 export default Commands;

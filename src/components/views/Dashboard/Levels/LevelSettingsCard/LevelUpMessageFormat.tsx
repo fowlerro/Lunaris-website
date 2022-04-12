@@ -1,5 +1,5 @@
 import TextField from '@components/Inputs/TextField';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import type { FieldError, UseFormRegister } from 'react-hook-form';
 
 import type { LevelConfigPageData } from 'types';

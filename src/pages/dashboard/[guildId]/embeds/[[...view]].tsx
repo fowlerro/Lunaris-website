@@ -1,16 +1,15 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+import useTranslation from 'next-translate/useTranslation';
 
 import Embeds from '@views/Dashboard/Embeds';
 import DashboardLayout from '@layouts/DashboardLayout';
+import useVisitedFeatures from '@hooks/useVisitedFeatures';
 import { validateCookies } from '@utils/utils';
 
 import type { NextPageWithLayout } from 'src/pages/_app';
 import type { GuildChannels, EmbedMessage } from 'types';
-import { useTranslation } from 'next-i18next';
-import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 interface IProps {
 	channels: GuildChannels;
@@ -18,14 +17,14 @@ interface IProps {
 }
 
 const DashboardEmbeds: NextPageWithLayout<IProps> = ({ channels, embeds }: IProps) => {
-	const { t } = useTranslation('pages');
+	const { t } = useTranslation('embedsPage');
 	useVisitedFeatures('set', 'embedMessages');
 
 	return (
 		<>
 			<Head>
-				<title>{t('embeds.title')}</title>
-				<meta name='description' content={t('embeds.description')} />
+				<title>{t('title')}</title>
+				<meta name='description' content={t('description')} />
 			</Head>
 			<Embeds channels={channels} embeds={embeds} />
 		</>
@@ -46,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			headers,
 		});
 
-		return { props: { channels, embeds, ...(await serverSideTranslations(ctx.locale ?? 'en')) } };
+		return { props: { channels, embeds } };
 	} catch (err) {
 		console.log(err);
 		return { redirect: { destination: '/' }, props: {} };
