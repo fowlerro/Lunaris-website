@@ -1,13 +1,14 @@
 import { Box, Paper, styled, Typography } from '@mui/material';
 
 import Avatar from '@components/Avatar';
+import Skeleton from '@components/Loading/Skeleton';
 
 import { getUserAvatar, getUserBanner } from '@utils/utils';
 
 import type { User } from 'types';
 
 interface IProps {
-	user: User;
+	user: User | null;
 }
 
 const CardHeader = styled(Paper)(({ theme }) => ({
@@ -46,26 +47,33 @@ const Banner = styled('div')(({ theme }) => ({
 	},
 }));
 
-const AvatarWrapper = styled(Box)({
+const AvatarWrapper = styled(Box)(({ theme }) => ({
 	position: 'absolute',
 	transform: 'translateY(calc(-50% - 2rem))',
 	width: '5rem',
 	height: '5rem',
 	filter: 'drop-shadow(0 0 8px rgba(0,0,0,1))',
-});
+	backgroundColor: theme.colors.background.secondary,
+	borderRadius: '50%',
+}));
 
 export default function ProfileHeader({ user }: IProps): JSX.Element {
-	const avatarURL = getUserAvatar(user.discordId, user.avatar);
-	const bannerURL = getUserBanner(user.discordId, user.banner);
+	const avatarURL = user ? getUserAvatar(user.discordId, user.avatar) : null;
+	const bannerURL = user ? getUserBanner(user.discordId, user.banner) : null;
+
+	const AvatarComponent = avatarURL ? (
+		<Avatar src={avatarURL} alt='Avatar' layout='fill' objectFit='contain' />
+	) : (
+		<Skeleton variant='circular' width='100%' height='100%' />
+	);
+	const UsernameComponent = user ? user.discordTag : <Skeleton variant='text' width='10ch' />;
 
 	return (
 		<CardHeader elevation={0}>
 			<Banner sx={{ '&::before': { backgroundImage: bannerURL ? `url(${bannerURL})` : 'unset' } }}></Banner>
-			<AvatarWrapper>
-				<Avatar src={avatarURL} alt='Avatar' layout='fill' />
-			</AvatarWrapper>
+			<AvatarWrapper>{AvatarComponent}</AvatarWrapper>
 			<Typography variant='h3' component='h1' sx={{ marginTop: '2rem', textShadow: '2px 2px 4px #000' }}>
-				{user.discordTag}
+				{UsernameComponent}
 			</Typography>
 		</CardHeader>
 	);

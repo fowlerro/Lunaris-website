@@ -1,12 +1,12 @@
-import { FormHelperText, TextField as MuiTextField, TextFieldProps } from '@mui/material';
+import { FormHelperText, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps } from '@mui/material';
 import { ChangeEvent, forwardRef, Ref, useEffect, useState } from 'react';
 
-type IProps = {
+export type TextFieldProps = {
 	characterLimit?: number;
-} & TextFieldProps;
+} & MuiTextFieldProps;
 
-const TextField = forwardRef<HTMLInputElement | HTMLDivElement, IProps>(function TextField(
-	{ characterLimit, helperText, FormHelperTextProps, value, onChange, margin, error, ...props }: IProps,
+const TextField = forwardRef<HTMLInputElement | HTMLDivElement, TextFieldProps>(function TextField(
+	{ characterLimit, helperText, FormHelperTextProps, value, onChange, margin, error, ...props }: TextFieldProps,
 	ref: Ref<HTMLInputElement | HTMLDivElement>
 ) {
 	const initialCount = typeof value === 'string' ? value.length : 0;

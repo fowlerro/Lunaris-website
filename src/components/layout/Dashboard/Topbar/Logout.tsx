@@ -7,7 +7,7 @@ import Link from '@components/Link';
 
 export default function Logout(): JSX.Element {
 	return (
-		<Link href={`${process.env.API_URL}/auth/logout`} sx={{ marginLeft: '1rem' }}>
+		<Link href={`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`} sx={{ marginLeft: '1rem' }}>
 			<IconButton color='error'>
 				<Icon icon={faRightToBracket} />
 			</IconButton>

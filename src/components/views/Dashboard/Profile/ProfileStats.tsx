@@ -3,12 +3,13 @@ import useTranslation from 'next-translate/useTranslation';
 import { Box, LinearProgress, linearProgressClasses, styled, Tooltip, Typography, Zoom } from '@mui/material';
 
 import type { ProfileStatistics } from 'types';
+import Skeleton from '@components/Loading/Skeleton';
 
 interface IProps {
 	type: 'text' | 'voice';
-	statistics: ProfileStatistics['text'];
-	xpNeeded: number;
-	rank: number;
+	statistics: ProfileStatistics['text'] | undefined;
+	xpNeeded: number | undefined;
+	rank: number | undefined;
 }
 
 const Container = styled('div')({
@@ -36,14 +37,31 @@ const ProgressBar = styled(LinearProgress)(({ theme }) => ({
 	},
 }));
 
-export default function ProfileStats({
-	type,
-	statistics: { level, xp, dailyXp, totalXp },
-	xpNeeded,
-	rank,
-}: IProps): JSX.Element {
+export default function ProfileStats({ type, statistics, xpNeeded, rank }: IProps): JSX.Element {
 	const { t } = useTranslation('profilePage');
-	const xpPercentage = (xp / xpNeeded) * 100;
+	const xpPercentage = statistics && xpNeeded ? (statistics.xp / xpNeeded) * 100 : 0;
+
+	const XpNeeded = statistics ? `${statistics.xp}/${xpNeeded}` : <Skeleton variant='text' width='7ch' align='center' />;
+
+	const Level = statistics ? `${statistics.level} ${t('level')}` : <Skeleton variant='text' width='10ch' />;
+	const Rank = rank ? `#${rank}` : <Skeleton variant='text' width='4ch' />;
+	const DailyXP = statistics ? (
+		`${statistics.dailyXp}\n${t('today')}`
+	) : (
+		<>
+			<Skeleton variant='text' width='5ch' />
+			<Skeleton variant='text' width='7ch' />
+		</>
+	);
+	const TotalXP = statistics ? (
+		`${statistics.totalXp}\n${t('total')}`
+	) : (
+		<>
+			<Skeleton variant='text' width='5ch' align='right' />
+			<Skeleton variant='text' width='7ch' align='right' />
+		</>
+	);
+
 	return (
 		<Container>
 			<Typography variant='h3' component='h2' sx={{ textTransform: 'capitalize', marginBottom: '1rem' }}>
@@ -51,10 +69,10 @@ export default function ProfileStats({
 			</Typography>
 			<Section sx={{ marginInline: '.2rem' }}>
 				<Typography variant='subtitle2' sx={{ textAlign: 'left', textTransform: 'uppercase' }}>
-					{`${level} ${t('level')}`}
+					{Level}
 				</Typography>
 				<Typography variant='subtitle2' sx={{ textAlign: 'right' }}>
-					{`#${rank}`}
+					{Rank}
 				</Typography>
 			</Section>
 			<Section>
@@ -66,12 +84,18 @@ export default function ProfileStats({
 				<Typography
 					variant='caption'
 					sx={{ whiteSpace: 'pre-line', textAlign: 'left', textTransform: 'uppercase', flex: '1' }}
-				>{`${dailyXp}\n${t('today')}`}</Typography>
-				<Typography variant='caption' sx={{ flex: '1' }}>{`${xp}/${xpNeeded}`}</Typography>
+				>
+					{DailyXP}
+				</Typography>
+				<Typography variant='caption' sx={{ flex: '1' }}>
+					{XpNeeded}
+				</Typography>
 				<Typography
 					variant='caption'
 					sx={{ whiteSpace: 'pre-line', textAlign: 'right', textTransform: 'uppercase', flex: '1' }}
-				>{`${totalXp}\n${t('total')}`}</Typography>
+				>
+					{TotalXP}
+				</Typography>
 			</Section>
 		</Container>
 	);

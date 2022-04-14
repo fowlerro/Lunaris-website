@@ -11,28 +11,12 @@ interface IProps {
 	redirectIfFound?: boolean;
 }
 
-export default function useUser(): User | null;
-export default function useUser({
-	redirectTo,
-	redirectIfFound,
-}: {
-	redirectTo: string;
-	redirectIfFound?: boolean;
-}): User;
-export default function useUser({
-	redirectTo,
-	redirectIfFound,
-}: {
-	redirectTo?: undefined;
-	redirectIfFound?: boolean;
-}): User | null;
 export default function useUser({ redirectTo, redirectIfFound }: IProps = {}): User | null {
-	const { data, error } = useSWR(`${process.env.API_URL}/auth`, fetcher, {
+	const { data: user, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/auth`, fetcher, {
 		errorRetryCount: 3,
 		revalidateOnFocus: false,
 	});
-	const user = data?.data;
-	const finished = Boolean(data || error);
+	const finished = Boolean(user || error);
 	const hasUser = Boolean(user);
 
 	useEffect(() => {

@@ -1,24 +1,20 @@
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import useSWR from 'swr';
 import axios from 'axios';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler } from 'react-hook-form';
 
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
 
+import { fetcher } from '@utils/utils';
+
 import AddAutoRole from './AddAutoRole';
 import AutoRoleList from './AutoRoleList';
+import useAutoRolesForm from './useAutoRolesForm';
 
 import type { AutoRolePageData, Role } from 'types';
-
-interface IProps {
-	autoRolesData: AutoRolePageData;
-	roles: Role[];
-}
 
 const Section = styled('section')({
 	display: 'flex',
@@ -26,44 +22,25 @@ const Section = styled('section')({
 	gap: '1rem',
 });
 
-export default function AutoRoles({ autoRolesData, roles }: IProps): JSX.Element {
-	const { t } = useTranslation();
+export default function AutoRoles(): JSX.Element {
 	const router = useRouter();
 	const guildId = router.query.guildId;
 
-	const validationSchema = Yup.object().shape({
-		status: Yup.boolean().required(t('forms:errors.required')),
-		autoRoles: Yup.array()
-			.of(
-				Yup.object().shape({
-					roleId: Yup.string().required(t('forms:errors.required')),
-					time: Yup.number().required(t('forms:errors.required')),
-				})
-			)
-			.max(5, t('forms:errors.max', { count: 5 }))
-			.test('unique', t('autoRolesPage:errors.duplicateRoles'), function (value) {
-				const tempDuplicates = new Set();
-				const hasDuplicates = value?.some(autoRole => tempDuplicates.size === tempDuplicates.add(autoRole.roleId).size);
-				if (hasDuplicates) return false;
-				return true;
-			}),
-	});
+	const { data: roles } = useSWR<Role[]>(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/roles`, fetcher);
+	const { data: autoRolesData } = useSWR<AutoRolePageData>(
+		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/auto-roles`,
+		fetcher
+	);
 
 	const {
 		control,
 		handleSubmit,
 		reset,
 		formState: { isDirty },
-	} = useForm<AutoRolePageData>({
-		defaultValues: {
-			status: autoRolesData.status,
-			autoRoles: autoRolesData.autoRoles,
-		},
-		resolver: yupResolver(validationSchema),
-	});
+	} = useAutoRolesForm({ defaultValues: autoRolesData });
 
 	const onSubmit: SubmitHandler<AutoRolePageData> = async autoRolesData => {
-		const data = await axios.put(`${process.env.API_URL}/guilds/${guildId}/auto-roles`, autoRolesData, {
+		const data = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/auto-roles`, autoRolesData, {
 			withCredentials: true,
 		});
 		if (data.status === 200) {

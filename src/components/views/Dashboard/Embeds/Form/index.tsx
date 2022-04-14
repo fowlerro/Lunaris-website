@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useFieldArray, Control, Controller, UseFormRegister, UseFieldArrayRemove, FieldErrors } from 'react-hook-form';
+import { useFieldArray, Control, Controller, UseFieldArrayRemove } from 'react-hook-form';
 
 import {
 	Paper,
@@ -29,32 +29,15 @@ import { colors } from '@styles/theme';
 import type { EmbedMessage } from 'types';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 import useTranslation from 'next-translate/useTranslation';
+import ControlledTextField from '@components/Inputs/Controlled/TextField';
 
 interface IProps {
-	register: UseFormRegister<EmbedMessage>;
-	control: Control<EmbedMessage>;
-	errors: FieldErrors<EmbedMessage>;
-}
-
-interface IInputGroupProps {
-	register: UseFormRegister<EmbedMessage>;
-	errors: FieldErrors<EmbedMessage>;
-}
-
-interface IFooterProps {
-	register: UseFormRegister<EmbedMessage>;
-	control: Control<EmbedMessage>;
-	errors: FieldErrors<EmbedMessage>;
-}
-
-interface ITimestampProps {
 	control: Control<EmbedMessage>;
 }
+
 interface IFieldProps {
 	index: number;
 	control: Control<EmbedMessage>;
-	errors: FieldErrors<EmbedMessage>;
-	register: UseFormRegister<EmbedMessage>;
 	remove: UseFieldArrayRemove;
 }
 
@@ -66,11 +49,11 @@ const Wrapper = styled((props: PaperProps) => {
 	marginBlock: '1rem',
 }));
 
-export default function EmbedForm({ register, control, errors }: IProps): JSX.Element {
+export default function EmbedForm({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	return (
 		<form style={{ marginTop: '1rem' }}>
-			<TextField
+			{/* <TextField
 				characterLimit={EMBED_LIMITS.messageContent}
 				fullWidth
 				multiline
@@ -81,6 +64,19 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 				error={Boolean(errors.messageContent)}
 				helperText={errors.messageContent?.message}
 				{...register('messageContent')}
+			/> */}
+			<ControlledTextField
+				name='messageContent'
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.messageContent,
+					fullWidth: true,
+					multiline: true,
+					minRows: 4,
+					maxRows: 8,
+					label: t('form.labels.messageContent'),
+					margin: 'normal',
+				}}
 			/>
 			<Controller
 				name='embed.hexColor'
@@ -91,10 +87,10 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 				)}
 			/>
 
-			<Author register={register} errors={errors} />
-			<Title register={register} errors={errors} />
+			<Author control={control} />
+			<Title control={control} />
 
-			<TextField
+			{/* <TextField
 				characterLimit={EMBED_LIMITS.description}
 				fullWidth
 				multiline
@@ -105,38 +101,69 @@ export default function EmbedForm({ register, control, errors }: IProps): JSX.El
 				error={Boolean(errors.embed?.description)}
 				helperText={errors.embed?.description?.message}
 				{...register('embed.description')}
+			/> */}
+			<ControlledTextField
+				name='embed.description'
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.description,
+					fullWidth: true,
+					multiline: true,
+					minRows: 4,
+					maxRows: 12,
+					label: t('form.labels.description'),
+					margin: 'normal',
+				}}
 			/>
 
-			<Fields control={control} register={register} errors={errors} />
+			<Fields control={control} />
 
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.thumbnail')}
 				margin='normal'
 				{...register('embed.thumbnail.url')}
 				error={Boolean(errors.embed?.thumbnail?.url)}
 				helperText={errors.embed?.thumbnail?.url?.message}
+			/> */}
+			<ControlledTextField
+				name='embed.thumbnail.url'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.thumbnail'),
+					margin: 'normal',
+				}}
 			/>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.image')}
 				margin='normal'
 				{...register('embed.image.url')}
 				error={Boolean(errors.embed?.image?.url)}
 				helperText={errors.embed?.image?.url?.message}
+			/> */}
+			<ControlledTextField
+				name='embed.image.url'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.image'),
+					margin: 'normal',
+				}}
 			/>
 
-			<Footer register={register} control={control} errors={errors} />
+			<Footer control={control} />
 		</form>
 	);
 }
 
-function Author({ register, errors }: IInputGroupProps): JSX.Element {
+function Author({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
 			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.author')}</InputLabel>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.authorName')}
 				margin='dense'
@@ -144,8 +171,18 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 				characterLimit={EMBED_LIMITS.author}
 				helperText={errors.embed?.author?.name?.message}
 				{...register('embed.author.name')}
+			/> */}
+			<ControlledTextField
+				name='embed.author.name'
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.author,
+					fullWidth: true,
+					label: t('form.labels.authorName'),
+					margin: 'dense',
+				}}
 			/>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.url')}
 				margin='dense'
@@ -153,8 +190,18 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 				error={Boolean(errors.embed?.author?.url)}
 				helperText={errors.embed?.author?.url?.message}
 				{...register('embed.author.url')}
+			/> */}
+			<ControlledTextField
+				name='embed.author.url'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.url'),
+					margin: 'dense',
+					size: 'small',
+				}}
 			/>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.iconURL')}
 				margin='dense'
@@ -162,17 +209,27 @@ function Author({ register, errors }: IInputGroupProps): JSX.Element {
 				error={Boolean(errors.embed?.author?.iconURL)}
 				helperText={errors.embed?.author?.iconURL?.message}
 				{...register('embed.author.iconURL')}
+			/> */}
+			<ControlledTextField
+				name='embed.author.iconURL'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.iconURL'),
+					margin: 'dense',
+					size: 'small',
+				}}
 			/>
 		</Wrapper>
 	);
 }
 
-function Title({ register, errors }: IInputGroupProps): JSX.Element {
+function Title({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
 			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.title')}</InputLabel>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.title')}
 				margin='dense'
@@ -180,8 +237,18 @@ function Title({ register, errors }: IInputGroupProps): JSX.Element {
 				helperText={errors.embed?.title?.message}
 				characterLimit={EMBED_LIMITS.title}
 				{...register('embed.title')}
+			/> */}
+			<ControlledTextField
+				name='embed.title'
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.title,
+					fullWidth: true,
+					label: t('form.labels.title'),
+					margin: 'dense',
+				}}
 			/>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.url')}
 				margin='dense'
@@ -189,12 +256,22 @@ function Title({ register, errors }: IInputGroupProps): JSX.Element {
 				error={Boolean(errors.embed?.url)}
 				helperText={errors.embed?.url?.message}
 				{...register('embed.url')}
+			/> */}
+			<ControlledTextField
+				name='embed.url'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.url'),
+					margin: 'dense',
+					size: 'small',
+				}}
 			/>
 		</Wrapper>
 	);
 }
 
-function Fields({ control, register, errors }: IProps): JSX.Element {
+function Fields({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	const { fields, append, remove } = useFieldArray<EmbedMessage>({
 		control,
@@ -205,7 +282,7 @@ function Fields({ control, register, errors }: IProps): JSX.Element {
 		<Box sx={{ marginBlock: '1rem' }}>
 			<Divider variant='middle'>{t('form.labels.fields')}</Divider>
 			{fields.map((field, index) => (
-				<Field key={field.id} index={index} control={control} register={register} remove={remove} errors={errors} />
+				<Field key={field.id} index={index} control={control} remove={remove} />
 			))}
 			<Button
 				variant='contained'
@@ -221,7 +298,7 @@ function Fields({ control, register, errors }: IProps): JSX.Element {
 	);
 }
 
-function Field({ index, control, register, remove, errors }: IFieldProps): JSX.Element {
+function Field({ index, control, remove }: IFieldProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	const [openConfirmation, setOpenConfirmation] = useState(false);
 
@@ -245,7 +322,7 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 					</IconButton>
 				</Tooltip>
 			</Box>
-			<TextField
+			{/* <TextField
 				fullWidth
 				label={t('form.labels.fieldName')}
 				margin='dense'
@@ -253,8 +330,18 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 				helperText={errors.embed?.fields?.[index]?.name?.message}
 				characterLimit={EMBED_LIMITS.field.name}
 				{...register(`embed.fields.${index}.name`)}
+			/> */}
+			<ControlledTextField
+				name={`embed.fields.${index}.name`}
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.field.name,
+					fullWidth: true,
+					label: t('form.labels.fieldName'),
+					margin: 'dense',
+				}}
 			/>
-			<TextField
+			{/* <TextField
 				fullWidth
 				multiline
 				minRows={3}
@@ -265,6 +352,19 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 				helperText={errors.embed?.fields?.[index]?.value?.message}
 				characterLimit={EMBED_LIMITS.field.value}
 				{...register(`embed.fields.${index}.value`)}
+			/> */}
+			<ControlledTextField
+				name={`embed.fields.${index}.value`}
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.field.value,
+					fullWidth: true,
+					multiline: true,
+					minRows: 3,
+					maxRows: 6,
+					label: t('form.labels.fieldValue'),
+					margin: 'dense',
+				}}
 			/>
 			<Controller
 				name={`embed.fields.${index}.inline`}
@@ -287,35 +387,36 @@ function Field({ index, control, register, remove, errors }: IFieldProps): JSX.E
 	);
 }
 
-function Footer({ register, control, errors }: IFooterProps): JSX.Element {
+function Footer({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	return (
 		<Wrapper>
 			<InputLabel sx={{ fontSize: '1.25rem' }}>{t('form.labels.footer')}</InputLabel>
-			<TextField
-				fullWidth
-				label={t('form.labels.footerText')}
-				margin='dense'
-				error={Boolean(errors.embed?.footer?.text)}
-				helperText={errors.embed?.footer?.text?.message}
-				characterLimit={EMBED_LIMITS.footer}
-				{...register('embed.footer.text')}
+			<ControlledTextField
+				name='embed.footer.text'
+				control={control}
+				inputProps={{
+					characterLimit: EMBED_LIMITS.footer,
+					fullWidth: true,
+					label: t('form.labels.footerText'),
+					margin: 'dense',
+				}}
 			/>
-			<TextField
-				fullWidth
-				label={t('form.labels.iconURL')}
-				margin='dense'
-				size='small'
-				error={Boolean(errors.embed?.footer?.iconURL)}
-				helperText={errors.embed?.footer?.iconURL?.message}
-				{...register('embed.footer.iconURL')}
+			<ControlledTextField
+				name='embed.footer.iconURL'
+				control={control}
+				inputProps={{
+					fullWidth: true,
+					label: t('form.labels.iconURL'),
+					margin: 'dense',
+				}}
 			/>
 			<Timestamp control={control} />
 		</Wrapper>
 	);
 }
 
-function Timestamp({ control }: ITimestampProps): JSX.Element {
+function Timestamp({ control }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	return (
 		<Controller

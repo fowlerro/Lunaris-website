@@ -13,7 +13,7 @@ import useIsDesktop from '@hooks/useIsDesktop';
 import type { AutoRole, AutoRolePageData, Role } from 'types';
 
 interface IProps {
-	roles: Role[];
+	roles: Role[] | undefined;
 	control: Control<AutoRolePageData>;
 }
 
@@ -63,8 +63,9 @@ export default function AddAutoRole({ roles, control }: IProps): JSX.Element {
 				render={({ field, fieldState }) => (
 					<RoleSelect
 						size={isDesktop ? 'medium' : 'small'}
+						disabled={Boolean(!roles)}
 						disableClearable
-						roles={roles}
+						roles={roles || []}
 						filterOptions={options => options.filter(role => !autoRoles?.some(autoRole => autoRole.roleId === role.id))}
 						value={field.value}
 						onChange={field.onChange}
@@ -73,6 +74,7 @@ export default function AddAutoRole({ roles, control }: IProps): JSX.Element {
 					/>
 				)}
 			/>
+
 			<Controller
 				name='time'
 				control={addControl}

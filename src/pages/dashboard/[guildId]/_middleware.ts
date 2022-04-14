@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
 	const headers = validateMiddlewareCookies(req);
 	if (!guildId || !headers) return NextResponse.redirect(`${origin}/servers`);
 
-	const response = await fetch(`${process.env.API_URL}/guilds/${guildId}/permissions`, { headers });
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/permissions`, { headers });
 	if (response.status !== 200) return NextResponse.redirect(`${origin}/servers`);
 
 	return NextResponse.next();

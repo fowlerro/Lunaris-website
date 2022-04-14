@@ -5,7 +5,7 @@ import ChannelSelect from '@components/Inputs/ChannelSelect';
 import type { GuildChannels, LevelConfigPageData } from 'types';
 
 interface IProps {
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 	control: Control<LevelConfigPageData>;
 }
 
@@ -16,11 +16,12 @@ export default function LevelUpChannel({ channels, control }: IProps): JSX.Eleme
 			control={control}
 			render={({ field, fieldState }) => (
 				<ChannelSelect
-					channels={channels}
+					channels={channels ?? { text: [], category: [] }}
 					value={field.value}
 					onChange={e => field.onChange(e)}
 					error={fieldState.invalid}
 					helperText={fieldState.error?.message}
+					disabled={Boolean(!channels)}
 				/>
 			)}
 		/>

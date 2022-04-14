@@ -9,7 +9,7 @@ import ProfileContent from './ProfileContent';
 import type { ProfileWithRank } from 'types';
 
 interface IProps {
-	profile: ProfileWithRank;
+	profile: ProfileWithRank | undefined;
 }
 
 const StyledCard = styled(Paper)(({ theme }) => ({
@@ -24,11 +24,11 @@ const StyledCard = styled(Paper)(({ theme }) => ({
 
 export default function ProfileCard({ profile }: IProps): JSX.Element {
 	const user = useUser({ redirectTo: loginURL });
-	if (!user) return <></>;
+
 	return (
 		<StyledCard elevation={0}>
 			<ProfileHeader user={user} />
-			<ProfileContent statistics={profile.statistics} xpNeeded={profile.xpNeeded} rank={profile.rank} />
+			<ProfileContent statistics={profile?.statistics} rank={profile?.rank} xpNeeded={profile?.xpNeeded} />
 		</StyledCard>
 	);
 }

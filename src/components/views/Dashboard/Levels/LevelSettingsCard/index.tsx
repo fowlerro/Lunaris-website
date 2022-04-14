@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { Control, UseFormRegister, FieldErrors, useWatch } from 'react-hook-form';
+import { Control, useWatch } from 'react-hook-form';
 
 import { Typography } from '@mui/material';
 
@@ -15,14 +15,11 @@ import LevelUpMessageFormat from './LevelUpMessageFormat';
 import type { GuildChannels, LevelConfigPageData } from 'types';
 
 interface IProps {
-	defaultValues: LevelConfigPageData;
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 	control: Control<LevelConfigPageData>;
-	errors: FieldErrors<LevelConfigPageData>;
-	register: UseFormRegister<LevelConfigPageData>;
 }
 
-export default function LevelSettingsCard({ defaultValues, channels, control, errors, register }: IProps): JSX.Element {
+export default function LevelSettingsCard({ channels, control }: IProps): JSX.Element {
 	const { t } = useTranslation();
 
 	const { levelConfig } = useWatch({
@@ -47,13 +44,7 @@ export default function LevelSettingsCard({ defaultValues, channels, control, er
 			{levelConfig?.levelUpMessage?.mode === 'specificChannel' && (
 				<LevelUpChannel channels={channels} control={control} />
 			)}
-			{levelConfig?.levelUpMessage?.mode !== 'off' && (
-				<LevelUpMessageFormat
-					defaultValue={defaultValues.levelConfig.levelUpMessage.messageFormat || ''}
-					error={errors.levelConfig?.levelUpMessage?.messageFormat}
-					register={register}
-				/>
-			)}
+			{levelConfig?.levelUpMessage?.mode !== 'off' && <LevelUpMessageFormat control={control} />}
 		</DashboardCard>
 	);
 }

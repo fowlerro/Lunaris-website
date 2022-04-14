@@ -23,10 +23,11 @@ import { getRoleColor } from '@utils/utils';
 import AddLevelRewardModal from './AddLevelRewardModal';
 
 import type { LevelConfigPageData, LevelReward, Role } from 'types';
+import Skeleton from '@components/Loading/Skeleton';
 
 interface IProps {
 	control: Control<LevelConfigPageData>;
-	roles: Role[];
+	roles: Role[] | undefined;
 	voice?: boolean;
 }
 
@@ -64,12 +65,14 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 						{Array.from(fields)
 							.sort((a, b) => a.level - b.level)
 							.map(levelReward => {
-								const role = roles.find(role => role.id === levelReward.roleId);
+								const role = roles?.find(role => role.id === levelReward.roleId);
 
 								return (
 									<TableRow key={levelReward.id}>
 										<TableCell align='right'>{levelReward.level}</TableCell>
-										<TableCell sx={{ color: getRoleColor(role?.color || 0) }}>{role?.name}</TableCell>
+										<TableCell sx={{ color: getRoleColor(role?.color || 0) }}>
+											{role?.name ? role.name : <Skeleton variant='text' width='5ch' />}
+										</TableCell>
 										<TableCell align='right'>
 											<Checkbox checked={levelReward.takePreviousRole} />
 										</TableCell>

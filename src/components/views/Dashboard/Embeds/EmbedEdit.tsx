@@ -18,7 +18,7 @@ import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
 import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 	embed: EmbedMessage;
 }
 
@@ -39,10 +39,10 @@ export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 
 	const {
-		register,
 		control,
 		handleSubmit,
-		formState: { errors, isDirty },
+		reset,
+		formState: { isDirty },
 	} = useEmbedForm({
 		defaultValues: {
 			_id: embed._id,
@@ -99,8 +99,8 @@ export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 					<EmbedPreviewCard control={control} />
 				</Box>
 				<Box sx={{ flex: 2, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-					<EmbedFormCard register={register} control={control} errors={errors} />
-					<EmbedSubmitCard register={register} control={control} handleSubmit={handleSubmit} channels={channels} edit />
+					<EmbedFormCard control={control} />
+					<EmbedSubmitCard control={control} handleSubmit={handleSubmit} reset={reset} channels={channels} edit />
 				</Box>
 			</StyledBox>
 			<ConfirmDialog

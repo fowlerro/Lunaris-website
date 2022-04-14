@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import type { NextPageWithLayout } from './_app';
 
-const Custom404: NextPageWithLayout = () => {
+const Custom404Page: NextPageWithLayout = () => {
 	return (
 		<>
 			<Head>
@@ -18,6 +18,6 @@ const ErrorLayout = ({ children }: { children: ReactNode }) => {
 	return <>{children}</>;
 };
 
-Custom404.Layout = ErrorLayout;
+Custom404Page.Layout = ErrorLayout;
 
-export default Custom404;
+export default Custom404Page;

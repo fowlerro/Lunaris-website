@@ -18,7 +18,7 @@ import { colors } from '@styles/theme';
 import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 }
 
 const StyledBox = styled('div')(({ theme }) => ({
@@ -69,10 +69,10 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 	};
 
 	const {
-		register,
 		control,
 		handleSubmit,
-		formState: { errors, isDirty },
+		reset,
+		formState: { isDirty },
 	} = useEmbedForm({
 		defaultValues,
 		channels,
@@ -100,8 +100,8 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 					<EmbedPreviewCard control={control} />
 				</Box>
 				<Box sx={{ flex: 2, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-					<EmbedFormCard register={register} control={control} errors={errors} />
-					<EmbedSubmitCard register={register} control={control} handleSubmit={handleSubmit} channels={channels} />
+					<EmbedFormCard control={control} />
+					<EmbedSubmitCard control={control} handleSubmit={handleSubmit} reset={reset} channels={channels} />
 				</Box>
 			</StyledBox>
 			<ConfirmDialog

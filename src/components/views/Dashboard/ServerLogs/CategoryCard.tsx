@@ -10,7 +10,7 @@ import type { GuildChannels, GuildLogsPageData, GuildLogTypes } from 'types';
 
 interface IProps {
 	category: string;
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 	logs: {
 		[log: string]: boolean;
 	};
@@ -30,7 +30,13 @@ export default function CategoryCard({ category, channels, logs, control }: IPro
 				name={`serverLogs.${category as keyof GuildLogTypes}.channelId`}
 				control={control}
 				render={({ field }) => (
-					<ChannelSelect channels={channels} value={field.value ?? null} onChange={field.onChange} size='small' />
+					<ChannelSelect
+						channels={channels ?? { text: [], category: [] }}
+						disabled={Boolean(!channels)}
+						value={field.value ?? null}
+						onChange={field.onChange}
+						size='small'
+					/>
 				)}
 			/>
 			<FormGroup sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>

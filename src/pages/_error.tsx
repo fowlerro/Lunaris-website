@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import type { NextPageWithLayout } from './_app';
 
-const Error: NextPageWithLayout = () => {
+const ErrorPage: NextPageWithLayout = () => {
 	return (
 		<>
 			<Head>
@@ -18,6 +18,6 @@ const ErrorLayout = ({ children }: { children: ReactNode }) => {
 	return <>{children}</>;
 };
 
-Error.Layout = ErrorLayout;
+ErrorPage.Layout = ErrorLayout;
 
-export default Error;
+export default ErrorPage;

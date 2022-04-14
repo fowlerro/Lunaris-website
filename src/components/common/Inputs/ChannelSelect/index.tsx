@@ -16,17 +16,19 @@ interface IProps {
 	channels: GuildChannels;
 	label?: string;
 	value?: string | null;
+	disabled?: boolean;
 	disabledClearable?: boolean;
 	size?: TextFieldProps['size'];
 	error?: boolean;
 	helperText?: string;
-	onChange: (value: string) => void;
+	onChange: (value: string | undefined) => void;
 }
 
 export default function ChannelSelect({
 	channels,
 	label,
 	value,
+	disabled = false,
 	disabledClearable = false,
 	size = 'medium',
 	error = false,
@@ -45,6 +47,7 @@ export default function ChannelSelect({
 	return (
 		<Autocomplete
 			disablePortal
+			disabled={disabled}
 			disableClearable={disabledClearable}
 			options={options.sort((a, b) => a.position - b.position)}
 			isOptionEqualToValue={(option, value) => option.id === value?.id}
@@ -65,7 +68,7 @@ export default function ChannelSelect({
 			renderInput={params => (
 				<TextField {...params} size={size} label={label ?? t('common:channel')} error={error} helperText={helperText} />
 			)}
-			onChange={(_, value) => onChange(value?.id ?? '')}
+			onChange={(_, value) => onChange(value?.id)}
 			sx={{ textTransform: 'none', marginBlock: '1.5rem' }}
 			ListboxProps={{
 				style: { textTransform: 'none' },

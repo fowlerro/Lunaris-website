@@ -19,7 +19,7 @@ import { getRoleColor } from '@utils/utils';
 import type { AutoRolePageData, Role } from 'types';
 
 interface IProps {
-	roles: Role[];
+	roles: Role[] | undefined;
 	control: Control<AutoRolePageData>;
 }
 
@@ -56,27 +56,29 @@ export default function AutoRoleList({ roles, control }: IProps): JSX.Element {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{autoRoles?.map((autoRole, index) => {
-							const role = roles.find(role => role.id === autoRole.roleId);
-							const duration = autoRole.time
-								? formatDuration(intervalToDuration({ start: 0, end: autoRole.time }), {
-										locale: locale === 'pl' ? pl : undefined,
-										delimiter: ', ',
-								  })
-								: '-';
+						{autoRoles && roles
+							? autoRoles.map((autoRole, index) => {
+									const role = roles.find(role => role.id === autoRole.roleId);
+									const duration = autoRole.time
+										? formatDuration(intervalToDuration({ start: 0, end: autoRole.time }), {
+												locale: locale === 'pl' ? pl : undefined,
+												delimiter: ', ',
+										  })
+										: '-';
 
-							return (
-								<TableRow key={autoRole.roleId}>
-									<TableCell sx={{ color: getRoleColor(role?.color || 0) }}>{role?.name}</TableCell>
-									<TableCell align='right'>{duration}</TableCell>
-									<TableCell align='right'>
-										<IconButton onClick={() => remove(index)} color='error'>
-											<Icon icon={faTrash} />
-										</IconButton>
-									</TableCell>
-								</TableRow>
-							);
-						})}
+									return (
+										<TableRow key={autoRole.roleId}>
+											<TableCell sx={{ color: getRoleColor(role?.color || 0) }}>{role?.name}</TableCell>
+											<TableCell align='right'>{duration}</TableCell>
+											<TableCell align='right'>
+												<IconButton onClick={() => remove(index)} color='error'>
+													<Icon icon={faTrash} />
+												</IconButton>
+											</TableCell>
+										</TableRow>
+									);
+							  })
+							: null}
 					</TableBody>
 				</Table>
 			</TableContainer>

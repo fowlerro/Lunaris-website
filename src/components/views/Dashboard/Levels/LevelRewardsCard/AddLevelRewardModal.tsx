@@ -23,7 +23,7 @@ import type { LevelReward, Role } from 'types';
 interface IProps {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
-	roles: Role[];
+	roles: Role[] | undefined;
 	addRole: (reward: LevelReward) => void;
 }
 
@@ -46,8 +46,8 @@ export default function AddLevelRewardModal({ open, setOpen, roles, addRole }: I
 		roleId: Yup.string()
 			.required(t('forms:errors.required'))
 			.oneOf(
-				roles.map(role => role.id),
-				t('forms:errors.invalid')
+				(roles ?? []).map(role => role.id),
+				t('forms:errors.invalidOption')
 			),
 		takePreviousRole: Yup.boolean(),
 	});
@@ -99,11 +99,12 @@ export default function AddLevelRewardModal({ open, setOpen, roles, addRole }: I
 					name='roleId'
 					render={({ field, fieldState }) => (
 						<RoleSelect
-							roles={roles}
+							roles={roles ?? []}
 							value={field.value}
 							onChange={roleId => field.onChange(roleId)}
 							error={fieldState.invalid}
 							helperText={fieldState.error?.message}
+							disabled={Boolean(!roles)}
 							disableClearable
 						/>
 					)}

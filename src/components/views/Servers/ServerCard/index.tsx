@@ -3,12 +3,13 @@ import useTranslation from 'next-translate/useTranslation';
 
 import Link from '@components/Link';
 import ServerIcon from '@components/ServerIcon';
+import Skeleton from '@components/Loading/Skeleton';
 
 interface IProps {
-	id: string;
-	name: string;
-	icon: string | null;
-	permissions: 'owner' | 'manager' | 'member';
+	id?: string;
+	name?: string;
+	icon?: string | null;
+	permissions?: 'owner' | 'manager' | 'member';
 	excluded?: boolean;
 }
 
@@ -59,28 +60,35 @@ export default function ServerCard({ id, name, icon, permissions, excluded }: IP
 			? `${process.env.INVITE_URL}&guild_id=${id}&disable_guild_select=true`
 			: `/dashboard/${id}`;
 
+	const Icon = id && name ? <ServerIcon id={id} name={name} icon={icon ?? null} /> : <Skeleton variant='circular' />;
+	const ServerName = name ? name : <Skeleton variant='text' width='10ch' />;
+	const Permissions = permissions ? permissions : <Skeleton variant='text' width='8ch' height='20px' />;
+	const ButtonComponent = permissions ? (
+		<StyledButton
+			variant={permissions === 'member' || excluded ? 'outlined' : 'contained'}
+			sx={{ alignSelf: 'flex-end' }}
+			href={buttonLink}
+			LinkComponent={Link}
+		>
+			{permissions === 'member' ? t('serversPage:seeProfile') : excluded ? t('common:invite') : t('common:manage')}
+		</StyledButton>
+	) : (
+		<Skeleton variant='rectangular' width='90px' height='30px' sx={{ borderRadius: 1 }} />
+	);
+
 	return (
 		<Card elevation={0}>
-			<AvatarWrapper>
-				<ServerIcon id={id} name={name} icon={icon} />
-			</AvatarWrapper>
-			<Tooltip title={name} placement='top' arrow>
+			<AvatarWrapper>{Icon}</AvatarWrapper>
+			<Tooltip title={name || ''} placement='top' arrow>
 				<Typography variant='h3' component='h2' sx={{ overflow: 'hidden', width: '100%' }}>
-					{name}
+					{ServerName}
 				</Typography>
 			</Tooltip>
 			<Wrapper>
 				<Typography variant='caption' sx={{ textTransform: 'uppercase' }}>
-					{permissions}
+					{Permissions}
 				</Typography>
-				<StyledButton
-					variant={permissions === 'member' || excluded ? 'outlined' : 'contained'}
-					sx={{ alignSelf: 'flex-end' }}
-					href={buttonLink}
-					LinkComponent={Link}
-				>
-					{permissions === 'member' ? 'See Profile' : excluded ? t('common:invite') : t('common:manage')}
-				</StyledButton>
+				{ButtonComponent}
 			</Wrapper>
 		</Card>
 	);

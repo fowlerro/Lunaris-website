@@ -45,7 +45,7 @@ function ProfileWrapper({ user }: { user: User }): JSX.Element {
 				<ProfileMenuItem href='/servers' icon={<Icon icon={faFolder} />} label={t('profileMenu.servers')} />
 				<ProfileMenuItem
 					error
-					href={`${process.env.API_URL}/auth/logout`}
+					href={`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`}
 					icon={<Icon icon={faRightFromBracket} sx={{ color: theme => theme.palette.error.main }} />}
 					label={t('profileMenu.logout')}
 				/>

@@ -8,5 +8,9 @@
 
 	"buttons": {
 		"add": "Dodaj Auto Rolę"
+	},
+
+	"errors": {
+		"duplicateRoles": "Nie można dodać dwa razy tej samej roli"
 	}
 }

@@ -31,7 +31,7 @@ export default function ServerListSection(): JSX.Element {
 	const { t } = useTranslation('profilePage');
 	const lastManagedGuildId = useLastManagedServer();
 	const { data } = useSWR<AxiosResponse<GuildInfo>>(
-		lastManagedGuildId ? `${process.env.API_URL}/guilds/${lastManagedGuildId}` : null,
+		lastManagedGuildId ? `${process.env.NEXT_PUBLIC_API_URL}/guilds/${lastManagedGuildId}` : null,
 		fetcher
 	);
 	const guildInfo = data?.data;

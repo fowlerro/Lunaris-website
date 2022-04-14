@@ -10,10 +10,10 @@ import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	defaultValues: EmbedMessage;
-	channels: GuildChannels;
+	channels: GuildChannels | undefined;
 }
 
-export default function useEmbedForm({ defaultValues, channels }: IProps) {
+export default function useEmbedForm({ defaultValues, channels = { text: [], category: [] } }: IProps) {
 	const { t } = useTranslation();
 
 	const validationSchema = Yup.object().shape({

@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 import axios from 'axios';
 
-export const fetcher = (url: string) => axios(url, { withCredentials: true });
+export const fetcher = (url: string) => axios(url, { withCredentials: true }).then(res => res.data);
 
 export const validateCookies = (ctx: GetServerSidePropsContext) => {
 	const headers = ctx?.req?.headers?.cookie ? { Cookie: ctx.req.headers.cookie } : undefined;

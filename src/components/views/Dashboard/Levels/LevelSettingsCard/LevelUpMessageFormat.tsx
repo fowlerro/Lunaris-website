@@ -1,29 +1,32 @@
 import TextField from '@components/Inputs/TextField';
 import useTranslation from 'next-translate/useTranslation';
-import type { FieldError, UseFormRegister } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 
 import type { LevelConfigPageData } from 'types';
 
 interface IProps {
-	defaultValue: string;
-	error?: FieldError;
-	register: UseFormRegister<LevelConfigPageData>;
+	control: Control<LevelConfigPageData>;
 }
 
-export default function LevelUpMessageFormat({ defaultValue, error, register }: IProps): JSX.Element {
+export default function LevelUpMessageFormat({ control }: IProps): JSX.Element {
 	const { t } = useTranslation();
 	return (
-		<TextField
-			characterLimit={256}
-			multiline
-			rows={4}
-			label={t('levelsPage:levelUpMessage.messageFormat')}
-			fullWidth
-			{...register('levelConfig.levelUpMessage.messageFormat')}
-			defaultValue={defaultValue}
-			margin={'normal'}
-			error={!!error}
-			helperText={error?.message}
+		<Controller
+			name='levelConfig.levelUpMessage.messageFormat'
+			control={control}
+			render={({ field, fieldState }) => (
+				<TextField
+					characterLimit={256}
+					multiline
+					rows={4}
+					label={t('levelsPage:levelUpMessage.messageFormat')}
+					fullWidth
+					margin={'normal'}
+					{...field}
+					error={fieldState.invalid}
+					helperText={fieldState.error?.message}
+				/>
+			)}
 		/>
 	);
 }

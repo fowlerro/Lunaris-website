@@ -1,20 +1,29 @@
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import useSWR from 'swr';
+
 import { Control } from 'react-hook-form';
 
 import { Typography } from '@mui/material';
 
 import DashboardCard from '@components/DashboardCard';
+import { fetcher } from '@utils/utils';
+
 import LevelRewardsTable from './LevelRewardsTable';
 
 import type { LevelConfigPageData, Role } from 'types';
 
 interface IProps {
-	roles: Role[];
 	control: Control<LevelConfigPageData>;
 }
 
-export default function LevelRewardsCard({ roles, control }: IProps): JSX.Element {
+export default function LevelRewardsCard({ control }: IProps): JSX.Element {
 	const { t } = useTranslation();
+	const router = useRouter();
+	const guildId = router.query.guildId as string;
+
+	const { data: roles } = useSWR<Role[]>(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/roles`, fetcher);
+
 	return (
 		<DashboardCard header={t('levelsPage:levelRewardsHeader')}>
 			<Typography variant='h5' gutterBottom sx={{ marginTop: '1rem' }}>

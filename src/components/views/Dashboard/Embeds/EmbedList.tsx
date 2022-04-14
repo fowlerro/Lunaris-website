@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { useSWRConfig } from 'swr';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -27,13 +28,14 @@ import useIsDesktop from '@hooks/useIsDesktop';
 import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
-	channels: GuildChannels;
-	embeds: EmbedMessage[];
+	channels: GuildChannels | undefined;
+	embeds: EmbedMessage[] | undefined;
 }
 
 export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 	const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState<string | null>(null);
 	const { t } = useTranslation('embedsPage');
+	const { mutate } = useSWRConfig();
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
 	const isDesktop = useIsDesktop();
@@ -47,13 +49,13 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 	};
 
 	const handleDelete = async () => {
-		const { data } = await axios.delete(`${process.env.API_URL}/guilds/${guildId}/embeds`, {
+		const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/embeds`, {
 			data: {
 				embedId: openDeleteConfirmation,
 			},
 			withCredentials: true,
 		});
-		if (data) router.replace(router.asPath);
+		if (data) mutate(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/embeds`);
 	};
 
 	const handleCloseConfirmation = () => {
@@ -84,55 +86,62 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 					)
 				}
 			>
-				<List>
-					{embeds.length ? (
-						embeds.map(embed => {
-							const channel = channels.text.find(channel => channel.id === embed.channelId);
-							return (
-								<Fragment key={embed._id}>
-									<ListItem>
-										<ListItemText
-											primary={embed.name}
-											secondary={channel && embed.messageId ? `#${channel?.name}` : t('notSent')}
-										/>
-										<ListItemSecondaryAction>
-											{isDesktop ? (
-												<Button variant='outlined' onClick={() => (embed._id ? handleEditEmbed(embed._id) : undefined)}>
-													<Icon icon={faEdit} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
-													{t('form.buttons.edit')}
-												</Button>
-											) : (
-												<Tooltip title={t('form.buttons.edit').toString()}>
-													<IconButton
-														size={isDesktop ? 'large' : 'small'}
+				{embeds ? (
+					<List>
+						{embeds.length ? (
+							embeds.map(embed => {
+								const channel = channels?.text?.find(channel => channel.id === embed.channelId);
+								return (
+									<Fragment key={embed._id}>
+										<ListItem>
+											<ListItemText
+												primary={embed.name}
+												secondary={channel && embed.messageId ? `#${channel?.name}` : t('notSent')}
+											/>
+											<ListItemSecondaryAction>
+												{isDesktop ? (
+													<Button
+														variant='outlined'
 														onClick={() => (embed._id ? handleEditEmbed(embed._id) : undefined)}
 													>
-														<Icon icon={faEdit} />
+														<Icon icon={faEdit} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
+														{t('form.buttons.edit')}
+													</Button>
+												) : (
+													<Tooltip title={t('form.buttons.edit').toString()}>
+														<IconButton
+															size={isDesktop ? 'large' : 'small'}
+															onClick={() => (embed._id ? handleEditEmbed(embed._id) : undefined)}
+														>
+															<Icon icon={faEdit} />
+														</IconButton>
+													</Tooltip>
+												)}
+												<Tooltip title={t('form.buttons.delete').toString()}>
+													<IconButton
+														sx={{ marginLeft: '1rem' }}
+														color='error'
+														size={isDesktop ? 'large' : 'small'}
+														onClick={() => (embed._id ? handleOpenConfirmation(embed._id) : undefined)}
+													>
+														<Icon icon={faTrash} />
 													</IconButton>
 												</Tooltip>
-											)}
-											<Tooltip title={t('form.buttons.delete').toString()}>
-												<IconButton
-													sx={{ marginLeft: '1rem' }}
-													color='error'
-													size={isDesktop ? 'large' : 'small'}
-													onClick={() => (embed._id ? handleOpenConfirmation(embed._id) : undefined)}
-												>
-													<Icon icon={faTrash} />
-												</IconButton>
-											</Tooltip>
-										</ListItemSecondaryAction>
-									</ListItem>
-									<Divider variant='middle' />
-								</Fragment>
-							);
-						})
-					) : (
-						<Typography variant='subtitle1' sx={{ width: '100%', textAlign: 'center', marginTop: '3rem' }}>
-							{t('noEmbeds')}
-						</Typography>
-					)}
-				</List>
+											</ListItemSecondaryAction>
+										</ListItem>
+										<Divider variant='middle' />
+									</Fragment>
+								);
+							})
+						) : (
+							<Typography variant='subtitle1' sx={{ width: '100%', textAlign: 'center', marginTop: '3rem' }}>
+								{t('noEmbeds')}
+							</Typography>
+						)}
+					</List>
+				) : (
+					<Loading />
+				)}
 			</DashboardCard>
 			<ConfirmDialog
 				title={t('confirmEmbedDeletion')}
@@ -142,4 +151,8 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 			/>
 		</View>
 	);
+}
+
+function Loading() {
+	return <>Loading</>;
 }

@@ -19,6 +19,7 @@ interface IProps {
 	value?: string | null;
 	error?: boolean;
 	helperText?: string;
+	disabled?: boolean;
 	disableClearable?: boolean;
 	size?: TextFieldProps['size'];
 	onChange: (roleId: string) => void;
@@ -31,6 +32,7 @@ export default function RoleSelect({
 	value,
 	error = false,
 	helperText,
+	disabled = false,
 	disableClearable = false,
 	size = 'medium',
 	onChange,
@@ -71,6 +73,7 @@ export default function RoleSelect({
 			}}
 			value={value ? options.find(role => role.id === value) : null}
 			disableClearable={disableClearable}
+			disabled={disabled}
 			renderOption={(props, { id, label, color }) => (
 				<MenuItem sx={{ color }} {...props} key={id}>
 					{label}
