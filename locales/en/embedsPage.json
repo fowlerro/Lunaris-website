@@ -3,7 +3,6 @@
 	"description": "Manage embed messages for your server",
 	"confirmEmbedDeletion": "Are you sure you want to delete this embed?",
 	"confirmFieldDeletion": "Are you sure you want to delete this field?",
-	"confirmLeaveWithChanges": "You have unsaved changes! Are you sure you want to leave?",
 	"listHeader": "Your Embed Messages",
 	"creatorHeader": "Embed Creator",
 	"editHeader": "Edit Embed",

@@ -34,7 +34,7 @@
 		"levels": "Poziomy",
 		"welcomeMessages": "Wiadomości Powitalne",
 		"serverLogs": "Logi Serwerowe",
-		"reactionRoles": "Reaction Role",
+		"interactiveRoles": "Interaktywne Role",
 		"embedMessages": "Wiadomości Embed",
 		"backToServers": "Powrót do listy serwerów"
 	}

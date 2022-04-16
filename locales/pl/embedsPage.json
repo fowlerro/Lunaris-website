@@ -3,7 +3,6 @@
 	"description": "Zarządzaj wiadomościami Embed na swoim serwerze",
 	"confirmEmbedDeletion": "Czy na pewno chcesz usunąć tę wiadomość?",
 	"confirmFieldDeletion": "Czy na pewno chcesz usunąć to pole?",
-	"confirmLeaveWithChanges": "Masz niezapisane dane! Czy na pewno chcesz opuścić tę stronę?",
 	"listHeader": "Twoje Wiadomości Embed",
 	"creatorHeader": "Tworzenie Wiadomości Embed",
 	"editHeader": "Edycja Wiadomości Embed",

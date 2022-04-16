@@ -13,14 +13,32 @@ interface IProps {
 	control: Control<EmbedMessage>;
 	channels: GuildChannels | undefined;
 	edit?: boolean;
+	backUrl?: string;
+	onEmbedSave?: (embed: EmbedMessage) => void;
 }
 
-export default function EmbedFormCard({ control, handleSubmit, reset, channels, edit = false }: IProps): JSX.Element {
+export default function EmbedFormCard({
+	control,
+	handleSubmit,
+	reset,
+	channels,
+	edit = false,
+	backUrl,
+	onEmbedSave,
+}: IProps): JSX.Element {
 	const { t } = useTranslation('common');
 
 	return (
 		<DashboardCard header={t('submit')} initialExpand>
-			<EmbedSubmit control={control} handleSubmit={handleSubmit} reset={reset} channels={channels} edit={edit} />
+			<EmbedSubmit
+				control={control}
+				handleSubmit={handleSubmit}
+				reset={reset}
+				channels={channels}
+				edit={edit}
+				backUrl={backUrl}
+				onEmbedSave={onEmbedSave}
+			/>
 		</DashboardCard>
 	);
 }

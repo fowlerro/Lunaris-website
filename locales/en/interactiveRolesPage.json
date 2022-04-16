@@ -1,0 +1,48 @@
+{
+	"title": "Lunaris - Interactive Roles",
+	"description": "Manage Interactive Roles for your server",
+
+	"list": {
+		"header": "Interactive Roles",
+		"notSent": "Not sent",
+		"noEntries": "You don't have any Interactive Roles yet!"
+	},
+
+	"creator": {
+		"header": "Interactive Roles Creator",
+		"options": "Options",
+		"roles": "Roles",
+		"submit": "Submit",
+		"defaultName": "New Interactive Role"
+	},
+
+	"form": {
+		"labels": {
+			"createEmbedMessage": "Create Embed Message",
+			"type": {
+				"label": "Interaction type",
+				"reactions": "Reactions",
+				"buttons": "Buttons",
+				"select": "Select Menu"
+			},
+			"message": {
+				"label": "Message",
+				"messageId": {
+					"label": "Message ID",
+					"description": "Provide ID of existing message in channel, which will be used as Interactive Roles"
+				},
+				"lastMessage": {
+					"label": "Last message in channel",
+					"description": "Last message of selected channel will be used as Interactive Roles"
+				},
+				"embedMessage": {
+					"label": "Embed Message",
+					"description": "Select or create Embed Message for Interactive Roles"
+				}
+			}
+		},
+		"buttons": {
+			"createInteractiveRole": "Create"
+		}
+	}
+}

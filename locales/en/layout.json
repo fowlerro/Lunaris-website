@@ -34,7 +34,7 @@
 		"levels": "Levels",
 		"welcomeMessages": "Welcome Messages",
 		"serverLogs": "Server Logs",
-		"reactionRoles": "Reaction Roles",
+		"interactiveRoles": "Interactive Roles",
 		"embedMessages": "Embed Messages",
 		"backToServers": "Back to server list"
 	}

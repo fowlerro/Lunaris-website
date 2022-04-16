@@ -19,6 +19,8 @@ import type { EmbedMessage, GuildChannels } from 'types';
 
 interface IProps {
 	channels: GuildChannels | undefined;
+	backUrl?: string;
+	onEmbedSave?: (embed: EmbedMessage) => void;
 }
 
 const StyledBox = styled('div')(({ theme }) => ({
@@ -31,7 +33,7 @@ const StyledBox = styled('div')(({ theme }) => ({
 	},
 }));
 
-export default function EmbedCreator({ channels }: IProps): JSX.Element {
+export default function EmbedCreator({ channels, backUrl, onEmbedSave }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
@@ -90,7 +92,7 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 	};
 	const handleLeave = () => {
 		setOpenLeaveWarning(false);
-		router.push(`/dashboard/${guildId}/embeds`, undefined, { shallow: true });
+		router.push(backUrl ?? `/dashboard/${guildId}/embeds`, undefined, { shallow: true });
 	};
 
 	return (
@@ -101,11 +103,18 @@ export default function EmbedCreator({ channels }: IProps): JSX.Element {
 				</Box>
 				<Box sx={{ flex: 2, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 					<EmbedFormCard control={control} />
-					<EmbedSubmitCard control={control} handleSubmit={handleSubmit} reset={reset} channels={channels} />
+					<EmbedSubmitCard
+						control={control}
+						handleSubmit={handleSubmit}
+						reset={reset}
+						channels={channels}
+						backUrl={backUrl}
+						onEmbedSave={onEmbedSave}
+					/>
 				</Box>
 			</StyledBox>
 			<ConfirmDialog
-				title={t('confirmLeaveWithChanges')}
+				title={t('common:confirmLeaveWithChanges')}
 				open={openLeaveWarning}
 				onClose={handleCloseLeaveWarning}
 				onConfirm={handleLeave}

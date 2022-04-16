@@ -33,6 +33,7 @@
 	"noCategory": "No Category",
 	"readMore": "Read more",
 	"unsavedData": "You have unsaved data!",
+	"confirmLeaveWithChanges": "You have unsaved changes! Are you sure you want to leave?",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",

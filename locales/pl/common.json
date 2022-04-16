@@ -33,6 +33,7 @@
 	"noCategory": "Brak kategorii",
 	"readMore": "Czytaj więcej",
 	"unsavedData": "Masz niezapisane dane!",
+	"confirmLeaveWithChanges": "Masz niezapisane dane! Czy na pewno chcesz opuścić tę stronę?",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

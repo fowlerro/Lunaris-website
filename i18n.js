@@ -14,5 +14,6 @@ module.exports = {
 		'/dashboard/[guildId]/levels': ['levelsPage', 'forms'],
 		'/dashboard/[guildId]/logs': ['serverLogsPage', 'forms'],
 		'/dashboard/[guildId]/embeds/[[...view]]': ['embedsPage', 'forms'],
+		'rgx:interactive-roles[A-z]{0,}': ['interactiveRolesPage', 'embedsPage', 'forms'],
 	},
 };

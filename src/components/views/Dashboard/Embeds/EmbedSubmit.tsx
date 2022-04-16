@@ -24,9 +24,19 @@ interface IProps {
 	reset: UseFormReset<EmbedMessage>;
 	channels: GuildChannels | undefined;
 	edit?: boolean;
+	backUrl?: string;
+	onEmbedSave?: (embed: EmbedMessage) => void;
 }
 
-export default function EmbedSubmit({ handleSubmit, reset, control, channels, edit = false }: IProps): JSX.Element {
+export default function EmbedSubmit({
+	handleSubmit,
+	reset,
+	control,
+	channels,
+	edit = false,
+	backUrl,
+	onEmbedSave,
+}: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	const { mutate } = useSWRConfig();
 	const router = useRouter();
@@ -75,7 +85,11 @@ export default function EmbedSubmit({ handleSubmit, reset, control, channels, ed
 			setSaving(false);
 			return;
 		}
-		mutate(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/embeds`);
+		await mutate(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/embeds`);
+		if (backUrl && onEmbedSave) {
+			setSaving(false);
+			return onEmbedSave(data);
+		}
 		if (!edit) router.push(`/dashboard/${guildId}/embeds`);
 		if (edit) reset(embedMessage);
 		setSaving(false);
@@ -130,41 +144,57 @@ export default function EmbedSubmit({ handleSubmit, reset, control, channels, ed
 				justifyContent='flex-end'
 				sx={{ flexDirection: ['column-reverse', 'row'] }}
 			>
-				{edit && (
-					<LoadingButton
-						variant='contained'
-						color='error'
-						loading={saving}
-						sx={{ marginRight: 'auto' }}
-						onClick={() => setOpenConfirmation(true)}
-					>
-						{t('form.buttons.delete')}
-					</LoadingButton>
-				)}
-				<LoadingButton
-					variant='outlined'
-					loading={saving}
-					onClick={handleSubmit(saveEmbed)}
-					endIcon={<Icon icon={faFloppyDisk} />}
-				>
-					{t('form.buttons.save')}
-				</LoadingButton>
-				<LoadingButton
-					variant='contained'
-					loading={saving}
-					disabled={!channelId}
-					onClick={handleSubmit(sendEmbed)}
-					endIcon={<Icon icon={faPaperPlane} />}
-				>
-					{t(`form.buttons.${edit && messageId ? 'edit' : 'send'}`)}
-				</LoadingButton>
-				{edit && (
-					<ConfirmDialog
-						title={t('confirmEmbedDeletion')}
-						open={openConfirmation}
-						onClose={() => setOpenConfirmation(false)}
-						onConfirm={deleteEmbed}
-					/>
+				{backUrl ? (
+					<>
+						<LoadingButton
+							variant='contained'
+							loading={saving}
+							disabled={!channelId}
+							onClick={handleSubmit(saveEmbed)}
+							endIcon={<Icon icon={faFloppyDisk} />}
+						>
+							{t('common:submit')}
+						</LoadingButton>
+					</>
+				) : (
+					<>
+						{edit && (
+							<LoadingButton
+								variant='contained'
+								color='error'
+								loading={saving}
+								sx={{ marginRight: 'auto' }}
+								onClick={() => setOpenConfirmation(true)}
+							>
+								{t('form.buttons.delete')}
+							</LoadingButton>
+						)}
+						<LoadingButton
+							variant='outlined'
+							loading={saving}
+							onClick={handleSubmit(saveEmbed)}
+							endIcon={<Icon icon={faFloppyDisk} />}
+						>
+							{t('form.buttons.save')}
+						</LoadingButton>
+						<LoadingButton
+							variant='contained'
+							loading={saving}
+							disabled={!channelId}
+							onClick={handleSubmit(sendEmbed)}
+							endIcon={<Icon icon={faPaperPlane} />}
+						>
+							{t(`form.buttons.${edit && messageId ? 'edit' : 'send'}`)}
+						</LoadingButton>
+						{edit && (
+							<ConfirmDialog
+								title={t('confirmEmbedDeletion')}
+								open={openConfirmation}
+								onClose={() => setOpenConfirmation(false)}
+								onConfirm={deleteEmbed}
+							/>
+						)}
+					</>
 				)}
 			</Box>
 		</>
