@@ -5,9 +5,13 @@
 		"maxLength": "Field cannot exceed {{count}} characters!",
 		"min": "Field must be at least {{count}}!",
 		"max": "Field cannot exceed {{count}}!",
+		"minItems": "Field must contain {{count}} or more items!",
+		"maxItems": "Field cannot contain {{count}} or more items!",
 		"invalidOption": "Invalid option!",
 		"invalidValue": "Invalid value!",
-		"invalidURL": "Invalid URL!"
+		"invalidURL": "Invalid URL!",
+		"duplicate": "Cannot add this value twice!",
+		"duplicates": "Fields {{fields}} cannot be duplicates!"
 	},
 
 	"channelNotFound": "Channel not found!",

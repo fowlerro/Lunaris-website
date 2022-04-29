@@ -1,12 +1,6 @@
-import { GetServerSidePropsContext } from 'next';
 import axios from 'axios';
 
 export const fetcher = (url: string) => axios(url, { withCredentials: true }).then(res => res.data);
-
-export const validateCookies = (ctx: GetServerSidePropsContext) => {
-	const headers = ctx?.req?.headers?.cookie ? { Cookie: ctx.req.headers.cookie } : undefined;
-	return headers;
-};
 
 export const getRoleColor = (color: number) => {
 	const roleColor = `#${color ? color.toString(16) : '99AAB5'}`;
@@ -26,6 +20,16 @@ export const getUserBanner = (userId: string, bannerHash: string | null) => {
 	const bannerURL = bannerHash ? `https://cdn.discordapp.com/banners/${userId}/${bannerHash}.${extension}` : null;
 
 	return bannerURL;
+};
+
+export const getGuildEmojiURL = (emoji: string) => {
+	const emojiIdentifier = emoji.substring(1, emoji.length - 1);
+	const animated = emojiIdentifier.startsWith('a:');
+	const id = emojiIdentifier.split(':').pop();
+
+	const emojiURL = `https://cdn.discordapp.com/emojis/${id}.${animated ? 'gif' : 'png'}`;
+
+	return emojiURL;
 };
 
 export const EMBED_LIMITS = {

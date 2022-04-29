@@ -2,7 +2,7 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 
 import InteractiveRoles from '@views/Dashboard/InteractiveRoles';
-import InteractiveRolesList from '@views/Dashboard/InteractiveRoles/InteractiveRolesList';
+import InteractiveRolesList from '@views/Dashboard/InteractiveRoles/Views/List';
 import useVisitedFeatures from '@hooks/useVisitedFeatures';
 
 import type { NextPageWithLayout } from 'src/pages/_app';

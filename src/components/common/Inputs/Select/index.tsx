@@ -17,7 +17,7 @@ export interface SelectAction {
 	onClick: () => void;
 }
 
-type IProps = {
+export type SelectProps = {
 	items: SelectItem[];
 	actions?: SelectAction[];
 	displayDescription?: boolean;
@@ -30,7 +30,7 @@ export default function Select({
 	fullWidth = true,
 	select = true,
 	...props
-}: IProps): JSX.Element {
+}: SelectProps): JSX.Element {
 	return (
 		<TextField
 			SelectProps={{

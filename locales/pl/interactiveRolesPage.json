@@ -1,6 +1,19 @@
 {
 	"title": "Lunaris - Interaktywne Role",
 	"description": "Zarządzaj Interaktywnymi Rolami na swoim serwerze",
+	"confirmDeletion": "Czy na pewno chcesz usunąć te Interaktywne Role?",
+
+	"buttonStyles": {
+		"PRIMARY": "Niebieski",
+		"SECONDARY": "Szary",
+		"SUCCESS": "Zielony",
+		"DANGER": "Czerwony"
+	},
+	"actions": {
+		"add": "Dodaj",
+		"remove": "Usuń",
+		"toggle": "Przełącz"
+	},
 
 	"list": {
 		"header": "Interaktywne Role",
@@ -13,12 +26,29 @@
 		"options": "Opcje",
 		"roles": "Role",
 		"submit": "Zatwierdź",
-		"defaultName": "Nowa Interaktywna Rola"
+		"defaultName": "Nowa Interaktywna Rola",
+
+		"roleList": {
+			"icon": "Ikonka",
+			"label": "Tekst",
+			"emoji": "Emoji",
+			"description": "Opis",
+			"style": "Styl",
+			"role": "Rola",
+			"action": "Akcja"
+		}
+	},
+
+	"editor": {
+		"header": "Edycja Interaktywnej Roli"
 	},
 
 	"form": {
 		"labels": {
 			"createEmbedMessage": "Stwórz Wiadomość Embed",
+			"selectMenuLabel": "Tekst menu wyboru",
+			"selectMenuPlaceholder": "Wybierz role...",
+			"interactiveRolesName": "Nazwa Interaktywnej Roli",
 			"type": {
 				"label": "Typ interakcji",
 				"reactions": "Reakcje",
@@ -39,10 +69,17 @@
 					"label": "Embed Message",
 					"description": "Wybierz lub utwórz Wiadomość Embed, która będzie działać jako Interaktywne Role"
 				}
+			},
+			"addRoleModal": {
+				"title": "Dodaj Interaktywną Rolę"
+			},
+			"editRoleModal": {
+				"title": "Edytuj Interaktywną Rolę"
 			}
 		},
 		"buttons": {
-			"createInteractiveRole": "Stwórz"
+			"createInteractiveRole": "Stwórz",
+			"addRole": "Dodaj rolę"
 		}
 	}
 }

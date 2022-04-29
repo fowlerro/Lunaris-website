@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import type { GuildChannels, InteractiveRolesType, Role } from 'types';
 
-export type InteractiveRolesFormValues = InteractiveRolesType & { embedId: string };
+export type InteractiveRolesFormValues = InteractiveRolesType;
 
 interface IProps {
 	defaultValues: InteractiveRolesFormValues;
@@ -27,30 +27,40 @@ export default function useEmbedForm({ defaultValues, channels = { text: [], cat
 				channels.text.map(({ id }) => id),
 				t('forms:errors.invalidValue')
 			),
-		messageId: Yup.string().required(t('forms:errors.required')),
+		messageId: Yup.string().when('embedId', {
+			is: (embedId: string) => Boolean(embedId),
+			then: Yup.string().notRequired().optional(),
+			otherwise: Yup.string().required(t('forms:errors.required')).length(18, t('forms:errors.invalidValue')),
+		}),
+		embedId: Yup.string(),
 		type: Yup.string().required(t('forms:errors.required')).oneOf(['reactions', 'buttons', 'select']),
+		placeholder: Yup.string().max(150, t('forms:errors.maxLength', { count: 150 })),
 		roles: Yup.array()
 			.of(
 				Yup.object().shape({
-					label: Yup.string().when('type', {
-						is: 'buttons',
-						then: Yup.string().optional(),
-						otherwise: Yup.string().required(t('forms:errors.required')),
-					}),
-					description: Yup.string().when('type', {
-						is: 'select',
-						then: Yup.string().optional(),
-						otherwise: Yup.string().length(0, t('forms:errors.invalidValue')),
-					}),
 					icon: Yup.string().when('type', {
 						is: 'reactions',
-						then: Yup.string().length(0, t('forms:errors.invalidValue')),
+						then: Yup.string().nullable(),
 						otherwise: Yup.string().optional(),
 					}),
+					label: Yup.string()
+						.max(80, t('forms:errors.maxLength', { count: 80 }))
+						.when('type', {
+							is: 'select',
+							then: Yup.string().required(t('forms:errors.required')),
+							otherwise: Yup.string().optional(),
+						}),
+					description: Yup.string()
+						.max(100, t('forms:errors.maxLength', { count: 100 }))
+						.when('type', {
+							is: 'select',
+							then: Yup.string().optional(),
+							otherwise: Yup.string().nullable(),
+						}),
 					style: Yup.string().when('type', {
 						is: 'buttons',
 						then: Yup.string().oneOf(['PRIMARY', 'SECONDARY', 'SUCCESS', 'DANGER']),
-						otherwise: Yup.string().length(0, t('forms:errors.invalidValue')),
+						otherwise: Yup.string().nullable(),
 					}),
 					roleId: Yup.string()
 						.required(t('forms:errors.required'))
@@ -60,15 +70,16 @@ export default function useEmbedForm({ defaultValues, channels = { text: [], cat
 						),
 					action: Yup.string().when('type', {
 						is: 'select',
-						then: Yup.string().length(0, t('forms:errors.invalidValue')),
+						then: Yup.string().nullable(),
 						otherwise: Yup.string().oneOf(['add', 'remove', 'toggle']),
 					}),
 				})
 			)
-			.max(25, t('forms:errors.maxLength', { count: 25 })),
+			.min(1, t('forms:errors.minItems', { count: 1 }))
+			.max(25, t('forms:errors.maxItems', { count: 25 })),
 	});
 
-	const form = useForm<InteractiveRolesType & { embedId: string }>({
+	const form = useForm<InteractiveRolesFormValues>({
 		defaultValues,
 		resolver: yupResolver(validationSchema),
 	});

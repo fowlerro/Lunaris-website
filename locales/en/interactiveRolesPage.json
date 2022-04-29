@@ -1,6 +1,19 @@
 {
 	"title": "Lunaris - Interactive Roles",
 	"description": "Manage Interactive Roles for your server",
+	"confirmDeletion": "Are you sure you want to delete this Interactive Roles?",
+
+	"buttonStyles": {
+		"PRIMARY": "Blue",
+		"SECONDARY": "Grey",
+		"SUCCESS": "Green",
+		"DANGER": "Red"
+	},
+	"actions": {
+		"add": "Add",
+		"remove": "Remove",
+		"toggle": "Toggle"
+	},
 
 	"list": {
 		"header": "Interactive Roles",
@@ -13,12 +26,29 @@
 		"options": "Options",
 		"roles": "Roles",
 		"submit": "Submit",
-		"defaultName": "New Interactive Role"
+		"defaultName": "New Interactive Role",
+
+		"roleList": {
+			"icon": "Icon",
+			"label": "Label",
+			"emoji": "Emoji",
+			"description": "Description",
+			"style": "Style",
+			"role": "Role",
+			"action": "Action"
+		}
+	},
+
+	"editor": {
+		"header": "Interactive Roles Editor"
 	},
 
 	"form": {
 		"labels": {
 			"createEmbedMessage": "Create Embed Message",
+			"selectMenuLabel": "Select Menu placeholder",
+			"selectMenuPlaceholder": "Pick your roles...",
+			"interactiveRolesName": "Interactive Role's name",
 			"type": {
 				"label": "Interaction type",
 				"reactions": "Reactions",
@@ -39,10 +69,17 @@
 					"label": "Embed Message",
 					"description": "Select or create Embed Message for Interactive Roles"
 				}
+			},
+			"addRoleModal": {
+				"title": "Add Interactive Role"
+			},
+			"editRoleModal": {
+				"title": "Edit Interactive Role"
 			}
 		},
 		"buttons": {
-			"createInteractiveRole": "Create"
+			"createInteractiveRole": "Create",
+			"addRole": "Add role"
 		}
 	}
 }

@@ -66,12 +66,12 @@ export default function InteractiveRolesList(): JSX.Element {
 	};
 
 	const handleDelete = async () => {
-		const { data } = await axios.delete(
-			`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/interactive-roles/${openDeleteConfirmation}`,
-			{
-				withCredentials: true,
-			}
-		);
+		const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/interactive-roles`, {
+			data: {
+				interactiveRoleId: openDeleteConfirmation,
+			},
+			withCredentials: true,
+		});
 		if (data) mutate(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/interactive-roles`);
 	};
 
@@ -122,10 +122,10 @@ export default function InteractiveRolesList(): JSX.Element {
 														onClick={() => (interactiveRole._id ? handleEdit(interactiveRole._id) : undefined)}
 													>
 														<Icon icon={faEdit} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
-														{t('form.buttons.edit')}
+														{t('common:edit')}
 													</Button>
 												) : (
-													<Tooltip title={t('form.buttons.edit').toString()}>
+													<Tooltip title={t('common:edit').toString()}>
 														<IconButton
 															size={isDesktop ? 'large' : 'small'}
 															onClick={() => (interactiveRole._id ? handleEdit(interactiveRole._id) : undefined)}
@@ -134,7 +134,7 @@ export default function InteractiveRolesList(): JSX.Element {
 														</IconButton>
 													</Tooltip>
 												)}
-												<Tooltip title={t('form.buttons.delete').toString()}>
+												<Tooltip title={t('common:delete').toString()}>
 													<IconButton
 														sx={{ marginLeft: '1rem' }}
 														color='error'

@@ -45,7 +45,10 @@ const TextField = forwardRef<HTMLInputElement | HTMLDivElement, TextFieldProps>(
 				{helperText && (
 					<FormHelperText
 						{...FormHelperTextProps}
-						sx={{ color: theme => (error ? theme.palette.error.main : 'inherit') }}
+						sx={{
+							color: theme => (error ? theme.palette.error.main : 'inherit'),
+							maxWidth: 'fit-content',
+						}}
 					>
 						{helperText}
 					</FormHelperText>

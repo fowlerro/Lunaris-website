@@ -42,7 +42,6 @@ export default function ServerLogs(): JSX.Element {
 	const isDirty = Boolean(Object.keys(dirtyFields).length);
 
 	const onSubmit: SubmitHandler<GuildLogsPageData> = async guildLogsData => {
-		console.log(guildLogsData);
 		await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/server-logs`, guildLogsData, {
 			withCredentials: true,
 		});

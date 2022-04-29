@@ -69,13 +69,21 @@ export default function RoleSelect({
 				},
 			}}
 			ListboxProps={{
-				style: { textTransform: 'none' },
+				style: {
+					textTransform: 'none',
+				},
 			}}
 			value={value ? options.find(role => role.id === value) : null}
 			disableClearable={disableClearable}
 			disabled={disabled}
 			renderOption={(props, { id, label, color }) => (
-				<MenuItem sx={{ color }} {...props} key={id}>
+				<MenuItem
+					sx={{
+						color,
+					}}
+					{...props}
+					key={id}
+				>
 					{label}
 				</MenuItem>
 			)}

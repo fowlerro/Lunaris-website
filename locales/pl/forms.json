@@ -5,9 +5,13 @@
 		"maxLength": "Tekst nie może przekroczyć {{count}} znaków!",
 		"min": "Wartość musi być większa lub równa {{count}}!",
 		"max": "Wartość musi być mniejsza lub równa {{count}}!",
+		"minItems": "Wartość musi mieć {{count}} lub więcej pozycji!",
+		"maxItems": "Wartość nie może mieć {{count}} lub więcej pozycji!",
 		"invalidOption": "Wybierz jedną z opcji!",
 		"invalidValue": "Wartość jest nieprawidłowa!",
-		"invalidURL": "Nieprawidłowy adres URL!"
+		"invalidURL": "Nieprawidłowy adres URL!",
+		"duplicate": "Nie można dodać dwa razy tej wartości!",
+		"duplicates": "Pola {{fields}} nie mogą się powtarzać!"
 	},
 
 	"channelNotFound": "Nie znaleziono kanału!",

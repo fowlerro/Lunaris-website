@@ -7,18 +7,23 @@ import ExpandIcon from '@components/ExpandIcon';
 interface IProps {
 	header: string;
 	initialExpand?: boolean;
+	expand?: boolean;
 	disableIcon?: boolean;
 	action?: ReactNode;
+	disabled?: boolean;
 	children: ReactNode;
 	className?: string;
 	sx?: SxProps<Theme>;
 }
 
-const Container = styled(Paper)(({ theme }) => ({
+const Container = styled(Paper, {
+	shouldForwardProp: prop => prop !== 'disabled',
+})<{ disabled: boolean }>(({ theme, disabled }) => ({
 	borderRadius: theme.shape.borderRadius,
 	backgroundColor: theme.colors.background.lighter,
 	boxShadow: theme.shadows[4],
 	padding: '1rem',
+	cursor: disabled ? 'not-allowed' : 'auto',
 }));
 
 const Header = styled(Box)({
@@ -38,8 +43,10 @@ const Action = styled(Box)({});
 export default function DashboardCard({
 	header,
 	initialExpand = false,
+	expand,
 	disableIcon = false,
 	action,
+	disabled = false,
 	children,
 	className,
 	sx,
@@ -47,17 +54,31 @@ export default function DashboardCard({
 	const [open, setOpen] = useState<boolean>(initialExpand);
 
 	return (
-		<Container elevation={0} className={className} sx={sx}>
+		<Container elevation={0} className={className} sx={sx} disabled={disabled}>
 			<Header>
 				<Items>
-					<Typography variant='h5' component='h2' sx={{ flex: 1 }}>
+					<Typography
+						variant='h5'
+						component='h2'
+						sx={{ flex: 1, color: theme => theme.colors.text[disabled ? 'muted' : 'primary'] }}
+					>
 						{header}
 					</Typography>
 					{action && <Action>{action}</Action>}
 				</Items>
-				{disableIcon ? undefined : <ExpandIcon expanded={open} onClick={() => setOpen(!open)} />}
+				{typeof expand === 'boolean' || disableIcon ? undefined : (
+					<ExpandIcon
+						expanded={open}
+						onClick={() => setOpen(!open)}
+						sx={{
+							pointerEvents: disabled ? 'none' : 'auto',
+							color: theme => theme.colors.text[disabled ? 'muted' : 'primary'],
+							marginLeft: [0, '1rem'],
+						}}
+					/>
+				)}
 			</Header>
-			{disableIcon ? children : <Collapse in={open}>{children}</Collapse>}
+			{disableIcon ? children : <Collapse in={expand ?? open}>{children}</Collapse>}
 		</Container>
 	);
 }
