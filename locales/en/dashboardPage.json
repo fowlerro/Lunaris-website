@@ -12,5 +12,9 @@
 		"voiceChannels": "Voice channels",
 		"roles": "Roles",
 		"emojis": "Emojis"
+	},
+
+	"moduleCard": {
+		"inUse": "{{amount}}/{{limit}} in use"
 	}
 }

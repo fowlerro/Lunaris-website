@@ -12,5 +12,9 @@
 		"voiceChannels": "Kanały głosowe",
 		"roles": "Role",
 		"emojis": "Emotki"
+	},
+
+	"moduleCard": {
+		"inUse": "{{amount}}/{{limit}} w użyciu"
 	}
 }

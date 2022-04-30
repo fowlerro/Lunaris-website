@@ -24,7 +24,7 @@ const Content = styled('div')({
 
 const StyledCard = styled('div')(({ theme }) => ({
 	backgroundColor: theme.colors.background.lighter,
-	boxShadow: theme.shadows[4],
+	boxShadow: theme.shadows[1],
 	borderRadius: theme.shape.borderRadius,
 	padding: '1rem',
 	display: 'flex',
@@ -32,6 +32,13 @@ const StyledCard = styled('div')(({ theme }) => ({
 	gap: '1rem',
 	fontWeight: theme.typography.fontWeightMedium,
 	userSelect: 'none',
+	transitionProperty: 'background-color, box-shadow',
+	transitionDuration: '.5s',
+
+	'&:hover': {
+		backgroundColor: theme.colors.background.input,
+		boxShadow: theme.shadows[4],
+	},
 }));
 
 export default function Statistics(): JSX.Element {
@@ -66,7 +73,7 @@ interface CardProps {
 
 function Card({ icon, number, tooltip }: CardProps) {
 	return (
-		<Tooltip title={tooltip}>
+		<Tooltip title={tooltip} placement='bottom'>
 			<StyledCard>
 				<Icon icon={icon} /> {number}
 			</StyledCard>

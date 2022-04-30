@@ -1,10 +1,18 @@
-import { Box, Button, styled, Typography } from '@mui/material';
+import useTranslation from 'next-translate/useTranslation';
+
+import { Box, Button, styled, Typography, Tooltip } from '@mui/material';
 
 import { faMeteor } from '@fortawesome/free-solid-svg-icons';
 
 import DashboardCard from '@components/DashboardCard';
 import FeatureBadge from '@components/Badges/FeatureBadge';
 import Icon from '@components/Icon';
+
+const Container = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'flex-start',
+});
 
 const Content = styled('div')({
 	display: 'flex',
@@ -14,7 +22,7 @@ const Content = styled('div')({
 export default function Modules(): JSX.Element {
 	return (
 		<>
-			{/* <DashboardCard
+			<DashboardCard
 				header='Welcome Messages'
 				action={<FeatureBadge feature='Welcome Messages' variant='wip' />}
 				initialExpand
@@ -31,16 +39,16 @@ export default function Modules(): JSX.Element {
 				<Button variant='outlined' size='small'>
 					Sign in to the beta testers!
 				</Button>
-			</DashboardCard> */}
-			<ModuleCard title='Welcome Messages' />
-			<DashboardCard header='Auto Roles' action={<Typography color='green'>ON</Typography>} initialExpand disableIcon>
+			</DashboardCard>
+			<ModuleCard title='Auto Roles' moduleState={true} limits={[{ amount: 0, limit: 5 }]} />
+			{/* <DashboardCard header='Auto Roles' action={<Typography color='green'>ON</Typography>} initialExpand disableIcon>
 				<Content>
 					<Typography paragraph variant='body2'>
 						0/5 in use
 					</Typography>
 				</Content>
 				<ManageButton />
-			</DashboardCard>
+			</DashboardCard> */}
 			<DashboardCard header='Levels' action={<Typography color='green'>ON</Typography>} initialExpand disableIcon>
 				<Content>
 					<div>
@@ -96,34 +104,62 @@ export default function Modules(): JSX.Element {
 interface ModuleCardProps {
 	title: string;
 	moduleState?: boolean;
+	limits?: {
+		title?: string;
+		amount: number;
+		limit: number;
+	}[];
 }
 
-function ModuleCard({ title }: ModuleCardProps) {
+function ModuleCard({ title, moduleState, limits }: ModuleCardProps) {
+	const { t } = useTranslation();
 	return (
 		<DashboardCard
-			header={title}
-			action={<FeatureBadge feature='Welcome Messages' variant='wip' />}
 			initialExpand
 			disableIcon
+			header={title}
+			action={typeof moduleState === 'boolean' ? <ModuleState state={moduleState} /> : null}
 		>
-			<Content>
-				<Typography paragraph variant='body2'>
-					Coming Soon!
-				</Typography>
-			</Content>
-			<Typography paragraph variant='body2' sx={{ marginBottom: 0 }}>
-				Wanna try this feature early?
-			</Typography>
-			<Button variant='outlined' size='small'>
-				Sign in to the beta testers!
-			</Button>
+			<Container>
+				<Content>
+					{limits
+						? limits.map((limit, index) => (
+								<div key={index}>
+									{limit.title ? <Typography variant='h6'>{limit.title}</Typography> : null}
+									<Typography paragraph variant='body2' color={limit.amount >= limit.limit ? 'error' : undefined}>
+										{t('dashboardPage:moduleCard.inUse', { amount: limit.amount, limit: limit.limit })}
+									</Typography>
+								</div>
+						  ))
+						: null}
+				</Content>
+				<ManageButton />
+			</Container>
 		</DashboardCard>
 	);
 }
 
+const ModuleCircle = styled('span')<{ state: boolean }>(({ theme, state }) => ({
+	display: 'inline-block',
+	width: '1rem',
+	height: '1rem',
+	borderRadius: '50%',
+	marginLeft: '1rem',
+	backgroundColor: theme.palette[state ? 'success' : 'error'].dark,
+}));
+
+const ModuleState = ({ state }: { state: boolean }) => {
+	const { t } = useTranslation('common');
+	return (
+		<Tooltip title={state ? t('enabled') : t('disabled')}>
+			<ModuleCircle state={state} />
+		</Tooltip>
+	);
+};
+
 const ManageButton = () => {
 	return (
-		<Button variant='contained' size='small'>
+		<Button variant='contained' size='small' sx={{ marginTop: 'auto' }}>
 			MANAGE
 		</Button>
 	);
