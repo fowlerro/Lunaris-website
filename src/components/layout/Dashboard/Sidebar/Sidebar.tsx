@@ -61,7 +61,7 @@ const menuItems: ISidebarItem[] = [
 			{ name: 'welcomeMessages', href: 'welcome', icon: faDoorOpen, tags: ['wip'] },
 			{ name: 'autoRoles', href: 'auto-roles', icon: faAt },
 			{ name: 'levels', href: 'levels', icon: faAnglesUp },
-			{ name: 'interactiveRoles', href: 'interactive-roles', icon: faFaceGrin, tags: ['wip'] },
+			{ name: 'interactiveRoles', href: 'interactive-roles', icon: faFaceGrin, tags: ['new'] },
 			{ name: 'embedMessages', href: 'embeds', icon: faTachographDigital },
 			{ name: 'serverLogs', href: 'logs', icon: faFileCircleQuestion },
 		],
