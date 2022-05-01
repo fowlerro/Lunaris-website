@@ -23,7 +23,7 @@ import SidebarGroup from './SidebarGroup';
 import ServerHeader from './ServerHeader';
 import ServerListButton from './ServerListButton';
 
-const tags = ['premium', 'new', 'wip'] as const;
+export const featureBadges = ['premium', 'new', 'wip'] as const;
 
 export type ISidebarItem = {
 	name: string;
@@ -31,7 +31,7 @@ export type ISidebarItem = {
 	href?: string;
 	group?: boolean;
 	items?: ISidebarItem[];
-	tags?: typeof tags[number][];
+	tags?: typeof featureBadges[number][];
 };
 
 const StyledSidebar = styled(List)(({ theme }) => ({
@@ -52,7 +52,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 }));
 
 const menuItems: ISidebarItem[] = [
-	{ name: 'overview', href: '', icon: faSliders, group: true, items: [], tags: ['wip'] },
+	{ name: 'overview', href: '', icon: faSliders, group: true, items: [] },
 	{
 		name: 'modules',
 		group: true,

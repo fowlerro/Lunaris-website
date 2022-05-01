@@ -1,4 +1,7 @@
-import { Divider, styled, Tooltip } from '@mui/material';
+import useTranslation from 'next-translate/useTranslation';
+import useSWR from 'swr';
+
+import { Divider, styled, Tooltip, Typography } from '@mui/material';
 
 import {
 	faAt,
@@ -11,9 +14,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useIsDesktop from '@hooks/useIsDesktop';
-import useTranslation from 'next-translate/useTranslation';
+import useGuildId from '@hooks/useGuildId';
+import { fetcher } from '@utils/utils';
+
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+import type { GuildStats } from 'types';
 
 const Content = styled('div')({
 	display: 'flex',
@@ -30,7 +36,6 @@ const StyledCard = styled('div')(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	gap: '1rem',
-	fontWeight: theme.typography.fontWeightMedium,
 	userSelect: 'none',
 	transitionProperty: 'background-color, box-shadow',
 	transitionDuration: '.5s',
@@ -43,23 +48,30 @@ const StyledCard = styled('div')(({ theme }) => ({
 
 export default function Statistics(): JSX.Element {
 	const isDesktop = useIsDesktop();
+	const guildId = useGuildId();
 	const { t } = useTranslation('dashboardPage');
+
+	const { data: guildStats } = useSWR<GuildStats>(
+		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/stats`,
+		fetcher
+	);
+
 	return (
 		<>
 			<Content>
-				<Card icon={faUser} number={1024} tooltip={t('stats.members')} />
-				<Card icon={faRobot} number={1} tooltip={t('stats.bots')} />
-				<Card icon={faUserSlash} number={2} tooltip={t('stats.bans')} />
+				<Card icon={faUser} number={guildStats?.members} tooltip={t('stats.members')} />
+				<Card icon={faRobot} number={guildStats?.bots} tooltip={t('stats.bots')} />
+				<Card icon={faUserSlash} number={guildStats?.bans} tooltip={t('stats.bans')} />
 			</Content>
 			<Divider orientation={isDesktop ? 'vertical' : 'horizontal'} flexItem variant='middle' />
 			<Content>
-				<Card icon={faHashtag} number={19} tooltip={t('stats.channels')} />
-				<Card icon={faVolumeHigh} number={6} tooltip={t('stats.voiceChannels')} />
+				<Card icon={faHashtag} number={guildStats?.channels} tooltip={t('stats.channels')} />
+				<Card icon={faVolumeHigh} number={guildStats?.voiceChannels} tooltip={t('stats.voiceChannels')} />
 			</Content>
 			<Divider orientation={isDesktop ? 'vertical' : 'horizontal'} flexItem variant='middle' />
 			<Content>
-				<Card icon={faAt} number={27} tooltip={t('stats.roles')} />
-				<Card icon={faFaceGrinSquint} number={50} tooltip={t('stats.emojis')} />
+				<Card icon={faAt} number={guildStats?.roles} tooltip={t('stats.roles')} />
+				<Card icon={faFaceGrinSquint} number={guildStats?.emojis} tooltip={t('stats.emojis')} />
 			</Content>
 		</>
 	);
@@ -67,7 +79,7 @@ export default function Statistics(): JSX.Element {
 
 interface CardProps {
 	icon: IconProp;
-	number: number;
+	number: number | undefined;
 	tooltip: string;
 }
 
@@ -75,7 +87,8 @@ function Card({ icon, number, tooltip }: CardProps) {
 	return (
 		<Tooltip title={tooltip} placement='bottom'>
 			<StyledCard>
-				<Icon icon={icon} /> {number}
+				<Icon icon={icon} />
+				<Typography variant='subtitle2'>{number !== undefined ? number : 0}</Typography>
 			</StyledCard>
 		</Tooltip>
 	);

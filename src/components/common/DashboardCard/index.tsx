@@ -5,7 +5,7 @@ import { Paper, Box, Collapse, Typography, styled, SxProps, Theme } from '@mui/m
 import ExpandIcon from '@components/ExpandIcon';
 
 interface IProps {
-	header: string;
+	header: string | ReactNode;
 	initialExpand?: boolean;
 	expand?: boolean;
 	disableIcon?: boolean;
@@ -16,7 +16,7 @@ interface IProps {
 	sx?: SxProps<Theme>;
 }
 
-const Container = styled(Paper, {
+const Card = styled(Paper, {
 	shouldForwardProp: prop => prop !== 'disabled',
 })<{ disabled: boolean }>(({ theme, disabled }) => ({
 	borderRadius: theme.shape.borderRadius,
@@ -24,6 +24,8 @@ const Container = styled(Paper, {
 	boxShadow: theme.shadows[4],
 	padding: '1rem',
 	cursor: disabled ? 'not-allowed' : 'auto',
+	display: 'flex',
+	flexDirection: 'column',
 }));
 
 const Header = styled(Box)({
@@ -40,6 +42,11 @@ const Items = styled(Box)({
 
 const Action = styled(Box)({});
 
+export const DashboardCardContainer = styled('div')({
+	marginTop: '1rem',
+	flex: 1,
+});
+
 export default function DashboardCard({
 	header,
 	initialExpand = false,
@@ -54,13 +61,18 @@ export default function DashboardCard({
 	const [open, setOpen] = useState<boolean>(initialExpand);
 
 	return (
-		<Container elevation={0} className={className} sx={sx} disabled={disabled}>
+		<Card elevation={0} className={className} sx={sx} disabled={disabled}>
 			<Header>
 				<Items>
 					<Typography
 						variant='h5'
 						component='h2'
-						sx={{ flex: 1, color: theme => theme.colors.text[disabled ? 'muted' : 'primary'] }}
+						sx={{
+							flex: 1,
+							color: theme => theme.colors.text[disabled ? 'muted' : 'primary'],
+							display: 'flex',
+							gap: '.5rem',
+						}}
 					>
 						{header}
 					</Typography>
@@ -79,6 +91,6 @@ export default function DashboardCard({
 				)}
 			</Header>
 			{disableIcon ? children : <Collapse in={expand ?? open}>{children}</Collapse>}
-		</Container>
+		</Card>
 	);
 }

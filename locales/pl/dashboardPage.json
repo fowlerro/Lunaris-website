@@ -1,8 +1,6 @@
 {
 	"title": "Lunaris - Przegląd",
 	"description": "Szybki dostęp do przeglądu serwera",
-	"expandReason": "Rozwiń powód",
-	"hideReason": "Zwiń powód",
 
 	"stats": {
 		"members": "Użytkownicy",
@@ -12,6 +10,13 @@
 		"voiceChannels": "Kanały głosowe",
 		"roles": "Role",
 		"emojis": "Emotki"
+	},
+
+	"moduleCards": {
+		"levels": {
+			"textRewards": "Nagrody tekstowe",
+			"voiceRewards": "Nagrody głosowe"
+		}
 	},
 
 	"moduleCard": {

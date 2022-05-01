@@ -3,8 +3,8 @@
 		"title": "Embed Messages",
 		"shortDesc": "Create your own fully customizable embed messages!"
 	},
-	"reactionRoles": {
-		"title": "Reaction Roles",
+	"interactiveRoles": {
+		"title": "Interactive Roles",
 		"shortDesc": "Give your users option to manage their roles!"
 	},
 	"levels": {

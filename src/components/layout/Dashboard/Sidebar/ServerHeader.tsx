@@ -8,7 +8,7 @@ import Skeleton from '@components/Loading/Skeleton';
 
 import { fetcher } from '@utils/utils';
 
-import type { GuildStats } from 'types';
+import type { GuildInfo } from 'types';
 
 interface IconProps {
 	id: string | undefined;
@@ -25,18 +25,15 @@ export default function ServerHeader(): JSX.Element {
 	const router = useRouter();
 	const guildId = router.query.guildId as string;
 
-	const { data: guildStats } = useSWR<GuildStats>(
-		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/stats`,
-		fetcher
-	);
+	const { data: guildInfo } = useSWR<GuildInfo>(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}`, fetcher);
 
 	return (
 		<Box display='flex' alignItems='center' padding='1rem'>
 			<Box sx={{ width: '3rem', height: '3rem', marginRight: '1rem' }}>
-				<Icon id={guildId} name={guildStats?.name} icon={guildStats?.icon?.hash} acronym={guildStats?.icon?.acronym} />
+				<Icon id={guildId} name={guildInfo?.name} icon={guildInfo?.icon} acronym={guildInfo?.acronym} />
 			</Box>
 			<Typography variant='h5' sx={{ fontWeight: theme => theme.typography.fontWeightMedium }}>
-				<Name name={guildStats?.name} />
+				<Name name={guildInfo?.name} />
 			</Typography>
 		</Box>
 	);

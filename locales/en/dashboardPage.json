@@ -14,6 +14,13 @@
 		"emojis": "Emojis"
 	},
 
+	"moduleCards": {
+		"levels": {
+			"textRewards": "Text Rewards",
+			"voiceRewards": "Voice Rewards"
+		}
+	},
+
 	"moduleCard": {
 		"inUse": "{{amount}}/{{limit}} in use"
 	}

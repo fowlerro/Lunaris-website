@@ -9,7 +9,7 @@ module.exports = {
 		'/contact': ['contactPage', 'forms'],
 		'/servers': ['serversPage'],
 		'/dashboard': ['profilePage'],
-		'/dashboard/[guildId]': ['dashboardPage'],
+		'/dashboard/[guildId]': ['dashboardPage', 'modules'],
 		'/dashboard/[guildId]/auto-roles': ['autoRolesPage', 'forms'],
 		'/dashboard/[guildId]/levels': ['levelsPage', 'forms'],
 		'/dashboard/[guildId]/logs': ['serverLogsPage', 'forms'],

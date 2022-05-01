@@ -1,17 +1,21 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { Box, Button, styled, Typography, Tooltip } from '@mui/material';
+import { Button, styled, Typography, Tooltip } from '@mui/material';
 
-import { faMeteor } from '@fortawesome/free-solid-svg-icons';
-
-import DashboardCard from '@components/DashboardCard';
+import DashboardCard, { DashboardCardContainer } from '@components/DashboardCard';
 import FeatureBadge from '@components/Badges/FeatureBadge';
-import Icon from '@components/Icon';
+import { featureBadges } from '@components/layout/Dashboard/Sidebar/Sidebar';
+import { GuildOverviewModules } from 'types';
+import useSWR from 'swr';
+import { fetcher } from '@utils/utils';
+import useGuildId from '@hooks/useGuildId';
+import Link from '@components/Link';
 
-const Container = styled('div')({
+const StyledContainer = styled(DashboardCardContainer)({
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'flex-start',
+	justifyContent: 'space-between',
 });
 
 const Content = styled('div')({
@@ -20,83 +24,61 @@ const Content = styled('div')({
 });
 
 export default function Modules(): JSX.Element {
+	const { t } = useTranslation();
+	const guildId = useGuildId();
+
+	const { data: guildModules } = useSWR<GuildOverviewModules>(
+		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/modules`,
+		fetcher
+	);
+
 	return (
 		<>
-			<DashboardCard
-				header='Welcome Messages'
-				action={<FeatureBadge feature='Welcome Messages' variant='wip' />}
-				initialExpand
-				disableIcon
-			>
-				<Content>
-					<Typography paragraph variant='body2'>
-						Coming Soon!
-					</Typography>
-				</Content>
-				<Typography paragraph variant='body2' sx={{ marginBottom: 0 }}>
-					Wanna try this feature early?
-				</Typography>
-				<Button variant='outlined' size='small'>
-					Sign in to the beta testers!
-				</Button>
-			</DashboardCard>
-			<ModuleCard title='Auto Roles' moduleState={true} limits={[{ amount: 0, limit: 5 }]} />
-			{/* <DashboardCard header='Auto Roles' action={<Typography color='green'>ON</Typography>} initialExpand disableIcon>
-				<Content>
-					<Typography paragraph variant='body2'>
-						0/5 in use
-					</Typography>
-				</Content>
-				<ManageButton />
-			</DashboardCard> */}
-			<DashboardCard header='Levels' action={<Typography color='green'>ON</Typography>} initialExpand disableIcon>
-				<Content>
-					<div>
-						<Typography variant='h6'>Text Rewards</Typography>
-						<Typography paragraph variant='body2'>
-							5/20 in use
-						</Typography>
-					</div>
-					<div>
-						<Typography variant='h6'>Voice Rewards</Typography>
-						<Typography paragraph variant='body2'>
-							3/20 in use
-						</Typography>
-					</div>
-				</Content>
-				<ManageButton />
-			</DashboardCard>
-			<DashboardCard
-				header='Interactive Roles'
-				action={<FeatureBadge feature='Interactive Roles' variant='new' />}
-				initialExpand
-				disableIcon
-			>
-				<Content>
-					<Typography paragraph variant='body2'>
-						2/10 in use
-					</Typography>
-				</Content>
-				<ManageButton />
-			</DashboardCard>
-			<DashboardCard header='Embed Messages' initialExpand disableIcon>
-				<Content>
-					<Box>
-						<Typography paragraph variant='body2' color='error' sx={{ marginBottom: 0 }}>
-							15/15 in use
-						</Typography>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: '.5rem', marginBlock: '.5rem', color: 'gold' }}>
-							<Icon icon={faMeteor} size='1x' color='gold' />
-							<Typography variant='caption'>Upgrade to get more!</Typography>
-						</Box>
-					</Box>
-				</Content>
-				<ManageButton />
-			</DashboardCard>
-			<DashboardCard header='Server Logs' action={<Typography color='error'>OFF</Typography>} initialExpand disableIcon>
-				<Content sx={{ marginBottom: '1rem' }}></Content>
-				<ManageButton />
-			</DashboardCard>
+			<ModuleCard
+				title={t('modules:welcomeMessages.title')}
+				badges={['wip']}
+				comingSoon
+				url={'/modules/welcomeMessages'}
+			/>
+			<ModuleCard
+				title={t('modules:autoRoles.title')}
+				moduleState={guildModules?.autoRoles?.status ?? false}
+				limits={[{ amount: guildModules?.autoRoles?.amount, limit: 5 }]}
+				url={`/dashboard/${guildId}/auto-roles`}
+			/>
+			<ModuleCard
+				title={t('modules:levels.title')}
+				moduleState={guildModules?.levels?.status ?? false}
+				limits={[
+					{
+						title: t('dashboardPage:moduleCards.levels.textRewards'),
+						amount: guildModules?.levels?.text?.amount,
+						limit: 20,
+					},
+					{
+						title: t('dashboardPage:moduleCards.levels.voiceRewards'),
+						amount: guildModules?.levels?.voice?.amount,
+						limit: 20,
+					},
+				]}
+				url={`/dashboard/${guildId}/levels`}
+			/>
+			<ModuleCard
+				title={t('modules:interactiveRoles.title')}
+				badges={['new']}
+				limits={[{ amount: guildModules?.interactiveRoles?.amount, limit: 10 }]}
+				url={`/dashboard/${guildId}/interactive-roles`}
+			/>
+			<ModuleCard
+				title={t('modules:embeds.title')}
+				limits={[{ amount: guildModules?.embeds?.amount, limit: 15 }]}
+				url={`/dashboard/${guildId}/embeds`}
+			/>
+			<ModuleCard
+				title={t('modules:serverLogs.title')}
+				moduleState={guildModules?.serverLogs?.status ?? false}
+				url={`/dashboard/${guildId}/logs`}
+			/>
 		</>
 	);
 }
@@ -104,49 +86,72 @@ export default function Modules(): JSX.Element {
 interface ModuleCardProps {
 	title: string;
 	moduleState?: boolean;
+	comingSoon?: boolean;
+	badges?: typeof featureBadges[number][];
 	limits?: {
 		title?: string;
-		amount: number;
+		amount: number | undefined;
 		limit: number;
 	}[];
+	url: string;
 }
 
-function ModuleCard({ title, moduleState, limits }: ModuleCardProps) {
+function ModuleCard({ title, moduleState, comingSoon = false, badges, limits, url }: ModuleCardProps) {
 	const { t } = useTranslation();
 	return (
 		<DashboardCard
 			initialExpand
 			disableIcon
-			header={title}
+			header={
+				<>
+					{title}
+					{badges ? badges.map(badge => <FeatureBadge key={badge} feature={title} variant={badge} />) : null}
+				</>
+			}
 			action={typeof moduleState === 'boolean' ? <ModuleState state={moduleState} /> : null}
 		>
-			<Container>
+			<StyledContainer>
 				<Content>
 					{limits
 						? limits.map((limit, index) => (
 								<div key={index}>
 									{limit.title ? <Typography variant='h6'>{limit.title}</Typography> : null}
-									<Typography paragraph variant='body2' color={limit.amount >= limit.limit ? 'error' : undefined}>
-										{t('dashboardPage:moduleCard.inUse', { amount: limit.amount, limit: limit.limit })}
+									<Typography
+										paragraph
+										variant='body2'
+										color={(limit.amount ?? 0) >= limit.limit ? 'error' : undefined}
+									>
+										{t('dashboardPage:moduleCard.inUse', { amount: limit.amount ?? 0, limit: limit.limit })}
 									</Typography>
 								</div>
 						  ))
 						: null}
+					{comingSoon ? (
+						<Typography paragraph variant='body2'>
+							{t('common:comingSoon')}
+						</Typography>
+					) : null}
 				</Content>
-				<ManageButton />
-			</Container>
+				{
+					<Button variant={comingSoon ? 'outlined' : 'contained'} size='small' LinkComponent={Link} href={url}>
+						{comingSoon ? t('common:seeDetails') : t('common:manage')}
+					</Button>
+				}
+			</StyledContainer>
 		</DashboardCard>
 	);
 }
 
-const ModuleCircle = styled('span')<{ state: boolean }>(({ theme, state }) => ({
-	display: 'inline-block',
-	width: '1rem',
-	height: '1rem',
-	borderRadius: '50%',
-	marginLeft: '1rem',
-	backgroundColor: theme.palette[state ? 'success' : 'error'].dark,
-}));
+const ModuleCircle = styled('span', { shouldForwardProp: prop => prop !== 'state' })<{ state: boolean }>(
+	({ theme, state }) => ({
+		display: 'inline-block',
+		width: '1rem',
+		height: '1rem',
+		borderRadius: '50%',
+		marginLeft: '1rem',
+		backgroundColor: theme.palette[state ? 'success' : 'error'].dark,
+	})
+);
 
 const ModuleState = ({ state }: { state: boolean }) => {
 	const { t } = useTranslation('common');
@@ -154,13 +159,5 @@ const ModuleState = ({ state }: { state: boolean }) => {
 		<Tooltip title={state ? t('enabled') : t('disabled')}>
 			<ModuleCircle state={state} />
 		</Tooltip>
-	);
-};
-
-const ManageButton = () => {
-	return (
-		<Button variant='contained' size='small' sx={{ marginTop: 'auto' }}>
-			MANAGE
-		</Button>
 	);
 };
