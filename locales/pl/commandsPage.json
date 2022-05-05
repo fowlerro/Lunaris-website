@@ -1,6 +1,8 @@
 {
-	"headerParagraph": "Lunaris uses Slash Commands to interact with users.",
-	"headerSecondParagraph": "Here you can find details about any command that is available",
+	"title": "Lunaris - Komendy",
+	"description": "Lista wszystkich komend.",
+	"headerParagraph": "Lunaris używa komend \"ukośnikowych\" do interakcji z użytkownikami.",
+	"headerSecondParagraph": "Tutaj znajdziesz informacje i szczegóły o każdej dostępnej komendzie",
 	"searchLabel": "Wyszukaj komendę",
 	"selectLabel": "Wybierz kategorię",
 

@@ -1,9 +1,8 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { Masonry } from '@mui/lab';
-import { styled, Typography } from '@mui/material';
+import { List, styled, Typography } from '@mui/material';
 
-import CommandCard from './CommandCard';
+import Command from './Command';
 
 interface IProps {
 	searchInput: string;
@@ -11,6 +10,8 @@ interface IProps {
 	commands: {
 		name: string;
 		category: string;
+		permissions?: string;
+		options: boolean;
 	}[];
 }
 
@@ -26,19 +27,15 @@ export default function CommandCategory({ searchInput, category, commands }: IPr
 	return (
 		<div>
 			<Category variant='h3' component='h2'>
-				{t(`categories.${category}`)}
+				{t(`categories.${category}.label`)}
 			</Category>
-			<Masonry
-				columns={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}
-				spacing={1}
-				sx={{ maxWidth: theme => theme.breakpoints.values.xl }}
-			>
+			<List>
 				{commands
 					.filter(command => command.name.includes(searchInput))
 					.map(command => (
-						<CommandCard key={command.name} name={command.name} category={t(`categories.${command.category}`)} />
+						<Command key={command.name} command={command} />
 					))}
-			</Masonry>
+			</List>
 		</div>
 	);
 }

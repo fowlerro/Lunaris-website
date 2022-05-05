@@ -40,6 +40,10 @@
 	"unsavedData": "You have unsaved data!",
 	"confirmLeaveWithChanges": "You have unsaved changes! Are you sure you want to leave?",
 	"seeDetails": "See details",
+	"permissions": "Permissions",
+	"none": "None",
+	"options": "Options",
+	"example": "Example",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",

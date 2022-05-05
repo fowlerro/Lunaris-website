@@ -1,13 +1,14 @@
 import { Dispatch, SetStateAction } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { InputAdornment, MenuItem, styled, TextField, Typography } from '@mui/material';
+import { InputAdornment, styled, TextField, Typography } from '@mui/material';
 
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Select from '@components/Inputs/Select';
 
 interface IProps {
-	categories: string[];
+	categories: { value: string; icon?: IconDefinition }[];
 	searchInput: string;
 	setSearchInput: Dispatch<SetStateAction<string>>;
 	category: string | null;
@@ -99,20 +100,18 @@ export default function Header({
 					}}
 					sx={{ marginBottom: '1rem' }}
 				/>
-				<TextField
-					label={t('commandsPage:selectLabel')}
-					select
+				<Select
+					label={t('commandsPage:selectLabel').toString()}
 					fullWidth
+					items={categories.map(category => ({
+						label: t(`commands:categories.${category.value}.label`),
+						description: t(`commands:categories.${category.value}.description`),
+						icon: category.icon,
+						value: category.value,
+					}))}
 					value={category}
 					onChange={e => setCategory(e.target.value)}
-					sx={{ textAlign: 'left' }}
-				>
-					{categories.map(cat => (
-						<MenuItem key={cat} value={cat}>
-							{t(`commands:categories.${cat}`)}
-						</MenuItem>
-					))}
-				</TextField>
+				/>
 			</InputWrapper>
 		</Section>
 	);

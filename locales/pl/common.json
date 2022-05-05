@@ -40,6 +40,10 @@
 	"unsavedData": "Masz niezapisane dane!",
 	"confirmLeaveWithChanges": "Masz niezapisane dane! Czy na pewno chcesz opuścić tę stronę?",
 	"seeDetails": "Zobacz szczegóły!",
+	"permissions": "Uprawnienia",
+	"none": "Brak",
+	"options": "Opcje",
+	"example": "Przykład",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

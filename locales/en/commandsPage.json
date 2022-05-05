@@ -1,5 +1,7 @@
 {
-	"headerParagraph": "Lunaris uses Slash Commands to interact with users.",
+	"title": "Lunaris - Commands",
+	"description": "List of all commands",
+	"headerParagraph": "Lunaris is using Slash Commands to interact with users.",
 	"headerSecondParagraph": "Here you can find details about any command that is available",
 	"searchLabel": "Search command",
 	"selectLabel": "Select category",

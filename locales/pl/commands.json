@@ -1,7 +1,71 @@
 {
+	"subcommands": "Zagnieżdżone komendy",
 	"categories": {
-		"moderation": "Moderacja",
-		"misc": "Różne",
-		"settings": "Ustawienia"
+		"moderation": {
+			"label": "Moderacja",
+			"description": "Komendy do moderacji serwera"
+		},
+		"miscellaneous": {
+			"label": "Różne",
+			"description": "Różne komendy"
+		},
+		"settings": {
+			"label": "Ustawienia",
+			"description": "Ustawienia bota"
+		}
+	},
+
+	"commands": {
+		"color": {
+			"description": "Konwertuj lub wyświetlaj kolory",
+			"example": "/color convert <input-format> <output-format> <color>\n/color display <color> [<input-format>]",
+			"options": "input-format - Format koloru do przekonwertowania\noutput-format - Format koloru do otrzymania\ncolor - Kolor\nWspierane formaty: RGB, HEX, HSV, HSL, CMYK"
+		},
+		"help": {
+			"description": "Informacje o bocie",
+			"example": "/help"
+		},
+		"profile": {
+			"description": "Wyświetl profil użytkownika",
+			"example": "/profile [<user> <global>]",
+			"options": "user - Użytkownik, którego profil wyświetlić\nglobal - Zaznacz aby wyświetlić globalny profil"
+		},
+		"ranking": {
+			"description": "Wyświetl ranking",
+			"example": "/ranking [<global> <sort-by>]",
+			"options": "global - Zaznacz aby wyświetlić globalny ranking zamiast serwerowego\nsort-by - Wyświetl ranking posortowany przez XP lub Poziom"
+		},
+		"ban": {
+			"description": "Zarządzaj banami",
+			"example": "/ban give <member> [<time> <reason>]\n/ban give-by-id <user-id> [<time> <reason>]\n/ban remove <user-id> [<reason>]\n/ban list [<page>]",
+			"options": "member - Użytkownik do zbanowania\nuser-id - ID użytkownika do zbanowania\ntime - Długość czasowego bana\nreason - Powód bana\npage - Wyświetl konkretną stronę listy banów"
+		},
+		"warn": {
+			"description": "Zarządzaj ostrzeżeniami",
+			"example": "/warn give <member> [<reason>]\n/warn remove <member> <warn>\n/warn remove-all\n/warn list",
+			"options": "member - Użytkownik do ostrzeżenia\nwarn - Ostrzeżenie do usunięcia\nreason - Powód ostrzeżenia"
+		},
+		"mute": {
+			"description": "Zarządzaj wyciszeniami",
+			"example": "/mute give <member> <time> [<reason>]\n/mute remove <member> [<reason>]",
+			"options": "member - Użytkownik do wyciszenia\ntime - Czas trwania wyciszenia\nreason - Powód wyciszenia"
+		},
+		"purge": {
+			"description": "Usuń wiele wiadomości na raz",
+			"example": "/purge <count> [<user> <channel>]",
+			"options": "count - Liczba wiadomości do usunięcia\nuser - Usuń wiadomości tylko tego użytkownika\nchannel - Usuń wiadomości z tego kanału"
+		},
+		"emoji": {
+			"description": "Zarządzaj emotkami",
+			"example": "/emoji add <url> <name>\n/emoji delete <emoji> [<reason>]",
+			"options": "url - URL emotki\nname - Nazwa emotki\nemoji - Emotka do usunięcia\nreason - Powód usunięcia emotki"
+		}
+	},
+	"permissions": {
+		"MANAGE_EMOJIS": "Zarządzanie emoji i naklejkami",
+		"MANAGE_MESSAGES": "Zarządzanie wiadomościami",
+		"MODERATE_MEMBERS": "Nałóż przerwę na członków",
+		"BAN_MEMBERS": "Banowanie członków",
+		"MANAGE_ROLES": "Zarządzanie rolami"
 	}
 }

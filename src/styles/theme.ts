@@ -216,7 +216,7 @@ let darkTheme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: '8px',
-					marginInline: '1rem',
+					marginInline: '.5rem',
 				},
 			},
 		},

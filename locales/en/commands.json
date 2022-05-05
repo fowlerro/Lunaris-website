@@ -1,7 +1,71 @@
 {
+	"subcommands": "Subcommands",
 	"categories": {
-		"moderation": "Moderation",
-		"misc": "Misc",
-		"settings": "Settings"
+		"moderation": {
+			"label": "Moderation",
+			"description": "Commands for moderating server"
+		},
+		"miscellaneous": {
+			"label": "Miscellaneous",
+			"description": "Utility commands"
+		},
+		"settings": {
+			"label": "Settings",
+			"description": "Bot's settings"
+		}
+	},
+
+	"commands": {
+		"color": {
+			"description": "Convert or display colors",
+			"example": "/color convert <input-format> <output-format> <color>\n/color display <color> [<input-format>]",
+			"options": "input-format - Color format to convert from\noutput-format - Color format to convert to\ncolor - Color to convert\nSupported formats: RGB, HEX, HSV, HSL, CMYK"
+		},
+		"help": {
+			"description": "Informations about bot",
+			"example": "/help"
+		},
+		"profile": {
+			"description": "Display user's profile",
+			"example": "/profile [<user> <global>]",
+			"options": "user - User to display profile of\nglobal - Check to display global profile"
+		},
+		"ranking": {
+			"description": "Display ranking",
+			"example": "/ranking [<global> <sort-by>]",
+			"options": "global - Check to display global ranking instead of server\nsort-by - Display ranking sorted by XP or Level"
+		},
+		"ban": {
+			"description": "Manage bans",
+			"example": "/ban give <member> [<time> <reason>]\n/ban give-by-id <user-id> [<time> <reason>]\n/ban remove <user-id> [<reason>]\n/ban list [<page>]",
+			"options": "member - Member to ban\nuser-id - User ID to ban\ntime - Duration for temp ban\nreason - Reason to ban\npage - Display specific page of ban list"
+		},
+		"warn": {
+			"description": "Manage warns",
+			"example": "/warn give <member> [<reason>]\n/warn remove <member> <warn>\n/warn remove-all\n/warn list",
+			"options": "member - Member to warn\nwarn - Warn to remove\nreason - Reason to warn"
+		},
+		"mute": {
+			"description": "Manage mutes",
+			"example": "/mute give <member> <time> [<reason>]\n/mute remove <member> [<reason>]",
+			"options": "member - Member to mute\ntime - Duration for a mute\nreason - Reason to mute"
+		},
+		"purge": {
+			"description": "Delete many messages at once",
+			"example": "/purge <count> [<user> <channel>]",
+			"options": "count - Number of messages to delete\nuser - Delete only this user's messages\nchannel - Delete messages from this channel"
+		},
+		"emoji": {
+			"description": "Manage emojis",
+			"example": "/emoji add <url> <name>\n/emoji delete <emoji> [<reason>]",
+			"options": "url - URL of emoji\nname - Name of emoji\nemoji - Emoji to delete\nreason - Reason to delete emoji"
+		}
+	},
+	"permissions": {
+		"MANAGE_EMOJIS": "Manage Emojis and Stickers",
+		"MANAGE_MESSAGES": "Manage Messages",
+		"MODERATE_MEMBERS": "Timeout Members",
+		"BAN_MEMBERS": "Ban Members",
+		"MANAGE_ROLES": "Manage Roles"
 	}
 }

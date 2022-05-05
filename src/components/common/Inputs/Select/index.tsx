@@ -8,6 +8,7 @@ export interface SelectItem {
 	value: string;
 	label: string;
 	description?: string;
+	icon?: IconDefinition;
 }
 
 export interface SelectAction {
@@ -34,7 +35,33 @@ export default function Select({
 	return (
 		<TextField
 			SelectProps={{
-				renderValue: displayDescription ? undefined : value => items.find(item => item.value === value)?.label || '',
+				renderValue: value => {
+					const item = items.find(item => item.value === value);
+					if (!item) return '';
+					return (
+						<MenuItem
+							sx={{ margin: 0, padding: 0, '&:hover': { background: 'none' } }}
+							disableRipple
+							disableTouchRipple
+						>
+							{item.icon ? (
+								<ListItemIcon>
+									<Icon icon={item.icon} size='1x' />
+								</ListItemIcon>
+							) : null}
+							<ListItemText
+								primary={item.label}
+								secondary={displayDescription && item.description}
+								secondaryTypographyProps={{
+									whiteSpace: 'pre-wrap',
+									sx: {
+										fontSize: '0.75rem',
+									},
+								}}
+							/>
+						</MenuItem>
+					);
+				},
 			}}
 			fullWidth={fullWidth}
 			select={select}
@@ -66,6 +93,11 @@ export default function Select({
 			) : null}
 			{items.map(item => (
 				<MenuItem key={item.value} value={item.value}>
+					{item.icon ? (
+						<ListItemIcon>
+							<Icon icon={item.icon} size='1x' />
+						</ListItemIcon>
+					) : null}
 					<ListItemText
 						primary={item.label}
 						secondary={item.description}

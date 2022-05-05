@@ -20,12 +20,15 @@ const Section = styled('section')(({ theme }) => ({
 }));
 
 const commands = [
-	{ name: 'Ban', category: 'moderation' },
-	{ name: 'Warn', category: 'moderation' },
-	{ name: 'Welcome', category: 'moderation' },
-	{ name: 'Profile', category: 'misc' },
-	{ name: 'Ranking', category: 'misc' },
-	{ name: 'Level', category: 'settings' },
+	{ name: 'color', category: 'miscellaneous', options: true },
+	{ name: 'help', category: 'miscellaneous', options: false },
+	{ name: 'profile', category: 'miscellaneous', options: true },
+	{ name: 'ranking', category: 'miscellaneous', options: true },
+	{ name: 'ban', category: 'moderation', options: true, permissions: 'BAN_MEMBERS' },
+	{ name: 'warn', category: 'moderation', options: true, permissions: 'MANAGE' },
+	{ name: 'mute', category: 'moderation', options: true, permissions: 'MODERATE_MEMBERS' },
+	{ name: 'purge', category: 'moderation', options: true, permissions: 'MANAGE_MESSAGES' },
+	{ name: 'emoji', category: 'settings', options: true, permissions: 'MANAGE_EMOJIS' },
 ];
 
 export default function CommandSection({ searchInput, category }: IProps): JSX.Element {
