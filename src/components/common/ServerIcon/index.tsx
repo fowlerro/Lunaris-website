@@ -6,7 +6,7 @@ import Avatar from '@components/Avatar';
 interface IProps {
 	id: string;
 	name: string;
-	acronym?: string;
+	nameAcronym?: string;
 	icon: string | null;
 }
 
@@ -17,14 +17,14 @@ const Wrapper = styled('div')({
 	borderRadius: '50%',
 });
 
-export default function ServerIcon({ id, name, icon, acronym }: IProps): JSX.Element {
+export default function ServerIcon({ id, name, nameAcronym, icon }: IProps): JSX.Element {
 	const altAcronym = name.split(' ').map(word => word[0]);
 	return (
 		<Wrapper>
 			{icon ? (
 				<Avatar src={`https://cdn.discordapp.com/icons/${id}/${icon}.webp`} layout='fill' />
 			) : (
-				<ServerAcronymIcon>{acronym || altAcronym}</ServerAcronymIcon>
+				<ServerAcronymIcon>{nameAcronym ?? altAcronym}</ServerAcronymIcon>
 			)}
 		</Wrapper>
 	);

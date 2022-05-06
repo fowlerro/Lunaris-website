@@ -14,7 +14,7 @@ interface IconProps {
 	id: string | undefined;
 	name: string | undefined;
 	icon: string | null | undefined;
-	acronym: string | undefined;
+	nameAcronym: string | undefined;
 }
 
 interface NameProps {
@@ -30,7 +30,7 @@ export default function ServerHeader(): JSX.Element {
 	return (
 		<Box display='flex' alignItems='center' padding='1rem'>
 			<Box sx={{ width: '3rem', height: '3rem', marginRight: '1rem' }}>
-				<Icon id={guildId} name={guildInfo?.name} icon={guildInfo?.icon} acronym={guildInfo?.acronym} />
+				<Icon id={guildId} name={guildInfo?.name} icon={guildInfo?.icon} nameAcronym={guildInfo?.acronym} />
 			</Box>
 			<Typography variant='h5' sx={{ fontWeight: theme => theme.typography.fontWeightMedium }}>
 				<Name name={guildInfo?.name} />
@@ -39,9 +39,9 @@ export default function ServerHeader(): JSX.Element {
 	);
 }
 
-function Icon({ id, name, icon, acronym }: IconProps): JSX.Element {
-	return id && name && acronym ? (
-		<ServerIcon id={id} name={name} icon={icon ?? null} acronym={acronym} />
+function Icon({ id, name, icon, nameAcronym }: IconProps): JSX.Element {
+	return id && name && nameAcronym ? (
+		<ServerIcon id={id} icon={icon ?? null} name={name} nameAcronym={nameAcronym} />
 	) : (
 		<Skeleton variant='circular' />
 	);

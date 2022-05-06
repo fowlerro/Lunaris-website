@@ -24,7 +24,7 @@ const Content = styled('div')({
 });
 
 export default function Modules(): JSX.Element {
-	const { t } = useTranslation();
+	const { t } = useTranslation('layout');
 	const guildId = useGuildId();
 
 	const { data: guildModules } = useSWR<GuildOverviewModules>(
@@ -35,19 +35,19 @@ export default function Modules(): JSX.Element {
 	return (
 		<>
 			<ModuleCard
-				title={t('modules:welcomeMessages.title')}
+				title={t('dashboardSidebar.welcomeMessages')}
 				badges={['wip']}
 				comingSoon
 				url={'/modules/welcomeMessages'}
 			/>
 			<ModuleCard
-				title={t('modules:autoRoles.title')}
+				title={t('dashboardSidebar.autoRoles')}
 				moduleState={guildModules?.autoRoles?.status ?? false}
 				limits={[{ amount: guildModules?.autoRoles?.amount, limit: 5 }]}
 				url={`/dashboard/${guildId}/auto-roles`}
 			/>
 			<ModuleCard
-				title={t('modules:levels.title')}
+				title={t('dashboardSidebar.levels')}
 				moduleState={guildModules?.levels?.status ?? false}
 				limits={[
 					{
@@ -64,18 +64,18 @@ export default function Modules(): JSX.Element {
 				url={`/dashboard/${guildId}/levels`}
 			/>
 			<ModuleCard
-				title={t('modules:interactiveRoles.title')}
+				title={t('dashboardSidebar.interactiveRoles')}
 				badges={['new']}
 				limits={[{ amount: guildModules?.interactiveRoles?.amount, limit: 10 }]}
 				url={`/dashboard/${guildId}/interactive-roles`}
 			/>
 			<ModuleCard
-				title={t('modules:embeds.title')}
+				title={t('dashboardSidebar.embedMessages')}
 				limits={[{ amount: guildModules?.embeds?.amount, limit: 15 }]}
 				url={`/dashboard/${guildId}/embeds`}
 			/>
 			<ModuleCard
-				title={t('modules:serverLogs.title')}
+				title={t('dashboardSidebar.serverLogs')}
 				moduleState={guildModules?.serverLogs?.status ?? false}
 				url={`/dashboard/${guildId}/logs`}
 			/>

@@ -8,7 +8,7 @@ module.exports = {
 		'/contact': ['contactPage'],
 		'/servers': ['serversPage'],
 		'/dashboard': ['profilePage'],
-		'/dashboard/[guildId]': ['dashboardPage', 'modules'],
+		'/dashboard/[guildId]': ['dashboardPage'],
 		'/dashboard/[guildId]/auto-roles': ['autoRolesPage', 'forms'],
 		'/dashboard/[guildId]/levels': ['levelsPage', 'forms'],
 		'/dashboard/[guildId]/logs': ['serverLogsPage', 'forms'],
