@@ -2,16 +2,16 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { styled, Typography } from '@mui/material';
 
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import Link from '@components/Link';
+
+import { SUPPORT_INVITE_URL } from '@utils/constants';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
 	position: 'relative',
 	textAlign: 'center',
 	display: 'grid',
 	gridTemplateColumns: '1fr',
+	justifyItems: 'center',
 	rowGap: '2rem',
 	backgroundColor: theme.colors.background.darker,
 	paddingInline: '1rem',
@@ -20,7 +20,7 @@ const StyledFooter = styled('footer')(({ theme }) => ({
 	[theme.breakpoints.up('md')]: {
 		textAlign: 'left',
 		paddingBlock: '8rem',
-		gridTemplateColumns: '1fr 1fr 1fr',
+		gridTemplateColumns: '1fr 1fr',
 		justifyItems: 'center',
 	},
 }));
@@ -55,31 +55,20 @@ const Copyright = styled(Typography)(({ theme }) => ({
 	color: theme.colors.text.muted,
 }));
 
-const Icon = styled(FontAwesomeIcon)({
-	marginRight: '.5rem',
-});
-
 export default function Footer(): JSX.Element {
 	const { t } = useTranslation('layout');
 	return (
 		<StyledFooter>
 			<Section>
 				<Header variant='h5'>{t('footer.usefulLinks')}</Header>
-				<StyledLink href='/commands'>{t('footer.commands')}</StyledLink>
-				<StyledLink href='/modules'>{t('footer.modules')}</StyledLink>
-				<StyledLink href='/dashboard'>{t('footer.dashboard')}</StyledLink>
-			</Section>
-			<Section>
-				<Header variant='h5'>{t('footer.privacy')}</Header>
-				<StyledLink href='/terms-of-use'>{t('footer.terms')}</StyledLink>
-				<StyledLink href='/privacy'>{t('footer.privacyPolicy')}</StyledLink>
+				<StyledLink href='/'>{t('nav.home')}</StyledLink>
+				<StyledLink href='/commands'>{t('nav.commands')}</StyledLink>
+				<StyledLink href='/dashboard'>{t('nav.dashboard')}</StyledLink>
 			</Section>
 			<Section>
 				<Header variant='h5'>{t('footer.contact')}</Header>
-				<StyledLink href='/contact'>{t('footer.contactForm')}</StyledLink>
-				<StyledLink href='https://discordapp.com/users/313346190995619841' target='_blank'>
-					<Icon icon={faDiscord} />
-					Kamil#2107
+				<StyledLink href={SUPPORT_INVITE_URL} target='_blank'>
+					{t('footer.support')}
 				</StyledLink>
 				<StyledLink href='mailto:support@lunaris.pro'>support@lunaris.pro</StyledLink>
 			</Section>

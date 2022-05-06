@@ -4,7 +4,7 @@
 		"home": "Home",
 		"dashboard": "Dashboard",
 		"commands": "Commands",
-		"modules": "Modules",
+		"support": "Our Discord",
 		"contact": "Contact"
 	},
 	"profileMenu": {
@@ -17,14 +17,10 @@
 		"privacy": "Privacy",
 		"contact": "Contact",
 
-		"commands": "Commands",
-		"modules": "Modules",
-		"dashboard": "Dashboard",
-
 		"terms": "Terms of use",
 		"privacyPolicy": "Privacy Policy",
 
-		"contactForm": "Contact Form"
+		"support": "Join our support discord!"
 	},
 
 	"dashboardSidebar": {

@@ -4,7 +4,7 @@
 		"home": "Strona Główna",
 		"dashboard": "Panel",
 		"commands": "Komendy",
-		"modules": "Moduły",
+		"support": "Nasz Discord",
 		"contact": "Kontakt"
 	},
 	"profileMenu": {
@@ -17,14 +17,10 @@
 		"privacy": "Prywatność",
 		"contact": "Kontakt",
 
-		"commands": "Komendy",
-		"modules": "Moduły",
-		"dashboard": "Panel",
-
 		"terms": "Warunki korzystania",
 		"privacyPolicy": "Polityka prywatności",
 
-		"contactForm": "Formularz kontaktowy"
+		"support": "Dołącz do naszego discorda!"
 	},
 
 	"dashboardSidebar": {

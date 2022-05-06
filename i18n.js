@@ -3,10 +3,9 @@ module.exports = {
 	defaultLocale: 'en',
 	pages: {
 		'*': ['common', 'layout'],
-		'/': ['mainPage', 'modules'],
-		'/commands': ['commandsPage', 'commands', 'forms'],
-		'/modules': ['modulesPage', 'modules'],
-		'/contact': ['contactPage', 'forms'],
+		'/': ['mainPage'],
+		'/commands': ['commandsPage', 'commands'],
+		'/contact': ['contactPage'],
 		'/servers': ['serversPage'],
 		'/dashboard': ['profilePage'],
 		'/dashboard/[guildId]': ['dashboardPage', 'modules'],

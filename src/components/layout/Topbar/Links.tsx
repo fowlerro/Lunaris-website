@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { List, ListItem, styled } from '@mui/material';
+import { Button, List, ListItem, styled } from '@mui/material';
 
 import Link from '@components/Link';
+
+import { SUPPORT_INVITE_URL } from '@utils/constants';
 
 interface IProps {
 	setExpanded?: Dispatch<SetStateAction<boolean>>;
@@ -70,14 +72,15 @@ export default function Links({ setExpanded }: IProps): JSX.Element {
 				</Link>
 			</LinkItem>
 			<LinkItem>
-				<Link href='/modules' noLinkStyle tabIndex={0}>
-					{t('nav.modules')}
-				</Link>
-			</LinkItem>
-			<LinkItem>
-				<Link href='/contact' noLinkStyle tabIndex={0}>
-					{t('nav.contact')}
-				</Link>
+				<Button
+					variant='outlined'
+					// startIcon={<Icon icon={faCircleQuestion} />}
+					size='large'
+					href={SUPPORT_INVITE_URL}
+					target={'_blank'}
+				>
+					{t('nav.support')}
+				</Button>
 			</LinkItem>
 		</StyledList>
 	);

@@ -1,8 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { styled, Typography } from '@mui/material';
+import { Button, styled, Typography } from '@mui/material';
+import Avatar from '@components/Avatar';
 
-import Form from './Form';
+import logo from '@assets/logo144.png';
 
 const Section = styled('section')(({ theme }) => ({
 	backgroundColor: theme.colors.background.primary,
@@ -51,8 +52,10 @@ export default function Header(): JSX.Element {
 				>
 					{t('contactPage:headerParagraph')}
 				</Typography>
+				<Button variant='outlined' startIcon={<Avatar src={logo} width='48' height='48' />} sx={{ marginTop: '4rem' }}>
+					Join Lunaris Discord
+				</Button>
 			</TextWrapper>
-			<Form />
 		</Section>
 	);
 }

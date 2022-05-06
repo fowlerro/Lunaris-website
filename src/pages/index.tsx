@@ -3,8 +3,6 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 
 import Hero from '@views/Main/Hero';
-import Modules from '@views/Main/Modules/Modules';
-import Commands from '@views/Main/Commands';
 
 const Home: NextPage = () => {
 	const { t } = useTranslation('mainPage');
@@ -16,8 +14,6 @@ const Home: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Hero />
-			<Modules />
-			<Commands />
 		</>
 	);
 };

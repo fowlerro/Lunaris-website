@@ -1,12 +1,5 @@
 {
-	"headerParagraph": "Have any questions or suggestions? Feel free to let me know!",
-	"formParagraph": "Wybierz temat i wypełnij formularz.",
-	"selectTopic": "Wybierz temat",
-
-	"topics": {
-		"command": "Sugestia komendy",
-		"module": "Sugestia modułu",
-		"bug": "Zgłoszenie błędu",
-		"other": "Inne"
-	}
+	"title": "Lunaris - Kontakt",
+	"description": "",
+	"headerParagraph": "Have any questions or suggestions? Feel free to let me know!"
 }
