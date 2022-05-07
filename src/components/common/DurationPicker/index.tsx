@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Box, InputLabel, styled, TextField } from '@mui/material';
 
 import Explanation from '@components/Explanation';
+
 import useIsDesktop from '@hooks/useIsDesktop';
 
 interface IProps {
@@ -50,8 +51,7 @@ export default function DurationPicker({ values, setValues, onChange }: IProps):
 		const days = parseInt(values.days, 10) * 24 * 60 * 60 * 1000;
 
 		onChange?.(days + hours + minutes + seconds);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [values.days, values.hours, values.minutes, values.seconds]);
+	}, [onChange, values.days, values.hours, values.minutes, values.seconds]);
 
 	const [focused, setFocused] = useState(false);
 

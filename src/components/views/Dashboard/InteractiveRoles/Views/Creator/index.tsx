@@ -24,9 +24,7 @@ export default function InteractiveRolesCreator(): JSX.Element {
 		if (!view) return;
 		if (Array.isArray(view) && view.length > 1) router.replace(`/dashboard/${guildId}/interactive-roles/creator/embed`);
 		if (Array.isArray(view) && view[0] !== 'embed') router.replace(`/dashboard/${guildId}/interactive-roles/creator`);
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [view]);
+	}, [guildId, router, view]);
 
 	const { data: channels } = useSWR<GuildChannels>(
 		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/channels`,

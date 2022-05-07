@@ -5,6 +5,9 @@ import { SubmitHandler } from 'react-hook-form';
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
+import DashboardCard from '@components/DashboardCard';
+import Explanation from '@components/Explanation';
+import ControlledSwitch from '@components/Inputs/Controlled/ControlledSwitch';
 
 import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
@@ -13,6 +16,7 @@ import CategoryCard from './CategoryCard';
 import useServerLogsForm from './useServerLogsForm';
 
 import type { GuildChannels, GuildLogsPageData } from 'types';
+import useTranslation from 'next-translate/useTranslation';
 
 const Section = styled('section')({
 	display: 'flex',
@@ -22,6 +26,7 @@ const Section = styled('section')({
 
 export default function ServerLogs(): JSX.Element {
 	const guildId = useGuildId();
+	const { t } = useTranslation();
 
 	const { data: channels } = useSWR<GuildChannels>(
 		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/channels`,
@@ -50,6 +55,17 @@ export default function ServerLogs(): JSX.Element {
 
 	return (
 		<Section>
+			<DashboardCard
+				header={t('layout:dashboardSidebar.serverLogs')}
+				action={
+					<Explanation label={t('common:toggleModule')}>
+						<ControlledSwitch name='status' control={control} />
+					</Explanation>
+				}
+				sx={{ flex: '1 1 100%' }}
+			>
+				<></>
+			</DashboardCard>
 			{serverLogs
 				? Object.entries(serverLogs.serverLogs).map(([category, logs]) => (
 						<CategoryCard

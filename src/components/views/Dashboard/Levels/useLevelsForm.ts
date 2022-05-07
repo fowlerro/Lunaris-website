@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import isDeepEqual from 'fast-deep-equal/react';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,8 +26,7 @@ export default function useLevelsForm({
 }: UseLevelsFormProps) {
 	const { t } = useTranslation();
 
-	const defaultValuesRef = useRef(defaultValues);
-	if (!isDeepEqual(defaultValuesRef.current, defaultValues)) defaultValuesRef.current = defaultValues;
+	const defaultFormValues = useMemo(() => defaultValues, [defaultValues]);
 
 	const validationSchema = Yup.object().shape({
 		status: Yup.boolean(),
@@ -55,14 +53,15 @@ export default function useLevelsForm({
 	});
 
 	const form = useForm<LevelConfigPageData>({
-		defaultValues,
+		defaultValues: defaultFormValues,
 		resolver: yupResolver(validationSchema),
 	});
 
+	const { reset } = form;
+
 	useEffect(() => {
-		form.reset(defaultValuesRef.current);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [defaultValuesRef.current]);
+		reset(defaultFormValues);
+	}, [defaultFormValues, reset]);
 
 	return form;
 }

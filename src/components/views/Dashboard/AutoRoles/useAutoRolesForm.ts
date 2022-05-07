@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import isDeepEqual from 'fast-deep-equal/react';
+import { useEffect, useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useForm } from 'react-hook-form';
@@ -15,8 +14,7 @@ interface UseAutoRolesFormProps {
 export default function useAutoRolesForm({ defaultValues = { status: false, autoRoles: [] } }: UseAutoRolesFormProps) {
 	const { t } = useTranslation('forms');
 
-	const defaultValuesRef = useRef(defaultValues);
-	if (!isDeepEqual(defaultValuesRef.current, defaultValues)) defaultValuesRef.current = defaultValues;
+	const defaultFormValues = useMemo(() => defaultValues, [defaultValues]);
 
 	const validationSchema = Yup.object().shape({
 		status: Yup.boolean().required(t('errors.required')),
@@ -37,14 +35,15 @@ export default function useAutoRolesForm({ defaultValues = { status: false, auto
 	});
 
 	const form = useForm<AutoRolePageData>({
-		defaultValues,
+		defaultValues: defaultFormValues,
 		resolver: yupResolver(validationSchema),
 	});
 
+	const { reset } = form;
+
 	useEffect(() => {
-		form.reset(defaultValuesRef.current);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [defaultValuesRef.current]);
+		reset(defaultFormValues);
+	}, [defaultFormValues, reset]);
 
 	return form;
 }
