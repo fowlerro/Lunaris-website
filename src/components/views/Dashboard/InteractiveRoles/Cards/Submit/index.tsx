@@ -7,7 +7,7 @@ import { LoadingButton } from '@mui/lab';
 import { faFloppyDisk, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
-import DashboardCard from '@components/DashboardCard';
+import DashboardCard, { DashboardCardContainer } from '@components/DashboardCard';
 
 import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
 import ControlledTextField from '@components/Inputs/Controlled/TextField';
@@ -55,26 +55,28 @@ export default function SubmitCard({ edit = false }: { edit?: boolean }): JSX.El
 
 	return (
 		<DashboardCard header={t('creator.submit')}>
-			<ControlledTextField
-				control={control}
-				name='name'
-				inputProps={{
-					label: t('form.labels.interactiveRolesName'),
-					characterLimit: 32,
-					fullWidth: true,
-					sx: {
-						marginTop: '1rem',
-					},
-				}}
-			/>
-			<LoadingButton
-				variant='contained'
-				loading={loading}
-				onClick={handleSubmit(onSend)}
-				endIcon={<Icon icon={edit ? faFloppyDisk : faPaperPlane} />}
-			>
-				{edit ? t('common:save') : t('common:send')}
-			</LoadingButton>
+			<DashboardCardContainer sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+				<ControlledTextField
+					control={control}
+					name='name'
+					inputProps={{
+						label: t('form.labels.interactiveRolesName'),
+						characterLimit: 32,
+						fullWidth: true,
+						sx: {
+							marginTop: '1rem',
+						},
+					}}
+				/>
+				<LoadingButton
+					variant='contained'
+					loading={loading}
+					onClick={handleSubmit(onSend)}
+					endIcon={<Icon icon={edit ? faFloppyDisk : faPaperPlane} />}
+				>
+					{edit ? t('common:save') : t('common:send')}
+				</LoadingButton>
+			</DashboardCardContainer>
 		</DashboardCard>
 	);
 }

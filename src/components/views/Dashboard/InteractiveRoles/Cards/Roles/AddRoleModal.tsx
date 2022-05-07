@@ -143,6 +143,7 @@ export function Form({ control, setValue, errors, roles, globalEmojis, guildEmoj
 						characterLimit: 80,
 						label: t('creator.roleList.label'),
 						size: 'small',
+						fullWidth: true,
 					}}
 				/>
 			) : null}
@@ -154,6 +155,8 @@ export function Form({ control, setValue, errors, roles, globalEmojis, guildEmoj
 						characterLimit: 100,
 						label: t('creator.roleList.description'),
 						size: 'small',
+						fullWidth: true,
+						multiline: true,
 					}}
 				/>
 			) : null}
