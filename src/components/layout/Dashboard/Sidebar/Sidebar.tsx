@@ -22,6 +22,7 @@ import SidebarItem from './SidebarItem';
 import SidebarGroup from './SidebarGroup';
 import ServerHeader from './ServerHeader';
 import ServerListButton from './ServerListButton';
+import useGuildId from '@hooks/useGuildId';
 
 export const featureBadges = ['premium', 'new', 'wip'] as const;
 
@@ -58,7 +59,7 @@ const menuItems: ISidebarItem[] = [
 		group: true,
 		icon: faPuzzlePiece,
 		items: [
-			{ name: 'welcomeMessages', href: 'welcome', icon: faDoorOpen, tags: ['wip'] },
+			{ name: 'welcomeMessages', icon: faDoorOpen, tags: ['wip'] },
 			{ name: 'autoRoles', href: 'auto-roles', icon: faAt },
 			{ name: 'levels', href: 'levels', icon: faAnglesUp },
 			{ name: 'interactiveRoles', href: 'interactive-roles', icon: faFaceGrin, tags: ['new'] },
@@ -70,9 +71,9 @@ const menuItems: ISidebarItem[] = [
 
 const createItems = (items: ISidebarItem[]) => {
 	return items.map(item => {
+		const guildId = useGuildId();
 		if (item.group && item.items) {
-			const { query, pathname } = useRouter();
-			const guildId = query.guildId as string;
+			const { pathname } = useRouter();
 			const currentPath = pathname.split('/')[3] || '';
 			const selected = item.items.length ? item.items.some(i => i.href === currentPath) : item.href === currentPath;
 
@@ -88,7 +89,13 @@ const createItems = (items: ISidebarItem[]) => {
 				</SidebarGroup>
 			);
 		}
-		return <SidebarItem key={item.name} item={item} />;
+		return typeof item.href === 'string' ? (
+			<StyledLink key={item.name} href={`/dashboard/${guildId}/${item.href}`}>
+				<SidebarItem item={item} />
+			</StyledLink>
+		) : (
+			<SidebarItem key={item.name} item={item} />
+		);
 	});
 };
 

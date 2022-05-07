@@ -3,7 +3,6 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, styled } from '@mui/material';
 
-import Link from '@components/Link';
 import Icon from '@components/Icon';
 import FeatureBadge from '@components/Badges/FeatureBadge';
 
@@ -12,11 +11,6 @@ import type { ISidebarItem } from './Sidebar';
 interface IProps {
 	item: ISidebarItem;
 }
-
-const StyledLink = styled(Link)(({ theme }) => ({
-	textDecoration: 'none',
-	color: theme.colors.text.primary,
-}));
 
 export const ItemText = styled('span')(({ theme }) => ({
 	backgroundImage: `linear-gradient(to left, ${theme.colors.text.muted}, ${theme.colors.text.muted})`,
@@ -28,64 +22,61 @@ export const ItemText = styled('span')(({ theme }) => ({
 
 export default function SidebarItem({ item }: IProps): JSX.Element {
 	const { t } = useTranslation('layout');
-	const { pathname, query } = useRouter();
-	const guildId = query.guildId as string;
+	const { pathname } = useRouter();
 	const currentPath = pathname.split('/')[3] || '';
 	const selected = item.href === currentPath;
 
 	return (
-		<StyledLink href={`/dashboard/${guildId}/${item.href}`}>
-			<ListItemButton
-				component='li'
-				selected={selected}
-				dense
+		<ListItemButton
+			component='li'
+			selected={selected}
+			dense
+			sx={{
+				fontWeight: theme => theme.typography[selected ? 'fontWeightBold' : 'fontWeightRegular'],
+				'&.Mui-selected': {
+					backgroundColor: theme => theme.colors.background.input,
+				},
+			}}
+		>
+			<ListItemIcon
 				sx={{
-					fontWeight: theme => theme.typography[selected ? 'fontWeightBold' : 'fontWeightRegular'],
-					'&.Mui-selected': {
-						backgroundColor: theme => theme.colors.background.input,
-					},
+					color: theme => theme.colors.text[selected ? 'primary' : 'secondary'],
+					minWidth: '2.5rem',
 				}}
 			>
-				<ListItemIcon
-					sx={{
-						color: theme => theme.colors.text[selected ? 'primary' : 'secondary'],
-						minWidth: '2.5rem',
-					}}
-				>
-					<Icon
-						icon={item.icon}
-						sx={[
-							{
-								width: '1.25rem',
-							},
-							selected
-								? {
-										'& path': {
-											fill: 'url(#blue-gradient)',
-										},
-								  }
-								: {},
-						]}
-					/>
-				</ListItemIcon>
-				<ListItemText
-					disableTypography
+				<Icon
+					icon={item.icon}
 					sx={[
 						{
-							fontSize: theme => theme.typography.fontSize,
+							width: '1.25rem',
 						},
+						selected
+							? {
+									'& path': {
+										fill: 'url(#blue-gradient)',
+									},
+							  }
+							: {},
 					]}
-				>
-					{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
-				</ListItemText>
-				{item.tags?.length ? (
-					<ListItemSecondaryAction>
-						{item.tags.map(tag => (
-							<FeatureBadge key={tag} variant={tag} feature={item.name} />
-						))}
-					</ListItemSecondaryAction>
-				) : undefined}
-			</ListItemButton>
-		</StyledLink>
+				/>
+			</ListItemIcon>
+			<ListItemText
+				disableTypography
+				sx={[
+					{
+						fontSize: theme => theme.typography.fontSize,
+					},
+				]}
+			>
+				{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
+			</ListItemText>
+			{item.tags?.length ? (
+				<ListItemSecondaryAction>
+					{item.tags.map(tag => (
+						<FeatureBadge key={tag} variant={tag} feature={item.name} />
+					))}
+				</ListItemSecondaryAction>
+			) : undefined}
+		</ListItemButton>
 	);
 }
