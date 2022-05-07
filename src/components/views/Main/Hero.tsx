@@ -22,6 +22,7 @@ const Section = styled('section')(({ theme }) => ({
 	width: 'min(90%, 1366px)',
 	marginInline: 'auto',
 	marginBottom: '6rem',
+	alignItems: 'center',
 
 	[theme.breakpoints.up('md')]: {
 		flexDirection: 'row-reverse',
