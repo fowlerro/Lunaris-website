@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import { Box, Typography } from '@mui/material';
@@ -6,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import ServerIcon from '@components/ServerIcon';
 import Skeleton from '@components/Loading/Skeleton';
 
+import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
 import type { GuildInfo } from 'types';
@@ -22,8 +22,7 @@ interface NameProps {
 }
 
 export default function ServerHeader(): JSX.Element {
-	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 
 	const { data: guildInfo } = useSWR<GuildInfo>(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}`, fetcher);
 

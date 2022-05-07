@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-
 import { FormProvider, UseFormReturn } from 'react-hook-form';
 
 import { styled } from '@mui/material';
@@ -9,12 +8,14 @@ import { styled } from '@mui/material';
 import View from '@components/View';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
+import useGuildId from '@hooks/useGuildId';
+
 import OptionsCard from '../../Cards/Options';
 import RolesCard from '../../Cards/Roles';
+import SubmitCard from '../../Cards/Submit';
 
 import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
 import type { GuildChannels } from 'types';
-import SubmitCard from '../../Cards/Submit';
 
 interface EditorViewProps {
 	form: UseFormReturn<InteractiveRolesFormValues>;
@@ -31,7 +32,7 @@ export default function EditorView({ form, channels }: EditorViewProps) {
 	const [openLeaveWarning, setOpenLeaveWarning] = useState(false);
 	const { t } = useTranslation('interactiveRolesPage');
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 
 	const {
 		formState: { isDirty },

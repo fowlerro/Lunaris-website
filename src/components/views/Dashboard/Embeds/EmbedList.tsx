@@ -24,6 +24,7 @@ import View from '@components/View';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
 import useIsDesktop from '@hooks/useIsDesktop';
+import useGuildId from '@hooks/useGuildId';
 
 import type { EmbedMessage, GuildChannels } from 'types';
 
@@ -37,7 +38,7 @@ export default function EmbedList({ channels, embeds }: IProps): JSX.Element {
 	const { t } = useTranslation('embedsPage');
 	const { mutate } = useSWRConfig();
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const isDesktop = useIsDesktop();
 
 	const handleCreateEmbed = () => {

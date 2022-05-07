@@ -12,8 +12,9 @@ import EmbedFormCard from './cards/EmbedFormCard';
 import EmbedSubmitCard from './cards/EmbedSubmitCard';
 import useEmbedForm from './utils/useEmbedForm';
 
-import { colors } from '@styles/theme';
 import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
+import useGuildId from '@hooks/useGuildId';
+import { colors } from '@styles/theme';
 
 import type { EmbedMessage, GuildChannels } from 'types';
 
@@ -35,7 +36,7 @@ const StyledBox = styled('div')(({ theme }) => ({
 export default function EmbedEdit({ channels, embed }: IProps): JSX.Element {
 	const [openLeaveWarning, setOpenLeaveWarning] = useState(false);
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const { t } = useTranslation('embedsPage');
 
 	const {

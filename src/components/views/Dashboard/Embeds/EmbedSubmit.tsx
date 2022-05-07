@@ -12,11 +12,13 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { faFloppyDisk, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
+import ControlledTextField from '@components/Inputs/Controlled/TextField';
 import ChannelSelect from '@components/Inputs/ChannelSelect';
 import Icon from '@components/Icon';
 
+import useGuildId from '@hooks/useGuildId';
+
 import type { EmbedMessage, GuildChannels } from 'types';
-import ControlledTextField from '@components/Inputs/Controlled/TextField';
 
 interface IProps {
 	control: Control<EmbedMessage>;
@@ -42,7 +44,7 @@ export default function EmbedSubmit({
 	const router = useRouter();
 	const [saving, setSaving] = useState(false);
 	const [openConfirmation, setOpenConfirmation] = useState(false);
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const {
 		channelId,
 		_id: embedId,

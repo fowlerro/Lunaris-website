@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import axios from 'axios';
 
@@ -8,6 +7,7 @@ import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
 
+import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
 import AddAutoRole from './AddAutoRole';
@@ -23,8 +23,7 @@ const Section = styled('section')({
 });
 
 export default function AutoRoles(): JSX.Element {
-	const router = useRouter();
-	const guildId = router.query.guildId;
+	const guildId = useGuildId();
 
 	const { data: roles } = useSWR<Role[]>(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/roles`, fetcher);
 	const { data: autoRolesData } = useSWR<AutoRolePageData>(

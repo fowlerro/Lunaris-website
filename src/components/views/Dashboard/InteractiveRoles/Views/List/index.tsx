@@ -23,8 +23,9 @@ import View from '@components/View';
 import DashboardCard from '@components/DashboardCard';
 import ConfirmDialog from '@components/Dialogs/ConfirmDialog';
 
-import { fetcher } from '@utils/utils';
 import useIsDesktop from '@hooks/useIsDesktop';
+import useGuildId from '@hooks/useGuildId';
+import { fetcher } from '@utils/utils';
 
 import type { GuildChannels, InteractiveRolesType } from 'types';
 
@@ -33,7 +34,7 @@ export default function InteractiveRolesList(): JSX.Element {
 	const { t } = useTranslation('interactiveRolesPage');
 	const { mutate } = useSWRConfig();
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const isDesktop = useIsDesktop();
 
 	const { data: interactiveRoles } = useSWR<InteractiveRolesType[]>(

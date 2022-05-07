@@ -3,20 +3,21 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
 
-import CreatorView from './CreatorView';
 import EmbedCreator from '@views/Dashboard/Embeds/EmbedCreator';
 
-import useInteractiveRolesForm, { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
-
-import { fetcher } from '@utils/utils';
 import useLeaveWithChanges from '@hooks/useLeaveWithChanges';
+import useGuildId from '@hooks/useGuildId';
+import { fetcher } from '@utils/utils';
+
+import CreatorView from './CreatorView';
+import useInteractiveRolesForm, { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
 
 import type { GuildChannels, Role, EmbedMessage } from 'types';
 
 export default function InteractiveRolesCreator(): JSX.Element {
 	const { t } = useTranslation('interactiveRolesPage');
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const view = router.query.view;
 
 	useEffect(() => {

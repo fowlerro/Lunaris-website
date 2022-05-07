@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
+import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
 import EmbedList from './EmbedList';
@@ -14,7 +15,7 @@ const views = ['creator'];
 
 export default function Embeds(): JSX.Element {
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const currentView = router.query.view;
 
 	const { data: embeds, isValidating } = useSWR<EmbedMessage[]>(

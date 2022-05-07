@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import axios from 'axios';
-
 import { SubmitHandler } from 'react-hook-form';
 
 import { styled } from '@mui/material';
 
 import DataSaveToaster from '@components/DataSaveToaster';
+
+import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
 import LevelSettingsCard from './LevelSettingsCard';
@@ -22,8 +22,7 @@ const Section = styled('section')({
 });
 
 export default function Levels(): JSX.Element {
-	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 
 	const { data: channels } = useSWR<GuildChannels>(
 		`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/channels`,

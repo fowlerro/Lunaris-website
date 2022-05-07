@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
-
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { FormControl, FormHelperText, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
@@ -14,6 +13,7 @@ import ControlledTextField from '@components/Inputs/Controlled/TextField';
 import Select, { SelectItem } from '@components/Inputs/Select';
 import ChannelSelect from '@components/Inputs/ChannelSelect';
 
+import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
 import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
@@ -186,7 +186,7 @@ function MessageInput({ channels, edit = false }: MessageInputProps) {
 
 function EmbedMessageSelect({ channels, edit = false }: { channels: GuildChannels | undefined; edit?: boolean }) {
 	const router = useRouter();
-	const guildId = router.query.guildId as string;
+	const guildId = useGuildId();
 	const { t } = useTranslation('interactiveRolesPage');
 	const {
 		control,
