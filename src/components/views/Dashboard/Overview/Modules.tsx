@@ -35,19 +35,15 @@ export default function Modules(): JSX.Element {
 	return (
 		<>
 			<ModuleCard
-				title={t('dashboardSidebar.welcomeMessages')}
-				badges={['wip']}
-				comingSoon
-				url={'/modules/welcomeMessages'}
-			/>
-			<ModuleCard
 				title={t('dashboardSidebar.autoRoles')}
+				feature={'autoRoles'}
 				moduleState={guildModules?.autoRoles?.status ?? false}
 				limits={[{ amount: guildModules?.autoRoles?.amount, limit: 5 }]}
 				url={`/dashboard/${guildId}/auto-roles`}
 			/>
 			<ModuleCard
 				title={t('dashboardSidebar.levels')}
+				feature={'levels'}
 				moduleState={guildModules?.levels?.status ?? false}
 				limits={[
 					{
@@ -65,17 +61,20 @@ export default function Modules(): JSX.Element {
 			/>
 			<ModuleCard
 				title={t('dashboardSidebar.interactiveRoles')}
+				feature={'interactiveRoles'}
 				badges={['new']}
 				limits={[{ amount: guildModules?.interactiveRoles?.amount, limit: 10 }]}
 				url={`/dashboard/${guildId}/interactive-roles`}
 			/>
 			<ModuleCard
 				title={t('dashboardSidebar.embedMessages')}
+				feature={'embedMessages'}
 				limits={[{ amount: guildModules?.embeds?.amount, limit: 15 }]}
 				url={`/dashboard/${guildId}/embeds`}
 			/>
 			<ModuleCard
 				title={t('dashboardSidebar.serverLogs')}
+				feature={'serverLogs'}
 				moduleState={guildModules?.serverLogs?.status ?? false}
 				url={`/dashboard/${guildId}/logs`}
 			/>
@@ -85,6 +84,7 @@ export default function Modules(): JSX.Element {
 
 interface ModuleCardProps {
 	title: string;
+	feature: string;
 	moduleState?: boolean;
 	comingSoon?: boolean;
 	badges?: typeof featureBadges[number][];
@@ -96,7 +96,7 @@ interface ModuleCardProps {
 	url: string;
 }
 
-function ModuleCard({ title, moduleState, comingSoon = false, badges, limits, url }: ModuleCardProps) {
+function ModuleCard({ title, feature, moduleState, comingSoon = false, badges, limits, url }: ModuleCardProps) {
 	const { t } = useTranslation();
 	return (
 		<DashboardCard
@@ -105,7 +105,7 @@ function ModuleCard({ title, moduleState, comingSoon = false, badges, limits, ur
 			header={
 				<>
 					{title}
-					{badges ? badges.map(badge => <FeatureBadge key={badge} feature={title} variant={badge} />) : null}
+					{badges ? badges.map(badge => <FeatureBadge key={badge} feature={feature} variant={badge} />) : null}
 				</>
 			}
 			action={typeof moduleState === 'boolean' ? <ModuleState state={moduleState} /> : null}
