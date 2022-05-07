@@ -15,7 +15,6 @@ import Icon from '@components/Icon';
 import ExpandIcon from '@components/ExpandIcon';
 import FeatureBadge from '@components/Badges/FeatureBadge';
 
-import { ItemText } from './SidebarItem';
 import type { ISidebarItem } from './Sidebar';
 
 interface IProps {
@@ -51,9 +50,7 @@ export default function SidebarGroup({ children, item, selected }: IProps): JSX.
 							},
 							selected
 								? {
-										'& path': {
-											fill: 'url(#blue-gradient)',
-										},
+										color: theme => theme.colors.primary[400],
 								  }
 								: {},
 						]}
@@ -66,7 +63,7 @@ export default function SidebarGroup({ children, item, selected }: IProps): JSX.
 						color: theme => theme.colors.text[selected ? 'primary' : 'secondary'],
 					}}
 				>
-					{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
+					{t(`dashboardSidebar.${item.name}`)}
 				</ListItemText>
 				<ListItemSecondaryAction>
 					{item.tags?.length

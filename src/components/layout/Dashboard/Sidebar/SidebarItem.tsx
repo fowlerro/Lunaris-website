@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, styled } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText } from '@mui/material';
 
 import Icon from '@components/Icon';
 import FeatureBadge from '@components/Badges/FeatureBadge';
@@ -11,14 +11,6 @@ import type { ISidebarItem } from './Sidebar';
 interface IProps {
 	item: ISidebarItem;
 }
-
-export const ItemText = styled('span')(({ theme }) => ({
-	backgroundImage: `linear-gradient(to left, ${theme.colors.text.muted}, ${theme.colors.text.muted})`,
-	backgroundPosition: 'bottom center',
-	backgroundSize: '85% 1px',
-	backgroundRepeat: 'no-repeat',
-	paddingBottom: '4px',
-}));
 
 export default function SidebarItem({ item }: IProps): JSX.Element {
 	const { t } = useTranslation('layout');
@@ -52,9 +44,7 @@ export default function SidebarItem({ item }: IProps): JSX.Element {
 						},
 						selected
 							? {
-									'& path': {
-										fill: 'url(#blue-gradient)',
-									},
+									color: theme => theme.colors.primary[400],
 							  }
 							: {},
 					]}
@@ -68,7 +58,7 @@ export default function SidebarItem({ item }: IProps): JSX.Element {
 					},
 				]}
 			>
-				{selected ? <ItemText>{t(`dashboardSidebar.${item.name}`)}</ItemText> : t(`dashboardSidebar.${item.name}`)}
+				{t(`dashboardSidebar.${item.name}`)}
 			</ListItemText>
 			{item.tags?.length ? (
 				<ListItemSecondaryAction>

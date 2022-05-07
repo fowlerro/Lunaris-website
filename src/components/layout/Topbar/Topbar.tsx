@@ -9,7 +9,7 @@ const Header = styled(AppBar)(({ theme }) => ({
 	background: theme.colors.background.lighter,
 	zIndex: theme.zIndex.drawer + 1,
 	fontSize: 'clamp(1.00rem, -1.20rem + 3.13vw, 1.5rem)',
-	width: '100vw',
+	maxWidth: '100vw',
 
 	[theme.breakpoints.up('md')]: {
 		background: 'none',

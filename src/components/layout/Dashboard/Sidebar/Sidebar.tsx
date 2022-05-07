@@ -7,12 +7,12 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import {
 	faAnglesUp,
 	faAt,
+	faChartArea,
+	faDatabase,
 	faDoorOpen,
 	faFaceGrin,
-	faFileCircleQuestion,
-	faPuzzlePiece,
-	faSliders,
-	faTachographDigital,
+	faMessage,
+	faShapes,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Link from '@components/Link';
@@ -53,18 +53,18 @@ const StyledLink = styled(Link)(({ theme }) => ({
 }));
 
 const menuItems: ISidebarItem[] = [
-	{ name: 'overview', href: '', icon: faSliders, group: true, items: [] },
+	{ name: 'overview', href: '', icon: faChartArea, group: true, items: [] },
 	{
 		name: 'modules',
 		group: true,
-		icon: faPuzzlePiece,
+		icon: faShapes,
 		items: [
 			{ name: 'welcomeMessages', icon: faDoorOpen, tags: ['wip'] },
 			{ name: 'autoRoles', href: 'auto-roles', icon: faAt },
 			{ name: 'levels', href: 'levels', icon: faAnglesUp },
 			{ name: 'interactiveRoles', href: 'interactive-roles', icon: faFaceGrin, tags: ['new'] },
-			{ name: 'embedMessages', href: 'embeds', icon: faTachographDigital },
-			{ name: 'serverLogs', href: 'logs', icon: faFileCircleQuestion },
+			{ name: 'embedMessages', href: 'embeds', icon: faMessage },
+			{ name: 'serverLogs', href: 'logs', icon: faDatabase },
 		],
 	},
 ];
