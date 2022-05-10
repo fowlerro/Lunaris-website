@@ -1,6 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
-import { AxiosResponse } from 'axios';
 
 import { Button, styled } from '@mui/material';
 
@@ -30,11 +29,10 @@ const IconWrapper = styled('div')({
 export default function ServerListSection(): JSX.Element {
 	const { t } = useTranslation('profilePage');
 	const lastManagedGuildId = useLastManagedServer();
-	const { data } = useSWR<AxiosResponse<GuildInfo>>(
+	const { data: guildInfo } = useSWR<GuildInfo>(
 		lastManagedGuildId ? `${process.env.NEXT_PUBLIC_API_URL}/guilds/${lastManagedGuildId}` : null,
 		fetcher
 	);
-	const guildInfo = data?.data;
 	return (
 		<Section>
 			{lastManagedGuildId && guildInfo && guildInfo.name && guildInfo.acronym && (

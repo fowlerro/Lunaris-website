@@ -1,17 +1,9 @@
 import { ReactNode } from 'react';
-import Head from 'next/head';
 
 import type { NextPageWithLayout } from './_app';
 
 const ErrorPage: NextPageWithLayout = () => {
-	return (
-		<>
-			<Head>
-				<title>Error</title>
-			</Head>
-			<h1>Error</h1>
-		</>
-	);
+	return null;
 };
 
 const ErrorLayout = ({ children }: { children: ReactNode }) => {
@@ -19,5 +11,14 @@ const ErrorLayout = ({ children }: { children: ReactNode }) => {
 };
 
 ErrorPage.Layout = ErrorLayout;
+
+export const getServerSideProps = () => {
+	return {
+		redirect: {
+			destination: '/',
+			permanent: true,
+		},
+	};
+};
 
 export default ErrorPage;

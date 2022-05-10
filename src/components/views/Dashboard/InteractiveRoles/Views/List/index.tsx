@@ -91,13 +91,22 @@ export default function InteractiveRolesList(): JSX.Element {
 				initialExpand
 				action={
 					isDesktop ? (
-						<Button variant='contained' sx={{ marginRight: '1rem' }} onClick={handleCreate}>
+						<Button
+							variant='contained'
+							sx={{ marginRight: '1rem' }}
+							onClick={handleCreate}
+							disabled={(interactiveRoles?.length ?? 0) >= 10}
+						>
 							<Icon icon={faAdd} sx={{ marginRight: '1rem', fontSize: '1.25rem' }} />
 							{t('form.buttons.createInteractiveRole')}
 						</Button>
 					) : (
 						<Tooltip title={t('form.buttons.createInteractiveRole').toString()}>
-							<IconButton onClick={handleCreate} sx={{ backgroundColor: theme => theme.colors.primary.main }}>
+							<IconButton
+								onClick={handleCreate}
+								sx={{ backgroundColor: theme => theme.colors.primary.main }}
+								disabled={(interactiveRoles?.length ?? 0) >= 10}
+							>
 								<Icon icon={faAdd} />
 							</IconButton>
 						</Tooltip>

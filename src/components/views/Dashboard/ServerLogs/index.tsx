@@ -62,6 +62,7 @@ export default function ServerLogs(): JSX.Element {
 						<ControlledSwitch name='status' control={control} />
 					</Explanation>
 				}
+				disableIcon
 				sx={{ flex: '1 1 100%' }}
 			>
 				<></>

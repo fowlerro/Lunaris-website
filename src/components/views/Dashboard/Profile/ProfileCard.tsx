@@ -1,7 +1,7 @@
 import { Paper, styled } from '@mui/material';
 
 import useUser from '@hooks/useUser';
-import { loginURL } from '@utils/constants';
+import { LOGIN_URL } from '@utils/constants';
 
 import ProfileHeader from './ProfileHeader';
 import ProfileContent from './ProfileContent';
@@ -23,7 +23,7 @@ const StyledCard = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ProfileCard({ profile }: IProps): JSX.Element {
-	const user = useUser({ redirectTo: loginURL });
+	const user = useUser({ redirectTo: LOGIN_URL });
 
 	return (
 		<StyledCard elevation={0}>

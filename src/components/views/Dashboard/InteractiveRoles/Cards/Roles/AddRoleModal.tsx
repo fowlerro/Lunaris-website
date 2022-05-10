@@ -9,7 +9,7 @@ import {
 	Controller,
 	FieldError,
 	useWatch,
-	useFieldArray,
+	UseFieldArrayAppend,
 } from 'react-hook-form';
 
 import {
@@ -32,22 +32,28 @@ import Emoji from './Emoji';
 import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
 import useAddRoleForm, { AddRoleFormValues, validActions, validStyles } from '../../utils/useAddRoleForm';
 
-import type { Role, GuildEmojis } from 'types';
+import type { Role, GuildEmojis, InteractiveRolesType } from 'types';
 
 interface AddRoleModalProps {
+	append: UseFieldArrayAppend<InteractiveRolesType, 'roles'>;
 	guildRoles: Role[] | undefined;
 	globalEmojis: GuildEmojis | undefined;
 	guildEmojis: GuildEmojis | undefined;
 }
 
-export default function AddRoleModal({ guildRoles = [], globalEmojis, guildEmojis }: AddRoleModalProps): JSX.Element {
+export default function AddRoleModal({
+	append,
+	guildRoles = [],
+	globalEmojis,
+	guildEmojis,
+}: AddRoleModalProps): JSX.Element {
 	const { t } = useTranslation('interactiveRolesPage');
-	const { watch, control: rootControl } = useFormContext<InteractiveRolesFormValues>();
+	const { watch } = useFormContext<InteractiveRolesFormValues>();
 	const type = watch('type');
 	const roles = watch('roles');
 	const uniqueValues = roles.map(r => ({ icon: r.icon, label: r.label }));
 
-	const { append } = useFieldArray({ control: rootControl, name: 'roles' });
+	// const { append } = useFieldArray({ control: rootControl, name: 'roles' });
 
 	const [open, setOpen] = useState(false);
 
@@ -84,7 +90,7 @@ export default function AddRoleModal({ guildRoles = [], globalEmojis, guildEmoji
 
 	return (
 		<>
-			<Button variant='outlined' size='small' onClick={handleOpen} disabled={roles.length >= 5}>
+			<Button variant='outlined' size='small' onClick={handleOpen} disabled={roles.length >= 25}>
 				{t('form.buttons.addRole')}
 			</Button>
 			<Dialog open={open}>

@@ -29,7 +29,6 @@ const GridWrapper = styled('div')({
 export default function ServersSection({ guilds, excluded = false }: IProps): JSX.Element {
 	const { t } = useTranslation('serversPage');
 	const header = excluded ? t('inviteToServer') : t('manageServer');
-	console.log(guilds);
 	const Cards = guilds ? (
 		guilds.map(guild => (
 			<ServerCard

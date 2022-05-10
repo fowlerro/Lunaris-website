@@ -29,6 +29,7 @@
 	"toggleModule": "Toggle module",
 	"duration": "Duration",
 	"role": "Role",
+	"noRoles": "No roles found! Make sure to set bot's role above others to manage them.",
 	"channel": "Channel",
 	"delete": "Delete",
 	"multiplier": "Multiplier",
@@ -44,6 +45,7 @@
 	"none": "None",
 	"options": "Options",
 	"example": "Example",
+	"pageNotFound": "Page not found!",
 	"durationUnits": {
 		"days": "days",
 		"hours": "hours",

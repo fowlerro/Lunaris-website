@@ -8,7 +8,7 @@ import Illustration from './Illustration';
 import { MobileLoginButton } from './MobileLoginButton';
 
 import useIsDesktop from '@hooks/useIsDesktop';
-import { inviteURL } from '@utils/constants';
+import { INVITE_URL } from '@utils/constants';
 
 const ButtonSlide = keyframes`
   from { transform: translateX(0) }
@@ -72,7 +72,7 @@ export default function Hero(): JSX.Element {
 					{t('mainPage:heroParagraph')}
 				</Typography>
 				{!isDesktop && <MobileLoginButton />}
-				<StyledButton variant={isDesktop ? 'contained' : 'outlined'} href={inviteURL}>
+				<StyledButton variant={isDesktop ? 'contained' : 'outlined'} href={INVITE_URL}>
 					{t('common:inviteBot')}
 				</StyledButton>
 			</TextWrapper>

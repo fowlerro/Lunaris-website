@@ -34,14 +34,14 @@ export default function OptionsCard({ channels, edit = false }: OptionsCardProps
 
 	return (
 		<DashboardCard header={t('creator.options')} initialExpand>
-			<TypeInput />
+			<TypeInput edit={edit} />
 			<MessageInput channels={channels} edit={edit} />
 			<SelectMenuPlaceholder />
 		</DashboardCard>
 	);
 }
 
-function TypeInput() {
+function TypeInput({ edit }: { edit?: boolean }) {
 	const { t } = useTranslation('interactiveRolesPage');
 
 	const {
@@ -66,7 +66,7 @@ function TypeInput() {
 						color='primary'
 						size='small'
 						aria-labelledby='interactive-roles-type-label'
-						disabled={!!roles.length}
+						disabled={edit || !!roles.length}
 						sx={{ '& > *': { fontSize: ['.7rem', '.8rem'] } }}
 					>
 						<ToggleButton value='reactions' aria-label={t('form.labels.type.reactions')}>

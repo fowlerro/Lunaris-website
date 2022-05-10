@@ -14,6 +14,7 @@
 		"header": "Level Up Message",
 		"messageBehavior": "Message Behavior",
 		"messageFormat": "Custom Message",
+		"messageFormatPlaceholder": "Use variables like: {{username}}, {{mentionMember}}, {{level}}, {{memberId}}",
 
 		"mode": {
 			"currentChannel": {

@@ -29,6 +29,7 @@
 	"toggleModule": "Przełącz moduł",
 	"duration": "Czas",
 	"role": "Rola",
+	"noRoles": "Nie znaleziono żadnej roli! Upewnij się, że rola bota jest powyżej innych, którymi chcesz zarządzać.",
 	"channel": "Kanał",
 	"delete": "Usuń",
 	"multiplier": "Mnożnik",
@@ -44,6 +45,7 @@
 	"none": "Brak",
 	"options": "Opcje",
 	"example": "Przykład",
+	"pageNotFound": "Nie znaleziono strony!",
 	"durationUnits": {
 		"days": "dni",
 		"hours": "godziny",

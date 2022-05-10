@@ -4,7 +4,7 @@ import { Button, styled } from '@mui/material';
 import { keyframes } from '@emotion/react';
 
 import useUser from '@hooks/useUser';
-import { loginURL } from '@utils/constants';
+import { LOGIN_URL } from '@utils/constants';
 
 const ButtonSlide = keyframes`
   from { transform: translateX(0) }
@@ -23,7 +23,7 @@ export function MobileLoginButton(): JSX.Element {
 	const user = useUser({});
 	const { t } = useTranslation();
 	return (
-		<MobileButton variant='contained' href={user ? '/dashboard' : loginURL}>
+		<MobileButton variant='contained' href={user ? '/dashboard' : LOGIN_URL}>
 			{user ? t('common:dashboard') : t('common:login')}
 		</MobileButton>
 	);

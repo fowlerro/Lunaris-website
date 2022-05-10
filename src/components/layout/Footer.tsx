@@ -47,14 +47,6 @@ const StyledLink = styled(Link)(({ theme }) => ({
 	},
 }));
 
-const Copyright = styled(Typography)(({ theme }) => ({
-	position: 'absolute',
-	bottom: '.5rem',
-	width: '100%',
-	textAlign: 'center',
-	color: theme.colors.text.muted,
-}));
-
 export default function Footer(): JSX.Element {
 	const { t } = useTranslation('layout');
 	return (
@@ -72,7 +64,6 @@ export default function Footer(): JSX.Element {
 				</StyledLink>
 				<StyledLink href='mailto:support@lunaris.pro'>support@lunaris.pro</StyledLink>
 			</Section>
-			<Copyright variant='caption'>Copyright © 2022 Kamil Wenta. All rights reserved.</Copyright>
 		</StyledFooter>
 	);
 }

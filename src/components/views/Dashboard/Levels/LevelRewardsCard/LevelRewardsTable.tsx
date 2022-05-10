@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { useFieldArray, Control } from 'react-hook-form';
+import { useFieldArray, Control, useFormState, FieldError } from 'react-hook-form';
 
 import {
 	Button,
 	Checkbox,
+	FormHelperText,
 	IconButton,
 	Table,
 	TableBody,
@@ -18,12 +19,13 @@ import {
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import Icon from '@components/Icon';
+import Skeleton from '@components/Loading/Skeleton';
+
 import { getRoleColor } from '@utils/utils';
 
 import AddLevelRewardModal from './AddLevelRewardModal';
 
 import type { LevelConfigPageData, LevelReward, Role } from 'types';
-import Skeleton from '@components/Loading/Skeleton';
 
 interface IProps {
 	control: Control<LevelConfigPageData>;
@@ -39,16 +41,20 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 		control,
 		name: `levelConfig.rewards.${voice ? 'voice' : 'text'}`,
 	});
+	const { errors } = useFormState({ control });
+
+	const rewardsError = errors.levelConfig?.rewards?.[voice ? 'voice' : 'text'] as unknown as FieldError | undefined;
 
 	const indexes = new Map(fields.map(({ id }, index) => [id, index]));
 
 	const handleAddReward = (reward: LevelReward): void => {
+		if (fields.length >= 20) return;
 		append(reward);
 	};
 
 	return (
 		<div>
-			<Button variant='contained' size='small' onClick={() => setOpen(true)}>
+			<Button variant='contained' size='small' onClick={() => setOpen(true)} disabled={fields.length >= 20}>
 				{t('levelsPage:addReward')}
 			</Button>
 			<TableContainer>
@@ -87,6 +93,9 @@ export default function LevelRewardsTable({ control, roles, voice = false }: IPr
 					</TableBody>
 				</Table>
 			</TableContainer>
+			{fields.length > 20 && rewardsError?.message ? (
+				<FormHelperText error>{rewardsError.message}</FormHelperText>
+			) : null}
 			<AddLevelRewardModal open={open} setOpen={setOpen} roles={roles} addRole={handleAddReward} />
 		</div>
 	);

@@ -1,5 +1,5 @@
-import { useEffect, useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,8 +26,6 @@ export default function useLevelsForm({
 }: UseLevelsFormProps) {
 	const { t } = useTranslation();
 
-	const defaultFormValues = useMemo(() => defaultValues, [defaultValues]);
-
 	const validationSchema = Yup.object().shape({
 		status: Yup.boolean(),
 		levelConfig: Yup.object().shape({
@@ -49,19 +47,47 @@ export default function useLevelsForm({
 				}),
 				messageFormat: Yup.string().max(256, t('forms:errors.maxLength', { count: 256 })),
 			}),
+			rewards: Yup.object().shape({
+				text: Yup.array()
+					.of(
+						Yup.object().shape({
+							level: Yup.number()
+								.integer(t('forms:errors.invalidValue'))
+								.required(t('forms:errors.required'))
+								.min(1, t('forms:errors.min', { count: 1 }))
+								.max(200, t('forms:errors.max', { count: 200 })),
+							roleId: Yup.string().length(18, t('forms:errors.invalidValue')).required(t('forms:errors.required')),
+							takePreviousRole: Yup.boolean(),
+						})
+					)
+					.max(20, t('forms:errors.max', { count: 20 })),
+				voice: Yup.array()
+					.of(
+						Yup.object().shape({
+							level: Yup.number()
+								.integer(t('forms:errors.invalidValue'))
+								.required(t('forms:errors.required'))
+								.min(1, t('forms:errors.min', { count: 1 }))
+								.max(200, t('forms:errors.max', { count: 200 })),
+							roleId: Yup.string().length(18, t('forms:errors.invalidValue')).required(t('forms:errors.required')),
+							takePreviousRole: Yup.boolean(),
+						})
+					)
+					.max(20, t('forms:errors.max', { count: 20 })),
+			}),
 		}),
 	});
 
 	const form = useForm<LevelConfigPageData>({
-		defaultValues: defaultFormValues,
+		defaultValues,
 		resolver: yupResolver(validationSchema),
 	});
 
 	const { reset } = form;
 
-	useEffect(() => {
-		reset(defaultFormValues);
-	}, [defaultFormValues, reset]);
+	useDeepCompareEffect(() => {
+		reset(defaultValues);
+	}, [defaultValues, reset]);
 
 	return form;
 }

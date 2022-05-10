@@ -20,6 +20,7 @@ export default function LevelUpMessageFormat({ control }: IProps): JSX.Element {
 					multiline
 					rows={4}
 					label={t('levelsPage:levelUpMessage.messageFormat')}
+					placeholder={t('levelsPage:levelUpMessage.messageFormatPlaceholder')}
 					fullWidth
 					margin={'normal'}
 					{...field}

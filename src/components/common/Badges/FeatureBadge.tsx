@@ -57,11 +57,15 @@ export default function FeatureBadge({ variant, feature }: IProps): JSX.Element 
 	const router = useRouter();
 
 	useEffect(() => {
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			const visitedFeatures = JSON.parse(window.localStorage.getItem('visitedFeatures') || '{}');
 			if (visitedFeatures[feature]) setVisited(true);
 			if (!visitedFeatures[feature]) setVisited(false);
 		}, 100);
+
+		return () => {
+			clearTimeout(timeout);
+		};
 	}, [feature, router.asPath]);
 
 	return (

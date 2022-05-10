@@ -12,7 +12,7 @@ import UserMenuItemsMobile from './UserMenuItemsMobile';
 
 import useUser from '@hooks/useUser';
 import useIsDesktop from '@hooks/useIsDesktop';
-import { loginURL } from '@utils/constants';
+import { LOGIN_URL } from '@utils/constants';
 
 const ActionList = styled(List)({
 	display: 'flex',
@@ -86,7 +86,7 @@ function Mobile(): JSX.Element {
 								variant='contained'
 								sx={{ paddingInline: '2rem' }}
 								disableFocusRipple
-								href={loginURL}
+								href={LOGIN_URL}
 								aria-label='Login'
 							>
 								{t('common:login')}

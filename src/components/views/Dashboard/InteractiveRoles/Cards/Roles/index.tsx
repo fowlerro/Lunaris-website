@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import useTranslation from 'next-translate/useTranslation';
+import { useFormContext, useFieldArray } from 'react-hook-form';
 
 import DashboardCard from '@components/DashboardCard';
 
@@ -9,6 +10,7 @@ import RoleList from './RoleList';
 import useGuildId from '@hooks/useGuildId';
 import { fetcher } from '@utils/utils';
 
+import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
 import type { GuildEmojis, Role } from 'types';
 
 export default function RolesCard(): JSX.Element {
@@ -28,10 +30,20 @@ export default function RolesCard(): JSX.Element {
 		fetcher
 	);
 
+	const { control } = useFormContext<InteractiveRolesFormValues>();
+	const { fields, append, remove, update } = useFieldArray({ control, name: 'roles' });
+
 	return (
 		<DashboardCard header={t('creator.roles')}>
-			<AddRoleModal guildRoles={roles} globalEmojis={globalEmojis} guildEmojis={guildEmojis} />
-			<RoleList guildRoles={roles} globalEmojis={globalEmojis} guildEmojis={guildEmojis} />
+			<AddRoleModal append={append} guildRoles={roles} globalEmojis={globalEmojis} guildEmojis={guildEmojis} />
+			<RoleList
+				fields={fields}
+				remove={remove}
+				update={update}
+				guildRoles={roles}
+				globalEmojis={globalEmojis}
+				guildEmojis={guildEmojis}
+			/>
 		</DashboardCard>
 	);
 }

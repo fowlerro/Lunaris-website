@@ -37,10 +37,14 @@ export default function Levels(): JSX.Element {
 		control,
 		handleSubmit,
 		reset,
+		watch,
 		formState: { isDirty },
 	} = useLevelsForm({ defaultValues: levelConfig, channels });
 
 	const onSubmit: SubmitHandler<LevelConfigPageData> = async levelData => {
+		if (watch('levelConfig.rewards.text').length >= 20) return;
+		if (watch('levelConfig.rewards.voice').length >= 20) return;
+
 		const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/guilds/${guildId}/levels`, levelData, {
 			withCredentials: true,
 		});

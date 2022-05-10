@@ -5,6 +5,8 @@ import Link from '@components/Link';
 import ServerIcon from '@components/ServerIcon';
 import Skeleton from '@components/Loading/Skeleton';
 
+import { INVITE_URL } from '@utils/constants';
+
 interface IProps {
 	id?: string;
 	name?: string;
@@ -57,7 +59,7 @@ export default function ServerCard({ id, name, icon, permissions, excluded }: IP
 		permissions === 'member'
 			? ''
 			: excluded
-			? `${process.env.INVITE_URL}&guild_id=${id}&disable_guild_select=true`
+			? `${INVITE_URL}&guild_id=${id}&disable_guild_select=true`
 			: `/dashboard/${id}`;
 
 	const Icon = id && name ? <ServerIcon id={id} name={name} icon={icon ?? null} /> : <Skeleton variant='circular' />;

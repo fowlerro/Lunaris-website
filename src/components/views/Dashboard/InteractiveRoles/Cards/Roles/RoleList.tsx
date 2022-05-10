@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
+import {
+	FieldArrayWithId,
+	SubmitHandler,
+	UseFieldArrayRemove,
+	UseFieldArrayUpdate,
+	useFormContext,
+} from 'react-hook-form';
 
 import {
 	FormHelperText,
@@ -24,28 +30,34 @@ import { AddRoleFormValues } from '../../utils/useAddRoleForm';
 import { getRoleColor } from '@utils/utils';
 
 import type { InteractiveRolesFormValues } from '../../utils/useInteractiveRolesForm';
-import type { GuildEmojis, Role } from 'types';
+import type { GuildEmojis, Role, InteractiveRolesType } from 'types';
 
 interface RoleListProps {
+	fields: FieldArrayWithId<InteractiveRolesType, 'roles', 'id'>[];
+	remove: UseFieldArrayRemove;
+	update: UseFieldArrayUpdate<InteractiveRolesType, 'roles'>;
 	guildRoles: Role[] | undefined;
 	globalEmojis: GuildEmojis | undefined;
 	guildEmojis: GuildEmojis | undefined;
 }
 
-export default function RoleList({ guildRoles = [], globalEmojis, guildEmojis }: RoleListProps): JSX.Element {
+export default function RoleList({
+	fields,
+	remove,
+	update,
+	guildRoles = [],
+	globalEmojis,
+	guildEmojis,
+}: RoleListProps): JSX.Element {
 	const { t } = useTranslation('interactiveRolesPage');
 
 	const [openEdit, setOpenEdit] = useState(-1);
 
 	const {
 		watch,
-		control,
 		formState: { errors },
 	} = useFormContext<InteractiveRolesFormValues>();
 	const type = watch('type');
-	const roles = watch('roles');
-
-	const { remove, update } = useFieldArray({ control, name: 'roles' });
 
 	const handleEdit: SubmitHandler<AddRoleFormValues> = values => {
 		update(openEdit, values);
@@ -72,10 +84,10 @@ export default function RoleList({ guildRoles = [], globalEmojis, guildEmojis }:
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{roles.map((role, index) => {
+						{fields.map((role, index) => {
 							const guildRole = guildRoles.find(r => r.id === role.roleId);
 							return (
-								<TableRow key={role.roleId}>
+								<TableRow key={role.id}>
 									<TableCell>
 										<Emoji emoji={role.icon} />
 									</TableCell>

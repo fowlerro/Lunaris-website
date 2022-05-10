@@ -60,6 +60,7 @@ export default function RoleSelect({
 	return (
 		<Autocomplete
 			options={options.sort((a, b) => b.position - a.position)}
+			noOptionsText={t('common:noRoles')}
 			isOptionEqualToValue={(option, value) => option.id == value?.id}
 			filterOptions={filter}
 			sx={{

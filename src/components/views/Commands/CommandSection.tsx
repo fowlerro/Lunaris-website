@@ -42,7 +42,9 @@ export default function CommandSection({ searchInput, category }: IProps): JSX.E
 				.filter(
 					cat =>
 						cat.includes(category) &&
-						commands.filter(command => command.category === cat && command.name.includes(searchInput)).length
+						commands.filter(
+							command => command.category === cat && command.name.toLowerCase().includes(searchInput.toLowerCase())
+						).length
 				)
 				.map(cat => (
 					<CommandCategory

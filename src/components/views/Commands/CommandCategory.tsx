@@ -31,7 +31,7 @@ export default function CommandCategory({ searchInput, category, commands }: IPr
 			</Category>
 			<List>
 				{commands
-					.filter(command => command.name.includes(searchInput))
+					.filter(command => command.name.toLowerCase().includes(searchInput.toLowerCase()))
 					.map(command => (
 						<Command key={command.name} command={command} />
 					))}
